@@ -92,6 +92,9 @@ Helper rules
 * that receive the `clearfix` class.
 * 2. The use of `table` rather than `block` is only necessary if using
 * `:before` to contain the top-margins of child elements.
+*
+* @see http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified/
+* @see blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page
 */
 
 .clearfix:before,
