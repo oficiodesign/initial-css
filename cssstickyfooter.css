@@ -5,6 +5,10 @@ http://stever.ca
 http://www.cssstickyfooter.com
 */
 
+/**
+ * @see	http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page
+ */
+
 * {margin:0;padding:0;}
 
 /* must declare 0 margins on everything, also for main layout components use padding, not
