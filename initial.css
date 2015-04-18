@@ -1,0 +1,1989 @@
+@charset "utf-8";
+/**
+ * default browser styles
+ * http://www.iecss.com/opera-10.51.css
+ * http://www.iecss.com/
+ *
+ * http://www.maratz.com/blog/archives/2005/06/16/essentials-of-css-hacking-for-internet-explorer/
+ *
+ * http://perishablepress.com/press/2007/10/23/a-killer-collection-of-global-css-reset-styles/
+ * http://html5doctor.com/html-5-reset-stylesheet/
+ * http://devkick.com/lab/tripoli/
+ * http://html5boilerplate.com/
+ * https://github.com/necolas/normalize.css/blob/master/normalize.css
+ *
+ * https://developer.mozilla.org/en/CSS/text-rendering
+ * https://github.com/h5bp/html5-boilerplate/issues/78
+ * text-rendering: auto | optimizeSpeed | optimizeLegibility | geometricPrecision | inherit
+ *
+ * http://www.usabilitypost.com/2010/08/26/font-smoothing/
+ * -webkit-font-smoothing: subpixel-antialiased | antialiased | none;
+ *
+ * http://dbaron.org/log/20080613-firefox3-css
+ * https://developer.mozilla.org/en/CSS/font-size-adjust
+ * http://www.webspaceworks.com/resources/fonts-web-typography/43/
+ * http://webdesignernotebook.com/css/the-little-known-font-size-adjust-css3-property/
+ * http://www.fonttester.com/help/css_property/font-size-adjust.html
+ *
+ * https://developer.mozilla.org/en/CSS/-moz-font-feature-settings
+ * http://www.microsoft.com/typography/otspec/featurelist.htm
+ * http://partners.adobe.com/public/developer/opentype/index_tag3.html
+ * http://blogs.msdn.com/b/ie/archive/2012/01/09/css-corner-using-the-whole-font.aspx
+ *
+ * http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed -webkit-background-clip: padding-box;
+ *
+ * http://beradrian.wordpress.com/2008/01/08/cross-browser-custom-css-cursors/
+ *
+ * http://nostrongbeliefs.com/why-i-think-we-shouldnt-use-css-viewport-in-ie10-for-now/
+ *
+ */
+
+/* TAGs
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/*font families */
+/**
+ * @see	http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax
+ * @see	http://blog.gesteves.com/post/36097597/helvetica-neue-light
+ * @see	http://www.fontspring.com/blog/fixing-ie9-font-face-problems
+ * @see	http://allcreatives.net/2009/12/05/smoother-font-face-embedding-in-ie-7-8/
+ * @see http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/
+ */
+@font-face {
+	font-family: 'MyWebFont';
+	src: url('webfont.eot');
+/* IE9 Compat Modes */
+	src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('webfont.woff') format('woff'), /* Modern Browsers */
+		 url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+		 url('webfont.svg#svgFontName') format('svg');
+/* Legacy iOS */
+}
+
+/* Bold declaration only for non-IE browsers if the bold version is in a separated file */
+@font-face {
+	 font-family: 'fishyfont';
+ /*src: local('☺')*/ /*use this to DO NOT use local fonts */
+	src: url('fishyfont.eot');
+/* IE9 Compat Modes */
+	src: url('fishyfont.eot?#iefix') format('eot'), /* IE6-IE8 */
+		 url('fishyfont.woff') format('woff'), /* Modern Browsers */
+		 url('fishyfont.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('fishyfont.svg#svgFontName') format('svg');
+/* Legacy iOS */
+	font-weight: bold;
+}
+/* SELECTIONS
+============================================================================ */
+/**
+ * removed from CSS3
+ * @see http://lists.w3.org/Archives/Public/www-style/2008Oct/0268.html
+ */
+::-webkit-selection {
+	background: rgb(20,105,140);
+	color: white;
+	text-shadow: none;
+}
+::-moz-selection {
+	background: rgb(20,105,140);
+	color: white;
+	text-shadow: none;
+}
+::selection {
+	background: rgb(20,105,140);
+	color: white;
+	text-shadow: none;
+}
+
+/* section items HTML5
+============================================================================ */
+/**
+ * Corrects block display not defined in IE6/7/8/9 & FF3
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+	display: block;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+	display: none;
+}
+
+/* BLOCK TEXT
+============================================================================ */
+
+/**
+ * @see http://sonspring.com/journal/styling-hr
+ */
+hr {
+	border: 0;
+	border-top: 1px solid rgb(204,204,204);
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	clear: both;
+	color: rgb(204,204,204);
+	display: block;
+	height: 0;
+	margin: 1em 0;
+	padding: 0;
+}
+
+p {
+/*	-moz-font-feature-settings: "onum" 1, "pnum" 1, "zero" 1;
+	-ms-font-feature-settings: "onum" 1, "pnum" 1, "zero" 1;
+	-webkit-font-feature-settings: "onum" 1, "pnum" 1, "zero" 1;
+	font-feature-settings: "onum" 1, "pnum" 1, "zero" 1;*/
+	margin: 0;
+	padding: 0;
+}
+/**
+ * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
+ */
+article p {
+	orphans: 3;
+	widows: 3;
+}
+article p + p {}
+article h1 + p,
+article h2 + p,
+article h3 + p,
+article h4 + p,
+article h5 + p,
+article h6 + p,
+article legend+p,
+article fieldset>p:first-child {
+	margin-top: 0;
+	text-indent: 0;
+}
+
+/* HEADINGS AND TITLES */
+
+/**
+ * @see https://developer.mozilla.org/en/CSS/-moz-font-feature-settings
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=458634
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=611780
+ */
+h1, h2, h3, h4, h5, h6, legend, caption {
+	-moz-font-feature-settings: "case" 1, "cpsp" 1, "cswh" 1, "liga" 1, "locl" 1, "lnum" 1, "pnum" 1, "titl" 1, "zero" 1;
+	-ms-font-feature-settings: "case" 1, "cpsp" 1, "cswh" 1, "liga" 1, "locl" 1, "lnum" 1, "pnum" 1, "titl" 1, "zero" 1;
+	-webkit-font-feature-settings: "case" 1, "cpsp" 1, "cswh" 1, "liga" 1, "locl" 1, "lnum" 1, "pnum" 1, "titl" 1, "zero" 1;
+	font-feature-settings: "case" 1, "cpsp" 1, "cswh" 1, "liga" 1, "locl" 1, "lnum" 1, "pnum" 1, "titl" 1, "zero" 1;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, legend a, caption a, dt a,
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link, dt a:link {
+	color: inherit;
+	text-decoration: none;
+}
+h1 {
+	padding-top: 42px;
+}
+h2 {
+	padding-top: 36px;
+}
+h3 {
+	padding-top: 40px;
+}
+h4 {
+	padding-top: 45px;
+}
+h5 {
+	padding-top: 48px;
+}
+h6 {
+	padding-top: 48px;
+}
+/**
+ * @see	http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography-part-4
+ */
+h1:first-line {
+	font-weight: bold;
+	font-size: 36px;
+	font-size: 2.25rem;
+	line-height: 54px;
+	line-height: 3.375rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+h2:first-line {
+	font-weight: bold;
+	font-size: 24px;
+	font-size: 1.5rem;
+	line-height: 36px;
+	line-height: 2.25rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+h3:first-line {
+	font-weight: bold;
+	font-size: 21px;
+	font-size: 1.3125rem;
+	line-height: 32px;
+	line-height: 2rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+h4:first-line {
+	font-weight: bold;
+	font-size: 18px;
+	font-size: 1.125rem;
+	line-height: 27px;
+	line-height: 1.6875rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+h5:first-line {
+	font-weight: bold;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 24px;
+	line-height: 1.5rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+h6:first-line {
+	font-weight: bold;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 24px;
+	line-height: 1.5rem;
+	letter-spacing: ;
+	word-spacing: ;
+}
+
+/* INLINE TEXT
+============================================================================ */
+abbr {
+	letter-spacing: 0.1em;
+}
+
+/**
+ * 1. Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title], /* 1 */
+dfn[title]
+ {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+/**
+ * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
+ */
+b,
+strong {
+	font-weight: bold;
+}
+
+/**
+ * 1. Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+	font-size: 1em;
+	font-style: italic; /* 1 */
+}
+em,
+i {}
+i[lang] {}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+	background: rgb(215,255,90);
+	color: rgb(51,51,51);
+}
+
+meter {}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+	font-size: small;
+	line-height: inherit;
+}
+
+/**
+ * Prevents sub and sup affecting line-height in all browsers
+ * @see https://gist.github.com/unruthless/413930
+ */
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sub {
+	bottom: -0.25em;
+}
+sup {
+	top: -0.5em;
+}
+
+time {font-style: italic;}
+time[pubdate] {cursor: help;}
+
+/* codes
+============================================================================ */
+/**
+ * 1. Fix the font-sizing bug by repeating the value.
+ * 2. Address odd `em`-unit font size rendering in all browsers.
+ * @see https://github.com/necolas/normalize.css/pull/295#issuecomment-34787724
+ */
+code,
+kbd,
+pre,
+samp,
+var {
+	font-family: monospace, monospace; /* 1 */
+	font-size: 1em; /* 2 */
+}
+code {}
+kbd {}
+
+/**
+ * Formatting quoted code in blog posts: CSS2.1 white-space: pre-wrap
+ * @see http://www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/
+ * Contain overflow in all browsers.
+ */
+pre {
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+	white-space: pre; /* CSS2 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap; /* HP printers */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+samp {
+	font-style: italic;
+}
+var {
+	font-style: italic;
+}
+
+/* text edition
+============================================================================ */
+del, s {
+	text-decoration: line-through;
+}
+s {
+	font-style: italic;
+}
+ins {
+	text-decoration: underline;
+}
+del:before,
+ins:before {
+	content: "[update] ";
+	font-weight: bold;
+	text-decoration: none;
+}
+del[datetime]:before,
+ins[datetime]:before {
+	content: "[update\00A0\2192\00A0" attr(datetime) "] ";
+}
+del:after,
+ins:after {
+	content: " [/update] ";
+	text-decoration: none;
+}
+del:lang(pt):before {
+	content: " [excluído] ";
+}
+ins:lang(pt):before {
+	content: " [inserido] ";
+}
+del[datetime]:lang(pt):before {
+	content: " [excluído\00A0\2192\00A0" attr(datetime) "] ";
+}
+ins[datetime]:lang(pt):before {
+	content: " [inserido\00A0\2192\00A0" attr(datetime) "] ";
+}
+del:lang(pt):after	{
+	content: " [/excluído] ";
+}
+ins:lang(pt):after	{
+	content: " [/inserido] ";
+}
+
+/* MEDIA ELEMENTS
+============================================================================ */
+/**
+ * Corrects overflow displayed oddly in IE9
+ */
+svg:not(:root) {overflow: hidden;}
+
+/**
+ * 1. Corrects inline-block display not defined in IE6/7/8/9 & FF3
+ * 2. Known limitation: IE6 will not apply style for 'audio[controls]'
+ */
+audio[controls],
+canvas,
+progress,
+video {
+	display: inline-block; /* 1 */
+}
+meter,
+progress {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-size: auto;
+}
+
+/**
+* Remove the gap between images, videos, audio and canvas and the bottom of
+* their containers: h5bp.com/i/440
+*/
+audio,
+canvas,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+audio {}
+
+iframe,
+img,
+object {
+	border: 0;
+	color: #000;
+	font-size: smaller;
+}
+
+img,
+embed,
+object,
+video {
+	max-width: 100%;
+}
+
+video {}
+	video > source {
+		width: 100%;
+		height: auto;
+	}
+
+.ie:not(.ie6-8),
+object > img {
+	font-size: 1em;
+	pointer-events: none;
+	position: relative;
+	z-index: -1;
+}
+/**
+* Improving quality of image resampling
+* @see	https://developer.mozilla.org/En/CSS/Image-rendering
+* @see	code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+*/
+img {
+	background: url(img/loading.gif) no-repeat center center;
+	height: auto;
+	image-rendering: optimizeQuality; /* 1 */
+	-ms-interpolation-mode: bicubic; /* 1 */
+}
+
+map {}
+	area {}
+object {}
+
+li img, p img {vertical-align: middle;}
+
+/* links
+============================================================================ */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+	background: transparent;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+a:link {
+	cursor: pointer;
+	-webkit-tap-highlight-color: rgb(255,94,153);
+	text-decoration: underline;
+}
+a:visited {}
+a:hover,
+a:focus {}
+a:focus {
+	outline: 1px dotted;
+	outline-offset: 2px;
+	overflow: hidden;
+}
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:hover,
+a:active {
+	outline: 0;
+}
+a:active {}
+a:visited:hover,
+a:visited:active,
+a:visited:focus {}
+a[target='_blank'],
+a[rel='external'] {}
+:target {}
+/**
+ * look for another rel values
+ * @see http://microformats.org/wiki/existing-rel-values
+ */
+
+
+/* quotes
+============================================================================ */
+/**
+ * Blockquote problems and solutions
+ * @see http://oli.jp/2011/blockquote/
+ */
+cite {
+	font-size: 1em;
+	font-style: italic;
+}
+footer > cite {
+	display: block;
+}
+q, blockquote {
+	color: rgb(88,88,88);
+	font-style: italic;
+}
+q {}
+blockquote p,
+blockquote pre,
+blockquote li {
+	font-size: 1em;
+}
+blockquote.verse {
+	text-align: center;
+}
+blockquote.verse p {
+	display: inline;
+	display: inline-block;
+	display: table;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+	width: auto;
+}
+/*
+ * @see	http://monc.se/kitchen/129/rendering-quotes-with-css
+ */
+/*
+ * STANDARD QUOTES - fixing Opera’s default quotes
+ */
+blockquote {
+	quotes: none;
+	padding: ;
+}
+q,
+	blockquote > p,
+	blockquote li,
+	blockquote > pre {
+		quotes: '\201C' '\201D' '\2018' '\2019';
+	}
+	blockquote q {
+		quotes: '\2018' '\2019' '\201C' '\201D';
+	}
+
+/*
+ * @see	http://www.witch.westfalen.de/csstest/quotes/quotes.html
+ */
+:lang(en),
+:lang(id),
+:lang(ko),
+:lang(pt),
+:lang(zh-cn) {
+	quotes:'\201C' '\201D' '\2018' '\2019';
+}
+:lang(ar),
+:lang(fa) {
+	quotes:'\00AB' '\00BB';
+}
+:lang(bg),
+:lang(lt) {
+	quotes:'\201E' '\201C';
+}
+:lang(ca),
+:lang(es) {
+	quotes:'\00AB' '\00BB' '\0022' '\0022';
+}
+:lang(cs),
+:lang(de),
+:lang(sk),
+:lang(sl) {
+	quotes:'\201E' '\201C' '\201A' '\2018';
+}
+:lang(da) {
+	quotes:'\00BB' '\00AB' '\2019' '\2019';
+}
+:lang(el),
+:lang(tr),
+:lang(vi) {
+	quotes:'\00AB' '\00BB' '\2039' '\203A';
+}
+:lang(en-gb) {
+	quotes:'\2018' '\2019' '\201C' '\201D';
+}
+:lang(eo) {
+	quotes:'\201C' '\201D';
+}
+:lang(fi),
+:lang(sv) {
+	quotes:'\201D' '\201D' '\2019' '\2019';
+}
+:lang(fr) {
+	quotes:'\00AB\00A0' '\00A0\00BB' '\2039\00A0' '\00A0\203A';
+}
+:lang(hr) {
+	quotes:'\00BB' '\00AB' '\203A' '\2039';
+}
+:lang(hu) {
+	quotes:'\201E' '\201D';
+}
+:lang(hy) {
+	quotes:'\00AB' '\00BB' '\201C' '\201D';
+}
+:lang(it) {
+	quotes:'\00BB' '\00AB';
+}
+:lang(ja),
+:lang(zh-hk),
+:lang(zh-tw) {
+	quotes:'\300C' '\300D' '\300E' '\300F';
+}
+:lang(nl) {
+	quotes:'\201E' '\201D' '\201A' '\2019';
+}
+:lang(nb),
+:lang(no) {
+	quotes:'\00AB' '\00BB' '\2018' '\2019';
+}
+:lang(pl),
+:lang(ro) {
+	quotes:'\201E' '\201D' '\00AB' '\00BB';
+}
+:lang(ru),
+:lang(uk) {
+	quotes:'\00AB' '\00BB' '\201E' '\201C';
+}
+@media print {
+	:lang(da) {
+		quotes:'\201E' '\201C' '\2019' '\2019';
+	}
+}
+/*
+ * @see	BLOCKQUOTES - http://www.w3.org/TR/CSS2/generate.html#quotes-insert
+ */
+q,
+blockquote > p,
+blockquote li,
+blockquote pre {
+	position: relative;
+}
+q:before,
+blockquote > p:before,
+blockquote li:before,
+blockquote pre:before {
+	content: open-quote;
+	position: absolute;
+	left: -.5em;
+}
+blockquote > p:after,
+blockquote li:after,
+blockquote pre:after {
+	content: no-close-quote;
+}
+q:after,
+blockquote > p:last-child:after,
+blockquote ol:last-child li:last-child:after,
+blockquote ul:last-child li:last-child:after,
+blockquote pre:last-child:after {
+	content: close-quote;
+}
+/*
+ * webkit
+ */
+q:before,
+blockquote > p:before,
+blockquote li:before,
+blockquote > pre:before,
+q:lang(pt):before,
+blockquote > p:before:lang(pt),
+blockquote li:before:lang(pt),
+blockquote > pre:before:lang(pt),
+q:lang(en):before,
+blockquote > p:before:lang(en),
+blockquote li:before:lang(en),
+blockquote > pre:before:lang(en) {
+	content: '\201C';
+}
+q:after,
+blockquote > p:last-child:after,
+q:lang(pt):after,
+blockquote > p:lang(pt):last-child:after,
+blockquote ol:last-child li:lang(pt):last-child:after,
+blockquote ul:last-child li:lang(pt):last-child:after,
+blockquote > pre:lang(pt):last-child:after,
+q:lang(en):after,
+blockquote > p:lang(en):last-child:after,
+blockquote ol:last-child li:lang(en):last-child:after,
+blockquote ul:last-child li:lang(en):last-child:after,
+blockquote > pre:lang(en):last-child:after {
+	content:'\201D';
+}
+q q:before,
+blockquote q:before,
+q q:lang(pt):before,
+blockquote q:lang(pt):before,
+q q:lang(en):before,
+blockquote q:lang(en):before {
+	content:'\2018';
+}
+q q:after,
+blockquote q:after,
+q q:lang(pt):after,
+blockquote q:lang(pt):after,
+q q:lang(en):after,
+blockquote q:lang(en):after {
+	content:'\2019';
+}
+
+/* figure quote
+---------------------------------------------------------------------------- */
+
+/* LISTS
+============================================================================ */
+ul,
+ol,
+li,
+li a {
+	box-sizing: content-box;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/**
+ * Chrome and Firefox have different UA values of text-align for li. It can
+ * result in different alignment of text in li depending on the direction of text (LTR/RTL)
+ * @see https://github.com/necolas/normalize.css/issues/334
+ */
+li {
+
+}
+/* navigation
+---------------------------------------------------------------------------- */
+menu,
+nav {}
+	main menu ul,
+	main menu li,
+	main nav ul,
+	main nav li,
+	menu ul,
+	menu li,
+	nav ul,
+	nav li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+		menu li,
+		nav li {
+			margin: 0;
+			padding: 0;
+		}
+		/* `!important` because of `main li` */
+		menu li:before,
+		nav li:before {
+			content: none!important;
+		}
+			menu a:link,
+			nav a:link {
+				display: block;
+				text-decoration: none;
+			}
+			li.current > a {
+				pointer-events: none;
+			}
+
+
+/* access
+---------------------------------------------------------------------------- */
+.skip-links {}
+
+/* pagination
+---------------------------------------------------------------------------- */
+.pagination {}
+		.pagination li.current {}
+			.previous-page {}
+			.next-page {}
+
+/**
+ * @see http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/
+ */
+article ul,
+article ol {
+	margin: 0 0 24px;
+	margin: 0 0 1.5rem;
+	padding-left: 1em;
+}
+article ol {
+	counter-reset: li;
+}
+article li {
+	list-style: none;
+	position: relative;
+}
+article li:before {
+	font-weight: bold;
+	position: absolute;
+	left: -.5em;
+}
+article ul > li:before {
+	content: "-\a0";
+}
+article ol > li:before {
+	content: counter(li)".\00a0";
+	counter-increment: li;
+	left: 1em;
+}
+
+article li ol,
+article li ul {}
+
+article li:last-child {
+	margin-bottom:0;
+}
+
+/* definition
+---------------------------------------------------------------------------- */
+dl {
+	margin: 0 0 24px;
+	margin: 0 0 1.5rem;
+	padding: 0;
+}
+	dt, dd {
+		margin: 0;
+		padding: 0;
+	}
+	dt {
+		font-weight: bold;
+	}
+	dd {
+		margin-bottom: 24px;
+		margin-bottom: 1.5rem;
+	}
+	dd:last-child {
+		margin-bottom: 0;
+	}
+
+/* TABLES
+============================================================================ */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	font-family: inherit;
+/*	-moz-font-feature-settings: "lnum" 1, "tnum" 1;
+	-ms-font-feature-settings: "lnum" 1, "tnum" 1;
+	-webkit-font-feature-settings: "lnum" 1, "tnum" 1;
+	font-feature-settings: "lnum" 1, "tnum" 1;*/
+	font-size: 100%;
+	margin: 0 0 24px 0;
+}
+table, tr, th , td {
+	background: transparent;
+	border: 0;
+	font-size: 1em;
+	height: auto;
+	vertical-align: top;
+	width: auto;
+}
+	table p, table li {
+		font-size: 1em;
+	}
+	caption {}
+		th {
+			font-weight: bold;
+		}
+		thead th, thead td {
+			vertical-align: bottom;
+			text-align: right;
+		}
+		thead > tr > th:first-child,
+		tfoot > tr > th:first-child {
+			text-align: left;
+		}
+		thead > tr:nth-last-of-type(odd) > th,
+		thead > tr:nth-last-of-type(odd) > td {}
+	tbody {
+		font-family: mono-space, monospace;
+	}
+	tbody th {
+		text-align: left;
+	}
+		td {}
+			td img {
+				vertical-align: top;
+			}
+		tr:nth-of-type(odd) > th,
+		tr:nth-of-type(odd) > td {
+
+		}
+		tfoot th,
+		tfoot td {
+			vertical-align: top;
+		}
+
+/* FORMS
+============================================================================ */
+/**
+ * Property compatibility table for form widgets
+ * @see https://developer.mozilla.org/en-US/docs/Property_compatibility_table_for_form_widgets
+ */
+
+form {
+	margin: 0;
+}
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		min-width: 0;
+		max-width: none;
+	}
+		fieldset fieldset {}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * 3. to override default firefox style
+ */
+		fieldset > legend, /* 3 */
+		legend {
+			border: 0; /* 1 */
+			display: block;
+			font-weight: bold;
+			padding: 0; /* 2 */
+			white-space: normal;
+			width: 100%;
+		}
+
+		label {
+			cursor: pointer;
+			font-size: small;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+		}
+			label * {
+				font-size: 16px;
+				font-size: 1rem;
+			}
+
+/* pragraphs inside forms
+---------------------------------------------------------------------------- */
+		form p {}
+		form br {
+			clear: both;
+		}
+
+/* common rules
+---------------------------------------------------------------------------- */
+/**
+ * 1. Correct color not being inherited.
+ * Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * 4. Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet.
+ */
+			button,
+			input,/* 4 */
+			optgroup,
+			select,
+			textarea {
+				color: inherit; /* 1 */
+				font-family: inherit; /* 2 */
+				line-height: normal; /* 4 */
+				margin: 0; /* 3 */
+			}
+
+/**
+ * 1. Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8+, and Opera
+ * Correct `select` style inheritance in Firefox.
+ */
+			button, /* 1 */
+			input,
+			output,
+			select, /* 1 */
+			textarea {
+				border-width: 1px;
+				-ms-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				box-sizing: content-box;
+				display: inline-block;
+				font-size: 100%;
+				font-size: 16px;
+				font-size: 1rem;
+				font-family: inherit;
+				margin: 0;
+				-moz-outline-style: none;
+				padding: 0;
+				text-transform: none; /* 1 */
+				vertical-align: top;
+				white-space: normal;
+				zoom: 1;
+			}
+
+			/**
+			 * height = line-height - border-top - border-bottom
+			 */
+			button,
+			input,
+			select {
+				height: 22px;
+				height: 1.375rem;
+			}
+
+			input,
+			select,
+			textarea {}
+
+			button:hover,
+			input:hover,
+			select:hover,
+			textarea:hover {}
+
+			button:focus,
+			input:focus,
+			select:focus,
+			textarea:focus {}
+
+			input:-moz-placeholder, textarea:-moz-placeholder {color: rgb(88,88,88);}
+			::-webkit-input-placeholder {color: rgb(88,88,88);}
+
+			button:enabled, input:enabled , select:enabled, textarea:enabled {}
+
+			button:disabled, input:disabled, select:disabled, textarea:disabled,
+			button[disabled], input[disabled], select[disabled], textarea[disabled],
+			button:read-only, input:read-only, select:read-only, textarea:read-only,
+			button[readonly], input[readonly], select[readonly], textarea[readonly] {
+				background: rgb(240,240,240);
+				cursor: default;
+			}
+
+			input:optional, textarea:optional, select:optional {}
+
+/* buttons
+---------------------------------------------------------------------------- */
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ * and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type `input` and others.
+ * 4. Address `overflow` set to `hidden` in IE 8/9/10. Corrects inner spacing displayed oddly in IE6/7
+ * Please note that this fix DOES NOT work for buttons contained inside table elements.
+ * @see	http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+ */
+			button, /* 4 */
+			html input[type="button"], /* 1 */
+			input[type="reset"],
+			input[type="submit"] {
+				  -webkit-appearance: button; /* 2 */
+					 -moz-appearance: button;
+						  appearance: button;
+				cursor: pointer; /* 3 */
+				font-size: 1rem;
+				line-height: normal;
+				overflow: visible; /* 4 */
+				text-indent: 0;
+				width: auto; /* 4 */
+			}
+
+			button[type="button"],
+			input[type="button"] {}
+
+			button[type="reset"],
+			input[type="reset"]	{}
+
+			button[type="submit"],
+			input[type="submit"] {}
+
+				button > span {pointer-events: none;}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ * @see	http://archivist.incutio.com/viewlist/css-discuss/98999
+ * @see	http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ * @see	http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
+ */
+			button::-moz-focus-inner,
+			input[type="button"]::-moz-focus-inner,
+			input[type="reset"]::-moz-focus-inner,
+			input[type="submit"]::-moz-focus-inner,
+			input[type="file"] > input[type="button"]::-moz-focus-inner {
+				border: 0;
+				padding: 0;
+			}
+
+			button:hover, button:focus {}
+			button:active {}
+
+
+/* checkboxes and radio buttons
+---------------------------------------------------------------------------- */
+/**
+ * All checkboxes and readio buttons as list-items
+ * <li><label for="id">label</label> <input type="checkbox" id="id" /></li>
+ */
+			fieldset ol,
+			fieldset ul {
+				margin: 0;
+				padding: 0;
+			}
+			fieldset li {
+				display: block;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				white-space: nowrap;
+			}
+			fieldset li:before {
+				content: none;
+				content: '';
+				display: none;
+			}
+
+			li label {
+				display: inline;
+			}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ * 3. Reset height (applied by a rule above).
+ */
+				input[type="checkbox"],
+				input[type="radio"] {
+					box-sizing: border-box; /* 1 */
+					height: auto; /* 3 */
+					padding: 0; /* 2 */
+					width: auto;
+				}
+
+				li input {
+					cursor: pointer;
+					display: inline;
+					vertical-align: text-bottom;
+				}
+
+				input[type="radio"] {
+					vertical-align: text-bottom;
+				}
+
+				input[type="checkbox"] {
+					vertical-align: bottom;
+				}
+
+				li:hover > input, li:hover > label {color: black;}
+
+				input[type="checkbox"]:hover,
+				input[type="radio"]:hover {}
+
+				input[type="checkbox"]:focus,
+				input[type="radio"]:focus {}
+
+				input[type="radio"]:indeterminate {}
+
+				input[type="checkbox"]:checked {}
+
+				input[type="radio"]:checked {}
+
+				input:checked + label {font-weight: bold;}
+
+				input[disabled] + label, input:disabled + label {
+					color: rgb(88,88,88);
+					cursor: default;
+				}
+
+/* text inputs
+---------------------------------------------------------------------------- */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+			input[type="number"]::-webkit-inner-spin-button,
+			input[type="number"]::-webkit-outer-spin-button {
+				height: auto;
+			}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+			input[type="search"]::-webkit-search-cancel-button,
+			input[type="search"]::-webkit-search-decoration {
+				-webkit-appearance: none;
+			}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ * (include `-moz` to future-proof).
+ */
+			input[type="search"] {
+				-webkit-appearance: none; /* 1 */
+				-moz-appearance: none;
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box; /* 2 */
+				box-sizing: content-box;
+			}
+
+/**
+ * 1. add some space before text
+ */
+			input[type="text"],
+			input[type="password"],
+			input[type="tel"],
+			input[type="email"],
+			input[type="url"],
+			input[type="number"] {
+				cursor: text;
+				text-indent: .5ex; /* 1 */
+			}
+
+			input[type="text"] {}
+			input[type="password"] {}
+			input[type="tel"] {}
+			input[type="email"] {}
+			input[type="search"] {}
+			input[type="url"] {}
+
+/* problematic inputs
+---------------------------------------------------------------------------- */
+			input[type="number"] {}
+			input[type="datetime"] {}
+			input[type="date"] {}
+			input[type="month"] {}
+			input[type="week"] {}
+			input[type="time"] {}
+			input[type="datetime-local"] {}
+
+/* impossible inputs
+---------------------------------------------------------------------------- */
+
+/**
+ * 1. Reset height (applied by a rule above).
+ */
+			input[type="file"],
+			input[type="range"],
+			input[type="color"],
+			input[type="image"] {
+				cursor: pointer;
+				height: auto; /* 1 */
+			}
+
+			input[type="image"] {}
+
+			input[type="range"] {}
+			input[type="color"] {}
+			input[type="file"] {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				appearance: normal;
+				border-style: none!important;
+				-webkit-box-align: baseline;
+				cursor: default;
+				-moz-binding: none;
+				font-family: inherit;
+				height: 2em;
+				padding: 0!important; /*opera*/
+				min-width: 250px;
+				margin: 0; /* opera */
+				text-align: start!important;
+				white-space: nowrap;
+			}
+			input[type="file"] > input[type="text"] {
+				background-color: inherit;
+				border-color: inherit;
+				color: inherit;
+				font-size: inherit;
+				height: inherit;
+				letter-spacing: inherit;
+			}
+			input[type="file"] > input[type="button"],
+			input[type="file"]::-webkit-file-upload-button {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				-webkit-box-align: center;
+				-ms-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				box-sizing: content-box;
+				font-size: inherit;
+				height: inherit;
+				padding: 0;
+				white-space: normal;
+			}
+
+			input[multiple] {}
+
+/* selects
+---------------------------------------------------------------------------- */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+			select,
+			option {
+				cursor: pointer;
+				min-width: 1.5em;
+				width: auto;
+			}
+			select {
+				-ms-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-webkit-box-sizing: content-box;
+				box-sizing: content-box;
+			}
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+			optgroup {
+				font-weight: bold;
+			}
+
+				option {
+					margin: 0;
+					padding: 0 .4em 0 .1em;
+				}
+
+				option:hover,
+				option:focus {
+					color: black;
+				}
+
+			select[multiple] {}
+
+				select[multiple] option {}
+				select[multiple] option:checked {
+					font-weight: bold;
+				}
+
+
+/* textareas
+---------------------------------------------------------------------------- */
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+			textarea {
+				cursor: text;
+				line-height: inherit;
+				overflow: auto; /* 1 */
+				resize: vertical;
+				vertical-align: top;
+				white-space: pre;
+			}
+
+
+
+/* ALERTS and FORMS */
+.success {}
+input:valid,
+textarea:valid {}
+input:in-range {}
+input:required:valid,
+textarea:required:valid {}
+
+.warning {}
+input:required,
+select:required,
+textarea:required {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+input[required],
+select[required],
+textarea[required] {}
+
+.alert {}
+input:out-of-range {}
+
+input:invalid,
+textarea:invalid {
+	border-radius: 0;
+	-moz-box-shadow: 0 0 5px red;
+	-webkit-box-shadow: 0 0 5px red;
+	box-shadow: 0 0 5px red;
+}
+input:-moz-ui-invalid,
+textarea:-moz-ui-invalid {
+	border-radius: 0;
+	-moz-box-shadow: 0 0 5px red;
+	-webkit-box-shadow: 0 0 5px red;
+	box-shadow: 0 0 5px red;
+}
+input:focus:required:invalid,
+textarea:focus:required:invalid {}
+input[type="submit"]:-moz-submit-invalid,
+button[type="submit"]:-moz-submit-invalid {}
+
+x-moz-errormessage {}
+
+/* OBJECTS
+============================================================================ */
+
+/* figures
+---------------------------------------------------------------------------- */
+/**
+ * 1. Address margin not present in IE 8/9 and Safari 5.
+ * 2. http://demosthenes.info/blog/662/Design-From-the-Inside-Out-With-CSS-Min-Content
+ */
+figure {
+	margin: 1em 40px;
+	width:    -moz-min-content;
+	width: -webkit-min-content;
+	width:         min-content;
+}
+
+/**
+ * @see http://microformats.org/wiki/figure
+ */
+.figure {}
+	.image {}
+	.legend {}
+		.credit {}
+
+	figcaption {
+		font-size: 12px;
+		font-size: .75rem;
+		line-height: inherit;
+	}
+		figcaption > p,
+		figcaption small {
+			font-size: 1em;
+			margin: 0;
+		}
+/* gallery
+---------------------------------------------------------------------------- */
+.gallery {}
+	.gallery > .figure {}
+
+/* Contact info and addresses
+---------------------------------------------------------------------------- */
+address {
+	font-style: italic;
+	margin: 0;
+	padding: 0;
+}
+/**
+ * Geo
+ * @see http://microformats.org/wiki/geo
+ */
+.geo {}
+	.latitude {}
+	.longitude {}
+	.latitude[title] {}
+	.longitude[title] {}
+
+/**
+ * h-adr
+ * @see http://microformats.org/wiki/h-adr
+ */
+.h-adr {}
+    .p-street-address {}
+    .p-extended-address {}
+    .p-post-office-box {}
+    .p-locality {}
+    .p-region {}
+    .p-postal-code {}
+    .p-country-name {}
+    .p-label {}
+    .h-adr .h-geo {}
+    .p-geo {}
+    .u-geo {}
+    .p-latitude {}
+    .p-longitude {}
+    .p-altitude {}
+
+/**
+ * h-card
+ * @see http://microformats.org/wiki/h-card
+ */
+.h-card {}
+	.p-name {}
+	.p-honorific-prefix {}
+	.p-given-name {}
+	.p-additional-name {}
+	.p-family-name {}
+	.p-sort-string {}
+	.p-honorific-suffix {}
+	.p-nickname {}
+	.u-email {}
+	.u-logo {}
+	.u-photo {}
+	.u-url {}
+	.u-uid {}
+	.p-category {}
+	.h-card .h-adr {}
+	.p-adr {}
+	.p-post-office-box {}
+	.p-extended-address {}
+	.p-street-address {}
+	.p-locality {}
+	.p-region {}
+	.p-postal-code {}
+	.p-country-name {}
+	.p-label {}
+	.p-geo {}
+	.u-geo {}
+	.h-card .h-geo {}
+	.p-latitude {}
+	.p-longitude {}
+	.p-altitude {}
+	.p-tel {}
+	.p-note {}
+	.dt-bday {}
+	.u-key {}
+	.p-org {}
+	.p-job-title {}
+	.p-role {}
+	.u-impp {}
+	.p-sex {}
+	.p-gender-identity {}
+	.dt-anniversary {}
+
+
+/* articles
+---------------------------------------------------------------------------- */
+/**
+ * Ideal line length for content
+ * @see	http://www.maxdesign.com.au/articles/em/
+ * @see	http://baymard.com/blog/line-length-readability
+ * @see	http://www.webtypography.net/Rhythm_and_Proportion/Horizontal_Motion/2.1.2/
+ * width: 30em; min-width: 25em; max-width: 38em;
+ */
+
+/**
+ * h-entry
+ * @see http://microformats.org/wiki/h-entry
+ */
+.h-entry {}
+	.h-entry .p-name {}
+	.h-entry .u-url {}
+	.h-entry .u-photo {}
+	.h-entry .p-summary {}
+	.h-entry .e-content {}
+	.h-entry .dt-updated {}
+	.h-entry .dt-updated[datetime] {}
+	.h-entry .dt-published {}
+	.h-entry .dt-published[datetime] {}
+	.h-entry .p-author {}
+		.h-entry .p-author > .vcard {}
+	.h-entry .p-category {}
+/**
+ * hCalendar
+ * @see http://microformats.org/wiki/hcalendar-cheatsheet
+ */
+.vevent {}
+	.summary {}
+	.dtstart {}
+	.location {}
+	.url {}
+	.dtend {}
+	.duration {}
+	.rdate {}
+	.rrule {}
+	.category {}
+	.description {}
+	.uid {}
+		.vevent > .geo {}
+	.attendee {}
+		.partstat {}
+		.role {}
+		.contact {}
+		.organizer {}
+	.attach {}
+	.status {}
+/**
+ * hReview
+ * @see http://microformats.org/wiki/hreview-cheatsheet
+ */
+ .hreview {}
+	.summary {}
+	.type {}
+	.item {}
+		.item > .fn {}
+		.item > .vcard {}
+		.item > .venvet {}
+	.reviewer {}
+		.reviewer > .vcard {}
+			.reviewer .fn {}
+	.dtreviewed {}
+	.rating {}
+		.rating .worst {}
+		.rating .best {}
+		.rating .value {}
+	.description {}
+	.tags {}
+	.permalink {}
+	.license {}
+
+/**
+ * hRecipe
+ * @see http://microformats.org/wiki/hrecipe
+ */
+.hrecipe {}
+	.hrecipe > .fn {}
+	.published {}
+	.ingredient {}
+		.ingredient > .value {}
+		.ingredient > .type {}
+	.yield {}
+	.instructions {}
+	.duration {}
+	.photo {}
+	.summary {}
+	.author {}
+	.nutrition {}
+		.nutrition > .value {}
+		.nutrition > .type {}
+	.tag {}
+	.license {}
+
+
+/* feed
+* @see http://microformats.org/wiki/h-feed
+*/
+.h-feed {}
+	.h-feed > .h-entry {}
+
+/* Secondary-content
+============================================================================ */
+.secondary {}
+
+/* CLASSES
+============================================================================ */
+.loading,
+.waiting {
+	cursor: wait;
+}
+
+/**
+ * @see	http://simplebits.com/notebook/2008/08/14/ampersands-2/
+ * @sample	The Elements <span class="alt">of</span> Typographic Style*
+ */
+span.amp, span.alt {
+	font-style: italic;
+	overflow: visible;
+}
+span.alt {
+	font-family: "baskerville italic", "Warnock Pro", "Goudy Old Style", "Palatino", "palatino linotype", "Book Antiqua", Georgia, serif;
+}
+span.amp {
+	font-size: 2em;
+	line-height: 0.25;
+	font-family: Cochin, "Hoefler Titling", Requiem, "Hoefler Text", Baskerville, "Baskerville MT", "Urw Chancery L", "Goudy Old Style", Palatino, "Palatino Linotype", "Urw Palladio L", Constantia, "Book Antiqua", serif;
+	vertical-align: middle;
+}
+
+
+/* Major elements
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/**
+ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+ * http://clagnut.com/blog/348/#c790
+ * 2. Keeps page centred in all browsers regardless of content height
+ * 3. Removes Android and iOS tap highlight color to prevent entire container being highlighted
+ * www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
+ * 4. Prevents iOS text size adjust after orientation change, without disabling user zoom
+ * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ * 5. WebKit Adjacent/General Sibling & Pseudo Class Bug
+ * http://css-tricks.com/8439-webkit-sibling-bug/
+ */
+html {
+	background: white;
+	color: rgb(68,68,68);
+	font-size: 100.01%; /* 1 */
+	font-family: sans-serif;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll; /* 2 */
+	-moz-overflow-y: scroll; /* 2 */
+	-webkit-tap-highlight-color: rgba(0,0,0,0); /* 3 */
+	-ms-text-size-adjust: 100%; /* 4 */
+	-webkit-text-size-adjust: 100%; /* 4 */
+}
+/**
+ * 1. don't centralize body IE7
+ * @see	http://millarian.com/programming/ie7-resize-window-problem/
+ */
+body {
+	-webkit-animation: bugfix infinite 1s; /* 5 */
+	background: transparent;
+	font: normal normal normal 100%/1.5 sans-serif;
+	height: 100%;
+	margin: 0; /* 1 */
+	padding: 0;
+	vertical-align: baseline;
+	white-space: normal;
+}
+
+@-webkit-keyframes bugfix { from { padding: 0;} to { padding: 0;} } /* 5 */
+
+.header-and-content {}
+	.header-and-menu {}
+		.header-access {}
+		.site-header {}
+			.site-label-and-tagline {}
+				.site-label {}
+				.site-tagline {}
+		.header-nav {}
+			.site-nav ul {}
+		.simple-search {}
+	.main-and-secondary {}
+		.main {
+		}
+		.secondary {}
+.site-footer {}
+	.footer-nav {}
+	.footer-access {}
+	.site-info {}
+
+/**
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override.
+ *
+ * smartphone portrait:  320px [^1][^3][^4]
+ * smartphone landscape: 480px [^2][^3][^4]
+ * small tablet:		 600px [^4]
+ * tablet portrait:      768px [^1][^2][^3][^4]
+ * legacy desktop: 		 800px [^2]
+ * tablet landscape:
+ * old monitor:	         960px
+ * tablet landscape:           [^3]
+ * netbook:             1024px [^1][^2][^4]
+ * widescreen desktop:  1200px
+ * desktop:				1280px [^4]
+ * desktop:
+ * laptop:				1224px [^3]
+ * desktop:             1600px [^1]
+ * large screens: 		1824px [^3]
+ * maximum?				2560px [^5]
+ * @see	http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+ *
+ * [^1]: www.mediaqueri.es
+ * @see http://mediaqueri.es/about/
+ * [^2]: Forget responsive web design, you need adaptive web design.
+ * @see	http://csswizardry.com/2011/01/forget-responsive-web-design/
+ * [^3]: https://coderwall.com/p/i2ymiq?&p=1&q=
+ * [^4]: http://fluidbaselinegrid.com/
+ * [^5]: https://www.quora.com/Why-have-computer-monitors-resolutions-not-grown-beyond-2560px-x-1600px
+ * 		 http://goldengridsystem.com/
+ */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+}
+
+
+
+
+@media only screen and (max-device-width : 480px) {
+	body {
+		color: black;
+		font-size: 80%;
+	}
+}
+@media all and (orientation:portrait) {
+}
+@media all and (orientation:landscape) {
+}
+
+@media print {
+/**
+ * @see http://www.alistapart.com/articles/goingtoprint/
+ * @see http://www.merttol.com/articles/css/too-light-for-print.html
+ */
+	* {
+		background: transparent!important;
+		color: #000!important; /* Black prints faster: h5bp.com/s */
+		text-shadow: none!important;
+	}
+	body {
+		background: #fff none;
+		font: 12pt/1.33333 "Palatino Linotype", Palatino, "Times New Roman", Times, serif;
+		color: black;
+	}
+	a,
+	a:link,
+	a:visited {
+		background: transparent;
+		color: #444!important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	a[href]:after {
+		color: rgb(51,51,51);
+		content: " (" attr(href) ") ";
+		font-style: italic;
+		white-space: -moz-pre-wrap;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+/**
+* Don't show links for images, or javascript/internal links
+*/
+
+	a[href^="javascript:"]:after,
+	a[href^="#"]:after {
+		content: "";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+		font-style: italic;
+	}
+
+	pre,
+	blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+
+/**
+ * @see css-discuss.incutio.com/wiki/Printing_Tables
+ */
+	thead {
+		display: table-header-group;
+	}
+
+	tr, img {
+		page-break-inside: avoid;
+	}
+
+	img {
+		max-width: 100% !important;
+	}
+
+
+	@page {
+		margin: 0.5cm;
+	}
+	p,
+	h2,
+	h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	legend,
+	caption {
+		page-break-inside:never;
+		page-break-after: avoid;
+	}
+	img {
+		vertical-align: bottom;
+	}
+	.main {
+		border: 0;
+		float: none !important;
+		margin: 0 5%;
+		padding: 0;
+		width: auto;
+	}
+	nav,
+	.access,
+	.secondary {
+		display: none;
+	}
+}
