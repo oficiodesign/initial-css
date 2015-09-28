@@ -506,15 +506,18 @@ object > img {
 	z-index: -1;
 }
 /**
-* Improving quality of image resampling
+* 1. Improving quality of image resampling
 * @see	https://developer.mozilla.org/En/CSS/Image-rendering
 * @see	code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+*
+* 2. prevent images higher than viewport
 */
 img {
 	background: url(img/loading.gif) no-repeat center center;
 	height: auto;
 	image-rendering: optimizeQuality; /* 1 */
 	-ms-interpolation-mode: bicubic; /* 1 */
+	max-height: 90vh; /* 2 */
 }
 
 map {}
