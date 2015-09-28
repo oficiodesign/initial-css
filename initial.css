@@ -1789,8 +1789,6 @@ span.amp {
  * www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
  * 4. Prevents iOS text size adjust after orientation change, without disabling user zoom
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
- * 5. WebKit Adjacent/General Sibling & Pseudo Class Bug
- * http://css-tricks.com/8439-webkit-sibling-bug/
  */
 html {
 	background: white;
@@ -1811,7 +1809,6 @@ html {
  * @see	http://millarian.com/programming/ie7-resize-window-problem/
  */
 body {
-	-webkit-animation: bugfix infinite 1s; /* 5 */
 	background: transparent;
 	font: normal normal normal 100%/1.5 sans-serif;
 	height: 100%;
@@ -1820,8 +1817,6 @@ body {
 	vertical-align: baseline;
 	white-space: normal;
 }
-
-@-webkit-keyframes bugfix { from { padding: 0;} to { padding: 0;} } /* 5 */
 
 .header-and-content {}
 	.header-and-menu {}
