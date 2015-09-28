@@ -563,11 +563,7 @@ li img, p img {vertical-align: middle;}
 
 /* links
 ============================================================================ */
-/**
- * Remove the gray background color from active links in IE 10.
- */
 a {
-	background: transparent;
 	font-size: 100%;
 	margin: 0;
 	padding: 0;
@@ -593,7 +589,13 @@ a:hover,
 a:active {
 	outline: 0;
 }
-a:active {}
+/**
+ * Remove the gray background color from active links in IE 10.
+ * @see https://github.com/necolas/normalize.css/issues/473
+ */
+a:active {
+  background-color: transparent;
+}
 a:visited:hover,
 a:visited:active,
 a:visited:focus {}
