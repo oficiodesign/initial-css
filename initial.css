@@ -1365,10 +1365,10 @@ x-moz-errormessage {}
  * 2. http://demosthenes.info/blog/662/Design-From-the-Inside-Out-With-CSS-Min-Content
  */
 figure {
-	margin: 1em 40px;
-	width:    -moz-min-content;
-	width: -webkit-min-content;
-	width:         min-content;
+	margin: 1em 40px; /*1 */
+	width:    -moz-min-content; /* 2 */
+	width: -webkit-min-content; /* 2 */
+	width:         min-content; /* 2 */
 }
 
 /**
@@ -1618,6 +1618,8 @@ span.amp {
 /**
  * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
  * http://clagnut.com/blog/348/#c790
+ * 2. Scaling HTML element to window height
+ * https://github.com/necolas/normalize.css/pull/422#issuecomment-78379521
  * 2. Keeps page centred in all browsers regardless of content height
  * 3. Prevents iOS text size adjust after orientation change, without disabling user zoom
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
@@ -1627,13 +1629,13 @@ html {
 	color: rgb(68,68,68);
 	font-size: 100.01%; /* 1 */
 	font-family: sans-serif;
-	height: 100%;
+	height: 100%; /* 2 */
 	margin: 0;
 	padding: 0;
-	overflow-y: scroll; /* 2 */
-	-moz-overflow-y: scroll; /* 2 */
-	-ms-text-size-adjust: 100%; /* 3 */
-	-webkit-text-size-adjust: 100%; /* 3 */
+	overflow-y: scroll; /* 3 */
+	-moz-overflow-y: scroll; /* 3 */
+	-ms-text-size-adjust: 100%; /* 4 */
+	-webkit-text-size-adjust: 100%; /* 4 */
 }
 /**
  * 1. don't centralize body IE7
