@@ -273,13 +273,30 @@ abbr {
 
 /**
  * 1. Address styling not present in IE 8/9, Safari 5, and Chrome.
+ * 2. Firefox uses `text-decoration: dotted underline;` to follow the specification standard
+ * @see http://www.w3.org/TR/css-text-decor-3/#default-stylesheet
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1157083
+ * @see https://github.com/necolas/normalize.css/pull/451
+ * @see http://caniuse.com/#feat=text-decoration
  */
 abbr[title], /* 1 */
 dfn[title]
  {
 	border-bottom: 1px dotted;
 	cursor: help;
+	text-decoration: none;
 }
+
+@supports (text-decoration: dotted underline) {/* 2 */
+	abbr[title],
+	dfn[title]
+	{
+	    border-bottom: inherit;
+		text-decoration: dotted underline;
+	}
+}
+
+
 
 /**
  * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
@@ -1108,7 +1125,7 @@ form {
 
 			button:enabled, input:enabled , select:enabled, textarea:enabled {}
 
-			button:disabled, input:disabled, select:disabled, textarea:disabled,
+			button:disabled,  input:disabled,  select:disabled,  textarea:disabled,
 			button[disabled], input[disabled], select[disabled], textarea[disabled],
 			                  input:read-only, select:read-only, textarea:read-only,
 			                  input[readonly], select[readonly], textarea[readonly] {
