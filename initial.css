@@ -1301,6 +1301,9 @@ form {
 			input[type="password"] {}
 			input[type="tel"] {}
 			input[type="email"] {}
+/**
+ * Jakob Nielsen survey suggests that 27 characters could be good for search fields. They said that around 9 in 10 queries will fit in that space.
+ */
 			input[type="search"] {}
 			input[type="url"] {}
 
