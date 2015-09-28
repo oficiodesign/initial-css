@@ -72,6 +72,24 @@
 /* Legacy iOS */
 	font-weight: bold;
 }
+
+/* TABS
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/**
+ * @see https://github.com/necolas/normalize.css/issues/461
+ */
+:root {
+    -moz-tab-size: 4;  /* Mozilla Firefox 4+ */
+      -o-tab-size: 4;  /* Opera 10.60 – 15 */
+         tab-size: 4;  /* Chrome 21+, Opera 15+, and Safari 6.1+ */
+}
+
+*, *::before, *::after {
+    -moz-tab-size: inherit;
+      -o-tab-size: inherit;
+         tab-size: inherit;
+}
+
 /* SELECTIONS
 ============================================================================ */
 /**
