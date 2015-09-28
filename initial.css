@@ -345,6 +345,7 @@ time[pubdate] {cursor: help;}
 ============================================================================ */
 /**
  * 1. Fix the font-sizing bug by repeating the value.
+ * @see https://github.com/necolas/normalize.css/blob/2bdda84272650aedfb45d8abe11a6d177933a803/README.md#extended-details
  * 2. Address odd `em`-unit font size rendering in all browsers.
  * @see https://github.com/necolas/normalize.css/pull/295#issuecomment-34787724
  */
