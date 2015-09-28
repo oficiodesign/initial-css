@@ -80,13 +80,11 @@
  */
 :root {
     -moz-tab-size: 4;  /* Mozilla Firefox 4+ */
-      -o-tab-size: 4;  /* Opera 10.60 – 15 */
          tab-size: 4;  /* Chrome 21+, Opera 15+, and Safari 6.1+ */
 }
 
 *, *::before, *::after {
     -moz-tab-size: inherit;
-      -o-tab-size: inherit;
          tab-size: inherit;
 }
 
@@ -149,8 +147,6 @@ template {
 hr {
 	border: 0;
 	border-top: 1px solid rgb(204,204,204);
-	-moz-box-sizing: content-box;
-	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 	clear: both;
 	color: rgb(204,204,204);
@@ -925,8 +921,6 @@ form {
 			textarea {
 				border-width: 1px;
 				-ms-box-sizing: content-box;
-				-moz-box-sizing: content-box;
-				-webkit-box-sizing: content-box;
 				box-sizing: content-box;
 				display: inline-block;
 				font-size: 100%;
@@ -1146,9 +1140,7 @@ form {
 			input[type="search"] {
 				-webkit-appearance: none; /* 1 */
 				-moz-appearance: none;
-				-moz-box-sizing: content-box;
-				-webkit-box-sizing: content-box; /* 2 */
-				box-sizing: content-box;
+				box-sizing: content-box; /* 2 */
 			}
 
 /**
@@ -1232,8 +1224,6 @@ form {
 				-webkit-appearance: none;
 				-webkit-box-align: center;
 				-ms-box-sizing: content-box;
-				-moz-box-sizing: content-box;
-				-webkit-box-sizing: content-box;
 				box-sizing: content-box;
 				font-size: inherit;
 				height: inherit;
@@ -1258,8 +1248,6 @@ form {
 			}
 			select {
 				-ms-box-sizing: content-box;
-				-moz-box-sizing: content-box;
-				-webkit-box-sizing: content-box;
 				box-sizing: content-box;
 			}
 /**
@@ -1317,8 +1305,6 @@ textarea:required:valid {}
 input:required,
 select:required,
 textarea:required {
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
 	-o-box-shadow: none;
 	box-shadow: none;
 }
@@ -1332,15 +1318,11 @@ input:out-of-range {}
 input:invalid,
 textarea:invalid {
 	border-radius: 0;
-	-moz-box-shadow: 0 0 5px red;
-	-webkit-box-shadow: 0 0 5px red;
 	box-shadow: 0 0 5px red;
 }
 input:-moz-ui-invalid,
 textarea:-moz-ui-invalid {
 	border-radius: 0;
-	-moz-box-shadow: 0 0 5px red;
-	-webkit-box-shadow: 0 0 5px red;
 	box-shadow: 0 0 5px red;
 }
 input:focus:required:invalid,
