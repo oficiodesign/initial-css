@@ -482,13 +482,14 @@ svg:not(:root) {overflow: hidden;}
 
 /**
  * 1. Corrects inline-block display not defined in IE6/7/8/9 & FF3
- * 2. Known limitation: IE6 will not apply style for 'audio[controls]'
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
 audio[controls],
 canvas,
 progress,
 video {
 	display: inline-block; /* 1 */
+	vertical-align: baseline; /* 2 */
 }
 meter,
 progress {
