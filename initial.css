@@ -992,6 +992,14 @@ form {
  * Please note that this fix DOES NOT work for buttons contained inside table elements.
  * @see	http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
+
+/**
+ * Address inconsistency between `button`s and `button`-like widgets.
+ * Also address iOS Safari element clickability issue.
+ */
+			[role="button"] {
+				cursor: pointer;
+			}
 			button, /* 4 */
 			html input[type="button"], /* 1 */
 			input[type="reset"],
