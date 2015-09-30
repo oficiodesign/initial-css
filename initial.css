@@ -1081,6 +1081,7 @@ form {
 
 			li label {
 				display: inline;
+				padding: 0 .5em;
 			}
 /**
  * It's recommended that you don't attempt to style these elements.
