@@ -994,6 +994,13 @@ form {
 ---------------------------------------------------------------------------- */
 
 /**
+ * Address inconsistency between `button`s and `button`-like widgets.
+ * Also address iOS Safari element clickability issue.
+ */
+			[role="button"] {
+				cursor: pointer;
+			}
+/**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  * and `video` controls.
  * 2. Correct inability to style clickable `input` types in iOS.
@@ -1003,13 +1010,6 @@ form {
  * @see	http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
 
-/**
- * Address inconsistency between `button`s and `button`-like widgets.
- * Also address iOS Safari element clickability issue.
- */
-			[role="button"] {
-				cursor: pointer;
-			}
 			button, /* 4 */
 			html input[type="button"], /* 1 */
 			input[type="reset"],
