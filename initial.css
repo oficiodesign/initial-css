@@ -894,6 +894,7 @@ form {
 			label * {
 				font-size: 16px;
 				font-size: 1rem;
+				pointer-events: none;
 			}
 
 /* pragraphs inside forms
