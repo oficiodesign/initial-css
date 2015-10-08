@@ -1454,17 +1454,17 @@ address {
 }
 /**
  * Geo
- * @see http://microformats.org/wiki/geo
+ * @see http://microformats.org/wiki/h-geo
  */
-.geo {}
-	.latitude {}
-	.longitude {}
-	.latitude[title] {}
-	.longitude[title] {}
+.h-geo {}
+	.p-latitude {}
+	.p-longitude {}
 
 /**
  * h-adr
  * @see http://microformats.org/wiki/h-adr
+ *
+ * p-name - there is no "p-name" property in h-adr. If your address has an explicit name, it's likely a venue, and you should use h-card instead.
  */
 .h-adr {}
     .p-street-address {}
@@ -1475,9 +1475,7 @@ address {
     .p-postal-code {}
     .p-country-name {}
     .p-label {}
-    .h-adr .h-geo {}
-    .p-geo {}
-    .u-geo {}
+	.p-geo, .u-geo {}
     .p-latitude {}
     .p-longitude {}
     .p-altitude {}
@@ -1501,8 +1499,8 @@ address {
 	.u-url {}
 	.u-uid {}
 	.p-category {}
-	.h-card .h-adr {}
 	.p-adr {}
+	.p-adr.h-adr {}
 	.p-post-office-box {}
 	.p-extended-address {}
 	.p-street-address {}
@@ -1511,9 +1509,8 @@ address {
 	.p-postal-code {}
 	.p-country-name {}
 	.p-label {}
-	.p-geo {}
-	.u-geo {}
-	.h-card .h-geo {}
+	.p-geo, .u-geo {}
+	.p-geo.h-geo, .u-geo.h-geo {}
 	.p-latitude {}
 	.p-longitude {}
 	.p-altitude {}
@@ -1548,90 +1545,94 @@ address {
 	.h-entry .p-name {}
 	.h-entry .u-url {}
 	.h-entry .u-photo {}
-	.h-entry .p-summary {}
-	.h-entry .e-content {}
-	.h-entry .dt-updated {}
-	.h-entry .dt-updated[datetime] {}
-	.h-entry .dt-published {}
-	.h-entry .dt-published[datetime] {}
-	.h-entry .p-author {}
-		.h-entry .p-author > .vcard {}
+	.p-summary {}
+	.e-content {}
+	.dt-updated {}
+	.dt-published {}
+	.p-author {}
 	.h-entry .p-category {}
 /**
- * hCalendar
- * @see http://microformats.org/wiki/hcalendar-cheatsheet
+ * h-event
+ * @see http://microformats.org/wiki/h-event
  */
-.vevent {}
-	.summary {}
-	.dtstart {}
-	.location {}
-	.url {}
-	.dtend {}
-	.duration {}
-	.rdate {}
-	.rrule {}
-	.category {}
-	.description {}
-	.uid {}
-		.vevent > .geo {}
-	.attendee {}
-		.partstat {}
-		.role {}
-		.contact {}
-		.organizer {}
-	.attach {}
-	.status {}
+.h-event {}
+	.h-event .p-name {}
+	.p-summary {}
+	.dt-start {}
+	.p-location {}
+		.p-location.h-card {}
+		.p-location.h-adr {}
+		.p-location.h-geo {}
+	.u-url {}
+	.dt-end {}
+	.dt-duration {}
+	.p-category {}
+	.p-description {}
+	.p-attendee {}
+		.p-attendee.h-card {}
 /**
- * hReview
- * @see http://microformats.org/wiki/hreview-cheatsheet
+ * h-review
+ * @see http://microformats.org/wiki/h-review
  */
- .hreview {}
-	.summary {}
-	.type {}
-	.item {}
-		.item > .fn {}
-		.item > .vcard {}
-		.item > .venvet {}
-	.reviewer {}
-		.reviewer > .vcard {}
-			.reviewer .fn {}
-	.dtreviewed {}
-	.rating {}
-		.rating .worst {}
-		.rating .best {}
-		.rating .value {}
-	.description {}
-	.tags {}
-	.permalink {}
-	.license {}
+.h-review {}
+	.h-review > .p-name {}
+	.p-summary {}
+	.e-description {}
+	.p-item {}
+		.p-item.h-card {}
+		.p-item.h-event {}
+		.p-item.h-adr {}
+		.p-item.h-geo {}
+		.p-item.h-product {}
+	.p-reviewer {}
+	.dt-reviewed {}
+	.p-rating {}
+	.p-worst {}
+	.p-best {}
+	.p-description {}
+	.u-url {}
+	.p-category {}
 
 /**
- * hRecipe
- * @see http://microformats.org/wiki/hrecipe
+ * h-recipe
+ * @see http://microformats.org/wiki/h-recipe
  */
-.hrecipe {}
-	.hrecipe > .fn {}
-	.published {}
-	.ingredient {}
-		.ingredient > .value {}
-		.ingredient > .type {}
-	.yield {}
-	.instructions {}
-	.duration {}
-	.photo {}
-	.summary {}
-	.author {}
-	.nutrition {}
-		.nutrition > .value {}
-		.nutrition > .type {}
-	.tag {}
-	.license {}
+.h-recipe {}
+	.hrecipe > .p-name {}
+	.dt-published {}
+	.p-ingredient {}
+	.p-yield {}
+	.e-instructions {}
+	.dt-duration {}
+	.u-photo {}
+	.p-summary {}
+	.p-author {}
+	.p-nutrition {}
 
-
+/**
+ * h-product
+ * @see http://microformats.org/wiki/h-product
+ */
+.h-product {}
+	.p-name {}
+	.u-photo {}
+	.p-brand {}
+	.p-category {}
+	.e-description {}
+	.u-url {}
+	.u-identifier {}
+	.p-review {}
+	.p-price {}
 /* feed
 * @see http://microformats.org/wiki/h-feed
 */
 .h-feed {}
+	.h-feed > .p-name {}
+	.h-feed > .p-summary {}
+	.h-feed > .p-author {}
+	.h-feed > .p-author.h-card {}
+	.h-feed > .u-url {}
+	.h-feed > .u-photo  {}
 	.h-feed > .h-entry {}
 
 /* Secondary-content
