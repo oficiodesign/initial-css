@@ -38,8 +38,6 @@
  *
  */
 
-/* TAGs
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /*font families */
 /**
  * @see	http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax
@@ -104,6 +102,45 @@
 	background: rgb(20,105,140);
 	color: white;
 	text-shadow: none;
+}
+
+/* TAGs
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/**
+ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+ * http://clagnut.com/blog/348/#c790
+ * 2. Scaling HTML element to window height
+ * https://github.com/necolas/normalize.css/pull/422#issuecomment-78379521
+ * 2. Keeps page centred in all browsers regardless of content height
+ * 3. Prevents iOS text size adjust after orientation change, without disabling user zoom
+ * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+html {
+	background: white;
+	font-size: 100.01%; /* 1 */
+	height: 100%; /* 2 */
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll; /* 3 */
+	-moz-overflow-y: scroll; /* 3 */
+	-ms-text-size-adjust: 100%; /* 4 */
+	-webkit-text-size-adjust: 100%; /* 4 */
+}
+/**
+ * 1. don't centralize body IE7
+ * @see	http://millarian.com/programming/ie7-resize-window-problem/
+ */
+body {
+	background: transparent;
+	color: rgb(68,68,68);
+	font-size: 100%;
+	font-family: sans-serif;
+	line-height: 1.5;
+	height: 100%;
+	margin: 0; /* 1 */
+	padding: 0;
+	vertical-align: baseline;
+	white-space: normal;
 }
 
 /* section items HTML5
@@ -1613,42 +1650,6 @@ span.amp {
 
 /* Major elements
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-/**
- * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
- * http://clagnut.com/blog/348/#c790
- * 2. Scaling HTML element to window height
- * https://github.com/necolas/normalize.css/pull/422#issuecomment-78379521
- * 2. Keeps page centred in all browsers regardless of content height
- * 3. Prevents iOS text size adjust after orientation change, without disabling user zoom
- * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
- */
-html {
-	background: white;
-	color: rgb(68,68,68);
-	font-size: 100.01%; /* 1 */
-	font-family: sans-serif;
-	height: 100%; /* 2 */
-	margin: 0;
-	padding: 0;
-	overflow-y: scroll; /* 3 */
-	-moz-overflow-y: scroll; /* 3 */
-	-ms-text-size-adjust: 100%; /* 4 */
-	-webkit-text-size-adjust: 100%; /* 4 */
-}
-/**
- * 1. don't centralize body IE7
- * @see	http://millarian.com/programming/ie7-resize-window-problem/
- */
-body {
-	background: transparent;
-	font: normal normal normal 100%/1.5 sans-serif;
-	height: 100%;
-	margin: 0; /* 1 */
-	padding: 0;
-	vertical-align: baseline;
-	white-space: normal;
-}
-
 .header-and-content {}
 	.header-and-menu {}
 		.header-access {}
