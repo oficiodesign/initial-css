@@ -90,10 +90,6 @@
 
 /* SELECTIONS
 ============================================================================ */
-/**
- * removed from CSS3
- * @see http://lists.w3.org/Archives/Public/www-style/2008Oct/0268.html
- */
 ::-webkit-selection {
 	background: rgb(20,105,140);
 	color: white;
