@@ -73,7 +73,7 @@
 	font-weight: bold;
 }
 
-/* TABS
+/* TABs
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 /**
  * @see https://github.com/necolas/normalize.css/issues/461
@@ -88,7 +88,7 @@
          tab-size: inherit;
 }
 
-/* SELECTIONS
+/* SELECTIONs
 ============================================================================ */
 ::-webkit-selection {
 	background: rgb(20,105,140);
