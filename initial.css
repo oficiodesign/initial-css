@@ -654,7 +654,23 @@ a:visited:active,
 a:visited:focus {}
 a[target='_blank'],
 a[rel='external'] {}
-:target {}
+:target
+{
+	animation: highlight .8s ease-out;
+}
+
+@keyframes highlight
+{
+	0%
+	{
+		background-color: rgba(255, 255, 102, 1.0);
+	}
+	100%
+	{
+		background-color: rgba(255, 255, 102, 0.0);
+	}
+}
+
 /**
  * look for another rel values
  * @see http://microformats.org/wiki/existing-rel-values
