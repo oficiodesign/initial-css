@@ -1,0 +1,88 @@
+/* LISTS
+============================================================================ */
+ul,
+ol,
+li,
+li a {
+	box-sizing: content-box;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+/**
+ * Chrome and Firefox have different UA values of text-align for li. It can
+ * result in different alignment of text in li depending on the direction of text (LTR/RTL)
+ * @see https://github.com/necolas/normalize.css/issues/334
+ */
+li {
+
+}
+
+/**
+ * @see http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/
+ */
+ul,
+ol {
+	margin: 0 0 24px;
+	margin: 0 0 1.5rem;
+	padding-left: 1em;
+}
+
+ol {
+	counter-reset: li;
+}
+
+li {
+	list-style: none;
+	position: relative;
+
+	&:before {
+		font-weight: bold;
+		position: absolute;
+		left: -.5em;
+	}
+}
+
+ul > li:before {
+	content: '-\a0';
+}
+
+ol > li:before {
+	content: counter(li)'.\00a0';
+	counter-increment: li;
+	left: 1em;
+}
+
+li ol,
+li ul {}
+
+li:last-child {
+	margin-bottom: 0;
+}
+
+/* definition
+---------------------------------------------------------------------------- */
+dl {
+	margin: 0 0 24px;
+	margin: 0 0 1.5rem;
+	padding: 0;
+}
+
+	dt,
+	dd {
+		margin: 0;
+		padding: 0;
+	}
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin-bottom: 24px;
+		margin-bottom: 1.5rem;
+	}
+
+	dd:last-child {
+		margin-bottom: 0;
+	}

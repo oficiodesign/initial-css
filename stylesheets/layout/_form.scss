@@ -1,0 +1,564 @@
+/* FORMS
+============================================================================ */
+/**
+ * Property compatibility table for form widgets
+ * @see https://developer.mozilla.org/en-US/docs/Property_compatibility_table_for_form_widgets
+ */
+
+form {
+	margin: 0;
+}
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		min-width: 0;
+		max-width: none;
+	}
+
+		fieldset fieldset {}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ * 4. to override default firefox style
+ */
+
+		fieldset > legend, /* 4 */
+		legend {
+			box-sizing: border-box; /* 1 */
+			color: inherit; /* 2 */
+			display: table; /* 1 */
+			font-weight: bolder;
+			max-width: 100%; /* 1 */
+			padding: 0; /* 3 */
+			white-space: normal; /* 1 */
+		}
+
+		label {
+			cursor: pointer;
+			font-size: small;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+		}
+
+			label * {
+				font-size: 16px;
+				font-size: 1rem;
+			}
+
+/* pragraphs inside forms
+---------------------------------------------------------------------------- */
+		form p {}
+
+		form br {
+			clear: both;
+		}
+
+/* common rules
+---------------------------------------------------------------------------- */
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+			button,
+			input,/* 4 */
+			optgroup,
+			select,
+			textarea {
+				font-size: 100%; /* 1 */
+				font-family: inherit; /* 1 */
+				line-height: $line-height; /* 1 */
+				margin: 0; /* 2 */
+
+				&:disabled {
+					color: palette('disabled');
+				}
+			}
+
+/**
+ * 1. Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8+, and Opera
+ * Correct `select` style inheritance in Firefox.
+ */
+			button, /* 1 */
+			input,
+			output,
+			select, /* 1 */
+			textarea {
+				border-width: 1px;
+				-ms-box-sizing: content-box;
+				box-sizing: content-box;
+				display: inline-block;
+				font-size: 100%;
+				font-size: 16px;
+				font-size: 1rem;
+				font-family: inherit;
+				margin: 0;
+				-moz-outline-style: none;
+				padding: 0;
+				text-transform: none; /* 1 */
+				vertical-align: top;
+				white-space: normal;
+				zoom: 1;
+			}
+
+			button,
+			input,
+			select {}
+
+			input,
+			select,
+			textarea {}
+
+			button:hover,
+			input:hover,
+			select:hover,
+			textarea:hover {}
+
+			button:focus,
+			input:focus,
+			select:focus,
+			textarea:focus {}
+
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+			:-moz-placeholder {
+				color: palette('placeholder');
+				opacity: 1;
+			}
+
+			::-webkit-input-placeholder {
+				color: palette('placeholder');
+				opacity: 1;
+			}
+
+			button:enabled, input:enabled , select:enabled, textarea:enabled {}
+
+			button:disabled,  input:disabled,  select:disabled,  textarea:disabled,
+			button[disabled], input[disabled], select[disabled], textarea[disabled],
+							  input:read-only, select:read-only, textarea:read-only,
+							  input[readonly], select[readonly], textarea[readonly] {
+				background: rgb(240,240,240);
+				cursor: default;
+			}
+
+			input:optional, textarea:optional, select:optional {}
+
+/* buttons
+---------------------------------------------------------------------------- */
+
+/**
+ * Address inconsistency between `button`s and `button`-like widgets.
+ * Also address iOS Safari element clickability issue.
+ */
+			[role="button"] {
+				cursor: pointer;
+			}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ * and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type `input` and others.
+ * 4. Address `overflow` set to `hidden` in IE 8/9/10. Corrects inner spacing displayed oddly in IE6/7
+ * Please note that this fix DOES NOT work for buttons contained inside table elements.
+ * @see	http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+ */
+
+			button, /* 4 */
+			html input[type="button"], /* 1 */
+			input[type="reset"],
+			input[type="submit"] {
+				  -webkit-appearance: button; /* 2 */
+					 -moz-appearance: button;
+						  appearance: button;
+				cursor: pointer; /* 3 */
+				font-size: 1rem;
+				line-height: normal;
+				overflow: visible; /* 4 */
+				text-indent: 0;
+				width: auto; /* 4 */
+			}
+
+			button[type="button"],
+			input[type="button"] {}
+
+			button[type="reset"],
+			input[type="reset"]	{}
+
+			button[type="submit"],
+			input[type="submit"] {}
+
+				button > span {pointer-events: none;}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ * @see	http://archivist.incutio.com/viewlist/css-discuss/98999
+ * @see	http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ * @see	http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
+ */
+			button,
+			[type="button"],
+			[type="reset"],
+			[type="submit"] {
+				&::-moz-focus-inner {
+					border: 0;
+					padding: 0;
+				}
+			}
+
+/**
+* Replace focus style removed in the border reset above
+*/
+			button:-moz-focusring,
+			input:-moz-focusring {
+				outline: 1px dotted ButtonText;
+			}
+
+			button:hover, button:focus {}
+			button:active {}
+
+
+/* checkboxes and radio buttons
+---------------------------------------------------------------------------- */
+/**
+ * All checkboxes and readio buttons as list-items
+ * <li><label for="id">label</label> <input type="checkbox" id="id" /></li>
+ */
+			fieldset ol,
+			fieldset ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			fieldset li {
+				display: block;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				white-space: nowrap;
+			}
+
+			fieldset li:before {
+				content: none;
+				content: '';
+				display: none;
+			}
+
+			li label {
+				display: inline;
+				padding: 0 .5em;
+			}
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ * 3. Reset height (applied by a rule above).
+ */
+				[type="checkbox"],
+				[type="radio"] {
+					box-sizing: border-box; /* 1 */
+					height: auto; /* 3 */
+					padding: 0; /* 2 */
+					width: auto;
+				}
+
+				li input {
+					cursor: pointer;
+					display: inline;
+					vertical-align: text-bottom;
+				}
+
+				[type="radio"] {
+					vertical-align: text-bottom;
+				}
+
+				[type="checkbox"] {
+					vertical-align: bottom;
+				}
+
+				li:hover > input,
+				li:hover > label {
+					color: palette('black');
+				}
+
+				[type="checkbox"]:hover,
+				[type="radio"]:hover {}
+
+				[type="checkbox"]:focus,
+				[type="radio"]:focus {}
+
+				[type="radio"]:indeterminate {}
+
+				[type="checkbox"]:checked {}
+
+				[type="radio"]:checked {}
+
+				:checked + label {
+					font-weight: bold;
+				}
+
+				[disabled] + label,
+				:disabled + label {
+					color: rgb(88,88,88);
+					cursor: default;
+				}
+
+/* text inputs
+---------------------------------------------------------------------------- */
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+			[type="number"]::-webkit-inner-spin-button,
+			[type="number"]::-webkit-outer-spin-button {
+				height: auto;
+			}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Correct the outline style in Safari.
+ */
+			[type="search"] {
+				appearance: textfield; /* 1 */
+				outline-offset: -2px; /* 2 */
+			}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+			[type="search"]::-webkit-search-cancel-button,
+			[type="search"]::-webkit-search-decoration {
+				-webkit-appearance: none;
+			}
+
+/**
+ * 1. add some space before text
+ */
+			[type="text"],
+			[type="password"],
+			[type="tel"],
+			[type="email"],
+			[type="url"],
+			[type="number"] {
+				cursor: text;
+				text-indent: .5ex; /* 1 */
+			}
+
+			[type="text"] {}
+
+			[type="password"] {}
+
+			[type="tel"] {}
+
+			[type="email"] {}
+/**
+ * Jakob Nielsen survey suggests that 27 characters could be good for search fields. They said that around 9 in 10 queries will fit in that space.
+ */
+			[type="search"] {}
+			[type="url"] {}
+
+/* problematic inputs
+---------------------------------------------------------------------------- */
+			[type="number"] {}
+			[type="datetime"] {}
+			[type="date"] {}
+			[type="month"] {}
+			[type="week"] {}
+			[type="time"] {}
+			[type="datetime-local"] {}
+
+
+// This Boolean attribute indicates whether the user can enter more than one
+// value. This attribute applies when the type attribute is set to `email` or
+// `file`, otherwise it is ignored.
+			[multiple] {}
+
+
+/* impossible inputs
+---------------------------------------------------------------------------- */
+
+/**
+ * 1. Reset height (applied by a rule above).
+ */
+			[type="file"],
+			[type="range"],
+			[type="color"],
+			[type="image"] {
+				cursor: pointer;
+				height: auto; /* 1 */
+			}
+
+			[type="image"] {}
+
+			[type="range"] {}
+			[type="color"] {}
+			[type="file"] {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				appearance: normal;
+				border-style: none!important;
+				-webkit-box-align: baseline;
+				cursor: default;
+				-moz-binding: none;
+				font-family: inherit;
+				height: 2em;
+				padding: 0!important; /*opera*/
+				min-width: 250px;
+				margin: 0; /* opera */
+				text-align: start!important;
+				white-space: nowrap;
+			}
+
+
+			[type="file"] > [type="text"] {
+				background-color: inherit;
+				border-color: inherit;
+				color: inherit;
+				font-size: inherit;
+				height: inherit;
+				letter-spacing: inherit;
+			}
+
+			[type="file"] > [type="button"] {
+				appearance: button;
+				-webkit-box-align: center;
+				box-sizing: content-box;
+				font-size: inherit;
+				height: inherit;
+				padding: 0;
+				white-space: normal;
+			}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	cursor: pointer;
+	font: inherit; /* 2 */
+}
+
+
+/* selects
+---------------------------------------------------------------------------- */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+			select,
+			option {
+				cursor: pointer;
+				min-width: 1.5em;
+				width: auto;
+			}
+
+
+/**
+ * 1. patch to correct an problem in Mac OS only not letting stylize combo boxes
+ * @see https://github.com/necolas/normalize.css/issues/579#issue-148022816
+ */
+			select {
+				-webkit-appearance: menulist-button; /* 1. Mac Aqua off */
+				box-sizing: content-box;
+
+				@supports (-ms-accelerator:true) { /* 1 */
+					-webkit-appearance: menulist; /* Revert to default for Edge */
+				}
+			}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+			optgroup {
+				font-weight: bold;
+			}
+
+				option {
+					margin: 0;
+					padding: 0 .4em 0 .1em;
+				}
+
+				option:hover,
+				option:focus {
+					color: black;
+				}
+
+			select[multiple] {}
+
+				select[multiple] option {}
+				select[multiple] option:checked {
+					font-weight: bold;
+				}
+
+
+/* textareas
+---------------------------------------------------------------------------- */
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+			textarea {
+				cursor: text;
+				line-height: inherit;
+				overflow: auto; /* 1 */
+				resize: vertical;
+				vertical-align: top;
+				white-space: pre;
+			}
+
+
+
+/* ALERTS and FORMS */
+.success {}
+input:valid,
+textarea:valid {}
+input:in-range {}
+input:required:valid,
+textarea:required:valid {}
+
+.warning {}
+input:required,
+select:required,
+textarea:required {
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+input[required],
+select[required],
+textarea[required] {}
+
+.alert {}
+input:out-of-range {}
+
+input:invalid,
+textarea:invalid {
+	border-radius: 0;
+	box-shadow: 0 0 5px red;
+}
+input:-moz-ui-invalid,
+textarea:-moz-ui-invalid {
+	border-radius: 0;
+	box-shadow: 0 0 5px red;
+}
+input:focus:required:invalid,
+textarea:focus:required:invalid {}
+input[type="submit"]:-moz-submit-invalid,
+button[type="submit"]:-moz-submit-invalid {}
+
+x-moz-errormessage {}

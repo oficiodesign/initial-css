@@ -1,0 +1,167 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+
+
+
+/// body text font-size
+/// @type Length
+$body-font-size: 1em !default;
+
+$line-height: 1.5;
+
+/// flexible line heights map
+/// @access private
+/// @type Map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are line-heights expressed in `em` due to a browser calc limitation
+$line-heights: (
+	'min': 1.3em,
+	'max': 1.5em,
+) !default;
+
+
+/// flexible line length map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are line lenths expressed in `em`
+$line-length-gates: (
+	'lower': 21em,
+	'upper': 35em,
+) !default;
+
+
+/// Friendlier colour names with Sass maps
+/// @access private
+$_color-base-grey: rgb(229, 231, 234);
+
+/// @access private
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are pure colors or the returned value of functions
+
+// this is a variable. A variable map!
+// scss-lint:disable ColorVariable
+$_palettes: (
+	'white': #fff,
+	'black': #000,
+	'debug': #f00,
+	'disabled': #6d6d6d,
+	'link': #00f,
+	'quotes': rgb(88, 88, 88),
+	'placeholder': rgb(88, 88, 88),
+	'selection': rgb(20, 105, 140),
+	'purple': (
+		'base': rgb(42, 40, 80),
+		'light': rgb(51, 46, 140),
+		'dark': rgb(40, 38, 65)
+	),
+	'grey':  (
+		'base': $_color-base-grey,
+		'light': tint($_color-base-grey, 10%),
+		'dark': shade($_color-base-grey, 10%)
+	)
+);
+// scss-lint:enable ColorVariable
+
+/// @access public
+/// @param {String} $palette - Palette name
+/// @param {String} $tone - tone name
+/// @require {String} $palette
+/// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+@function palette($palette, $tone: null) {
+	@if not map-has-key($_palettes, $palette) {
+		@error "unknown color sent to `palette` function: #{$palette}.";
+	}
+
+	$color: map-get($_palettes, $palette);
+
+	@if $tone != null {
+		@if not map-has-key($color, $tone) {
+			@error "unknown tone sent to `palette` function: #{$tone}.";
+		} @else {
+			@return map-get(map-get($_palettes, $palette), $tone);
+		}
+	} @else {
+		@if type-of($color) == 'color' {
+			@return $color;
+		} @else {
+			@return map-get($color, 'base');
+		}
+	}
+}
+
+
+/// Copy text color
+/// @type Color
+$text-color: rgb(34, 34, 34) !default;
+
+/// Main brand color
+/// @type Color
+$brand-color: rgb(229, 0, 80) !default;
+
+/// Light grey
+/// @type Color
+$light-grey: rgb(237, 237, 237) !default;
+
+/// Medium grey
+/// @type Color
+$mid-grey: rgb(153, 153, 153) !default;
+
+/// Dark grey
+/// @type Color
+$dark-grey: rgb(68, 68, 68) !default;
+
+
+
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default;
+
+@function im-to-em($breakpoints, $base-value: 16px) {
+	$new-breakpoints: ();
+
+	@each $name, $value in $breakpoints {
+		$em-value: ($value / $base-value) * 1em;
+		$new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
+	}
+
+	@return $new-breakpoints;
+}
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: im-to-em((
+  'phone': 320px,
+  'tablet': 768px,
+  'desktop': 1024px
+)) !default;
+
+	// 320
+	// 480
+	// 760
+	// 960
+	// 1200
+	// 1600.
+
+
+
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+$base-url: '/assets/' !default;

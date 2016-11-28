@@ -1,0 +1,76 @@
+/* TABLES
+============================================================================ */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	font-family: inherit;
+	font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "dlig" 0;
+	font-size: 100%;
+	margin: 0 0 24px 0;
+	margin: 0 0 1.5em 0;/* line-height */
+}
+
+
+table,
+tr,
+th,
+td {
+	background: transparent;
+	border: 0;
+	font-size: 1em;
+	height: auto;
+	vertical-align: top;
+	width: auto;
+}
+
+	table p,
+	table li {
+		font-size: 1em;
+	}
+
+	caption {}
+
+		th {
+			font-weight: bold;
+		}
+
+		thead th,
+		thead td {
+			vertical-align: bottom;
+			text-align: right;
+		}
+
+		thead > tr > th:first-child,
+		tfoot > tr > th:first-child {
+			text-align: left;
+		}
+
+		thead > tr:nth-last-of-type(odd) > th,
+		thead > tr:nth-last-of-type(odd) > td {}
+
+	tbody {
+		font-family: mono-space, monospace;
+	}
+
+	tbody th {
+		text-align: left;
+	}
+
+		td {
+			font-family: inherit;
+		}
+
+			td img {
+				vertical-align: top;
+			}
+
+		tr:nth-of-type(odd) > th,
+		tr:nth-of-type(odd) > td {
+
+		}
+
+		tfoot th,
+		tfoot td {
+			vertical-align: top;
+		}

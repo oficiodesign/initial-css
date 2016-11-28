@@ -1,0 +1,285 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+	@return url($base + $type + $path);
+}
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+	@return asset($base, 'images/', $path);
+}
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+	@return asset($base, 'fonts/', $path);
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @access public
+/// @return {Number} - Unitless number
+/// @link http://stackoverflow.com/a/12335841
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+// We need the pure color
+// scss-lint:disable ColorKeyword
+	@return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+// We need the pure color
+// scss-lint:disable ColorKeyword
+	@return mix(black, $color, $percentage);
+}
+
+
+/// Brightness math
+/// @access private
+/// @param {color} $color
+/// @require {color} $color
+/// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+
+
+@function _brightness($color) {
+	$red-magic-number: 241;
+	$green-magic-number: 691;
+	$blue-magic-number: 68;
+	$brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-number;
+
+	// Extract color components
+	$red-component: red($color);
+	$green-component: green($color);
+	$blue-component: blue($color);
+
+	// Calculate a brightness value in 3d color space between 0 and 255
+	$number: sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
+
+	// Convert to percentage and return
+	@return 100% * $number / 255;
+}
+
+
+/// Choose text color based on background
+/// @access public
+/// @param {color} $bg-color - background color
+/// @param {color} $light - light text option
+/// @param {color} $dark - dark text option
+/// @require {color} $bg-color - background color
+/// @require {color} $light - light text option
+/// @require {color} $dark - dark text option
+/// @return {Color}
+@function contrasting-color($bg-color, $light, $dark) {
+	@if _brightness($bg-color) < 65% {
+		@return $light;
+	} @else {
+		@return $dark;
+	}
+}
+
+/// Convert a HSL color to RGB
+/// @access public
+/// @link https://gist.github.com/omgmog/6192734
+/// @require $hsl-color
+/// @param {color} $hsl-color - hsl color
+@function hsl-to-rgb($hsl-color) {
+	@return mix($hsl-color, $hsl-color);
+}
+
+
+@if not function-exists('str-replace') {
+	/// Replace `$search` with `$replace` in `$string`
+	/// @author Hugo Giraudel
+	/// @param {String} $string - Initial string
+	/// @param {String} $search - Substring to replace
+	/// @param {String} $replace ('') - New value
+	/// @return {String} - Updated string
+	@function str-replace($string, $search, $replace: '') {
+		$index: str-index($string, $search);
+
+		@if $index {
+			@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+		}
+
+		@return $string;
+	}
+}
+
+@function font-weight($weight: 'normal') {
+
+	$font-weight: (
+		'thin': 100,
+		'hairline': 100,
+		'extralight': 200,
+		'ultralight': 200,
+		'light': 300,
+		'normal': 400,
+		'medium': 500,
+		'semibold': 600,
+		'demibold': 600,
+		'bold': 700,
+		'extrabold': 800,
+		'ultrabold': 800,
+		'black': 900,
+		'heavy': 900
+	);
+
+	$weight: to-lower-case($weight);
+	$weight: str-replace($weight, ' ', '');
+	$weight: str-replace($weight, '-', '');
+
+	@if not map-has-key($font-weight, $weight) {
+		@error "unknown value sent to `font-weight` function: #{$weight}.";
+	}
+
+	@return map-get($font-weight, $weight);
+}
+
+
+/// Z-indexes map, gathering all Z layers of the application
+/// @access private
+/// @type Map
+/// @prop {String} key - Layer’s name
+/// @prop {Number} value - Z value mapped to the key
+$_z-indexes: (
+	'modal': 5000,
+	'dropdown': 4000,
+	'default': 1,
+	'below': -1,
+) !default;
+
+/// Get a z-index value from a layer name
+/// @access public
+/// @param {String} $layer - Layer’s name
+/// @return {Number}
+/// @require $_z-indexes
+@function z-layer($layer: 'default') {
+	@if not map-has-key($_z-indexes, $layer) {
+		@error "unknown value sent to `z-layer` function: #{$layer}.";
+	}
+
+	@return map-get($_z-indexes, $layer);
+}
+
+
+
+
+
+
+
+
+
+
+///--------------------------------------------------------------------------------------------------------------------
+
+@if not function-exists('trim') {
+/// Trim's a string by removing leading and trailing spaces
+///
+/// @param {String} $string - String to trim
+///
+/// @return {String} - String without spaces
+///
+	@function trim($string) {
+		@return str-slice(
+			$string,
+			first-index($string, 'left'),
+			first-index($string, 'right')
+		);
+	}
+}
+
+@if not function-exists('first-index') {
+/// Find first char which is not a space
+///
+/// @param {String} $string - String to search
+/// @param {String} $direction ['left'] - Either 'left' or 'right' to indicate search direction
+///
+/// @return {Number} - Index of first non-space character
+///
+	@function first-index($string, $direction: 'left') {
+		@for $i from 1 through str-length($string) {
+			$index: if($direction == 'left', $i, -$i);
+
+			@if str-slice($string, $index, $index) != ' ' {
+				@return $index;
+			}
+		}
+
+		@return 0;
+	}
+}
+
+
+
+@if not function-exists('grid-image') {
+	@function grid-image($grid: $susy) {
+
+		$debug-color: palette('debug');
+
+		// to use double single quotes inside the string save us from encode the double ones
+		// scss-lint:disable StringQuotes
+		$grid: susy-normalize($grid);
+
+		$columns: map-get($grid, 'columns');
+		$gutter: map-get($grid, 'gutters');
+
+		$svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
+
+		@if index($svg-units, unit($gutter)) == null {
+			@error "SVG unsuported unit used for gutter: #{unit($gutter)}";
+		}
+
+		$color: $debug-color + unquote("");
+		$color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
+
+		$x: 0;
+
+		$svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+
+		@each $column in $columns {
+			@if index($svg-units, unit($column)) == null {
+				@error "SVG unsuported unit used for column: #{unit($column)}";
+			}
+
+			$x: $x + $gutter + $column;
+
+			$svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+		}
+
+		$x: $x + $gutter;
+
+		$svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
+
+		@return $svg;
+	}
+}

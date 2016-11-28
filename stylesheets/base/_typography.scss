@@ -1,0 +1,378 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+	color: $text-color;
+	font: normal 100% / 1.5 $text-font-stack;
+}
+
+* {
+	line-height: inherit;
+}
+/// Special cases font styles
+///
+/// @example markup
+///   The Elements <span class='alt'>of</span> Typographic Style*
+///
+/// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
+///
+$_alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
+$_ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
+
+// Qualified to prevent conflicts
+// scss-lint:disable QualifyingElement
+%italic-overflow {
+	font-style: italic;
+	overflow: visible;
+}
+
+span.alt {
+	@extend %italic-overflow;
+
+	font-family: $_alt-font-stack;
+}
+
+span.amp {
+	@extend %italic-overflow;
+
+	font-size: 2em;
+	line-height: 0.25;
+	font-family: $_ampersand-font-stack;
+	vertical-align: middle;
+}
+// scss-lint:enable QualifyingElement
+
+/* HEADINGS AND TITLES */
+
+/**
+ * @see https://developer.mozilla.org/en/CSS/-moz-font-feature-settings
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=458634
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=611780
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend,
+caption {
+	break-after: avoid;
+	font-family: $title-font-stack;
+	font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+	page-break-after: avoid;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+legend a,
+caption a,
+dt a {
+	color: inherit;
+	text-decoration: none;
+
+	&:link {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+p {
+/*	-moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+	-ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+	-webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+	font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;*/
+	margin: 0;
+	padding: 0;
+}
+
+/**
+ * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
+ */
+article p {
+	orphans: 3;
+	widows: 3;
+}
+article p + p {}
+article h1 + p,
+article h2 + p,
+article h3 + p,
+article h4 + p,
+article h5 + p,
+article h6 + p,
+article legend+p,
+article fieldset>p:first-child {
+	margin-top: 0;
+	text-indent: 0;
+}
+
+/* INLINE TEXT
+============================================================================ */
+
+/**
+ * 1. Address styling not present in IE 8/9, Safari 5, and Chrome.
+ * 2. Firefox uses `text-decoration: dotted underline;` to follow the specification standard
+ * @see http://www.w3.org/TR/css-text-decor-3/#default-stylesheet
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1157083
+ * @see https://github.com/necolas/normalize.css/pull/451
+ * @see http://caniuse.com/#feat=text-decoration
+ */
+
+%abbr-title {
+	&[title] { /* 1 */
+		border-bottom: 1px dotted;
+		cursor: help;
+		text-decoration: none;
+	}
+
+	@supports (text-decoration: dotted underline) {/* 2 */
+		border-bottom: inherit;
+		text-decoration: dotted underline;
+	}
+}
+
+abbr {
+	@extend %abbr-title;
+
+	letter-spacing: 0.1em;
+}
+
+/**
+ * 1. Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+	@extend %abbr-title;
+
+	font-size: 1em;
+	font-style: italic; /* 1 */
+}
+
+/**
+ * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
+ * 1. Get font-weight value from parent element
+ * 2. Set font-weight bolder than parent
+ *
+ * @see https://github.com/necolas/normalize.css/pull/342
+ * @see https://github.com/necolas/normalize.css/pull/342#issuecomment-173801037
+ */
+b,
+strong {
+	font-weight: bold;
+	font-weight: inherit; /* 1 */
+}
+
+b,
+strong {
+	font-weight: bolder; /* 2 */
+}
+
+em,
+i {}
+
+i[lang] {}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+	background: rgb(215,255,90);
+	color: rgb(51,51,51);
+}
+
+meter {}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+	font-size: 83.3333%;
+	line-height: inherit;
+}
+
+/**
+ * Change the positioning on superscript and subscript elements
+ * in all browsers (opinionated).
+ * 1. Correct the font size in all browsers.
+ */
+sub,
+sup {
+	font-size: 83.3333%; /* 1 */
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+time {
+	font-style: italic;
+
+	&[pubdate] {
+		cursor: help;
+	}
+}
+
+
+/* codes
+============================================================================ */
+/**
+ * 1. Fix the font-sizing bug by repeating the value.
+ * @see https://github.com/necolas/normalize.css/blob/2bdda84272650aedfb45d8abe11a6d177933a803/README.md#extended-details
+ * 2. Address odd `em`-unit font size rendering in all browsers.
+ * @see https://github.com/necolas/normalize.css/pull/295#issuecomment-34787724
+ */
+code,
+kbd,
+pre,
+samp,
+var {
+	font-family: monospace, monospace; /* 1 */
+	font-size: 1em; /* 2 */
+}
+
+code {}
+
+kbd {}
+
+/**
+ * Formatting quoted code in blog posts: CSS2.1 white-space: pre-wrap
+ * @see http://www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/
+ * Contain overflow in all browsers.
+ */
+pre {
+	margin: 0;
+	overflow: auto;
+	padding: 0;
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+samp {
+	font-style: italic;
+}
+var {
+	font-style: italic;
+}
+
+/* text edition
+============================================================================ */
+del,
+s {
+	text-decoration: line-through;
+}
+
+s {
+	font-style: italic;
+}
+
+%updated {
+	&:before {
+		content: '[update] ';
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	&[datetime]:before,
+	&[datetime]:before {
+		content: '[update\00A0\2192\00A0' attr(datetime) '] ';
+	}
+
+	:after,
+	:after {
+		content: ' [/update] ';
+		text-decoration: none;
+	}
+}
+
+ins {
+	@extend %updated;
+
+	text-decoration: underline;
+
+	&:lang(pt):before {
+		content: ' [inserido] ';
+	}
+
+	&[datetime]:lang(pt):before {
+		content: ' [inserido\00A0\2192\00A0' attr(datetime) '] ';
+	}
+
+	&:lang(pt):after	{
+		content: ' [/inserido] ';
+	}
+}
+
+del {
+	@extend %updated;
+
+	&:lang(pt):before {
+		content: ' [excluído] ';
+	}
+
+	&[datetime]:lang(pt):before {
+		content: ' [excluído\00A0\2192\00A0' attr(datetime) '] ';
+	}
+
+	&:lang(pt):after	{
+		content: ' [/excluído] ';
+	}
+}
+
+
+
+
+
+/* quotes
+============================================================================ */
+/**
+ * Blockquote problems and solutions
+ * @see http://oli.jp/2011/blockquote/
+ */
+cite {
+	font-size: 1em;
+	font-style: italic;
+}
+
+footer > cite {
+	display: block;
+}
+
+q,
+blockquote {
+	color: palette('quotes');
+	font-style: italic;
+}
+
+q {}
+
+blockquote p,
+blockquote pre,
+blockquote li {
+	font-size: 1em;
+}
+
+blockquote.verse {
+	text-align: center;
+}
+
+blockquote.verse p {
+	display: inline;
+	display: inline-block;
+	display: table;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+	width: auto;
+}

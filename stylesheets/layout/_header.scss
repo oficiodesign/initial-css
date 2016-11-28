@@ -1,0 +1,9 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+p {
+	@include flexible-line-height;
+
+	color: palette('grey', 'light');
+	z-index: z('modal');
+}
