@@ -14,7 +14,7 @@
 /// - `Helvetica, Arial, sans-serif`: Common font stack on OS X and Windows.
 ///
 /// @link http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030
-mixin inline-block-wrapper($ie: 9) {
+@mixin inline-block-wrapper($ie: 9) {
 	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
 
 	font-size: 0;
