@@ -117,7 +117,7 @@
 }
 
 
-@if not function-exists('str-replace') {
+//@if not function-exists('str-replace') {
 	/// Replace `$search` with `$replace` in `$string`
 	/// @author Hugo Giraudel
 	/// @param {String} $string - Initial string
@@ -133,7 +133,7 @@
 
 		@return $string;
 	}
-}
+//}
 
 @function font-weight($weight: 'normal') {
 
@@ -202,7 +202,7 @@ $_z-indexes: (
 
 ///--------------------------------------------------------------------------------------------------------------------
 
-@if not function-exists('trim') {
+//@if not function-exists('trim') {
 /// Trim's a string by removing leading and trailing spaces
 ///
 /// @param {String} $string - String to trim
@@ -216,9 +216,9 @@ $_z-indexes: (
 			first-index($string, 'right')
 		);
 	}
-}
+//}
 
-@if not function-exists('first-index') {
+//@if not function-exists('first-index') {
 /// Find first char which is not a space
 ///
 /// @param {String} $string - String to search
@@ -237,11 +237,11 @@ $_z-indexes: (
 
 		@return 0;
 	}
-}
+//}
 
 
 
-@if not function-exists('grid-image') {
+//@if not function-exists('grid-image') {
 	@function grid-image($grid: $susy) {
 
 		$debug-color: palette('debug');
@@ -282,4 +282,4 @@ $_z-indexes: (
 
 		@return $svg;
 	}
-}
+//}
