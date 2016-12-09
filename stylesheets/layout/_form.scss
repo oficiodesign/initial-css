@@ -74,8 +74,14 @@ form {
 				line-height: $line-height; /* 1 */
 				margin: 0; /* 2 */
 
-				&:disabled {
+				&:disabled,
+				&:readonly {
+					background: rgb(240,240,240);
 					color: palette('disabled');
+				}
+
+				&:disabled {
+					cursor: not-allowed;
 				}
 			}
 
@@ -140,14 +146,6 @@ form {
 			}
 
 			button:enabled, input:enabled , select:enabled, textarea:enabled {}
-
-			button:disabled,  input:disabled,  select:disabled,  textarea:disabled,
-			button[disabled], input[disabled], select[disabled], textarea[disabled],
-							  input:read-only, select:read-only, textarea:read-only,
-							  input[readonly], select[readonly], textarea[readonly] {
-				background: rgb(240,240,240);
-				cursor: default;
-			}
 
 			input:optional, textarea:optional, select:optional {}
 
