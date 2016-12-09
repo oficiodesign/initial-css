@@ -340,20 +340,27 @@ del {
  * Blockquote problems and solutions
  * @see http://oli.jp/2011/blockquote/
  */
-cite {
-	font-size: 1em;
-	font-style: italic;
-}
-
-footer > cite {
-	display: block;
-}
-
 q,
 blockquote {
 	color: palette('quotes');
 	font-style: italic;
 }
+
+cite {
+	font-size: 1em;
+	font-style: italic;
+}
+
+blockquote footer {
+	&:before {
+		content: '\2014 \00A0';
+	}
+}
+
+blockquote footer cite {
+	font-style: italic;
+}
+
 
 q {}
 
