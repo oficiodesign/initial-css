@@ -284,13 +284,11 @@ s {
 		text-decoration: none;
 	}
 
-	&[datetime]:before,
 	&[datetime]:before {
 		content: '[update\00A0\2192\00A0' attr(datetime) '] ';
 	}
 
-	:after,
-	:after {
+	&:after {
 		content: ' [/update] ';
 		text-decoration: none;
 	}
