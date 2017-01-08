@@ -128,11 +128,11 @@ article fieldset > p:first-child {
 		border-bottom: 1px dotted;
 		cursor: help;
 		text-decoration: none;
-	}
 
-	@supports (text-decoration: dotted underline) {/* 2 */
-		border-bottom: inherit;
-		text-decoration: dotted underline;
+		@supports (text-decoration: dotted underline) {/* 2 */
+			border-bottom: inherit;
+			text-decoration: dotted underline;
+		}
 	}
 }
 
