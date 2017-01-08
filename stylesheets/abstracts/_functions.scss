@@ -137,32 +137,42 @@
 
 @function font-weight($weight: 'normal') {
 
-	$font-weight: (
+	$weights: (
 		'thin': 100,
 		'hairline': 100,
 		'extralight': 200,
+		'extra light': 200,
+		'extra-light': 200,
 		'ultralight': 200,
+		'ultra light': 200,
+		'ultra-light': 200,
 		'light': 300,
 		'normal': 400,
 		'medium': 500,
 		'semibold': 600,
+		'semi bold': 600,
+		'semi-bold': 600,
 		'demibold': 600,
+		'demi bold': 600,
+		'demi-bold': 600,
 		'bold': 700,
 		'extrabold': 800,
+		'extra bold': 800,
+		'extra-bold': 800,
 		'ultrabold': 800,
+		'ultra bold': 800,
+		'ultra-bold': 800,
 		'black': 900,
 		'heavy': 900
 	);
 
 	$weight: to-lower-case($weight);
-	$weight: str-replace($weight, ' ', '');
-	$weight: str-replace($weight, '-', '');
 
-	@if not map-has-key($font-weight, $weight) {
+	@if not map-has-key($weights, $weight) {
 		@error "unknown value sent to `font-weight` function: #{$weight}.";
 	}
 
-	@return map-get($font-weight, $weight);
+	@return map-get($weights, $weight);
 }
 
 
