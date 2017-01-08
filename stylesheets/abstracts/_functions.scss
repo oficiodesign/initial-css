@@ -204,10 +204,57 @@ $_z-indexes: (
 
 
 
+/// @access public
+/// @param {String} $palette - Palette name
+/// @param {String} $tone - tone name
+/// @require {String} $palette
+/// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+@function palette($palette, $tone: null) {
+	$default: (
+		'white': rgb(255, 255, 255),
+		'black': rgb(0, 0, 0),
+		'debug': rgb(255, 0, 0),
+		'disabled': rgb(109, 109, 109),
+		'link': (
+			'base': rgb(0, 0, 255),
+			'visited': rgb(0, 0, 255),
+			'hover': rgb(0, 0, 255),
+			'focus': rgb(0, 0, 255),
+			'active': rgb(0, 0, 255),
+		),
+		'quotes': rgb(88, 88, 88),
+		'placeholder': rgb(88, 88, 88),
+		'selection': rgb(20, 105, 140),
+	);
 
+	@if variable-exists('palettes') and type-of($palettes) == 'map' {
+		$default: map-merge($default, $palettes);
+	}
 
+	@if not map-has-key($default, $palette) {
+		@error "unknown palette sent to `palette` function: `#{$palette}`. Available palette: #{map-keys($default)}";
+	}
 
+	$color: map-get($default, $palette);
 
+	@if $tone != null {
+		@if type-of($color) == 'color' {
+			@error "unknown tone sent to `palette` function: `#{$tone}`. There's only one color available for palette `#{$palette}`: #{$color}";
+		} @elseif not map-has-key($color, $tone) {
+			@error "unknown tone sent to `palette` function: `#{$tone}`. Available tones for `#{$palette}`: #{map-keys($color)}";
+		} @else {
+			@return map-get(map-get($default, $palette), $tone);
+		}
+	} @else {
+		@if type-of($color) == 'color' {
+			@return $color;
+		} @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
+			@error "`palette` `#{$color}` misses `base` tone";
+		} @else {
+			@return map-get($color, 'base');
+		}
+	}
+}
 
 
 ///--------------------------------------------------------------------------------------------------------------------

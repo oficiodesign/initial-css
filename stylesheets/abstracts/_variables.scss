@@ -54,55 +54,14 @@ $_color-base-grey: rgb(229, 231, 234);
 
 // this is a variable. A variable map!
 // scss-lint:disable ColorVariable
-$_palettes: (
-	'white': #fff,
-	'black': #000,
-	'debug': #f00,
-	'disabled': #6d6d6d,
-	'link': #00f,
-	'quotes': rgb(88, 88, 88),
-	'placeholder': rgb(88, 88, 88),
-	'selection': rgb(20, 105, 140),
-	'purple': (
-		'base': rgb(42, 40, 80),
-		'light': rgb(51, 46, 140),
-		'dark': rgb(40, 38, 65)
-	),
-	'grey':  (
+$palettes: (
+	'gray':  (
 		'base': $_color-base-grey,
 		'light': tint($_color-base-grey, 10%),
 		'dark': shade($_color-base-grey, 10%)
 	)
 );
 // scss-lint:enable ColorVariable
-
-/// @access public
-/// @param {String} $palette - Palette name
-/// @param {String} $tone - tone name
-/// @require {String} $palette
-/// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
-@function palette($palette, $tone: null) {
-	@if not map-has-key($_palettes, $palette) {
-		@error "unknown color sent to `palette` function: #{$palette}.";
-	}
-
-	$color: map-get($_palettes, $palette);
-
-	@if $tone != null {
-		@if not map-has-key($color, $tone) {
-			@error "unknown tone sent to `palette` function: #{$tone}.";
-		} @else {
-			@return map-get(map-get($_palettes, $palette), $tone);
-		}
-	} @else {
-		@if type-of($color) == 'color' {
-			@return $color;
-		} @else {
-			@return map-get($color, 'base');
-		}
-	}
-}
-
 
 /// Copy text color
 /// @type Color
