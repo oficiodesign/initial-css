@@ -499,12 +499,26 @@ $no-viewport: false !default;
 @mixin aspect-ratio ($ratio) {
 	@if type-of($ratio) != list {
 		@error "`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.";
-	} @else if length($ratio) != 2 {
-		@error "`aspect-ratio` function expecting a list with 2 items for $ratio; #{length($ratio)} given.";
+	} @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
+		@error "when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.";
+	} @elseif length($ratio) < 2 and length($ratio) > 3 {
+		@error "`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.";
 	}
 
 	$w: nth($ratio, 1);
-	$h: nth($ratio, 2);
+	$h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
+
+	@if type-of($w)	!= 'number' {
+		@error "the value sent to `width` isn't a `number`";
+	} @elseif not unitless($w) {
+		@error "the value sent to `width` **must** be unitless";
+	}
+
+	@if type-of($h)	!= 'number' {
+		@error "the value sent to `height` isn't a `number`";
+	} @elseif not unitless($h) {
+		@error "the value sent to `height` **must** be unitless";
+	}
 
 	position: relative;
 
