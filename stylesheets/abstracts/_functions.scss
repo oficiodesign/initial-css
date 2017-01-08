@@ -181,27 +181,30 @@
 /// @type Map
 /// @prop {String} key - Layer’s name
 /// @prop {Number} value - Z value mapped to the key
-$_z-indexes: (
-	'modal': 5000,
-	'dropdown': 4000,
-	'default': 1,
-	'below': -1,
-) !default;
 
 /// Get a z-index value from a layer name
 /// @access public
 /// @param {String} $layer - Layer’s name
 /// @return {Number}
 /// @require $_z-indexes
-@function z-layer($layer: 'default') {
-	@if not map-has-key($_z-indexes, $layer) {
-		@error "unknown value sent to `z-layer` function: #{$layer}.";
+@function layer($layer: 'default') {
+	$default: (
+		'modal': 5000,
+		'dropdown': 4000,
+		'default': 1,
+		'below': -1,
+	);
+
+	@if variable-exists('layers') and type-of($layers) == 'map' {
+		$default: map-merge($default, $layers);
 	}
 
-	@return map-get($_z-indexes, $layer);
+	@if not map-has-key($default, $layer) {
+		@error "unknown value sent to `layer` function: #{$layer}. Availabe values: `#{map-keys($default)}`";
+	}
+
+	@return map-get($default, $layer);
 }
-
-
 
 
 /// @access public
