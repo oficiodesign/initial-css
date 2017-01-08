@@ -97,6 +97,7 @@ article p {
 	orphans: 3;
 	widows: 3;
 }
+
 article p + p {}
 article h1 + p,
 article h2 + p,
@@ -104,8 +105,8 @@ article h3 + p,
 article h4 + p,
 article h5 + p,
 article h6 + p,
-article legend+p,
-article fieldset>p:first-child {
+article legend + p,
+article fieldset > p:first-child {
 	margin-top: 0;
 	text-indent: 0;
 }
