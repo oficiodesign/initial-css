@@ -35,6 +35,10 @@
 	cursor: pointer;
 }
 
+/*
+ * Change the cursor on disabled, not-editable, or otherwise
+ * inoperable elements (opinionated).
+ */
 [aria-disabled] {
 	cursor: default;
 }
