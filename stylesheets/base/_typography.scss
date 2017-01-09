@@ -1,3 +1,17 @@
+
+/**
+ * 1. Add text decoration inheritance in all browsers (opinionated).
+ * 2. Add vertical alignment inheritence in all browsers (opinionated).
+ */
+
+*,
+::before,
+::after {
+	line-height: inherit;
+	text-decoration: inherit; /* 1 */
+	vertical-align: inherit; /* 2 */
+}
+
 /**
  * Basic typography style for copy text
  */
@@ -6,9 +20,6 @@ body {
 	font: normal 100% / 1.5 $text-font-stack;
 }
 
-* {
-	line-height: inherit;
-}
 /// Special cases font styles
 ///
 /// @example markup
