@@ -217,7 +217,10 @@
 		'white': rgb(255, 255, 255),
 		'black': rgb(0, 0, 0),
 		'debug': rgb(255, 0, 0),
-		'disabled': rgb(109, 109, 109),
+		'disabled':(
+			'text': rgb(109, 109, 109),
+			'background': rgb(240,240,240)
+		),
 		'link': (
 			'base': rgb(0, 0, 255),
 			'visited': rgb(0, 0, 255),
