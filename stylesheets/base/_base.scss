@@ -2,14 +2,6 @@
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
 
-/* SELECTIONs
-============================================================================ */
-::selection {
-	background-color: palette('selection');
-	color: palette('white');
-	text-shadow: none;
-}
-
 /**
  * 1. Make all elements from the DOM inherit from the parent box-sizing
  * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
@@ -22,6 +14,12 @@
 	tab-size: inherit;
 }
 
+/* User interaction (https://www.w3.org/TR/html5/editing.html)
+  ========================================================================== */
+::selection {
+	background-color: palette('selection');
+	color: palette('white');
+	text-shadow: none;
 }
 
 /**
@@ -41,6 +39,22 @@
  */
 [aria-disabled] {
 	cursor: default;
+}
+
+/*
+ * Remove the tapping delay on clickable elements (opinionated).
+ * 1. Remove the tapping delay in IE 10.
+ */
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+	touch-action: manipulation; /* 1 */
 }
 
 /**
