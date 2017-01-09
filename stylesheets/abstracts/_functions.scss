@@ -231,6 +231,7 @@
 		'quotes': rgb(88, 88, 88),
 		'placeholder': rgb(88, 88, 88),
 		'selection': rgb(20, 105, 140),
+		'tap-highlight': rgb(255,94,153),
 	);
 
 	@if variable-exists('palettes') and type-of($palettes) == 'map' {
