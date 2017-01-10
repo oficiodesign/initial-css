@@ -146,46 +146,6 @@
   }
 }
 
-/// Sass calc lock for line-height
-/// @link http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
-/// @link http://codepen.io/timbrown/full/akXvRw/
-@mixin flexible-line-height(
-  $font-size: $body-font-size,
-  $min-line-height: map-get($line-heights, 'min'),
-  $max-line-height: map-get($line-heights, 'max')
-) {
-
-  $line-length-lower-gate: map-get($line-length-gates, 'lower');
-  $line-length-upper-gate: map-get($line-length-gates, 'upper');
-
-  @if unit($font-size) == 'em' {
-    $font-size: ($font-size / 1em);
-  } @elseif unit($font-size) == 'rem' {
-    $font-size: ($font-size / 1rem);
-  } @else {
-    @if unitless($font-size) {
-      @error "`$font-size` unit should be `em` or `rem`. It's unitless.";
-    } @else {
-      @error "`$font-size` unit should be `em` or `rem`. It's `#{unit($font-size)}`.";
-    }
-  }
-
-  line-height: if(unitless($min-line-height), ($min-line-height * 1em), $min-line-height);
-
-  @media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
-    line-height: calc(#{$min-line-height} + (#{$max-line-height / 1em} - #{$min-line-height / 1em}) * (100vw - #{$line-length-lower-gate}) / (#{$line-length-upper-gate / 1em} - #{$line-length-lower-gate / 1em}));
-    line-height: calc(#{$min-line-height} + #{($max-line-height - $min-line-height) / 1em} * (100vw - #{$line-length-lower-gate}) / #{($line-length-upper-gate - $line-length-lower-gate) / 1em});
-
-    // line-height: calc(1.3em + (1.5 - 1.3) * ((100vw - 21em)/(35 - 21)));
-    // line-height: calc(140% + (1.5 - 1.3) * 1.66 * (100vw - 20rem) / (60 - 20) );
-  }
-
-  @media (min-width: #{$line-length-upper-gate * $font-size}) {
-    line-height: if(unitless($max-line-height), ($max-line-height * 1em), $max-line-height);
-  }
-}
-
-
 /**
  * Hide element while making it readable for screen readers
  * Shamelessly borrowed from HTML5Boilerplate:
@@ -535,25 +495,36 @@ $no-viewport: false !default;
   }
 }
 
-/// @see http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
-@mixin fluid-line-height ($font-size) {
+/// Sass calc lock for line-height
+/// @link http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
+/// @link http://codepen.io/timbrown/full/akXvRw/
+@mixin fluid-line-height (
+  $font-size: $body-font-size,
+  $min-line-height: map-get($line-heights, 'min'),
+  $max-line-height: map-get($line-heights, 'max'),
+  $line-length-lower-gate: map-get($line-lengths, 'min'),
+  $line-length-upper-gate: map-get($line-lengths, 'max')
+) {
+
   @if unit($font-size) == '%' {
     $font-size: $font-size / 100%;
   } @else if unit($font-size) == 'em' {
     $font-size: $font-size / 1em;
   } @else if unit($font-size) == 'rem' {
     $font-size: $font-size / 1rem;
+  } @else if unitless($font-size) {
+    @error "the unit of the parameter sent should be relative. Unitless value given.";
   } @else {
     @error "the unit of the parameter sent should be relative. `#{unit($font-size)}` given"
   }
 
-  line-height: map-get($line-heights, 'min');
+  line-height: $min-line-height;
 
-  @media screen and (min-width: #{map-get($line-lengths, 'min') * $font-size}) {
-    line-height: calc(#{map-get($line-heights, 'min') * 1em} + (#{map-get($line-heights, 'max')} - #{map-get($line-heights, 'min')}) * ((100vw - #{map-get($line-lengths, 'min')})/(#{map-get($line-lengths, 'max') / 1em} - #{map-get($line-lengths, 'min') / 1em})));
+  @media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
+    line-height: calc(#{$min-line-height * 1em} + (#{$max-line-height} - #{$min-line-height}) * ((100vw - #{$line-length-lower-gate})/(#{$line-length-upper-gate / 1em} - #{$line-length-lower-gate / 1em})));
   }
 
-  @media (min-width: #{map-get($line-lengths, 'max') * $font-size}) {
-    line-height: map-get($line-heights, 'max');
+  @media (min-width: #{$line-length-upper-gate * $font-size}) {
+    line-height: $max-line-height;
   }
 }
