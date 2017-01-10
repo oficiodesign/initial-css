@@ -8,7 +8,7 @@
 /// @param {String} $path - asset path
 /// @return {Url}
 @function asset($base, $type, $path) {
-	@return url($base + $type + $path);
+  @return url($base + $type + $path);
 }
 
 /// Returns URL to an image based on its path
@@ -17,7 +17,7 @@
 /// @return {Url}
 /// @require $base-url
 @function image($path, $base: $base-url) {
-	@return asset($base, 'images/', $path);
+  @return asset($base, 'images/', $path);
 }
 
 /// Returns URL to a font based on its path
@@ -26,7 +26,7 @@
 /// @return {Url}
 /// @require $base-url
 @function font($path, $base: $base-url) {
-	@return asset($base, 'fonts/', $path);
+  @return asset($base, 'fonts/', $path);
 }
 
 /// Remove the unit of a length
@@ -35,10 +35,10 @@
 /// @return {Number} - Unitless number
 /// @link http://stackoverflow.com/a/12335841
 @function strip-unit($number) {
-	@if type-of($number) == 'number' and not unitless($number) {
-		@return $number / ($number * 0 + 1);
-	}
-	@return $number;
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
 }
 
 /// Slightly lighten a color
@@ -49,7 +49,7 @@
 @function tint($color, $percentage) {
 // We need the pure color
 // scss-lint:disable ColorKeyword
-	@return mix(white, $color, $percentage);
+  @return mix(white, $color, $percentage);
 }
 
 /// Slightly darken a color
@@ -60,7 +60,7 @@
 @function shade($color, $percentage) {
 // We need the pure color
 // scss-lint:disable ColorKeyword
-	@return mix(black, $color, $percentage);
+  @return mix(black, $color, $percentage);
 }
 
 
@@ -72,21 +72,21 @@
 
 
 @function _brightness($color) {
-	$red-magic-number: 241;
-	$green-magic-number: 691;
-	$blue-magic-number: 68;
-	$brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-number;
+  $red-magic-number: 241;
+  $green-magic-number: 691;
+  $blue-magic-number: 68;
+  $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-number;
 
-	// Extract color components
-	$red-component: red($color);
-	$green-component: green($color);
-	$blue-component: blue($color);
+  // Extract color components
+  $red-component: red($color);
+  $green-component: green($color);
+  $blue-component: blue($color);
 
-	// Calculate a brightness value in 3d color space between 0 and 255
-	$number: sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
+  // Calculate a brightness value in 3d color space between 0 and 255
+  $number: sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
 
-	// Convert to percentage and return
-	@return 100% * $number / 255;
+  // Convert to percentage and return
+  @return 100% * $number / 255;
 }
 
 
@@ -100,11 +100,11 @@
 /// @require {color} $dark - dark text option
 /// @return {Color}
 @function contrasting-color($bg-color, $light, $dark) {
-	@if _brightness($bg-color) < 65% {
-		@return $light;
-	} @else {
-		@return $dark;
-	}
+  @if _brightness($bg-color) < 65% {
+    @return $light;
+  } @else {
+    @return $dark;
+  }
 }
 
 /// Convert a HSL color to RGB
@@ -113,66 +113,66 @@
 /// @require $hsl-color
 /// @param {color} $hsl-color - hsl color
 @function hsl-to-rgb($hsl-color) {
-	@return mix($hsl-color, $hsl-color);
+  @return mix($hsl-color, $hsl-color);
 }
 
 
 //@if not function-exists('str-replace') {
-	/// Replace `$search` with `$replace` in `$string`
-	/// @author Hugo Giraudel
-	/// @param {String} $string - Initial string
-	/// @param {String} $search - Substring to replace
-	/// @param {String} $replace ('') - New value
-	/// @return {String} - Updated string
-	@function str-replace($string, $search, $replace: '') {
-		$index: str-index($string, $search);
+  /// Replace `$search` with `$replace` in `$string`
+  /// @author Hugo Giraudel
+  /// @param {String} $string - Initial string
+  /// @param {String} $search - Substring to replace
+  /// @param {String} $replace ('') - New value
+  /// @return {String} - Updated string
+  @function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
 
-		@if $index {
-			@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-		}
+    @if $index {
+      @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
 
-		@return $string;
-	}
+    @return $string;
+  }
 //}
 
 @function font-weight($weight: 'normal') {
 
-	$weights: (
-		'thin': 100,
-		'hairline': 100,
-		'extralight': 200,
-		'extra light': 200,
-		'extra-light': 200,
-		'ultralight': 200,
-		'ultra light': 200,
-		'ultra-light': 200,
-		'light': 300,
-		'normal': 400,
-		'medium': 500,
-		'semibold': 600,
-		'semi bold': 600,
-		'semi-bold': 600,
-		'demibold': 600,
-		'demi bold': 600,
-		'demi-bold': 600,
-		'bold': 700,
-		'extrabold': 800,
-		'extra bold': 800,
-		'extra-bold': 800,
-		'ultrabold': 800,
-		'ultra bold': 800,
-		'ultra-bold': 800,
-		'black': 900,
-		'heavy': 900
-	);
+  $weights: (
+    'thin': 100,
+    'hairline': 100,
+    'extralight': 200,
+    'extra light': 200,
+    'extra-light': 200,
+    'ultralight': 200,
+    'ultra light': 200,
+    'ultra-light': 200,
+    'light': 300,
+    'normal': 400,
+    'medium': 500,
+    'semibold': 600,
+    'semi bold': 600,
+    'semi-bold': 600,
+    'demibold': 600,
+    'demi bold': 600,
+    'demi-bold': 600,
+    'bold': 700,
+    'extrabold': 800,
+    'extra bold': 800,
+    'extra-bold': 800,
+    'ultrabold': 800,
+    'ultra bold': 800,
+    'ultra-bold': 800,
+    'black': 900,
+    'heavy': 900
+  );
 
-	$weight: to-lower-case($weight);
+  $weight: to-lower-case($weight);
 
-	@if not map-has-key($weights, $weight) {
-		@error "unknown value sent to `font-weight` function: #{$weight}.";
-	}
+  @if not map-has-key($weights, $weight) {
+    @error "unknown value sent to `font-weight` function: #{$weight}.";
+  }
 
-	@return map-get($weights, $weight);
+  @return map-get($weights, $weight);
 }
 
 
@@ -188,22 +188,22 @@
 /// @return {Number}
 /// @require $_z-indexes
 @function layer($layer: 'default') {
-	$default: (
-		'modal': 5000,
-		'dropdown': 4000,
-		'default': 1,
-		'below': -1,
-	);
+  $default: (
+    'modal': 5000,
+    'dropdown': 4000,
+    'default': 1,
+    'below': -1,
+  );
 
-	@if variable-exists('layers') and type-of($layers) == 'map' {
-		$default: map-merge($default, $layers);
-	}
+  @if variable-exists('layers') and type-of($layers) == 'map' {
+    $default: map-merge($default, $layers);
+  }
 
-	@if not map-has-key($default, $layer) {
-		@error "unknown value sent to `layer` function: #{$layer}. Availabe values: `#{map-keys($default)}`";
-	}
+  @if not map-has-key($default, $layer) {
+    @error "unknown value sent to `layer` function: #{$layer}. Availabe values: `#{map-keys($default)}`";
+  }
 
-	@return map-get($default, $layer);
+  @return map-get($default, $layer);
 }
 
 
@@ -213,55 +213,55 @@
 /// @require {String} $palette
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
 @function palette($palette, $tone: null) {
-	$default: (
-		'white': rgb(255, 255, 255),
-		'black': rgb(0, 0, 0),
-		'debug': rgb(255, 0, 0),
-		'disabled':(
-			'text': rgb(109, 109, 109),
-			'background': rgb(240,240,240)
-		),
-		'link': (
-			'base': rgb(0, 0, 255),
-			'visited': rgb(0, 0, 255),
-			'hover': rgb(0, 0, 255),
-			'focus': rgb(0, 0, 255),
-			'active': rgb(0, 0, 255),
-		),
-		'quotes': rgb(88, 88, 88),
-		'placeholder': rgb(88, 88, 88),
-		'selection': rgb(20, 105, 140),
-		'tap-highlight': rgb(255,94,153),
-		'target-highlight': rgb(255, 255, 102),
-	);
+  $default: (
+    'white': rgb(255, 255, 255),
+    'black': rgb(0, 0, 0),
+    'debug': rgb(255, 0, 0),
+    'disabled':(
+      'text': rgb(109, 109, 109),
+      'background': rgb(240,240,240)
+    ),
+    'link': (
+      'base': rgb(0, 0, 255),
+      'visited': rgb(0, 0, 255),
+      'hover': rgb(0, 0, 255),
+      'focus': rgb(0, 0, 255),
+      'active': rgb(0, 0, 255),
+    ),
+    'quotes': rgb(88, 88, 88),
+    'placeholder': rgb(88, 88, 88),
+    'selection': rgb(20, 105, 140),
+    'tap-highlight': rgb(255,94,153),
+    'target-highlight': rgb(255, 255, 102),
+  );
 
-	@if variable-exists('palettes') and type-of($palettes) == 'map' {
-		$default: map-merge($default, $palettes);
-	}
+  @if variable-exists('palettes') and type-of($palettes) == 'map' {
+    $default: map-merge($default, $palettes);
+  }
 
-	@if not map-has-key($default, $palette) {
-		@error "unknown palette sent to `palette` function: `#{$palette}`. Available palette: #{map-keys($default)}";
-	}
+  @if not map-has-key($default, $palette) {
+    @error "unknown palette sent to `palette` function: `#{$palette}`. Available palette: #{map-keys($default)}";
+  }
 
-	$color: map-get($default, $palette);
+  $color: map-get($default, $palette);
 
-	@if $tone != null {
-		@if type-of($color) == 'color' {
-			@error "unknown tone sent to `palette` function: `#{$tone}`. There's only one color available for palette `#{$palette}`: #{$color}";
-		} @elseif not map-has-key($color, $tone) {
-			@error "unknown tone sent to `palette` function: `#{$tone}`. Available tones for `#{$palette}`: #{map-keys($color)}";
-		} @else {
-			@return map-get(map-get($default, $palette), $tone);
-		}
-	} @else {
-		@if type-of($color) == 'color' {
-			@return $color;
-		} @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
-			@error "`palette` `#{$color}` misses `base` tone";
-		} @else {
-			@return map-get($color, 'base');
-		}
-	}
+  @if $tone != null {
+    @if type-of($color) == 'color' {
+      @error "unknown tone sent to `palette` function: `#{$tone}`. There's only one color available for palette `#{$palette}`: #{$color}";
+    } @elseif not map-has-key($color, $tone) {
+      @error "unknown tone sent to `palette` function: `#{$tone}`. Available tones for `#{$palette}`: #{map-keys($color)}";
+    } @else {
+      @return map-get(map-get($default, $palette), $tone);
+    }
+  } @else {
+    @if type-of($color) == 'color' {
+      @return $color;
+    } @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
+      @error "`palette` `#{$color}` misses `base` tone";
+    } @else {
+      @return map-get($color, 'base');
+    }
+  }
 }
 
 
@@ -274,13 +274,13 @@
 ///
 /// @return {String} - String without spaces
 ///
-	@function trim($string) {
-		@return str-slice(
-			$string,
-			first-index($string, 'left'),
-			first-index($string, 'right')
-		);
-	}
+  @function trim($string) {
+    @return str-slice(
+      $string,
+      first-index($string, 'left'),
+      first-index($string, 'right')
+    );
+  }
 //}
 
 //@if not function-exists('first-index') {
@@ -291,60 +291,60 @@
 ///
 /// @return {Number} - Index of first non-space character
 ///
-	@function first-index($string, $direction: 'left') {
-		@for $i from 1 through str-length($string) {
-			$index: if($direction == 'left', $i, -$i);
+  @function first-index($string, $direction: 'left') {
+    @for $i from 1 through str-length($string) {
+      $index: if($direction == 'left', $i, -$i);
 
-			@if str-slice($string, $index, $index) != ' ' {
-				@return $index;
-			}
-		}
+      @if str-slice($string, $index, $index) != ' ' {
+        @return $index;
+      }
+    }
 
-		@return 0;
-	}
+    @return 0;
+  }
 //}
 
 
 
 //@if not function-exists('grid-image') {
-	@function grid-image($grid: $susy) {
+  @function grid-image($grid: $susy) {
 
-		$debug-color: palette('debug');
+    $debug-color: palette('debug');
 
-		// to use double single quotes inside the string save us from encode the double ones
-		// scss-lint:disable StringQuotes
-		$grid: susy-normalize($grid);
+    // to use double single quotes inside the string save us from encode the double ones
+    // scss-lint:disable StringQuotes
+    $grid: susy-normalize($grid);
 
-		$columns: map-get($grid, 'columns');
-		$gutter: map-get($grid, 'gutters');
+    $columns: map-get($grid, 'columns');
+    $gutter: map-get($grid, 'gutters');
 
-		$svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
+    $svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
 
-		@if index($svg-units, unit($gutter)) == null {
-			@error "SVG unsuported unit used for gutter: #{unit($gutter)}";
-		}
+    @if index($svg-units, unit($gutter)) == null {
+      @error "SVG unsuported unit used for gutter: #{unit($gutter)}";
+    }
 
-		$color: $debug-color + unquote("");
-		$color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
+    $color: $debug-color + unquote("");
+    $color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
 
-		$x: 0;
+    $x: 0;
 
-		$svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+    $svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
 
-		@each $column in $columns {
-			@if index($svg-units, unit($column)) == null {
-				@error "SVG unsuported unit used for column: #{unit($column)}";
-			}
+    @each $column in $columns {
+      @if index($svg-units, unit($column)) == null {
+        @error "SVG unsuported unit used for column: #{unit($column)}";
+      }
 
-			$x: $x + $gutter + $column;
+      $x: $x + $gutter + $column;
 
-			$svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
-		}
+      $svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+    }
 
-		$x: $x + $gutter;
+    $x: $x + $gutter;
 
-		$svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
+    $svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
 
-		@return $svg;
-	}
+    @return $svg;
+  }
 //}

@@ -30,19 +30,18 @@ $line-height: 1.5;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are line-heights expressed in `em` due to a browser calc limitation
 $line-heights: (
-	'min': 1.3em,
-	'max': 1.5em,
+  'min': 1.3em,
+  'max': 1.5em,
 ) !default;
 
 
 /// flexible line length map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are line lenths expressed in `em`
-$line-length-gates: (
-	'lower': 21em,
-	'upper': 35em,
+$line-lengths: (
+  'min': 21em,
+  'max': 35em,
 ) !default;
-
 
 /// Friendlier colour names with Sass maps
 /// @access private
@@ -55,22 +54,22 @@ $_color-base-grey: rgb(229, 231, 234);
 // this is a variable. A variable map!
 // scss-lint:disable ColorVariable
 $palettes: (
-	'gray':  (
-		'base': $_color-base-grey,
-		'light': tint($_color-base-grey, 10%),
-		'dark': shade($_color-base-grey, 10%)
-	),
-	// 'disabled':(
-	// 	'text': rgb(109, 109, 109),
-	// 	'background': rgb(240,240,240)
-	// ),
-	// 'link': (
-	// 	'base': rgb(0, 0, 255),
-	// 	'visited': rgb(0, 0, 255),
-	// 	'hover': rgb(0, 0, 255),
-	// 	'focus': rgb(0, 0, 255),
-	// 	'active': rgb(0, 0, 255),
-	// ),
+  'gray':  (
+    'base': $_color-base-grey,
+    'light': tint($_color-base-grey, 10%),
+    'dark': shade($_color-base-grey, 10%)
+  ),
+  // 'disabled':(
+  //   'text': rgb(109, 109, 109),
+  //   'background': rgb(240,240,240)
+  // ),
+  // 'link': (
+  //   'base': rgb(0, 0, 255),
+  //   'visited': rgb(0, 0, 255),
+  //   'hover': rgb(0, 0, 255),
+  //   'focus': rgb(0, 0, 255),
+  //   'active': rgb(0, 0, 255),
+  // ),
 );
 // scss-lint:enable ColorVariable
 
@@ -102,14 +101,14 @@ $dark-grey: rgb(68, 68, 68) !default;
 $max-width: 1180px !default;
 
 @function im-to-em($breakpoints, $base-value: 16px) {
-	$new-breakpoints: ();
+  $new-breakpoints: ();
 
-	@each $name, $value in $breakpoints {
-		$em-value: ($value / $base-value) * 1em;
-		$new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
-	}
+  @each $name, $value in $breakpoints {
+    $em-value: ($value / $base-value) * 1em;
+    $new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
+  }
 
-	@return $new-breakpoints;
+  @return $new-breakpoints;
 }
 
 /// Breakpoints map
@@ -121,22 +120,22 @@ $breakpoints: im-to-em((
   'desktop': 1024px
 )) !default;
 
-	// 320
-	// 480
-	// 760
-	// 960
-	// 1200
-	// 1600.
+  // 320
+  // 480
+  // 760
+  // 960
+  // 1200
+  // 1600.
 
 
 // layers map override
 //
 // being the default
 // $layers: (
-// 		'modal': 5000,
-// 		'dropdown': 4000,
-// 		'default': 1,
-// 		'below': -1,
+//     'modal': 5000,
+//     'dropdown': 4000,
+//     'default': 1,
+//     'below': -1,
 // );
 
 
