@@ -17,7 +17,9 @@
  */
 body {
 	color: $text-color;
-	font: normal 100% / 1.5 $text-font-stack;
+	font-size: $body-font-size;
+	font-family: $text-font-stack;
+	line-height: $line-height;
 }
 
 /// Special cases font styles
