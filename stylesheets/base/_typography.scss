@@ -1,25 +1,23 @@
-
 /**
  * 1. Add text decoration inheritance in all browsers (opinionated).
  * 2. Add vertical alignment inheritence in all browsers (opinionated).
  */
-
 *,
 ::before,
 ::after {
-	line-height: inherit;
-	text-decoration: inherit; /* 1 */
-	vertical-align: inherit; /* 2 */
+  line-height: inherit;
+  text-decoration: inherit; /* 1 */
+  vertical-align: inherit; /* 2 */
 }
 
 /**
  * Basic typography style for copy text
  */
 body {
-	color: $text-color;
-	font-size: $body-font-size;
-	font-family: $text-font-stack;
-	line-height: $line-height;
+  color: $text-color;
+  font-size: $body-font-size;
+  font-family: $text-font-stack;
+  line-height: $line-height;
 }
 
 /// Special cases font styles
@@ -35,23 +33,23 @@ $_ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 
 // Qualified to prevent conflicts
 // scss-lint:disable QualifyingElement
 %italic-overflow {
-	font-style: italic;
-	overflow: visible;
+  font-style: italic;
+  overflow: visible;
 }
 
 span.alt {
-	@extend %italic-overflow;
+  @extend %italic-overflow;
 
-	font-family: $_alt-font-stack;
+  font-family: $_alt-font-stack;
 }
 
 span.amp {
-	@extend %italic-overflow;
+  @extend %italic-overflow;
 
-	font-size: 2em;
-	line-height: 0.25;
-	font-family: $_ampersand-font-stack;
-	vertical-align: middle;
+  font-size: 2em;
+  line-height: 0.25;
+  font-family: $_ampersand-font-stack;
+  vertical-align: middle;
 }
 // scss-lint:enable QualifyingElement
 
@@ -70,10 +68,10 @@ h5,
 h6,
 legend,
 caption {
-	break-after: avoid;
-	font-family: $title-font-stack;
-	font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
-	page-break-after: avoid;
+  break-after: avoid;
+  font-family: $title-font-stack;
+  font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+  page-break-after: avoid;
 }
 
 h1 a,
@@ -85,30 +83,30 @@ h6 a,
 legend a,
 caption a,
 dt a {
-	color: inherit;
-	text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 
-	&:link {
-		color: inherit;
-		text-decoration: inherit;
-	}
+  &:link {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
 
 p {
-/*	-moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-	-ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-	-webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-	font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;*/
-	margin: 0;
-	padding: 0;
+/*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+  -ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+  -webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+  font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;*/
+  margin: 0;
+  padding: 0;
 }
 
 /**
  * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
  */
 article p {
-	orphans: 3;
-	widows: 3;
+  orphans: 3;
+  widows: 3;
 }
 
 article p + p {}
@@ -120,8 +118,15 @@ article h5 + p,
 article h6 + p,
 article legend + p,
 article fieldset > p:first-child {
-	margin-top: 0;
-	text-indent: 0;
+  margin-top: 0;
+  text-indent: 0;
+}
+
+p {
+  @include flexible-line-height;
+
+  color: palette('gray', 'light');
+  z-index: z('modal');
 }
 
 /* INLINE TEXT
@@ -137,32 +142,32 @@ article fieldset > p:first-child {
  */
 
 %abbr-title {
-	&[title] { /* 1 */
-		border-bottom: 1px dotted;
-		cursor: help;
-		text-decoration: none;
+  &[title] { /* 1 */
+    border-bottom: 1px dotted;
+    cursor: help;
+    text-decoration: none;
 
-		@supports (text-decoration: dotted underline) {/* 2 */
-			border-bottom: inherit;
-			text-decoration: dotted underline;
-		}
-	}
+    @supports (text-decoration: dotted underline) {/* 2 */
+      border-bottom: inherit;
+      text-decoration: dotted underline;
+    }
+  }
 }
 
 abbr {
-	@extend %abbr-title;
+  @extend %abbr-title;
 
-	letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
 }
 
 /**
  * 1. Address styling not present in Safari 5 and Chrome.
  */
 dfn {
-	@extend %abbr-title;
+  @extend %abbr-title;
 
-	font-size: 1em;
-	font-style: italic; /* 1 */
+  font-size: 1em;
+  font-style: italic; /* 1 */
 }
 
 /**
@@ -175,13 +180,13 @@ dfn {
  */
 b,
 strong {
-	font-weight: bold;
-	font-weight: inherit; /* 1 */
+  font-weight: bold;
+  font-weight: inherit; /* 1 */
 }
 
 b,
 strong {
-	font-weight: bolder; /* 2 */
+  font-weight: bolder; /* 2 */
 }
 
 em,
@@ -194,8 +199,8 @@ i[lang] {}
  */
 
 mark {
-	background: rgb(215,255,90);
-	color: rgb(51,51,51);
+  background: rgb(215,255,90);
+  color: rgb(51,51,51);
 }
 
 meter {}
@@ -204,8 +209,8 @@ meter {}
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-	font-size: 83.3333%;
-	line-height: inherit;
+  font-size: 83.3333%;
+  line-height: inherit;
 }
 
 /**
@@ -215,26 +220,26 @@ small {
  */
 sub,
 sup {
-	font-size: 83.3333%; /* 1 */
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+  font-size: 83.3333%; /* 1 */
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sub {
-	bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 sup {
-	top: -0.5em;
+  top: -0.5em;
 }
 
 time {
-	font-style: italic;
+  font-style: italic;
 
-	&[pubdate] {
-		cursor: help;
-	}
+  &[pubdate] {
+    cursor: help;
+  }
 }
 
 
@@ -251,8 +256,8 @@ kbd,
 pre,
 samp,
 var {
-	font-family: monospace, monospace; /* 1 */
-	font-size: 1em; /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 code {}
@@ -265,81 +270,81 @@ kbd {}
  * Contain overflow in all browsers.
  */
 pre {
-	margin: 0;
-	overflow: auto;
-	padding: 0;
-	white-space: pre; /* CSS2 */
-	white-space: pre-wrap; /* CSS 2.1 */
-	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-	word-wrap: break-word; /* IE */
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
 }
 samp {
-	font-style: italic;
+  font-style: italic;
 }
 var {
-	font-style: italic;
+  font-style: italic;
 }
 
 /* text edition
 ============================================================================ */
 del,
 s {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 s {
-	font-style: italic;
+  font-style: italic;
 }
 
 %updated {
-	&:before {
-		content: '[update] ';
-		font-weight: bold;
-		text-decoration: none;
-	}
+  &:before {
+    content: '[update] ';
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-	&[datetime]:before {
-		content: '[update\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]:before {
+    content: '[update\00A0\2192\00A0' attr(datetime) '] ';
+  }
 
-	&:after {
-		content: ' [/update] ';
-		text-decoration: none;
-	}
+  &:after {
+    content: ' [/update] ';
+    text-decoration: none;
+  }
 }
 
 ins {
-	@extend %updated;
+  @extend %updated;
 
-	text-decoration: underline;
+  text-decoration: underline;
 
-	&:lang(pt):before {
-		content: ' [inserido] ';
-	}
+  &:lang(pt):before {
+    content: ' [inserido] ';
+  }
 
-	&[datetime]:lang(pt):before {
-		content: ' [inserido\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]:lang(pt):before {
+    content: ' [inserido\00A0\2192\00A0' attr(datetime) '] ';
+  }
 
-	&:lang(pt):after	{
-		content: ' [/inserido] ';
-	}
+  &:lang(pt):after  {
+    content: ' [/inserido] ';
+  }
 }
 
 del {
-	@extend %updated;
+  @extend %updated;
 
-	&:lang(pt):before {
-		content: ' [excluído] ';
-	}
+  &:lang(pt):before {
+    content: ' [excluído] ';
+  }
 
-	&[datetime]:lang(pt):before {
-		content: ' [excluído\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]:lang(pt):before {
+    content: ' [excluído\00A0\2192\00A0' attr(datetime) '] ';
+  }
 
-	&:lang(pt):after	{
-		content: ' [/excluído] ';
-	}
+  &:lang(pt):after  {
+    content: ' [/excluído] ';
+  }
 }
 
 
@@ -354,23 +359,23 @@ del {
  */
 q,
 blockquote {
-	color: palette('quotes');
-	font-style: italic;
+  color: palette('quotes');
+  font-style: italic;
 }
 
 cite {
-	font-size: 1em;
-	font-style: italic;
+  font-size: 1em;
+  font-style: italic;
 }
 
 blockquote footer {
-	&:before {
-		content: '\2014 \00A0';
-	}
+  &:before {
+    content: '\2014 \00A0';
+  }
 }
 
 blockquote footer cite {
-	font-style: italic;
+  font-style: italic;
 }
 
 
@@ -379,19 +384,19 @@ q {}
 blockquote p,
 blockquote pre,
 blockquote li {
-	font-size: 1em;
+  font-size: 1em;
 }
 
 blockquote.verse {
-	text-align: center;
+  text-align: center;
 }
 
 blockquote.verse p {
-	display: inline;
-	display: inline-block;
-	display: table;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: left;
-	width: auto;
+  display: inline;
+  display: inline-block;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  width: auto;
 }

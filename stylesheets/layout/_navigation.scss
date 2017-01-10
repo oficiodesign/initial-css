@@ -3,42 +3,42 @@
 menu,
 nav {}
 
-	main menu ul,
-	main menu ol,
-	main menu li,
-	main nav ul,
-	main nav ol,
-	main nav li,
-	menu ul,
-	menu ol,
-	menu li,
-	nav ul,
-	nav ol,
-	nav li {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
+  main menu ul,
+  main menu ol,
+  main menu li,
+  main nav ul,
+  main nav ol,
+  main nav li,
+  menu ul,
+  menu ol,
+  menu li,
+  nav ul,
+  nav ol,
+  nav li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-		menu li,
-		nav li {
-			margin: 0;
-			padding: 0;
+    menu li,
+    nav li {
+      margin: 0;
+      padding: 0;
 
-			&:before {
-				content: none;
-			}
-		}
+      &:before {
+        content: none;
+      }
+    }
 
-			menu a:link,
-			nav a:link {
-				display: block;
-				text-decoration: none;
-			}
+      menu a:link,
+      nav a:link {
+        display: block;
+        text-decoration: none;
+      }
 
-			.current > a {
-				pointer-events: none;
-			}
+      .current > a {
+        pointer-events: none;
+      }
 
 
 /* access
@@ -48,6 +48,6 @@ nav {}
 /* pagination
 ---------------------------------------------------------------------------- */
 .pagination {}
-		.pagination li.current {}
-			.previous-page {}
-			.next-page {}
+    .pagination li.current {}
+      .previous-page {}
+      .next-page {}
