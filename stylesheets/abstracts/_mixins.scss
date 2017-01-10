@@ -508,13 +508,13 @@ $no-viewport: false !default;
   $w: nth($ratio, 1);
   $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
 
-  @if type-of($w)  != 'number' {
+  @if type-of($w) != 'number' {
     @error "the value sent to `width` isn't a `number`";
   } @elseif not unitless($w) {
     @error "the value sent to `width` **must** be unitless";
   }
 
-  @if type-of($h)  != 'number' {
+  @if type-of($h) != 'number' {
     @error "the value sent to `height` isn't a `number`";
   } @elseif not unitless($h) {
     @error "the value sent to `height` **must** be unitless";
