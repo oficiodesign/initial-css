@@ -534,3 +534,26 @@ $no-viewport: false !default;
     display: table;
   }
 }
+
+/// @see http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
+@mixin fluid-line-height ($font-size) {
+  @if unit($font-size) == '%' {
+    $font-size: $font-size / 100%;
+  } @else if unit($font-size) == 'em' {
+    $font-size: $font-size / 1em;
+  } @else if unit($font-size) == 'rem' {
+    $font-size: $font-size / 1rem;
+  } @else {
+    @error "the unit of the parameter sent should be relative. `#{unit($font-size)}` given"
+  }
+
+  line-height: map-get($line-heights, 'min');
+
+  @media screen and (min-width: #{map-get($line-lengths, 'min') * $font-size}) {
+    line-height: calc(#{map-get($line-heights, 'min') * 1em} + (#{map-get($line-heights, 'max')} - #{map-get($line-heights, 'min')}) * ((100vw - #{map-get($line-lengths, 'min')})/(#{map-get($line-lengths, 'max') / 1em} - #{map-get($line-lengths, 'min') / 1em})));
+  }
+
+  @media (min-width: #{map-get($line-lengths, 'max') * $font-size}) {
+    line-height: map-get($line-heights, 'max');
+  }
+}
