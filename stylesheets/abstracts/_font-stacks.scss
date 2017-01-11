@@ -10,6 +10,16 @@
 ///
 ////
 
+// Safari for OS X and iOS (San Francisco): -apple-system,
+// Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android: system-ui,
+// Chrome < 56 for OS X (San Francisco): BlinkMacSystemFont,
+// Windows: 'Segoe UI',
+// Android: 'Roboto',
+// Basic web fallback: 'Helvetica Neue', Arial, sans-serif !default;
+
+$native-font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
+
+
 
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
 $alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
