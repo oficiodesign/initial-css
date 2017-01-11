@@ -25,7 +25,7 @@
 /**
  * ARIA roles should include visual cursor hints
  */
-[aria-busy="true"] {
+[aria-busy='true'] {
   cursor: progress;
 }
 
@@ -141,7 +141,7 @@ template {
  * Visually hidden content should remain accessible
  */
 
-[hidden][aria-hidden="false"] {
+[hidden][aria-hidden='false'] {
   clip: rect(0, 0, 0, 0);
   display: inherit;
   position: absolute;
