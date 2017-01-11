@@ -15,63 +15,63 @@
 ///
 /// @link http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030
 @mixin inline-block-wrapper($ie: 9) {
-  $_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
+	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
 
-  font-size: 0;
-  font-family: $_inline-block-font-stack;
-  // Webkit: collapse white-space between units
-  letter-spacing: -0.31em;
-  // reset IE < 8
-  letter-spacing: normal\9;
-  // IE < 8: collapse white-space between units
-  text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-  word-spacing: -0.43em\9;
+	font-size: 0;
+	font-family: $_inline-block-font-stack;
+	// Webkit: collapse white-space between units
+	letter-spacing: -0.31em;
+	// reset IE < 8
+	letter-spacing: normal\9;
+	// IE < 8: collapse white-space between units
+	text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+	word-spacing: -0.43em\9;
 }
 
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
-  display: inline-block;
-  font-size: $font-size;
-  font-family: $text-font-stack;
-  letter-spacing: normal;
-  text-rendering: auto;
-  vertical-align: unquote($align);
-  word-spacing: normal;
-  zoom: 1;
+	display: inline-block;
+	font-size: $font-size;
+	font-family: $text-font-stack;
+	letter-spacing: normal;
+	text-rendering: auto;
+	vertical-align: unquote($align);
+	word-spacing: normal;
+	zoom: 1;
 }
 
 @mixin table-layout-wrapper {
-  display: table;
-  border-collapse: collapse;
+	border-collapse: collapse;
+	display: table;
 }
 
 @mixin table-layout-item {
-  display: table-cell;
-  vertical-align: top;
+	display: table-cell;
+	vertical-align: top;
 }
 
 
 @mixin icon-font {
-  @include font-smoothing(true);
+	@include font-smoothing(true);
 
-  // font-awesome pixel perfection is at 14px and multiples of 14
-  // scss-lint:disable PropertyUnits
-  font-size: 14px;
-  font-variant: normal;
-  font-style: normal;
-  font-weight: normal;
-  //  line-height: 1;
-  speak: none;
-  text-transform: none;
+	// font-awesome pixel perfection is at 14px and multiples of 14
+	// scss-lint:disable PropertyUnits
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 14px; // sass-lint:disable-line property-units
+	//  line-height: 1;
+	speak: none;
+	text-transform: none;
 }
 
 @mixin font-smoothing($value: true) {
-  @if ($value == true) {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  } @else {
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-  }
+	@if ($value == true) {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	} @else {
+		-webkit-font-smoothing: subpixel-antialiased;
+		-moz-osx-font-smoothing: auto;
+	}
 }
 
 
@@ -85,33 +85,33 @@
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-  &:before,
-  &:after {
-    content: ' '; /* 1 */
-    display: table; /* 2 */
-  }
+	&:before,
+	&:after {
+		content: ' '; /* 1 */
+		display: table; /* 2 */
+	}
 
-  &:after {
-    clear: both;
-  }
+	&:after {
+		clear: both;
+	}
 
-  @if ($ie <= 8) {
-  // old IE sucks
-  // scss-lint:disable PseudoElement PropertySpelling
-    zoom: 1\9;
-  }
+	@if ($ie <= 8) {
+	// old IE sucks
+	// scss-lint:disable PseudoElement PropertySpelling
+		zoom: 1\9;
+	}
 }
 
 /// @content the rules to be applied
 @mixin link-undercover() {
-  &,
-  &:link,
-  &:visited {
-    text-decoration: inherit;
-    color: inherit;
+	&,
+	&:link,
+	&:visited {
+		color: inherit;
+		text-decoration: inherit;
 
-    @content;
-  }
+		@content;
+	}
 }
 
 
@@ -121,29 +121,29 @@
 /// @content the rules to be applied
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  } @else {
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  }
+	@if $self {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	}
 }
 
 /// Make a context based selector a little more friendly
 /// @author Hugo Giraudel
 /// @param {String} $context
 @mixin when-inside($context) {
-  #{$context} & {
-    @content;
-  }
+	#{$context} & {
+		@content;
+	}
 }
 
 /**
@@ -152,58 +152,58 @@
  * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
  */
 @mixin visuallyhidden {
-  // old IE sucks
-  // scss-lint:disable DuplicateProperty PropertyUnits
-  border: 0 !important;
-  clip: rect(1px 1px 1px 1px) !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+	// old IE sucks
+	// scss-lint:disable DuplicateProperty PropertyUnits
+	border: 0 !important;
+	clip: rect(1px 1px 1px 1px) !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	clip-path: inset(50%) !important;
+	margin: -1px; // sass-lint:disable-line property-units
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	width: 1px !important; // sass-lint:disable-line property-units
+	height: 1px !important; // sass-lint:disable-line property-units
 }
 
 @mixin visuallyhidden-focusable {
-  @include visuallyhidden;
+	@include visuallyhidden;
 
-  &:active,
-  &:focus {
-    clip: auto !important;
-    clip-path: none !important;
-    height: auto !important;
-    margin: auto;
-    overflow: visible !important;
-    width: auto !important;
-    white-space: normal !important;
-  }
+	&:active,
+	&:focus {
+		clip: auto !important;
+		clip-path: none !important;
+		margin: auto;
+		overflow: visible !important;
+		white-space: normal !important;
+		width: auto !important;
+		height: auto !important;
+	}
 }
 
 
 @mixin icon-font {
-  @include font-smoothing(true);
+	@include font-smoothing(true);
 
-  // font-awesome pixel perfection is at 14px and multiples of 14
-  // scss-lint:disable PropertyUnits
-  font-size: 14px;
-  font-variant: normal;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  speak: none;
-  text-transform: none;
+	// font-awesome pixel perfection is at 14px and multiples of 14
+	// scss-lint:disable PropertyUnits
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 14px; // sass-lint:disable-line property-units
+	line-height: 1;
+	speak: none;
+	text-transform: none;
 }
 
 
 /// Helper class to truncate and add ellipsis to a string too long for it to fit
 /// on a single line.
 @mixin ellipsis {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /**
@@ -212,25 +212,25 @@
  *    See: https://code.google.com/p/chromium/issues/detail?id=457146
  */
 @mixin hide-text {
-  overflow: hidden;
-  padding: 0; /* 1 */
-  text-indent: 101%;
-  white-space: nowrap;
+	overflow: hidden;
+	padding: 0; /* 1 */
+	text-indent: 101%;
+	white-space: nowrap;
 }
 
 @mixin image-replacement ($overflow: true) {
-  @if $overflow {
-    background-repeat: no-repeat;
-    direction: ltr;
-    overflow: hidden;
-    text-indent: 100%;
-    white-space: nowrap;
-  } @else {
-    border: 0;
-    color: transparent;
-    font: 0/0 a;
-    text-shadow: none;
-  }
+	@if $overflow {
+		background-repeat: no-repeat;
+		direction: ltr;
+		overflow: hidden;
+		text-indent: 100%;
+		white-space: nowrap;
+	} @else {
+		border: 0;
+		color: transparent;
+		font: 0/0 a;
+		text-shadow: none;
+	}
 }
 
 $no-alpha: false !default;
@@ -240,65 +240,65 @@ $no-rem: false !default;
 $no-viewport: false !default;
 
 @mixin fallback($property, $values, $fallbacks: null) {
-  $fallback-values: ();
-  $fallback-units: ();
-  $i: 1;
+	$fallback-values: ();
+	$fallback-units: ();
+	$i: 1;
 
-  @each $value in $values {
-    @if type-of($value) == number {
-      @if str-index(unit($value), 'v') != null {
-        $fallback-units: join($fallback-units, 'viewport');
-      } @else {
-        $fallback-units: join($fallback-units, unit($value));
-      }
-    } @elseif str-index($value, 'calc') {
-      $fallback-units: join($fallback-units, 'calc');
-    } @elseif str-index($value, 'gradient') {
-      $fallback-units: join($fallback-units, 'gradient');
-    }
+	@each $value in $values {
+		@if type-of($value) == number {
+			@if str-index(unit($value), 'v') != null {
+				$fallback-units: join($fallback-units, 'viewport');
+			} @else {
+				$fallback-units: join($fallback-units, unit($value));
+			}
+		} @elseif str-index($value, 'calc') {
+			$fallback-units: join($fallback-units, 'calc');
+		} @elseif str-index($value, 'gradient') {
+			$fallback-units: join($fallback-units, 'gradient');
+		}
 
-    @if $fallbacks {
-      @if length($fallbacks) != length($values) {
-        @error 'Sorry, but `#{$values}` and `#{$fallbacks}` on property `#{$property}` should have the same length or only use `rem` units';
-      } @else {
-        $fallback: nth($fallbacks, $i);
-        $fallback-values: join($fallback-values, $fallback);
-      }
-    } @elseif type-of($value) == number and unit($value) == 'rem' {
-      $fallback-values: join($fallback-values, $value / 1rem * 16px);
-    } @else {
-      $fallback-values: join($fallback-values, $value);
-    }
-    $i: $i + 1;
-  }
+		@if $fallbacks {
+			@if length($fallbacks) != length($values) {
+				@error 'Sorry, but `#{$values}` and `#{$fallbacks}` on property `#{$property}` should have the same length or only use `rem` units';
+			} @else {
+				$fallback: nth($fallbacks, $i);
+				$fallback-values: join($fallback-values, $fallback);
+			}
+		} @elseif type-of($value) == number and unit($value) == 'rem' {
+			$fallback-values: join($fallback-values, $value / 1rem * 16px);
+		} @else {
+			$fallback-values: join($fallback-values, $value);
+		}
+		$i: $i + 1;
+	}
 
-  $print-fallback: _print-fallback($fallback-units);
+	$print-fallback: _print-fallback($fallback-units);
 
-  @if $print-fallback != 'original-only' {
-    #{$property}: #{$fallback-values};
-  }
+	@if $print-fallback != 'original-only' {
+		#{$property}: #{$fallback-values};
+	}
 
-  @if $print-fallback != 'fallback-only' {
-    #{$property}: #{$values};
-  }
+	@if $print-fallback != 'fallback-only' {
+		#{$property}: #{$values};
+	}
 }
 
 @function _print-fallback($units) {
-  @if (index($units, 'alpha') != null and $no-alpha == false) or
-    (index($units, 'calc') != null and $no-calc == false) or
-    (index($units, 'gradient') != null and $no-gradient == false) or
-    (index($units, 'rem') != null and $no-rem == false) or
-    (index($units, 'viewport') != null and $no-viewport == false) {
-    @return 'original-only';
-  } @elseif (index($units, 'alpha') != null and $no-alpha == true) or
-          (index($units, 'calc') != null and $no-calc == true) or
-          (index($units, 'gradient') != null and $no-gradient == true) or
-        (index($units, 'rem') != null and $no-rem == true) or
-          (index($units, 'viewport') != null and $no-viewport == true) {
-      @return 'fallback-only';
-  } @else {
-      @return 'both';
-  }
+	@if (index($units, 'alpha') != null and $no-alpha == false) or
+		(index($units, 'calc') != null and $no-calc == false) or
+		(index($units, 'gradient') != null and $no-gradient == false) or
+		(index($units, 'rem') != null and $no-rem == false) or
+		(index($units, 'viewport') != null and $no-viewport == false) {
+		@return 'original-only';
+	} @elseif (index($units, 'alpha') != null and $no-alpha == true) or
+					(index($units, 'calc') != null and $no-calc == true) or
+					(index($units, 'gradient') != null and $no-gradient == true) or
+				(index($units, 'rem') != null and $no-rem == true) or
+					(index($units, 'viewport') != null and $no-viewport == true) {
+			@return 'fallback-only';
+	} @else {
+			@return 'both';
+	}
 }
 
 /// Fix for vw, vh, vmin, vmax on iOS 7.
@@ -318,45 +318,45 @@ $no-viewport: false !default;
 /// @link https://gist.github.com/BenMorel/e9e34c08360ebbbd0634
 /// @link http://caniuse.com/#feat=viewport-units
 @mixin viewport-unit($property, $value) {
-  #{$property}: $value;
+	#{$property}: $value;
 
-  $unit: unit($value);
+	$unit: unit($value);
 
-  @if (index((vw, vh, vmin, vmax), $unit) != null) {
-    $devices: (
-      (768px, 1024px), // iPad (all versions)
-      (320px, 480px), // iPhone 4
-      (320px, 568px) // iPhone 5, 5C, 5S
-    );
+	@if (index((vw, vh, vmin, vmax), $unit) != null) {
+		$devices: (
+			(768px, 1024px), // iPad (all versions)
+			(320px, 480px), // iPhone 4
+			(320px, 568px) // iPhone 5, 5C, 5S
+		);
 
-    @each $device in $devices {
-      $device-width: nth($device, 1);
-      $device-height: nth($device, 2);
+		@each $device in $devices {
+			$device-width: nth($device, 1);
+			$device-height: nth($device, 2);
 
-      $device-query: 'only screen and (-webkit-min-device-pixel-ratio: 1)';
-      $device-query: '#{$device-query} and (device-width: #{$device-width})';
-      $device-query: '#{$device-query} and (device-height: #{$device-height})';
+			$device-query: 'only screen and (-webkit-min-device-pixel-ratio: 1)';
+			$device-query: '#{$device-query} and (device-width: #{$device-width})';
+			$device-query: '#{$device-query} and (device-height: #{$device-height})';
 
-      $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
+			$percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
 
-      $percent-width: $device-width * $percent / 100;
-      $percent-height: $device-height * $percent / 100;
+			$percent-width: $device-width * $percent / 100;
+			$percent-height: $device-height * $percent / 100;
 
-      @if ($unit == vmin or $unit == vmax) {
-        @media #{$device-query} {
-          #{$property}: if($unit == vmin, $percent-width, $percent-height);
-        }
-      } @else {
-        @media #{$device-query} and (orientation: portrait) {
-          #{$property}: if($unit == vw, $percent-width, $percent-height);
-        }
+			@if ($unit == vmin or $unit == vmax) {
+				@media #{$device-query} {
+					#{$property}: if($unit == vmin, $percent-width, $percent-height);
+				}
+			} @else {
+				@media #{$device-query} and (orientation: portrait) {
+					#{$property}: if($unit == vw, $percent-width, $percent-height);
+				}
 
-        @media #{$device-query} and (orientation: landscape) {
-          #{$property}: if($unit == vw, $percent-height, $percent-width);
-        }
-      }
-    }
-  }
+				@media #{$device-query} and (orientation: landscape) {
+					#{$property}: if($unit == vw, $percent-height, $percent-width);
+				}
+			}
+		}
+	}
 }
 
 
@@ -365,28 +365,28 @@ $no-viewport: false !default;
 /// @param {List} $directions - List of initial directions
 /// @return {List} - List of opposite directions
 @function _opposite-direction($directions) {
-  $opposite-directions: ();
-  $direction-map: (
-    'top':    'bottom',
-    'right':  'left',
-    'bottom': 'top',
-    'left':   'right',
-    'center': 'center',
-    'ltr':    'rtl',
-    'rtl':    'ltr'
-  );
+	$opposite-directions: ();
+	$direction-map: (
+		'top':    'bottom',
+		'right':  'left',
+		'bottom': 'top',
+		'left':   'right',
+		'center': 'center',
+		'ltr':    'rtl',
+		'rtl':    'ltr'
+	);
 
-  @each $direction in $directions {
-    $direction: to-lower-case($direction);
+	@each $direction in $directions {
+		$direction: to-lower-case($direction);
 
-    @if map-has-key($direction-map, $direction) {
-      $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
-    } @else {
-      @warn 'No opposite direction can be found for `#{$direction}`. Direction omitted.';
-    }
-  }
+		@if map-has-key($direction-map, $direction) {
+			$opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+		} @else {
+			@warn 'No opposite direction can be found for `#{$direction}`. Direction omitted.';
+		}
+	}
 
-  @return $opposite-directions;
+	@return $opposite-directions;
 }
 
 
@@ -395,25 +395,25 @@ $no-viewport: false !default;
 /// @param {Color} $color [currentcolor] - Triangle color
 /// @param {Length} $size [1em] - Triangle size
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
-  @if not index(top right bottom left, $direction) {
-    @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
-  }
+	@if not index(top right bottom left, $direction) {
+		@error 'Direction must be either `top`, `right`, `bottom` or `left`.';
+	}
 
-  width: 0;
-  height: 0;
-  content: '';
-  z-index: 2;
-  border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color;
+	content: '';
+	width: 0;
+	height: 0;
+	z-index: 2;
+	border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color;
 
-  $perpendicular-borders: $size solid transparent;
+	$perpendicular-borders: $size solid transparent;
 
-  @if $direction == top or $direction == bottom {
-    border-left: $perpendicular-borders;
-    border-right: $perpendicular-borders;
-  } @else if $direction == right or $direction == left {
-    border-bottom: $perpendicular-borders;
-    border-top: $perpendicular-borders;
-  }
+	@if $direction == top or $direction == bottom {
+		border-right: $perpendicular-borders;
+		border-left: $perpendicular-borders;
+	} @else if $direction == right or $direction == left {
+		border-top: $perpendicular-borders;
+		border-bottom: $perpendicular-borders;
+	}
 }
 
 
@@ -426,107 +426,107 @@ $no-viewport: false !default;
 /// @return {Number} max depth of `$map`
 
 @function depth($map) {
-  $level: 1;
+	$level: 1;
 
-  @each $key, $value in $map {
-    @if type-of($value) == 'map' {
-      $level: max(depth($value) + 1, $level);
-    }
-  }
+	@each $key, $value in $map {
+		@if type-of($value) == 'map' {
+			$level: max(depth($value) + 1, $level);
+		}
+	}
 
-  @return $level;
+	@return $level;
 }
 
 @mixin debug-map($map) {
-  @at-root {
-    @debug-map {
-      // these properties are for debug only. They don't exist
-      // scss-lint:disable PropertySpelling SelectorFormat
-      __toString__: inspect($map);
-      __length__: length($map);
-      __depth__: depth($map);
-      __keys__: map-keys($map);
+	@at-root {
+		@debug-map {
+			// these properties are for debug only. They don't exist
+			// scss-lint:disable PropertySpelling SelectorFormat
+			__toString__: inspect($map);
+			__length__: length($map);
+			__depth__: depth($map);
+			__keys__: map-keys($map);
 
-      __properties__ {
-        @each $key, $value in $map {
-          #{'(' + type-of($value) + ') ' + $key}: inspect($value);
-        }
-      }
-    }
-  }
+			__properties__ {
+				@each $key, $value in $map {
+					#{'(' + type-of($value) + ') ' + $key}: inspect($value);
+				}
+			}
+		}
+	}
 }
 
 @mixin aspect-ratio ($ratio) {
-  @if type-of($ratio) != list {
-    @error '`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.';
-  } @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
-    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
-  } @elseif length($ratio) < 2 and length($ratio) > 3 {
-    @error '`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.';
-  }
+	@if type-of($ratio) != list {
+		@error '`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.';
+	} @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
+		@error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
+	} @elseif length($ratio) < 2 and length($ratio) > 3 {
+		@error '`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.';
+	}
 
-  $w: nth($ratio, 1);
-  $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
+	$w: nth($ratio, 1);
+	$h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
 
-  @if type-of($w) != 'number' {
-    @error 'the value sent to `width` isn\'t a `number`.';
-  } @elseif not unitless($w) {
-    @error 'the value sent to `width` **must** be unitless.';
-  }
+	@if type-of($w) != 'number' {
+		@error 'the value sent to `width` isn\'t a `number`.';
+	} @elseif not unitless($w) {
+		@error 'the value sent to `width` **must** be unitless.';
+	}
 
-  @if type-of($h) != 'number' {
-    @error 'the value sent to `height` isn\'t a `number`.';
-  } @elseif not unitless($h) {
-    @error 'the value sent to `height` **must** be unitless.';
-  }
+	@if type-of($h) != 'number' {
+		@error 'the value sent to `height` isn\'t a `number`.';
+	} @elseif not unitless($h) {
+		@error 'the value sent to `height` **must** be unitless.';
+	}
 
-  position: relative;
+	position: relative;
 
-  &:before {
-    content: '';
-    float: left;
-    padding-top: ($h / $w * 100%);
-  }
+	&:before {
+		content: '';
+		float: left;
+		padding-top: ($h / $w * 100%);
+	}
 
-  &:after {
-    content: '';
-    clear: both;
-    display: table;
-  }
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
 }
 
 /// Sass calc lock for line-height
 /// @link http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
 /// @link http://codepen.io/timbrown/full/akXvRw/
 @mixin fluid-line-height (
-  $font-size: null,
-  $min-line-height: map-get($line-heights, 'min'),
-  $max-line-height: map-get($line-heights, 'max'),
-  $line-length-lower-gate: map-get($line-lengths, 'min'),
-  $line-length-upper-gate: map-get($line-lengths, 'max')
+	$font-size: null,
+	$min-line-height: map-get($line-heights, 'min'),
+	$max-line-height: map-get($line-heights, 'max'),
+	$line-length-lower-gate: map-get($line-lengths, 'min'),
+	$line-length-upper-gate: map-get($line-lengths, 'max')
 ) {
 
-  @if $font-size == null {
-    @error 'the `font-size` of the element **must** be provided to calculate the media query limits.';
-  } @else if unit($font-size) == '%' {
-    $font-size: $font-size / 100%;
-  } @else if unit($font-size) == 'em' {
-    $font-size: $font-size / 1em;
-  } @else if unit($font-size) == 'rem' {
-    $font-size: $font-size / 1rem;
-  } @else if unitless($font-size) {
-    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given.';
-  } @else {
-    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.'
-  }
+	@if $font-size == null {
+		@error 'the `font-size` of the element **must** be provided to calculate the media query limits.';
+	} @else if unit($font-size) == '%' {
+		$font-size: $font-size / 100%;
+	} @else if unit($font-size) == 'em' {
+		$font-size: $font-size / 1em;
+	} @else if unit($font-size) == 'rem' {
+		$font-size: $font-size / 1rem;
+	} @else if unitless($font-size) {
+		@error 'the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given.';
+	} @else {
+		@error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.'
+	}
 
-  line-height: $min-line-height;
+	line-height: $min-line-height;
 
-  @media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
-    line-height: calc(#{$min-line-height * 1em} + (#{$max-line-height} - #{$min-line-height}) * ((100vw - #{$line-length-lower-gate})/(#{$line-length-upper-gate / 1em} - #{$line-length-lower-gate / 1em})));
-  }
+	@media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
+		line-height: calc(#{$min-line-height * 1em} + (#{$max-line-height} - #{$min-line-height}) * ((100vw - #{$line-length-lower-gate})/(#{$line-length-upper-gate / 1em} - #{$line-length-lower-gate / 1em})));
+	}
 
-  @media (min-width: #{$line-length-upper-gate * $font-size}) {
-    line-height: $max-line-height;
-  }
+	@media (min-width: #{$line-length-upper-gate * $font-size}) {
+		line-height: $max-line-height;
+	}
 }
