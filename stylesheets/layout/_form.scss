@@ -221,6 +221,7 @@ form {
 				display: inline;
 				padding: 0 .5em;
 			}
+
 /**
  * It's recommended that you don't attempt to style these elements.
  * Firefox's implementation doesn't respect box-sizing, padding, or width.
@@ -390,7 +391,9 @@ form {
 			[type='image'] {}
 
 			[type='range'] {}
+
 			[type='color'] {}
+
 			[type='file'] {
 				-moz-appearance: none;
 				-webkit-appearance: none;

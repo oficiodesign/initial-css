@@ -9,14 +9,13 @@ li a {
 	margin: 0;
 	padding: 0;
 }
+
 /**
  * Chrome and Firefox have different UA values of text-align for li. It can
  * result in different alignment of text in li depending on the direction of text (LTR/RTL)
  * @see https://github.com/necolas/normalize.css/issues/334
  */
-li {
-
-}
+li {}
 
 /**
  * @see http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/
