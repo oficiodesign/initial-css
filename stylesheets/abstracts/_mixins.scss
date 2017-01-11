@@ -499,23 +499,25 @@ $no-viewport: false !default;
 /// @link http://blog.typekit.com/2016/08/17/flexible-typography-with-css-locks/
 /// @link http://codepen.io/timbrown/full/akXvRw/
 @mixin fluid-line-height (
-  $font-size: $body-font-size,
+  $font-size: null,
   $min-line-height: map-get($line-heights, 'min'),
   $max-line-height: map-get($line-heights, 'max'),
   $line-length-lower-gate: map-get($line-lengths, 'min'),
   $line-length-upper-gate: map-get($line-lengths, 'max')
 ) {
 
-  @if unit($font-size) == '%' {
+  @if $font-size == null {
+    @error "the `font-size` of the element **must** be provided to calculate the media query limits";
+  } @else if unit($font-size) == '%' {
     $font-size: $font-size / 100%;
   } @else if unit($font-size) == 'em' {
     $font-size: $font-size / 1em;
   } @else if unit($font-size) == 'rem' {
     $font-size: $font-size / 1rem;
   } @else if unitless($font-size) {
-    @error "the unit of the parameter sent should be relative. Unitless value given.";
+    @error "the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given";
   } @else {
-    @error "the unit of the parameter sent should be relative. `#{unit($font-size)}` given"
+    @error "the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given"
   }
 
   line-height: $min-line-height;
