@@ -382,7 +382,7 @@ $no-viewport: false !default;
     @if map-has-key($direction-map, $direction) {
       $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
     } @else {
-      @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+      @warn 'No opposite direction can be found for `#{$direction}`. Direction omitted.';
     }
   }
 
@@ -396,7 +396,7 @@ $no-viewport: false !default;
 /// @param {Length} $size [1em] - Triangle size
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
   @if not index(top right bottom left, $direction) {
-    @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+    @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
   }
 
   width: 0;
@@ -458,26 +458,26 @@ $no-viewport: false !default;
 
 @mixin aspect-ratio ($ratio) {
   @if type-of($ratio) != list {
-    @error "`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.";
+    @error '`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.';
   } @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
-    @error "when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.";
+    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
   } @elseif length($ratio) < 2 and length($ratio) > 3 {
-    @error "`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.";
+    @error '`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.';
   }
 
   $w: nth($ratio, 1);
   $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
 
   @if type-of($w) != 'number' {
-    @error "the value sent to `width` isn't a `number`";
+    @error 'the value sent to `width` isn\'t a `number`.';
   } @elseif not unitless($w) {
-    @error "the value sent to `width` **must** be unitless";
+    @error 'the value sent to `width` **must** be unitless.';
   }
 
   @if type-of($h) != 'number' {
-    @error "the value sent to `height` isn't a `number`";
+    @error 'the value sent to `height` isn\'t a `number`.';
   } @elseif not unitless($h) {
-    @error "the value sent to `height` **must** be unitless";
+    @error 'the value sent to `height` **must** be unitless.';
   }
 
   position: relative;
@@ -507,7 +507,7 @@ $no-viewport: false !default;
 ) {
 
   @if $font-size == null {
-    @error "the `font-size` of the element **must** be provided to calculate the media query limits";
+    @error 'the `font-size` of the element **must** be provided to calculate the media query limits.';
   } @else if unit($font-size) == '%' {
     $font-size: $font-size / 100%;
   } @else if unit($font-size) == 'em' {
@@ -515,9 +515,9 @@ $no-viewport: false !default;
   } @else if unit($font-size) == 'rem' {
     $font-size: $font-size / 1rem;
   } @else if unitless($font-size) {
-    @error "the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given";
+    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given.';
   } @else {
-    @error "the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given"
+    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.'
   }
 
   line-height: $min-line-height;

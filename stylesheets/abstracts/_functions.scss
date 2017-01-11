@@ -167,7 +167,7 @@
   $weight: to-lower-case($weight);
 
   @if not map-has-key($weights, $weight) {
-    @error "unknown value sent to `font-weight` function: #{$weight}.";
+    @error 'unknown value sent to `font-weight` function: #{$weight}.';
   }
 
   @return map-get($weights, $weight);
@@ -198,7 +198,7 @@
   }
 
   @if not map-has-key($default, $layer) {
-    @error "unknown value sent to `layer` function: #{$layer}. Availabe values: `#{map-keys($default)}`";
+    @error 'unknown value sent to `layer` function: #{$layer}. Availabe values: `#{map-keys($default)}`';
   }
 
   @return map-get($default, $layer);
@@ -238,16 +238,16 @@
   }
 
   @if not map-has-key($default, $palette) {
-    @error "unknown palette sent to `palette` function: `#{$palette}`. Available palette: #{map-keys($default)}";
+    @error 'unknown palette sent to `palette` function: `#{$palette}`. Available palette: #{map-keys($default)}';
   }
 
   $color: map-get($default, $palette);
 
   @if $tone != null {
     @if type-of($color) == 'color' {
-      @error "unknown tone sent to `palette` function: `#{$tone}`. There's only one color available for palette `#{$palette}`: #{$color}";
+      @error 'unknown tone sent to `palette` function: `#{$tone}`. There\'s only one color available for palette `#{$palette}`: #{$color}';
     } @elseif not map-has-key($color, $tone) {
-      @error "unknown tone sent to `palette` function: `#{$tone}`. Available tones for `#{$palette}`: #{map-keys($color)}";
+      @error 'unknown tone sent to `palette` function: `#{$tone}`. Available tones for `#{$palette}`: #{map-keys($color)}';
     } @else {
       @return map-get(map-get($default, $palette), $tone);
     }
@@ -255,7 +255,7 @@
     @if type-of($color) == 'color' {
       @return $color;
     } @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
-      @error "`palette` `#{$color}` misses `base` tone";
+      @error '`palette` `#{$color}` misses `base` tone';
     } @else {
       @return map-get($color, 'base');
     }
@@ -314,7 +314,7 @@
   $svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
 
   @if index($svg-units, unit($gutter)) == null {
-    @error "SVG unsuported unit used for gutter: #{unit($gutter)}";
+    @error 'SVG unsuported unit used for gutter: #{unit($gutter)}';
   }
 
   $color: $debug-color + unquote("");
@@ -326,7 +326,7 @@
 
   @each $column in $columns {
     @if index($svg-units, unit($column)) == null {
-      @error "SVG unsuported unit used for column: #{unit($column)}";
+      @error 'SVG unsuported unit used for column: #{unit($column)}';
     }
 
     $x: $x + $gutter + $column;
