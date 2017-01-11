@@ -99,7 +99,6 @@ rules:
   placeholder-name-format:
     - 1
     - convention: hyphenatedbem
-  property-units: 0
   property-sort-order:
     - 2
     -
@@ -363,6 +362,115 @@ rules:
       - 'writing-mode'
       - 'z-index'
       - 'zoom'
+
+  property-units:
+    - 1
+    - global:
+        - 'em'
+        - 'rem'
+        - '%'
+    - per-property:
+        animation:
+          - 'ms'
+          - 's'
+        border:
+          - 'px'
+        border-bottom:
+          - 'px'
+        border-bottom-width:
+          - 'px'
+        border-left:
+          - 'px'
+        border-left-width:
+          - 'px'
+        border-radius:
+          - '%'
+          - 'px'
+        border-right:
+          - 'px'
+        border-right-width:
+          - 'px'
+        border-top:
+          - 'px'
+        border-top-width:
+          - 'px'
+        border-width:
+          - 'px'
+        font-size:
+          - 'em'
+          - 'rem'
+        height:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
+        line-height:
+          - ''
+          - 'rem'
+        margin:
+          - 'em'
+          - '%'
+          - 'rem'
+        max-height:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'px'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
+        max-width:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'px'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
+        min-height:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'px'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
+        min-width:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'px'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
+        outline:
+          - 'px'
+        outline-offset:
+          - 'px'
+        padding:
+          - 'em'
+          - 'rem'
+        text-indent:
+          - 'em'
+          - 'ex'
+        transition:
+          - 'ms'
+          - 's'
+        width:
+          - 'em'
+          - 'rem'
+          - '%'
+          - 'vh'
+          - 'vw'
+          - 'vmin'
+          - 'vmax'
 
   quotes:
     - 1
