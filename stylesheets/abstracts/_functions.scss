@@ -117,23 +117,21 @@
 }
 
 
-//@if not function-exists('str-replace') {
-  /// Replace `$search` with `$replace` in `$string`
-  /// @author Hugo Giraudel
-  /// @param {String} $string - Initial string
-  /// @param {String} $search - Substring to replace
-  /// @param {String} $replace ('') - New value
-  /// @return {String} - Updated string
-  @function str-replace($string, $search, $replace: '') {
-    $index: str-index($string, $search);
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
 
-    @if $index {
-      @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-    }
-
-    @return $string;
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
-//}
+
+  @return $string;
+}
 
 @function font-weight($weight: 'normal') {
 
@@ -267,23 +265,20 @@
 
 ///--------------------------------------------------------------------------------------------------------------------
 
-//@if not function-exists('trim') {
 /// Trim's a string by removing leading and trailing spaces
 ///
 /// @param {String} $string - String to trim
 ///
 /// @return {String} - String without spaces
 ///
-  @function trim($string) {
-    @return str-slice(
-      $string,
-      first-index($string, 'left'),
-      first-index($string, 'right')
-    );
-  }
-//}
+@function trim($string) {
+  @return str-slice(
+    $string,
+    first-index($string, 'left'),
+    first-index($string, 'right')
+  );
+}
 
-//@if not function-exists('first-index') {
 /// Find first char which is not a space
 ///
 /// @param {String} $string - String to search
@@ -291,60 +286,57 @@
 ///
 /// @return {Number} - Index of first non-space character
 ///
-  @function first-index($string, $direction: 'left') {
-    @for $i from 1 through str-length($string) {
-      $index: if($direction == 'left', $i, -$i);
+@function first-index($string, $direction: 'left') {
+  @for $i from 1 through str-length($string) {
+    $index: if($direction == 'left', $i, -$i);
 
-      @if str-slice($string, $index, $index) != ' ' {
-        @return $index;
-      }
+    @if str-slice($string, $index, $index) != ' ' {
+      @return $index;
     }
-
-    @return 0;
   }
-//}
+
+  @return 0;
+}
 
 
 
-//@if not function-exists('grid-image') {
-  @function grid-image($grid: $susy) {
+@function grid-image($grid: $susy) {
 
-    $debug-color: palette('debug');
+  $debug-color: palette('debug');
 
-    // to use double single quotes inside the string save us from encode the double ones
-    // scss-lint:disable StringQuotes
-    $grid: susy-normalize($grid);
+  // to use double single quotes inside the string save us from encode the double ones
+  // scss-lint:disable StringQuotes
+  $grid: susy-normalize($grid);
 
-    $columns: map-get($grid, 'columns');
-    $gutter: map-get($grid, 'gutters');
+  $columns: map-get($grid, 'columns');
+  $gutter: map-get($grid, 'gutters');
 
-    $svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
+  $svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
 
-    @if index($svg-units, unit($gutter)) == null {
-      @error "SVG unsuported unit used for gutter: #{unit($gutter)}";
-    }
-
-    $color: $debug-color + unquote("");
-    $color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
-
-    $x: 0;
-
-    $svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
-
-    @each $column in $columns {
-      @if index($svg-units, unit($column)) == null {
-        @error "SVG unsuported unit used for column: #{unit($column)}";
-      }
-
-      $x: $x + $gutter + $column;
-
-      $svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
-    }
-
-    $x: $x + $gutter;
-
-    $svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
-
-    @return $svg;
+  @if index($svg-units, unit($gutter)) == null {
+    @error "SVG unsuported unit used for gutter: #{unit($gutter)}";
   }
-//}
+
+  $color: $debug-color + unquote("");
+  $color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
+
+  $x: 0;
+
+  $svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+
+  @each $column in $columns {
+    @if index($svg-units, unit($column)) == null {
+      @error "SVG unsuported unit used for column: #{unit($column)}";
+    }
+
+    $x: $x + $gutter + $column;
+
+    $svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
+  }
+
+  $x: $x + $gutter;
+
+  $svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
+
+  @return $svg;
+}
