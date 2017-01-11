@@ -19,9 +19,9 @@ $no-viewport: true;
 'abstracts/mixins';
 
 // 2. Vendors
-// @import
-// 'vendor/susy',
-// 'vendor/include-media';
+@import
+'vendor/susy',
+'vendor/include-media';
 
 // 3. Base stuff
 @import
