@@ -120,13 +120,6 @@ article fieldset > p:first-child {
 	text-indent: 0;
 }
 
-p {
-	@include flexible-line-height;
-
-	color: palette('gray', 'light');
-	z-index: z('modal');
-}
-
 /* INLINE TEXT
 ============================================================================ */
 
