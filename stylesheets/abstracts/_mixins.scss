@@ -22,10 +22,10 @@
   // Webkit: collapse white-space between units
   letter-spacing: -0.31em;
   // reset IE < 8
-  *letter-spacing: normal;
+  letter-spacing: normal\9;
   // IE < 8: collapse white-space between units
-  *word-spacing: -0.43em;
   text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+  word-spacing: -0.43em\9;
 }
 
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
@@ -98,7 +98,7 @@
   @if ($ie <= 8) {
   // old IE sucks
   // scss-lint:disable PseudoElement PropertySpelling
-    *zoom: 1;
+    zoom: 1\9;
   }
 }
 
