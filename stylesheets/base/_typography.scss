@@ -27,9 +27,6 @@ body {
 ///
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
 ///
-$_alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
-$_ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
-
 // Qualified to prevent conflicts
 // scss-lint:disable QualifyingElement
 %italic-overflow {
@@ -40,7 +37,7 @@ $_ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 
 span.alt {
   @extend %italic-overflow;
 
-  font-family: $_alt-font-stack;
+  font-family: $alt-font-stack;
 }
 
 span.amp {
@@ -48,7 +45,7 @@ span.amp {
 
   font-size: 2em;
   line-height: 0.25;
-  font-family: $_ampersand-font-stack;
+  font-family: $ampersand-font-stack;
   vertical-align: middle;
 }
 // scss-lint:enable QualifyingElement
