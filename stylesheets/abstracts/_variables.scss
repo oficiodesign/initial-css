@@ -110,11 +110,13 @@ $max-width: 1180px !default;
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: im-to-em((
-  'phone': 320px,
-  'tablet': 768px,
-  'desktop': 1024px
-)) !default;
+$breakpoints: im-to-em(
+  (
+    'phone': 320px,
+    'tablet': 768px,
+    'desktop': 1024px
+  )
+) !default;
 
 // 320
 // 480
