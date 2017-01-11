@@ -28,7 +28,8 @@ $no-viewport: true;
 'base/base',
 'base/fonts',
 'base/typography',
-'base/helpers';
+'base/helpers',
+'base/print';
 
 // 4. Layout-related sections
 @import
@@ -54,4 +55,4 @@ $no-viewport: true;
 
 // 7. Themes
 @import
-'themes/print';
+'themes/default';
