@@ -19,6 +19,14 @@
 
 $native-font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 
+///
+// Windows: Consolas,
+// Linux: 'Liberation Mono',
+// OS X: Menlo,
+// Windows (legacy): Courier,
+// default platform fallback: monospace !default;
+$basic-code-font-stack: Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
+
 
 
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/

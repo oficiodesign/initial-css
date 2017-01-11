@@ -13,10 +13,7 @@ $text-font-stack: $native-font-stack;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
-
+$code-font-stack: $basic-code-font-stack;
 
 /// body text font-size
 /// @type Length
