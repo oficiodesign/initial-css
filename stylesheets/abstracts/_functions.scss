@@ -217,9 +217,9 @@
     'white': rgb(255, 255, 255),
     'black': rgb(0, 0, 0),
     'debug': rgb(255, 0, 0),
-    'disabled':(
+    'disabled': (
       'text': rgb(109, 109, 109),
-      'background': rgb(240,240,240)
+      'background': rgb(240, 240, 240),
     ),
     'link': (
       'base': rgb(0, 0, 255),
@@ -231,7 +231,7 @@
     'quotes': rgb(88, 88, 88),
     'placeholder': rgb(88, 88, 88),
     'selection': rgb(20, 105, 140),
-    'tap-highlight': rgb(255,94,153),
+    'tap-highlight': rgb(255, 94, 153),
     'target-highlight': rgb(255, 255, 102),
   );
 
