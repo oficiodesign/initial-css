@@ -56,15 +56,15 @@ $palettes: (
 		'dark': shade($_color-base-grey, 10%)
 	),
 	// 'disabled':(
-	//   'text': rgb(109, 109, 109),
-	//   'background': rgb(240,240,240)
+	// 	'text': rgb(0, 0, 0),
+	// 	'background': rgb(0, 0, 0)
 	// ),
 	// 'link': (
-	//   'base': rgb(0, 0, 255),
-	//   'visited': rgb(0, 0, 255),
-	//   'hover': rgb(0, 0, 255),
-	//   'focus': rgb(0, 0, 255),
-	//   'active': rgb(0, 0, 255),
+	// 	'base': rgb(0, 0, 0),
+	// 	'visited': rgb(0, 0, 0),
+	// 	'hover': rgb(0, 0, 0),
+	// 	'focus': rgb(0, 0, 0),
+	// 	'active': rgb(0, 0, 0),
 	// ),
 );
 // scss-lint:enable ColorVariable
