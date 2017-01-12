@@ -39,10 +39,6 @@ $line-lengths: (
 	'max': 35em,
 ) !default;
 
-/// Friendlier colour names with Sass maps
-/// @access private
-$_color-base-grey: rgb(229, 231, 234);
-
 /// @access private
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are pure colors or the returned value of functions
@@ -51,9 +47,11 @@ $_color-base-grey: rgb(229, 231, 234);
 // scss-lint:disable ColorVariable
 $palettes: (
 	'gray':  (
-		'base': $_color-base-grey,
-		'light': tint($_color-base-grey, 10%),
-		'dark': shade($_color-base-grey, 10%)
+		'x-light': tint(rgb(229, 231, 234), 10%),
+		'light': rgb(229, 231, 234),
+		'base': rgb(151, 153, 156),
+		'dark': rgb(64, 68, 71),
+		'x-dark': shade(rgb(64, 68, 71), 10%),
 	),
 	// 'disabled':(
 	// 	'text': rgb(0, 0, 0),
@@ -77,17 +75,6 @@ $text-color: rgb(34, 34, 34) !default;
 /// @type Color
 $brand-color: rgb(229, 0, 80) !default;
 
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
 
 
 
