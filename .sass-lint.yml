@@ -241,6 +241,10 @@ rules:
       - 'grid-column-gap'
       - 'grid-row-gap'
 
+      - 'height'
+      - 'max-height'
+      - 'min-height'
+
       - 'hyphens'
       - 'interpolation-mode'
       - 'justify-content'
@@ -348,11 +352,8 @@ rules:
       - 'white-space'
 
       - 'width'
-      - 'height'
       - 'max-width'
-      - 'max-height'
       - 'min-width'
-      - 'min-height'
 
       - 'will-change'
 
