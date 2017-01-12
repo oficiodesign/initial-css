@@ -14,7 +14,7 @@
  * Basic typography style for copy text
  */
 body {
-	color: $text-color;
+	color: palette('text', 'dark');
 	font-size: $body-font-size;
 	font-family: $text-font-stack;
 	line-height: $line-height;

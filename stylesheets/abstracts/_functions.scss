@@ -231,6 +231,10 @@
 		'selection': rgb(20, 105, 140),
 		'tap-highlight': rgb(255, 94, 153),
 		'target-highlight': rgb(255, 255, 102),
+		'text': (
+			'dark': rgb(34, 34, 34),
+			'light': rgb(229, 231, 234),
+		),
 	);
 
 	@if variable-exists('palettes') and type-of($palettes) == 'map' {
