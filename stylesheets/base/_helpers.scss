@@ -4,7 +4,35 @@
 
 /* CLASSES
 ============================================================================ */
+@mixin loading-bg {
+	background-position: 50% 50%;
+	background-color: palette('loading', 'background');
+}
+
+embed,
+img,
+input,
+keygen {
+	&.loading {
+		@include loading-bg;
+	}
+}
+
 .loading,
 .waiting {
 	cursor: wait;
+	overflow: hidden;
+
+	> body:after,
+	&:not(html):after {
+		@include loading-bg;
+
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: layer('modal');
+	}
 }
