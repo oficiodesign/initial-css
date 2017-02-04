@@ -54,19 +54,21 @@ select,
 summary,
 textarea,
 [tabindex] {
-	touch-action: manipulation; /* 1 */
+	/* 1 */
+	touch-action: manipulation;
 }
 
 :target {
 	animation: highlight .8s ease-out;
 
 	@keyframes highlight {
+		// sass-lint:disable-block no-color-literals
 		0% {
-			background-color: rgba(palette('target-highlight'), 1.0);
+			background-color: rgba(palette('target-highlight'), 1);
 		}
 
 		100% {
-			background-color: rgba(palette('target-highlight'), 0.0);
+			background-color: rgba(palette('target-highlight'), 0);
 		}
 	}
 }
@@ -83,14 +85,17 @@ textarea,
 html {
 	background: palette('white');
 	box-sizing: border-box;
-	font-size: 100.01%; /* 1 */
-	height: 100%; /* 2 */
+	/* 1 */
+	font-size: 100.01%;
+	/* 2 */
+	height: 100%;
 	margin: 0;
+	/* 3 */
+	overflow-y: scroll;
 	padding: 0;
-	overflow-y: scroll; /* 3 */
-	-moz-overflow-y: scroll; /* 3 */
 	tab-size: 4;
-	text-size-adjust: 100%; /* 4 */
+	/* 4 */
+	text-size-adjust: 100%;
 }
 
 body {
@@ -140,12 +145,10 @@ template {
 /**
  * Visually hidden content should remain accessible
  */
-
 [hidden][aria-hidden='false'] {
 	clip: rect(0, 0, 0, 0);
 	display: inherit;
 	position: absolute;
-
 
 	&:focus {
 		clip: auto;
@@ -166,16 +169,20 @@ template {
 /**
  */
 hr {
+	/* line-height */
+	@include fallback('margin', calc(1.5em - 1px) 0 1.5em, 1.5em 0);
+
 	border: 0;
-	border-top: 1px solid rgb(204,204,204);
-	box-sizing: content-box; /* 1 */
+	border-top: 1px solid palette('gray');
+	/* 1 */
+	box-sizing: content-box;
 	clear: both;
-	color: rgb(204,204,204);
+	color: palette('gray');
 	display: block;
-	height: 0; /* 1 */
-	margin: 1.5em 0;/* line-height */
-	margin: calc(1.5em - 1px) 0 1.5em;/* line-height */
-	overflow: visible; /* 2 */
+	/* 1 */
+	height: 0;
+	/* 2 */
+	overflow: visible;
 	padding: 0;
 }
 
@@ -210,8 +217,10 @@ iframe,
 progress,
 svg,
 video {
-	display: inline-block; /* 1 */
-	vertical-align: middle; /* 2 */
+	/* 1 */
+	display: inline-block;
+	/* 2 */
+	vertical-align: middle;
 }
 
 /**
@@ -230,16 +239,8 @@ progress {
 	background-size: auto;
 }
 
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-audio:not([controls]) {
-	display: none;
-	height: 0;
+audio {
 }
-
-audio {}
 
 iframe,
 img,
@@ -256,20 +257,22 @@ video {
 	max-width: 100%;
 }
 
-video {}
+video {
+}
 
-	video > source {
-		width: 100%;
-		height: auto;
-	}
+video > source {
+	height: auto;
+	width: 100%;
+}
 
 .ie:not(.ie6-8),
 object > img {
 	font-size: 1em;
 	pointer-events: none;
 	position: relative;
-	z-index: -1;
+	z-index: layer('below');
 }
+
 /**
 * 1. Improving quality of image resampling
 * @see  https://developer.mozilla.org/En/CSS/Image-rendering
@@ -280,9 +283,9 @@ object > img {
 img {
 	background: url('img/loading.gif') no-repeat center center;
 	height: auto;
-	image-rendering: optimizeQuality; /* 1 */
-	-ms-interpolation-mode: bicubic; /* 1 */
 	max-height: 90vh; /* 2 */
+	image-rendering: optimizeQuality; /* 1 */
+	-ms-interpolation-mode: bicubic; /* 1 */  // sass-lint:disable-line no-misspelled-properties property-sort-order
 	max-width: 100%;
 }
 
@@ -290,9 +293,14 @@ img {
 	color: palette('anchor');
 }
 
-map {}
-	area {}
-object {}
+map {
+}
+
+area {
+}
+
+object {
+}
 
 li img,
 p img {
@@ -313,15 +321,21 @@ a {
 	vertical-align: baseline;
 
 	&:link {
+		// sass-lint:disable-block property-sort-order
 		cursor: pointer;
-		-webkit-tap-highlight-color: palette('tap-highlight');
+		-webkit-tap-highlight-color: palette('tap-highlight');  // sass-lint:disable-line no-vendor-prefixes
 		text-decoration: underline;
 	}
 
-	&:visited {}
+	&:visited {
+		@include on-event {
+			text-decoration: underline;
+		}
+	}
 
 	&:hover,
-	&:focus {}
+	&:focus {
+	}
 
 	&:focus {
 		outline: 1px dotted;
@@ -349,14 +363,9 @@ a {
 		text-decoration: underline;
 	}
 
-	&:visited {
-		@include on-event {
-			text-decoration: underline;
-		}
-	}
-
 	&[target='_blank'],
-	&[rel='external'] {}
+	&[rel='external'] {
+	}
 }
 
 /* Contact info and addresses

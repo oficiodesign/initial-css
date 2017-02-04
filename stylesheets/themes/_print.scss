@@ -1,34 +1,34 @@
 @media print {
-/**
- * @see http://www.alistapart.com/articles/goingtoprint/
- * @see http://www.merttol.com/articles/css/too-light-for-print.html
- */
+	// sass-lint:disable-block no-color-literals no-important
+	/**
+	 * @see http://www.alistapart.com/articles/goingtoprint/
+	 * @see http://www.merttol.com/articles/css/too-light-for-print.html
+	 */
 	* {
 		background: transparent !important;
-		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		color: rgb(0, 0, 0) !important; /* Black prints faster: h5bp.com/s */
 		text-shadow: none !important;
 	}
 
 	body {
-		background: #fff none;
+		background: rgb(255, 255, 255) none;
+		color: rgb(0, 0, 0);
 		font: 12pt/1.33333 'Palatino Linotype', Palatino, 'Times New Roman', Times, serif;
-		color: black;
 	}
 
 	a,
 	a:link,
 	a:visited {
 		background: transparent;
-		color: #444 !important;
+		color: rgb(68, 68, 68) !important;
 		font-weight: bold;
 		text-decoration: underline;
 	}
 
-	a[href]:after {
-		color: rgb(51,51,51);
+	a[href]::after {
+		color: rgb(51, 51, 51);
 		content: ' (' attr(href) ') ';
 		font-style: italic;
-		white-space: -moz-pre-wrap;
 		white-space: pre-wrap;
 		word-wrap: break-word;
 	}
@@ -37,25 +37,27 @@
 	* Don't show links for images, or javascript/internal links
 	*/
 
-	a[href^='javascript:']:after,
-	a[href^='#']:after {
-		content: '';
+	a[href^='javascript:'],
+	a[href^='#'] {
+		&::after {
+			content: '';
+		}
 	}
 
-	abbr[title]:after {
+	abbr[title]::after {
 		content: ' (' attr(title) ')';
 		font-style: italic;
 	}
 
 	pre,
 	blockquote {
-		border: 1px solid #999;
+		border: 1px solid rgb(153, 153, 153);
 		page-break-inside: avoid;
 	}
 
-/**
- * @see css-discuss.incutio.com/wiki/Printing_Tables
- */
+	/**
+	 * @see css-discuss.incutio.com/wiki/Printing_Tables
+	 */
 	thead {
 		display: table-header-group;
 	}
@@ -66,12 +68,13 @@
 	}
 
 	img {
+		vertical-align: bottom;
 		max-width: 100% !important;
 	}
 
 
 	@page {
-		margin: 0.5cm;
+		margin: .5cm;  // sass-lint:disable-line property-units
 	}
 
 	p,
@@ -89,15 +92,11 @@
 	h6,
 	legend,
 	caption {
-		page-break-inside: never;
 		page-break-after: avoid;
+		page-break-inside: never;
 	}
 
-	img {
-		vertical-align: bottom;
-	}
-
-	.main {
+	[role='main'] {
 		border: 0;
 		float: none !important;
 		margin: 0 5%;

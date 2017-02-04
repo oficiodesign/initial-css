@@ -24,7 +24,7 @@ rules:
     - max-depth: 1
   border-zero:
     - 1
-    - convention: zero
+    - convention: 0
   brace-style:
     - 1
     - allow-single-line: false
@@ -38,8 +38,8 @@ rules:
   empty-line-between-blocks:
     - 1
     - ignore-single-line-rulesets: true
-  extends-before-declarations: 1
-  extends-before-mixins: 1
+  extends-before-declarations: 2
+  extends-before-mixins: 2
   final-newline:
     - 1
     - include: true
@@ -64,7 +64,7 @@ rules:
     - size: tab
   leading-zero:
     - 1
-    - include: true
+    - include: false
   mixin-name-format:
     - 1
     - allow-leading-underscore: true
@@ -73,34 +73,42 @@ rules:
   nesting-depth:
     - 1
     - max-depth: 3
-  no-color-keywords: 1
-  no-color-literals: 0
+  no-color-hex: 2
+  no-color-keywords: 2
+  no-color-literals: 2
   no-css-comments: 0
   no-debug: 1
-  no-duplicate-properties: 0
+  no-duplicate-properties: 2
   no-empty-rulesets: 0
   no-extends: 0
-  no-ids: 1
-  no-important: 0
+  no-ids: 2
+  no-important: 2
   no-invalid-hex: 1
-  no-mergeable-selectors: 0
+  no-mergeable-selectors: 2
   no-misspelled-properties:
     - 1
     - extra-properties: []
   no-qualifying-elements:
     - 1
-    - allow-element-with-attribute: false
+    - allow-element-with-attribute: true
       allow-element-with-class: false
       allow-element-with-id: false
+  no-trailing-whitespace: 2
   no-trailing-zero: 1
-  no-transition-all: 0
+  no-transition-all: 2
   no-url-protocols: 0
+  no-vendor-prefixes:
+    - 2
+    -
+      additional-identifiers:
+        - khtml
+      ignore-non-standard: true
   placeholder-in-extend: 1
   placeholder-name-format:
     - 1
     - convention: hyphenatedbem
   property-sort-order:
-    - 2
+    - 1
     -
       order:
       - 'align-content'
@@ -204,6 +212,7 @@ rules:
       - 'cursor'
       - 'direction'
       - 'display'
+      - 'empty-cells'
       - 'filter'
 
       - 'flex'
@@ -246,6 +255,7 @@ rules:
       - 'min-height'
 
       - 'hyphens'
+      - 'image-rendering'
       - 'interpolation-mode'
       - 'justify-content'
       - 'letter-spacing'
@@ -309,6 +319,7 @@ rules:
       - 'size'
       - 'speak'
       - 'src'
+      - 'tab-size'
       - 'table-layout'
       - 'text-align'
       - 'text-combine-upright'
@@ -365,11 +376,7 @@ rules:
       - 'zoom'
 
   property-units:
-    - 1
-    - global:
-        - 'em'
-        - 'rem'
-        - '%'
+    - 2
     - per-property:
         animation:
           - 'ms'
@@ -396,6 +403,8 @@ rules:
         border-top-width:
           - 'px'
         border-width:
+          - 'px'
+        box-shadow:
           - 'px'
         font-size:
           - 'em'
@@ -472,7 +481,11 @@ rules:
           - 'vw'
           - 'vmin'
           - 'vmax'
-
+    - global:
+      - 'em'
+      - 'rem'
+      - '%'
+  pseudo-element: true
   quotes:
     - 1
     - style: single
@@ -495,8 +508,8 @@ rules:
   space-between-parens:
     - 1
     - include: false
-  trailing-semicolon: 1
-  url-quotes: 1
+  trailing-semicolon: 2
+  url-quotes: 2
   variable-for-property: 0
   variable-name-format:
     - 1

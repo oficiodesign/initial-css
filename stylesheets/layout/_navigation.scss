@@ -1,56 +1,57 @@
 /* navigation
 ---------------------------------------------------------------------------- */
 menu,
-nav {}
+nav {
+}
 
-	main menu ul,
-	main menu ol,
-	main menu li,
-	main nav ul,
-	main nav ol,
-	main nav li,
-	menu ul,
-	menu ol,
-	menu li,
-	nav ul,
-	nav ol,
-	nav li {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+menu ul,
+menu ol,
+nav ul,
+nav ol {
+	margin: 0;
+	padding: 0;
+}
+
+menu li,
+nav li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&:before {
+		content: none;
 	}
+}
 
-		menu li,
-		nav li {
-			margin: 0;
-			padding: 0;
+menu a,
+nav a {
+	display: block;
 
-			&:before {
-				content: none;
-			}
-		}
+	&:link {
+		text-decoration: none;
+	}
+}
 
-			menu a:link,
-			nav a:link {
-				display: block;
-				text-decoration: none;
-			}
-
-			.current > a {
-				pointer-events: none;
-			}
+.current > a {
+	pointer-events: none;
+}
 
 
 /* access
 ---------------------------------------------------------------------------- */
-.skip-links {}
+.skip-links {
+}
 
 /* pagination
 ---------------------------------------------------------------------------- */
-.pagination {}
+.pagination {
+}
 
-		.pagination li.current {}
+.pagination__current {
+}
 
-			.previous-page {}
+.pagination__previous {
+}
 
-			.next-page {}
+.pagination__next {
+}

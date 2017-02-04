@@ -8,14 +8,14 @@ figure {
 	margin: 1em 40px; /* 1 */
 }
 
-	figcaption {
-		font-size: 83.3333%;
-		line-height: inherit;
-	}
+figcaption {
+	font-size: 83.3333%;
+	line-height: inherit;
+}
 
-		figcaption > p,
-		figcaption small {
-			font-size: 1em;
-			margin: 0;
-		}
+figcaption p,
+figcaption small {
+	font-size: 1em;
+	margin: 0;
+}
 

@@ -42,19 +42,19 @@ $line-lengths: (
 /// @access private
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are pure colors or the returned value of functions
-
-// this is a variable. A variable map!
-// scss-lint:disable ColorVariable
 $palettes: (
-	'gray':  (
+	'gray': (
 		'x-light': tint(rgb(229, 231, 234), 10%),
 		'light': rgb(229, 231, 234),
 		'base': rgb(151, 153, 156),
 		'dark': rgb(64, 68, 71),
 		'x-dark': shade(rgb(64, 68, 71), 10%),
 	),
+	'loading': (
+		'background': rgba(20, 20, 20, .8),
+	),
 	// 'disabled':(
-	// 	'text': rgb(0, 0, 0),
+	// 	'foreground': rgb(0, 0, 0),
 	// 	'background': rgb(0, 0, 0)
 	// ),
 	// 'anchor': (
@@ -65,7 +65,6 @@ $palettes: (
 	// 	'active': rgb(0, 0, 0),
 	// ),
 );
-// scss-lint:enable ColorVariable
 
 
 /// Container's maximum width

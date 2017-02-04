@@ -15,17 +15,18 @@
 ///
 /// @link http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030
 @mixin inline-block-wrapper($ie: 9) {
+	// sass-lint:disable-block no-duplicate-properties
 	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
 
 	font-size: 0;
 	font-family: $_inline-block-font-stack;
 	// Webkit: collapse white-space between units
-	letter-spacing: -0.31em;
+	letter-spacing: -.31em;
 	// reset IE < 8
 	letter-spacing: normal\9;
 	// IE < 8: collapse white-space between units
 	text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-	word-spacing: -0.43em\9;
+	word-spacing: -.43em\9;
 }
 
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
@@ -54,7 +55,7 @@
 	@include font-smoothing(true);
 
 	// font-awesome pixel perfection is at 14px and multiples of 14
-	// scss-lint:disable PropertyUnits
+	// sass-lint:disable-block PropertyUnits
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
@@ -65,6 +66,7 @@
 }
 
 @mixin font-smoothing($value: true) {
+	// sass-lint:disable-block no-vendor-prefixes
 	@if ($value == true) {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
@@ -76,28 +78,29 @@
 
 
 @mixin clearfix($ie: 8) {
-/**
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    contenteditable attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that are clearfixed.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-	&:before,
-	&:after {
-		content: ' '; /* 1 */
-		display: table; /* 2 */
+	/**
+	 * For modern browsers
+	 * 1. The space content is one way to avoid an Opera bug when the
+	 *    contenteditable attribute is included anywhere else in the document.
+	 *    Otherwise it causes space to appear at the top and bottom of elements
+	 *    that are clearfixed.
+	 * 2. The use of `table` rather than `block` is only necessary if using
+	 *    `:before` to contain the top-margins of child elements.
+	 */
+	&::before,
+	&::after {
+		/* 1 */
+		content: ' ';
+		/* 2 */
+		display: table;
 	}
 
-	&:after {
+	&::after {
 		clear: both;
 	}
 
 	@if ($ie <= 8) {
-	// old IE sucks
-	// scss-lint:disable PseudoElement PropertySpelling
+		// old IE sucks
 		zoom: 1\9;
 	}
 }
@@ -152,33 +155,33 @@
  * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
  */
 @mixin visuallyhidden {
-	// old IE sucks
-	// scss-lint:disable DuplicateProperty PropertyUnits
+	// sass-lint:disable-block no-duplicate-properties no-important property-units
 	border: 0 !important;
 	clip: rect(1px 1px 1px 1px) !important;
 	clip: rect(1px, 1px, 1px, 1px) !important;
 	clip-path: inset(50%) !important;
-	margin: -1px; // sass-lint:disable-line property-units
+	height: 1px !important;
+	margin: -1px;
 	overflow: hidden !important;
 	padding: 0 !important;
 	position: absolute !important;
 	white-space: nowrap !important;
-	width: 1px !important; // sass-lint:disable-line property-units
-	height: 1px !important; // sass-lint:disable-line property-units
+	width: 1px !important;
 }
 
 @mixin visuallyhidden-focusable {
+	// sass-lint:disable-block no-important
 	@include visuallyhidden;
 
 	&:active,
 	&:focus {
 		clip: auto !important;
 		clip-path: none !important;
+		height: auto !important;
 		margin: auto;
 		overflow: visible !important;
 		white-space: normal !important;
 		width: auto !important;
-		height: auto !important;
 	}
 }
 
@@ -187,7 +190,6 @@
 	@include font-smoothing(true);
 
 	// font-awesome pixel perfection is at 14px and multiples of 14
-	// scss-lint:disable PropertyUnits
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
@@ -284,20 +286,23 @@ $no-viewport: false !default;
 }
 
 @function _print-fallback($units) {
+	// sass-lint:disable-block indentation brace-style
 	@if (index($units, 'alpha') != null and $no-alpha == false) or
 		(index($units, 'calc') != null and $no-calc == false) or
 		(index($units, 'gradient') != null and $no-gradient == false) or
 		(index($units, 'rem') != null and $no-rem == false) or
-		(index($units, 'viewport') != null and $no-viewport == false) {
+		(index($units, 'viewport') != null and $no-viewport == false)
+	{
 		@return 'original-only';
 	} @elseif (index($units, 'alpha') != null and $no-alpha == true) or
-					(index($units, 'calc') != null and $no-calc == true) or
-					(index($units, 'gradient') != null and $no-gradient == true) or
-				(index($units, 'rem') != null and $no-rem == true) or
-					(index($units, 'viewport') != null and $no-viewport == true) {
-			@return 'fallback-only';
+			  (index($units, 'calc') != null and $no-calc == true) or
+			  (index($units, 'gradient') != null and $no-gradient == true) or
+			  (index($units, 'rem') != null and $no-rem == true) or
+			  (index($units, 'viewport') != null and $no-viewport == true)
+	{
+		@return 'fallback-only';
 	} @else {
-			@return 'both';
+		@return 'both';
 	}
 }
 
@@ -400,8 +405,8 @@ $no-viewport: false !default;
 	}
 
 	content: '';
-	width: 0;
 	height: 0;
+	width: 0;
 	z-index: 2;
 	border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color;
 
@@ -440,8 +445,8 @@ $no-viewport: false !default;
 @mixin debug-map($map) {
 	@at-root {
 		@debug-map {
-			// these properties are for debug only. They don't exist
-			// scss-lint:disable PropertySpelling SelectorFormat
+			// these properties are for debug only. They do not exist
+			// sass-lint:disable-block no-misspelled-properties
 			__toString__: inspect($map);
 			__length__: length($map);
 			__depth__: depth($map);
@@ -482,13 +487,13 @@ $no-viewport: false !default;
 
 	position: relative;
 
-	&:before {
+	&::before {
 		content: '';
 		float: left;
 		padding-top: ($h / $w * 100%);
 	}
 
-	&:after {
+	&::after {
 		clear: both;
 		content: '';
 		display: table;
