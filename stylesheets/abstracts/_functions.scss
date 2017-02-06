@@ -218,6 +218,14 @@
 			'focus': rgb(50, 152, 255),
 			'active': rgb(229, 0, 80),
 		),
+		'border': rgb(192, 192, 192),
+		'button': (
+			'base': rgb(225, 225, 225),
+			'focus': rgb(229, 241, 251),
+			'slider': rgb(102, 102, 102),
+			'submit': rgb(217, 83 79),
+			'reset': transparent,
+		),
 		'disabled': (
 			'foreground': rgb(109, 109, 109),
 			'background': rgb(240, 240, 240),
