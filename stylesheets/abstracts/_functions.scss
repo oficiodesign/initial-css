@@ -256,15 +256,15 @@
 	$color: map-get($default, $palette);
 
 	@if $tone != null {
-		@if type-of($color) == 'color' {
-			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There\'s only one color available for palette `#{$palette}`-> #{$color}';
+		@if type-of($color) == 'color' or $color == 'transparent' {
+			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one color available for palette `#{$palette}`-> #{$color}';
 		} @elseif not map-has-key($color, $tone) {
 			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$palette}`-> #{map-keys($color)}';
 		} @else {
 			@return map-get(map-get($default, $palette), $tone);
 		}
 	} @else {
-		@if type-of($color) == 'color' {
+		@if type-of($color) == 'color' or $color == 'transparent' {
 			@return $color;
 		} @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
 			@error '`palette` `#{$color}` misses `base` tone';
