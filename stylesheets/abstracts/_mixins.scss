@@ -524,7 +524,7 @@ $no-viewport: false !default;
 	} @else if unitless($font-size) {
 		@error 'the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given.';
 	} @else {
-		@error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.'
+		@error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.';
 	}
 
 	line-height: $min-line-height;
