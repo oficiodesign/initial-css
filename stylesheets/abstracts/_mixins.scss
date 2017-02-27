@@ -323,6 +323,8 @@ $no-viewport: false !default;
 /// @link https://gist.github.com/BenMorel/e9e34c08360ebbbd0634
 /// @link http://caniuse.com/#feat=viewport-units
 @mixin viewport-unit($property, $value) {
+	// sass-lint:disable-block indentation
+
 	#{$property}: $value;
 
 	$unit: unit($value);
