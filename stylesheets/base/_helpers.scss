@@ -23,8 +23,8 @@ keygen {
 	cursor: wait;
 	overflow: hidden;
 
-	> body:after,
-	&:not(html):after {
+	> body::after,
+	&:not(html)::after {
 		@include loading-bg;
 
 		content: '';
