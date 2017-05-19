@@ -153,6 +153,9 @@ form br {
 	opacity: 1;
 }
 
+:-ms-input-placeholder {
+	color: palette('placeholder');
+}
 
 /* buttons
 ---------------------------------------------------------------------------- */
