@@ -112,7 +112,7 @@ form br {
 :disabled,
 :readonly {
 	background: palette('disabled', 'background');
-	color: palette('disabled', 'text');
+	color: palette('disabled', 'foreground');
 }
 
 :disabled {
