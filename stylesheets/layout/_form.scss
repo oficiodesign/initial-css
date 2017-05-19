@@ -398,7 +398,8 @@ output {
 [type='search'] {
 	@extend %text-field-reset;
 
-	outline-offset: -2px; /* 1 */
+	/* 1 */
+	outline-offset: -2px;
 	/* 2 */
 	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 }
