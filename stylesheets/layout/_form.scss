@@ -198,6 +198,7 @@ form br {
 
 	&:hover,
 	&:focus {
+		background-color: palette('button', 'focus');
 	}
 
 	&:active {
