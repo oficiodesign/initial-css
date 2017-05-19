@@ -76,6 +76,7 @@ form br {
  * 1. Change the font styles in all browsers (opinionated).
  * 2. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  * 3. Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * 4. Allow setting the same size for all form fields.
  */
 %os-element-reset {
 	// sass-lint:disable-block property-sort-order
@@ -83,6 +84,8 @@ form br {
 	border-style: solid;
 	border-color: palette('border');
 	border-radius: 0;
+	/* 4 */
+	box-sizing: border-box;
 	color: inherit;
 	display: inline-block;
 	/* 1 */
