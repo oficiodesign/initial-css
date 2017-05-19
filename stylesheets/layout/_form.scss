@@ -164,6 +164,7 @@ form br {
  * 2. Improve usability and consistency of cursor style between image-type `input` and others.
  * 3. Address `overflow` set to `hidden` in IE 8/9/10. Corrects inner spacing displayed oddly in IE6/7
  * 4. Remove inner padding and border in Firefox 4+.
+ * 5. Consistent buttons background color for all browsers (opinionated).
  * @see  http://archivist.incutio.com/viewlist/css-discuss/98999
  * @see  http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  * @see  http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
@@ -174,6 +175,8 @@ form br {
 
 	/* 1 */
 	appearance: button;
+	/* 5 */
+	background-color: palette('button');
 	box-sizing: inherit;
 	/* 2 */
 	cursor: pointer;
