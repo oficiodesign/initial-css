@@ -165,6 +165,7 @@ form br {
  * 3. Address `overflow` set to `hidden` in IE 8/9/10. Corrects inner spacing displayed oddly in IE6/7
  * 4. Remove inner padding and border in Firefox 4+.
  * 5. Consistent buttons background color for all browsers (opinionated).
+ * 6. Consistent paddings.
  * @see  http://archivist.incutio.com/viewlist/css-discuss/98999
  * @see  http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  * @see  http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
@@ -182,6 +183,8 @@ form br {
 	cursor: pointer;
 	/* 3 */
 	overflow: visible;
+	/* 6 */
+	padding: 1px 6px; // sass-lint:disable-line property-units
 	text-indent: 0;
 	white-space: inherit;
 	/* 3 */
