@@ -283,6 +283,7 @@ li label {
 	height: auto;
 	/* 2 */
 	padding: 0;
+	vertical-align: middle;
 	width: auto;
 
 	&:hover {
@@ -294,13 +295,6 @@ li label {
 	}
 }
 
-li input {
-	display: inline;
-	vertical-align: text-bottom;
-}
-
-	vertical-align: text-bottom;
-
 [type='radio'] {
 	&:indeterminate {
 	}
@@ -308,8 +302,6 @@ li input {
 	&:checked {
 	}
 }
-
-	vertical-align: bottom;
 
 [type='checkbox'] {
 	&:checked {
