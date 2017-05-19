@@ -80,6 +80,8 @@ form br {
 %os-element-reset {
 	// sass-lint:disable-block property-sort-order
 	border-width: 1px;
+	border-style: solid;
+	border-color: palette('border');
 	border-radius: 0;
 	color: inherit;
 	display: inline-block;
