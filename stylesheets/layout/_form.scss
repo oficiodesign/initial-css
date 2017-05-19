@@ -516,15 +516,19 @@ option {
 }
 
 /**
- * 1. patch to correct an problem in Mac OS only not letting stylize combo boxes
  * @see https://github.com/necolas/normalize.css/issues/579#issue-148022816
+ * 1. patch to correct an problem in Mac OS only not letting stylize combo boxes
+ * 2. Revert to default for Edge
  */
 select {
-	-webkit-appearance: menulist-button; /* 1. Mac Aqua off */
+	// sass-lint:disable-block property-sort-order
+	/* 1. Mac Aqua off */
+	-webkit-appearance: menulist-button; // sass-lint:disable-line no-vendor-prefixes
 	box-sizing: content-box;
 
-	@supports (-ms-accelerator: true) { /* 1 */
-		-webkit-appearance: menulist; /* Revert to default for Edge */
+	@supports (-ms-accelerator: true) {
+		/* 2 */
+		-webkit-appearance: menulist; // sass-lint:disable-line no-vendor-prefixes
 	}
 }
 
