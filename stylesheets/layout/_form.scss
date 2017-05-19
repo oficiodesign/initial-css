@@ -77,6 +77,7 @@ form br {
  * 2. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  * 3. Address inconsistent `text-transform` inheritance for `button` and `select`.
  * 4. Allow setting the same size for all form fields.
+ * 5. Add a focus outline for some fields only (opinionated).
  */
 %os-element-reset {
 	// sass-lint:disable-block property-sort-order
@@ -111,6 +112,8 @@ form br {
 	}
 
 	&:focus {
+		/* 5 */
+		outline: 1px dotted palette('black');
 	}
 }
 
