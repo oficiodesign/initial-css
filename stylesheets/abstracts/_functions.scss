@@ -223,13 +223,13 @@
 		'button': (
 			'base': rgb(225, 225, 225),
 			'focus': rgb(229, 241, 251),
-			'slider': rgb(102, 102, 102),
+			'slider': hsl(0, 0%, 40%),
 			'submit': rgb(217, 83, 79),
 			'reset': transparent,
 		),
 		'disabled': (
-			'foreground': rgb(109, 109, 109),
-			'background': rgb(240, 240, 240),
+			'foreground': hsl(0, 0%, 42%),
+			'background': hsl(0, 0%, 94%),
 		),
 		'label': (
 			'default': rgb(119, 119, 119),
@@ -243,13 +243,13 @@
 			'foreground': rgb(51, 51, 51),
 			'background': rgb(215, 255, 90),
 		),
-		'quotes': rgb(88, 88, 88),
-		'placeholder': rgb(88, 88, 88),
+		'quotes': hsl(0, 0%, 34%),
+		'placeholder': hsl(0, 0%, 34%),
 		'selection': rgb(20, 105, 140),
 		'tap-highlight': rgb(255, 94, 153),
 		'target-highlight': rgb(255, 255, 102),
 		'text': (
-			'dark': rgb(34, 34, 34),
+			'dark': hsl(0, 0%, 13%),
 			'light': rgb(229, 231, 234),
 		),
 	);
