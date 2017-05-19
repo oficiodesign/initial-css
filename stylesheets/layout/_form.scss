@@ -191,21 +191,21 @@ form br {
  * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
 
-html input[type='button'] {  // sass-lint:disable-line no-qualifying-elements
+html [type='button'] {  // sass-lint:disable-line no-qualifying-elements
 	@extend %button-reset;
 }
 
 button,
 [role='button'],
-input[type='button'] {
+[type='button'] {
 	@extend %button-reset;
 }
 
-input[type='reset'] {
+[type='reset'] {
 	@extend %button-reset;
 }
 
-input[type='submit'] {
+[type='submit'] {
 	@extend %button-reset;
 }
 
@@ -254,8 +254,8 @@ li label {
  * 2. Remove excess padding in IE 8/9/10.
  * 3. Reset height (applied by a rule above).
  */
-input[type='checkbox'],
-input[type='radio'] {
+[type='checkbox'],
+[type='radio'] {
 	/* 1 */
 	box-sizing: border-box;
 	cursor: pointer;
@@ -277,9 +277,9 @@ li input {
 	vertical-align: text-bottom;
 }
 
-input[type='radio'] {
 	vertical-align: text-bottom;
 
+[type='radio'] {
 	&:indeterminate {
 	}
 
@@ -287,9 +287,9 @@ input[type='radio'] {
 	}
 }
 
-input[type='checkbox'] {
 	vertical-align: bottom;
 
+[type='checkbox'] {
 	&:checked {
 	}
 }
@@ -339,14 +339,14 @@ output {
 	@extend %text-field-reset;
 }
 
-input[type='email'] {
+[type='email'] {
 	@extend %text-field-reset;
 }
 
-input[type='email'][multiple] {
+[type='email'][multiple] {
 }
 
-input[type='number'] {
+[type='number'] {
 	@extend %text-field-reset;
 }
 
@@ -356,12 +356,12 @@ input[type='number'] {
  * decrement button to change from `default` to `text`.
  */
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
 	height: auto;
 }
 
-input[type='password'] {
+[type='password'] {
 	@extend %text-field-reset;
 }
 
@@ -370,7 +370,7 @@ input[type='password'] {
  *
  * 1. Correct the outline style in Safari.
  */
-input[type='search'] {
+[type='search'] {
 	@extend %text-field-reset;
 
 	outline-offset: -2px; /* 1 */
@@ -381,47 +381,47 @@ input[type='search'] {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-decoration {
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
 	-webkit-appearance: none;  // sass-lint:disable-line no-vendor-prefixes
 }
 
-input[type='tel'] {
+[type='tel'] {
 	@extend %text-field-reset;
 }
 
-input[type='text'] {
+[type='text'] {
 	@extend %text-field-reset;
 }
 
-input[type='url'] {
+[type='url'] {
 	@extend %text-field-reset;
 }
 
 /* problematic inputs
 ============================================================================ */
-input[type='date'] {
+[type='date'] {
 }
 
-input[type='month'] {
+[type='month'] {
 }
 
-input[type='week'] {
+[type='week'] {
 }
 
-input[type='time'] {
+[type='time'] {
 }
 
-input[type='datetime-local'] {
+[type='datetime-local'] {
 }
 
 /* impossible inputs
 ============================================================================ */
 
-input[type='file'],
 input[type='range'],
-input[type='color'],
-input[type='image'] {
+[type='file'],
+[type='color'],
+[type='image'] {
 	cursor: pointer;
 }
 
