@@ -393,11 +393,14 @@ output {
  * Jakob Nielsen survey suggests that 27 characters could be good for search fields. They said that around 9 in 10 queries will fit in that space.
  *
  * 1. Correct the outline style in Safari.
+ * 2. iPhone bug displaying search input with rounded angles before entering into the field
  */
 [type='search'] {
 	@extend %text-field-reset;
 
 	outline-offset: -2px; /* 1 */
+	/* 2 */
+	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 }
 
 /**
