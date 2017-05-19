@@ -241,68 +241,64 @@ $no-gradient: false !default;
 $no-rem: false !default;
 $no-viewport: false !default;
 
+/// Helper to conditionally output css values
+/// @author Robson Sobral
+/// @param {String} $property - Property name
+/// @param {List} $values - Default values
+/// @param {List} $fallbacks - Non required fallback values
 @mixin fallback($property, $values, $fallbacks: null) {
-	$fallback-values: ();
+	$fallback-values: if($fallbacks == null, (), $fallbacks);
 	$fallback-units: ();
 	$i: 1;
 
 	@each $value in $values {
 		@if type-of($value) == number {
 			@if str-index(unit($value), 'v') != null {
+				@if $fallbacks == null {
+					@error 'fallback values, the 3rd parameter, are required for viewport units';
+				}
 				$fallback-units: join($fallback-units, 'viewport');
 			} @else {
 				$fallback-units: join($fallback-units, unit($value));
 			}
+		} @elseif $fallbacks == null {
+			@error 'fallback values, the 3rd parameter, are required for everything except `rem` numbers';
 		} @elseif str-index($value, 'calc') {
 			$fallback-units: join($fallback-units, 'calc');
 		} @elseif str-index($value, 'gradient') {
 			$fallback-units: join($fallback-units, 'gradient');
 		}
 
-		@if $fallbacks {
-			@if length($fallbacks) != length($values) {
-				@error 'Sorry, but `#{$values}` and `#{$fallbacks}` on property `#{$property}` should have the same length or only use `rem` units';
+		@if $fallbacks == null {
+			@if type-of($value) == number and unit($value) == 'rem' {
+				$fallback-values: join($fallback-values, $value / 1rem * 16px);
 			} @else {
-				$fallback: nth($fallbacks, $i);
-				$fallback-values: join($fallback-values, $fallback);
+				$fallback-values: join($fallback-values, $value);
 			}
-		} @elseif type-of($value) == number and unit($value) == 'rem' {
-			$fallback-values: join($fallback-values, $value / 1rem * 16px);
-		} @else {
-			$fallback-values: join($fallback-values, $value);
 		}
+
 		$i: $i + 1;
 	}
 
 	$print-fallback: _print-fallback($fallback-units);
 
-	@if $print-fallback != 'original-only' {
+	// sass-lint:disable-block indentation brace-style
+	@if (index($fallback-units, 'alpha') != null and $no-alpha != false) or
+	          (index($fallback-units, 'calc') != null and $no-calc != false) or
+	          (index($fallback-units, 'gradient') != null and $no-gradient != false) or
+	          (index($fallback-units, 'rem') != null and $no-rem != false) or
+	          (index($fallback-units, 'viewport') != null and $no-viewport != false)
+	{
 		#{$property}: #{$fallback-values};
 	}
 
-	@if $print-fallback != 'fallback-only' {
+	@if (index($fallback-units, 'alpha') != null and $no-alpha != true) or
+	    (index($fallback-units, 'calc') != null and $no-calc != true) or
+	    (index($fallback-units, 'gradient') != null and $no-gradient != true) or
+	    (index($fallback-units, 'rem') != null and $no-rem != true) or
+	    (index($fallback-units, 'viewport') != null and $no-viewport != true)
+	{
 		#{$property}: #{$values};
-	}
-}
-
-@function _print-fallback($units) {
-	// sass-lint:disable-block indentation brace-style
-	@if (index($units, 'alpha') != null and $no-alpha == false) or
-		(index($units, 'calc') != null and $no-calc == false) or
-		(index($units, 'gradient') != null and $no-gradient == false) or
-		(index($units, 'rem') != null and $no-rem == false) or
-		(index($units, 'viewport') != null and $no-viewport == false)
-	{
-		@return 'original-only';
-	} @elseif (index($units, 'alpha') != null and $no-alpha == true) or
-			  (index($units, 'calc') != null and $no-calc == true) or
-			  (index($units, 'gradient') != null and $no-gradient == true) or
-			  (index($units, 'rem') != null and $no-rem == true) or
-			  (index($units, 'viewport') != null and $no-viewport == true)
-	{
-		@return 'fallback-only';
-	} @else {
-		@return 'both';
 	}
 }
 
