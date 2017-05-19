@@ -97,7 +97,7 @@ form br {
 	outline: 0;
 	overflow: visible;
 	/* 2 */
-	padding: 0;
+	padding: 1px; // sass-lint:disable-line property-units
 	text-align: inherit;
 	/* 3 */
 	text-transform: inherit;
