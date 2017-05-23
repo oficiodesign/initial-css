@@ -69,7 +69,9 @@ rules:
     - 1
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
-  mixins-before-declarations: 1
+  mixins-before-declarations:
+    - 1
+    - exclude: ['breakpoint', 'media', 'mq', 'on-event']
   nesting-depth:
     - 1
     - max-depth: 3
