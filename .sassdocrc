@@ -1,0 +1,15 @@
+exclude:
+  - ./css/*
+  - ./stylesheets/vendor/*
+groups:
+  helpers: Helpers
+  font-stacks: Font-stacks
+package:
+  title: Initial CSS
+  name: initial-css
+  version: 0.1
+  license: your project’s license
+  homepage: URL to your project’s homepage
+  description: css boilerplate and collection of helpers for SASS and CSS
+strict: true
+verbose: true
