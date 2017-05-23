@@ -262,16 +262,16 @@
 	}
 
 	@if not map-has-key($default, $palette) {
-		@error 'unknown palette sent to `palette` function: `#{$palette}`. Available palette-> #{map-keys($default)}';
+		@error 'unknown palette sent to `palette` function: `#{$palette}`. Available palette-> `#{map-keys($default)}`';
 	}
 
 	$color: map-get($default, $palette);
 
 	@if $tone != null {
 		@if type-of($color) == 'color' or $color == 'transparent' {
-			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one color available for palette `#{$palette}`-> #{$color}';
+			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one color available for palette `#{$palette}`-> `#{$color}`';
 		} @elseif not map-has-key($color, $tone) {
-			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$palette}`-> #{map-keys($color)}';
+			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$palette}`-> `#{map-keys($color)}`';
 		} @else {
 			@return map-get(map-get($default, $palette), $tone);
 		}
