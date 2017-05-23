@@ -372,25 +372,37 @@ del {
 
 /* quotes
 ============================================================================ */
-/**
- * Blockquote problems and solutions
- * @see http://oli.jp/2011/blockquote/
- */
-/// @group components
 ///
-/// @example markup - Clamp function
+/// Blockquote problems and solutions
+///
+/// @group components
+/// @see palette
+/// @source http://oli.jp/2011/blockquote/
+///
+/// @example markup
 ///   <blockquote>
-///       <p>“To teach how to live without certainty, and yet without being
+///       <p>To teach how to live without certainty, and yet without being
 ///        paralyzed by hesitation, is perhaps the chief thing that philosophy,
-///        in our age, can still do for those who study it.”</p>
+///        in our age, can still do for those who study it.</p>
 ///       <footer>
 ///           <p>Bertrand Russell,
 ///           <cite>A History of Western Philosophy</cite></p>
 ///       </footer>
 ///   </blockquote>
 ///
-/// @see http://oli.jp/2011/blockquote/
-///
+
+blockquote {
+}
+
+blockquote > p {
+	&::before {
+
+	}
+
+	&:last-of-type::after {
+
+	}
+}
 
 q,
 blockquote {
