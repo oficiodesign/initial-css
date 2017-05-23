@@ -4,30 +4,41 @@
 
 /* CLASSES
 ============================================================================ */
-@mixin loading-bg {
+/// Add a loading background.
+///
+/// Already applied to `embed`, `img`, `input`, `output`, `keygen`, `textarea`.
+///
+/// @author Sobral
+/// @group helpers
+/// @example
+/// 	.loading { /* any element which can be a parent */
+///			@extend %loading-bg;
+/// 	}
+///
+%loading-bg {
+	background-image: url($base-url + 'loading.svg');
 	background-position: 50% 50%;
+	background-repeat: no-repeat;
 	background-color: palette('loading', 'background');
 }
 
-embed,
-img,
-input,
-keygen {
-	&.loading {
-		@include loading-bg;
-	}
-}
-
-.loading,
-.waiting {
+/// Add a loading pseudo element over the element content
+///
+/// `.loading` and `.waiting` are already available.
+///
+/// @author Sobral
+/// @group helpers
+/// @example
+/// 	.loading { /* any element other than `html` */
+/// 		@extend %loading-el;
+/// 	}
+///
+%loading-el {
 	overflow: hidden;
 
 	cursor: wait;
 
-	> body::after,
-	&:not(html)::after {
-		@include loading-bg;
-
+	&::after {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -37,5 +48,28 @@ keygen {
 		z-index: layer('modal');
 
 		content: '';
+	}
+}
+
+.loading,
+.waiting {
+	> body,
+	&:not(html) {
+		@extend %loading-bg;
+		@extend %loading-el;
+	}
+}
+
+embed,
+img,
+input,
+output,
+keygen,
+textarea {
+	&.loading,
+	&.waiting {
+		@extend %loading-bg;
+
+		background-size: auto;
 	}
 }
