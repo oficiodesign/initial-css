@@ -42,7 +42,7 @@ span.amp {// sass-lint:disable-line no-qualifying-elements
 	@extend %italic-overflow;
 
 	font-size: 2em;
-	line-height: .25;
+	line-height: 0.25;
 	font-family: $ampersand-font-stack;
 	vertical-align: middle;
 }
@@ -147,7 +147,7 @@ article fieldset > p:first-child {
 abbr {
 	@extend %abbr-title;
 
-	letter-spacing: .1em;
+	letter-spacing: 0.1em;
 }
 
 /**
@@ -224,11 +224,11 @@ sup {
 }
 
 sub {
-	bottom: -.25em;
+	bottom: -0.25em;
 }
 
 sup {
-	top: -.5em;
+	top: -0.5em;
 }
 
 time {
