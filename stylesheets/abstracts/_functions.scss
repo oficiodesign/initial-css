@@ -204,7 +204,6 @@
 /// @access public
 /// @param {String} $palette - Palette name
 /// @param {String} $tone - tone name
-/// @require {String} $palette
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
 @function palette($palette, $tone: null) {
 	$default: (
