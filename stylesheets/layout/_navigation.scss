@@ -8,15 +8,16 @@ menu ul,
 menu ol,
 nav ul,
 nav ol {
-	list-style: none;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+
+	list-style: none;
 }
 
 menu li,
 nav li {
-	margin: 0;
 	padding: 0;
+	margin: 0;
 
 	&::before {
 		content: none;

@@ -34,15 +34,15 @@
 	font-size: $font-size;
 	font-family: $text-font-stack;
 	letter-spacing: normal;
+	word-spacing: normal;
 	text-rendering: auto;
 	vertical-align: unquote($align);
-	word-spacing: normal;
 	zoom: 1;
 }
 
 @mixin table-layout-wrapper {
-	border-collapse: collapse;
 	display: table;
+	border-collapse: collapse;
 }
 
 @mixin table-layout-item {
@@ -60,9 +60,9 @@
 	font-variant: normal;
 	font-weight: normal;
 	font-size: 14px; // sass-lint:disable-line property-units
-	//  line-height: 1;
-	speak: none;
+	// line-height: 1;
 	text-transform: none;
+	speak: none;
 }
 
 @mixin font-smoothing($value: true) {
@@ -89,10 +89,10 @@
 	 */
 	&::before,
 	&::after {
-		/* 1 */
-		content: ' ';
 		/* 2 */
 		display: table;
+		/* 1 */
+		content: ' ';
 	}
 
 	&::after {
@@ -110,8 +110,8 @@
 	&,
 	&:link,
 	&:visited {
-		color: inherit;
 		text-decoration: inherit;
+		color: inherit;
 
 		@content;
 	}
@@ -156,17 +156,17 @@
  */
 @mixin visuallyhidden {
 	// sass-lint:disable-block no-duplicate-properties no-important property-units
-	border: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px;
+	overflow: hidden !important;
 	clip: rect(1px 1px 1px 1px) !important;
 	clip: rect(1px, 1px, 1px, 1px) !important;
 	clip-path: inset(50%) !important;
-	height: 1px !important;
-	margin: -1px;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
 	white-space: nowrap !important;
-	width: 1px !important;
+	border: 0 !important;
 }
 
 @mixin visuallyhidden-focusable {
@@ -175,13 +175,13 @@
 
 	&:active,
 	&:focus {
-		clip: auto !important;
-		clip-path: none !important;
+		width: auto !important;
 		height: auto !important;
 		margin: auto;
 		overflow: visible !important;
+		clip: auto !important;
+		clip-path: none !important;
 		white-space: normal !important;
-		width: auto !important;
 	}
 }
 
@@ -195,8 +195,8 @@
 	font-weight: normal;
 	font-size: 14px; // sass-lint:disable-line property-units
 	line-height: 1;
-	speak: none;
 	text-transform: none;
+	speak: none;
 }
 
 
@@ -214,24 +214,24 @@
  *    See: https://code.google.com/p/chromium/issues/detail?id=457146
  */
 @mixin hide-text {
-	overflow: hidden;
 	padding: 0; /* 1 */
+	overflow: hidden;
 	text-indent: 101%;
 	white-space: nowrap;
 }
 
 @mixin image-replacement ($overflow: true) {
 	@if $overflow {
-		background-repeat: no-repeat;
-		direction: ltr;
 		overflow: hidden;
 		text-indent: 100%;
 		white-space: nowrap;
+		background-repeat: no-repeat;
+		direction: ltr;
 	} @else {
-		border: 0;
-		color: transparent;
 		font: 0/0 a;
 		text-shadow: none;
+		color: transparent;
+		border: 0;
 	}
 }
 
@@ -402,11 +402,10 @@ $no-viewport: false !default;
 		@error 'Direction must be either `top`, `right`, `bottom` or `left`.';
 	}
 
-	content: '';
-	height: 0;
-	width: 0;
 	z-index: 2;
-	border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color;
+	width: 0;
+	height: 0;
+	border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // sass-lint:disable-line property-sort-order
 
 	$perpendicular-borders: $size solid transparent;
 
@@ -417,6 +416,8 @@ $no-viewport: false !default;
 		border-top: $perpendicular-borders;
 		border-bottom: $perpendicular-borders;
 	}
+
+	content: '';
 }
 
 
@@ -486,15 +487,15 @@ $no-viewport: false !default;
 	position: relative;
 
 	&::before {
-		content: '';
 		float: left;
 		padding-top: ($h / $w * 100%);
+		content: '';
 	}
 
 	&::after {
 		clear: both;
-		content: '';
 		display: table;
+		content: '';
 	}
 }
 

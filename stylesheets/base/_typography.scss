@@ -6,6 +6,7 @@
 ::before,
 ::after {
 	line-height: inherit;
+
 	text-decoration: inherit; /* 1 */
 	vertical-align: inherit; /* 2 */
 }
@@ -14,10 +15,11 @@
  * Basic typography style for copy text
  */
 body {
-	color: palette('text', 'dark');
 	font-size: $body-font-size;
 	line-height: $line-height;
 	font-family: $text-font-stack;
+
+	color: palette('text', 'dark');
 }
 
 /// Special cases font styles
@@ -28,22 +30,24 @@ body {
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
 ///
 %italic-overflow {
-	font-style: italic;
 	overflow: visible;
+
+	font-style: italic;
 }
 
-span.alt {// sass-lint:disable-line no-qualifying-elements
+span.alt { // sass-lint:disable-line no-qualifying-elements
 	@extend %italic-overflow;
 
 	font-family: $alt-font-stack;
 }
 
-span.amp {// sass-lint:disable-line no-qualifying-elements
+span.amp { // sass-lint:disable-line no-qualifying-elements
 	@extend %italic-overflow;
 
 	font-size: 2em;
 	line-height: 0.25;
 	font-family: $ampersand-font-stack;
+
 	vertical-align: middle;
 }
 // sass-lint:enable no-qualifying-elements
@@ -63,9 +67,10 @@ h5,
 h6,
 legend,
 caption {
-	break-after: avoid;
 	font-family: $title-font-stack;
 	font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+
+	break-after: avoid;
 	page-break-after: avoid;
 }
 
@@ -78,22 +83,24 @@ h6 a,
 legend a,
 caption a,
 dt a {
-	color: inherit;
 	text-decoration: inherit;
 
+	color: inherit;
+
 	&:link {
-		color: inherit;
 		text-decoration: inherit;
+
+		color: inherit;
 	}
 }
 
 p {
+	padding: 0;
 	/*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
 		-ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
 		-webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
 		font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;*/
 	margin: 0;
-	padding: 0;
 }
 
 /**
@@ -116,6 +123,7 @@ article h6 + p,
 article legend + p,
 article fieldset > p:first-child {
 	margin-top: 0;
+
 	text-indent: 0;
 }
 
@@ -132,14 +140,19 @@ article fieldset > p:first-child {
  */
 
 %abbr-title {
-	&[title] { /* 1 */
-		border-bottom: 1px dotted;
-		cursor: help;
+	&[title] {
 		text-decoration: none;
 
-		@supports (text-decoration: dotted underline) {/* 2 */
-			border-bottom: inherit;
+		cursor: help;
+		/* 1 */
+
+		border-bottom: 1px dotted;
+
+		@supports (text-decoration: dotted underline) {
 			text-decoration: dotted underline;
+			/* 2 */
+
+			border-bottom: inherit;
 		}
 	}
 }
@@ -168,6 +181,7 @@ dfn {
  * @see https://github.com/necolas/normalize.css/pull/342
  * @see https://github.com/necolas/normalize.css/pull/342#issuecomment-173801037
  */
+
 // sass-lint:disable no-mergeable-selectors
 b,
 strong {
@@ -194,8 +208,9 @@ i[lang] {
  */
 
 mark {
-	background: palette('mark', 'background');
 	color: palette('mark', 'foreground');
+
+	background: palette('mark', 'background');
 }
 
 meter {
@@ -216,10 +231,11 @@ small {
  */
 sub,
 sup {
-	/* 1 */
-	font-size: 83.3333%;
-	line-height: 0;
 	position: relative;
+
+	font-size: 83.3333%; /* 1 */
+	line-height: 0;
+
 	vertical-align: baseline;
 }
 
@@ -253,10 +269,8 @@ kbd,
 pre,
 samp,
 var {
-	/* 1 */
-	font-size: 1em;
-	/* 2 */
-	font-family: $code-font-stack, monospace, monospace;
+	font-size: 1em; /* 1 */
+	font-family: $code-font-stack, monospace, monospace; /* 2 */
 }
 
 code {
@@ -272,13 +286,15 @@ kbd {
  */
 pre {
 	// sass-lint:disable-block no-duplicate-properties
-	margin: 0;
-	overflow: auto;
 	padding: 0;
+	margin: 0;
+
+	overflow: auto;
+
+	word-wrap: break-word; /* IE */
 	white-space: pre; /* CSS2 */
 	white-space: pre-wrap; /* CSS 2.1 */
 	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-	word-wrap: break-word; /* IE */
 }
 
 samp {
@@ -302,9 +318,11 @@ s {
 
 %updated {
 	&::before {
-		content: '[update] ';
 		font-weight: bold;
+
 		text-decoration: none;
+
+		content: '[update] ';
 	}
 
 	&[datetime]::before {
@@ -312,8 +330,9 @@ s {
 	}
 
 	&::after {
-		content: ' [/update] ';
 		text-decoration: none;
+
+		content: ' [/update] ';
 	}
 }
 
@@ -375,8 +394,9 @@ del {
 
 q,
 blockquote {
-	color: palette('quotes');
 	font-style: italic;
+
+	color: palette('quotes');
 }
 
 cite {
@@ -403,14 +423,17 @@ blockquote li {
 	font-size: 1em;
 }
 
-blockquote.verse {// sass-lint:disable-line no-qualifying-elements
+blockquote.verse { // sass-lint:disable-line no-qualifying-elements
 	text-align: center;
 }
 
-blockquote.verse p {// sass-lint:disable-line no-qualifying-elements
+blockquote.verse p { // sass-lint:disable-line no-qualifying-elements
 	display: inline-block;
+
+	width: auto;
+
 	margin-right: auto;
 	margin-left: auto;
+
 	text-align: left;
-	width: auto;
 }
