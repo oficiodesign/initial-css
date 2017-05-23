@@ -182,7 +182,7 @@
 /// @type Map
 /// @prop {String} key - Layer’s name
 /// @prop {Number} value - Z value mapped to the key
-	$default: (
+	$default-layers: (
 		'modal': 5000,
 		'dropdown': 4000,
 		'default': 1,
@@ -190,14 +190,14 @@
 	);
 
 	@if variable-exists('layers') and type-of($layers) == 'map' {
-		$default: map-merge($default, $layers);
+		$default-layers: map-merge($default-layers, $layers);
 	}
 
-	@if not map-has-key($default, $layer) {
-		@error 'unknown value sent to `layer` function-> #{$layer}. Availabe values-> `#{map-keys($default)}`';
+	@if not map-has-key($default-layers, $layer) {
+		@error 'unknown value sent to `layer` function-> #{$layer}. Availabe values-> `#{map-keys($default-layers)}`';
 	}
 
-	@return map-get($default, $layer);
+	@return map-get($default-layers, $layer);
 }
 
 
