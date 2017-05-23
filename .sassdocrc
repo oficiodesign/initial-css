@@ -4,6 +4,7 @@ exclude:
 groups:
   helpers: Helpers
   font-stacks: Font-stacks
+  components: CSS components
 package:
   title: Initial CSS
   name: initial-css
