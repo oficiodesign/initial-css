@@ -2,9 +2,11 @@ exclude:
   - ./css/*
   - ./stylesheets/vendor/*
 groups:
-  helpers: Helpers
-  font-stacks: Font-stacks
   components: CSS components
+  font-stacks: Font-stacks
+  hacks: Dirty Hacks & Fixes
+  helpers: Helpers
+  normalizer:
 package:
   title: Initial CSS
   name: initial-css
