@@ -448,11 +448,11 @@ $no-viewport: false !default;
 
 @mixin aspect-ratio ($ratio) {
 	@if type-of($ratio) != list {
-		@error '`aspect-ratio` function expecting a list for $ratio; #{type-of($ratio)} given.';
+		@error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
 	} @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
 		@error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
 	} @elseif length($ratio) < 2 and length($ratio) > 3 {
-		@error '`aspect-ratio` function expecting a list with 2 or 3 items for $ratio; #{length($ratio)} given.';
+		@error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{length($ratio)}` given.';
 	}
 
 	$w: nth($ratio, 1);
