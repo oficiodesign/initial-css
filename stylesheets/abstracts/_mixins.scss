@@ -270,10 +270,10 @@ $no-viewport: false !default;
 
 	// sass-lint:disable-block indentation brace-style
 	@if (index($fallback-units, 'alpha') != null and $no-alpha != false) or
-	          (index($fallback-units, 'calc') != null and $no-calc != false) or
-	          (index($fallback-units, 'gradient') != null and $no-gradient != false) or
-	          (index($fallback-units, 'rem') != null and $no-rem != false) or
-	          (index($fallback-units, 'viewport') != null and $no-viewport != false)
+	    (index($fallback-units, 'calc') != null and $no-calc != false) or
+	    (index($fallback-units, 'gradient') != null and $no-gradient != false) or
+	    (index($fallback-units, 'rem') != null and $no-rem != false) or
+	    (index($fallback-units, 'viewport') != null and $no-viewport != false)
 	{
 		#{$property}: #{$fallback-values};
 	}
