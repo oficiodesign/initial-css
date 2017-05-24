@@ -42,7 +42,7 @@ $line-lengths: (
 /// @access private
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are pure colors or the returned value of functions
-$palettes: (
+$palette: (
 	'gray': (
 		'x-light': tint(rgb(229, 231, 234), 10%),
 		'light': rgb(229, 231, 234),

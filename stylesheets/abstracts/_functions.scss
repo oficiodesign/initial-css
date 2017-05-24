@@ -257,8 +257,8 @@
 		),
 	);
 
-	@if variable-exists('palettes') and type-of($palettes) == 'map' {
-		$default-palette: map-merge($default-palette, $palettes);
+	@if variable-exists('palette') and type-of($palette) == 'map' {
+		$default-palette: map-merge($default-palette, $palette);
 	}
 
 	@if not map-has-key($default-palette, $color-name) {
