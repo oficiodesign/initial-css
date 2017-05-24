@@ -186,20 +186,6 @@
 }
 
 
-@mixin icon-font {
-	@include font-smoothing(true);
-
-	// font-awesome pixel perfection is at 14px and multiples of 14
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	font-size: 14px; // sass-lint:disable-line property-units
-	line-height: 1;
-	text-transform: none;
-	speak: none;
-}
-
-
 /// Helper class to truncate and add ellipsis to a string too long for it to fit
 /// on a single line.
 @mixin ellipsis {
