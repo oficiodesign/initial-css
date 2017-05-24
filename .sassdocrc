@@ -3,6 +3,7 @@ exclude:
   - ./stylesheets/vendor/*
 groups:
   components: CSS components
+  config: Configuration variables and maps
   font-stacks: Font-stacks
   hacks: Dirty Hacks & Fixes
   helpers: Helpers
