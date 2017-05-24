@@ -202,11 +202,11 @@
 
 
 /// @access public
-/// @param {String} $palette - Palette name
+/// @param {String} $color-name - Palette name
 /// @param {String} $tone - tone name
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
-@function palette($palette, $tone: null) {
-	$default: (
+@function palette($color-name, $tone: null) {
+	$default-palette: (
 		'white': rgb(255, 255, 255),
 		'black': rgb(0, 0, 0),
 		'debug': rgb(255, 0, 0),
@@ -258,22 +258,22 @@
 	);
 
 	@if variable-exists('palettes') and type-of($palettes) == 'map' {
-		$default: map-merge($default, $palettes);
+		$default-palette: map-merge($default-palette, $palettes);
 	}
 
-	@if not map-has-key($default, $palette) {
-		@error 'unknown palette sent to `palette` function: `#{$palette}`. Available palette-> `#{map-keys($default)}`';
+	@if not map-has-key($default-palette, $color-name) {
+		@error 'unknown color sent to `palette` function: `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
 	}
 
-	$color: map-get($default, $palette);
+	$color: map-get($default-palette, $color-name);
 
 	@if $tone != null {
 		@if type-of($color) == 'color' or $color == 'transparent' {
-			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one color available for palette `#{$palette}`-> `#{$color}`';
+			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one tone available for color `#{$color-name}`-> `#{$color}`';
 		} @elseif not map-has-key($color, $tone) {
-			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$palette}`-> `#{map-keys($color)}`';
+			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$color-name}`-> `#{map-keys($color)}`';
 		} @else {
-			@return map-get(map-get($default, $palette), $tone);
+			@return map-get(map-get($default-palette, $color-name), $tone);
 		}
 	} @else {
 		@if type-of($color) == 'color' or $color == 'transparent' {
