@@ -192,7 +192,7 @@ rules:
       - 'font-smoothing'
       - 'osx-font-smoothing'
       - '-webkit-font-smoothing'
-      - 'moz-osx-font-smoothing'
+      - '-moz-osx-font-smoothing'
       - 'letter-spacing'
       - 'word-spacing'
 
