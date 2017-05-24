@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/linux,macos,node,sublimetext,windows
 
 ### Linux ###
@@ -145,3 +144,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,macos,node,sublimetext,windows
+
+sassdoc/
