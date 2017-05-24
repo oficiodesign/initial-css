@@ -20,33 +20,40 @@
 
 	font-size: 0;
 	font-family: $_inline-block-font-stack;
-	// Webkit: collapse white-space between units
+	/* Webkit: collapse white-space between units */
 	letter-spacing: -0.31em;
-	// reset IE < 8
+	/* reset IE < 8 */
 	letter-spacing: normal\9;
-	// IE < 8: collapse white-space between units
+	/* IE < 8: collapse white-space between units */
 	word-spacing: -0.43em\9;
-	text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+
+	/* Webkit: fixes text-rendering: optimizeLegibility */
+	text-rendering: optimizespeed;
 }
 
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
 	display: inline-block;
+
 	font-size: $font-size;
 	font-family: $text-font-stack;
 	letter-spacing: normal;
 	word-spacing: normal;
+
 	text-rendering: auto;
 	vertical-align: unquote($align);
+
 	zoom: 1;
 }
 
 @mixin table-layout-wrapper {
 	display: table;
+
 	border-collapse: collapse;
 }
 
 @mixin table-layout-item {
 	display: table-cell;
+
 	vertical-align: top;
 }
 
@@ -54,14 +61,15 @@
 @mixin icon-font {
 	@include font-smoothing(true);
 
-	// font-awesome pixel perfection is at 14px and multiples of 14
-	// sass-lint:disable-block PropertyUnits
 	font-style: normal;
 	font-variant: normal;
 	font-weight: normal;
+	/* font-awesome pixel perfection is at 14px and multiples of 14 */
 	font-size: 14px; // sass-lint:disable-line property-units
 	line-height: 1;
+
 	text-transform: none;
+
 	speak: none;
 }
 
@@ -91,6 +99,7 @@
 	&::after {
 		/* 2 */
 		display: table;
+
 		/* 1 */
 		content: ' ';
 	}
@@ -111,6 +120,7 @@
 	&:link,
 	&:visited {
 		text-decoration: inherit;
+
 		color: inherit;
 
 		@content;
@@ -157,15 +167,20 @@
 @mixin visuallyhidden {
 	// sass-lint:disable-block no-duplicate-properties no-important property-units
 	position: absolute !important;
+
 	width: 1px !important;
 	height: 1px !important;
+
 	padding: 0 !important;
 	margin: -1px;
+
 	overflow: hidden !important;
 	clip: rect(1px 1px 1px 1px) !important;
 	clip: rect(1px, 1px, 1px, 1px) !important;
 	clip-path: inset(50%) !important;
+
 	white-space: nowrap !important;
+
 	border: 0 !important;
 }
 
@@ -177,10 +192,13 @@
 	&:focus {
 		width: auto !important;
 		height: auto !important;
+
 		margin: auto;
+
 		overflow: visible !important;
 		clip: auto !important;
 		clip-path: none !important;
+
 		white-space: normal !important;
 	}
 }
@@ -190,6 +208,7 @@
 /// on a single line.
 @mixin ellipsis {
 	overflow: hidden;
+
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
@@ -200,8 +219,11 @@
  *    See: https://code.google.com/p/chromium/issues/detail?id=457146
  */
 @mixin hide-text {
-	padding: 0; /* 1 */
+	/* 1 */
+	padding: 0;
+
 	overflow: hidden;
+
 	text-indent: 101%;
 	white-space: nowrap;
 }
@@ -209,14 +231,20 @@
 @mixin image-replacement ($overflow: true) {
 	@if $overflow {
 		overflow: hidden;
+
 		text-indent: 100%;
 		white-space: nowrap;
+
 		background-repeat: no-repeat;
+
 		direction: ltr;
 	} @else {
 		font: 0/0 a;
+
 		text-shadow: none;
+
 		color: transparent;
+
 		border: 0;
 	}
 }
@@ -321,13 +349,10 @@ $no-viewport: false !default;
 		@each $device in $devices {
 			$device-width: nth($device, 1);
 			$device-height: nth($device, 2);
-
 			$device-query: 'only screen and (-webkit-min-device-pixel-ratio: 1)';
 			$device-query: '#{$device-query} and (device-width: #{$device-width})';
 			$device-query: '#{$device-query} and (device-height: #{$device-height})';
-
 			$percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
-
 			$percent-width: $device-width * $percent / 100;
 			$percent-height: $device-height * $percent / 100;
 
@@ -474,13 +499,17 @@ $no-viewport: false !default;
 
 	&::before {
 		float: left;
+
 		padding-top: ($h / $w * 100%);
+
 		content: '';
 	}
 
 	&::after {
 		clear: both;
+
 		display: table;
+
 		content: '';
 	}
 }
