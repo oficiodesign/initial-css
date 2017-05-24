@@ -201,10 +201,23 @@
 }
 
 
+/// Helper function to use organized colors and tones
+///
 /// @access public
-/// @param {String} $color-name - Palette name
-/// @param {String} $tone - tone name
+/// @group helpers
+/// @param {String} $color-name - Color name
+/// @param {String} $tone ['base'] - Tone name
+/// @return {color}
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+///
+/// @example
+/// 	a {
+/// 		color: palette('anchor');
+///
+/// 		&:hover {
+/// 			color: palette('anchor', 'hover');
+/// 		}
+/// 	}
 @function palette($color-name, $tone: null) {
 	$default-palette: (
 		'white': rgb(255, 255, 255),
