@@ -191,7 +191,7 @@ rules:
       - 'font-feature-settings'
       - 'font-smoothing'
       - 'osx-font-smoothing'
-      - 'webkit-font-smoothing'
+      - '-webkit-font-smoothing'
       - 'moz-osx-font-smoothing'
       - 'letter-spacing'
       - 'word-spacing'
@@ -321,6 +321,7 @@ rules:
       - 'transform-style'
       - 'zoom'
 
+      - '-webkit-box-align'
       - 'box-align'
       - 'box-flex'
       - 'box-orient'
@@ -351,6 +352,8 @@ rules:
 
       - 'backface-visibility'
       - 'resize'
+      - '-webkit-appearance'
+      - '-moz-appearance'
       - 'appearance'
       - 'user-select'
       - 'interpolation-mode'
