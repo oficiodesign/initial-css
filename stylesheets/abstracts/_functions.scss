@@ -279,7 +279,7 @@
 		@if type-of($color) == 'color' or $color == 'transparent' {
 			@return $color;
 		} @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
-			@error '`palette` `#{$color}` misses `base` tone';
+			@error 'color `#{$color}` misses `base` tone';
 		} @else {
 			@return map-get($color, 'base');
 		}
