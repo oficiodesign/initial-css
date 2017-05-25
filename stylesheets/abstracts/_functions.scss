@@ -65,8 +65,6 @@
 /// @param {color} $color
 /// @require {color} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
-
-
 @function _brightness($color) {
 	$red-magic-number: 241;
 	$green-magic-number: 691;
@@ -129,6 +127,20 @@
 	@return $string;
 }
 
+
+/// Convert font weights names to numbers. Names can be any case,
+/// dash or separated separated or not separated at all.
+///
+/// @access public
+/// @author Sobral
+/// @param {String} $weight - Weight name
+/// @return {Number}
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight?v=control#Common_weight_name_mapping
+///
+/// @example
+/// 	h1 {
+/// 		font-weight: font-weight('medium');
+/// 	}
 @function font-weight($weight: 'normal') {
 
 	$weights: (
