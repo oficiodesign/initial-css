@@ -1,3 +1,7 @@
+autofill:
+  - throw
+  - content
+  - require
 exclude:
   - ./css/*
   - ./stylesheets/vendor/*
