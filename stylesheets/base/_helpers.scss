@@ -6,7 +6,7 @@
 ============================================================================ */
 /// Add a loading background.
 ///
-/// Already applied to `embed`, `img`, `input`, `output`, `keygen`, `textarea`.
+/// Already applied to `embed` and `img`.
 ///
 /// @author Sobral
 /// @group helpers
@@ -60,8 +60,13 @@
 	}
 }
 
-embed,
 img,
+embed {
+	@extend %loading-bg;
+
+	background-size: auto;
+}
+
 input,
 output,
 keygen,
