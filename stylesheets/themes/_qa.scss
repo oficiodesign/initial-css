@@ -1,0 +1,153 @@
+///
+/// @link https://bitsofco.de/linting-html-using-css/
+/// @link http://code.google.com/p/qa-style-sheet/
+///
+///
+///
+
+%error {
+	outline: 5px solid palette('debug') !important; // sass-lint:disable-line no-important
+}
+
+@mixin alert {
+	&::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		display: block;
+		z-index: layer('modal');
+		padding: 1em;
+		font-weight: font-weight('heavy');
+		text-align: center;
+		color: palette('white');
+		background-color: palette('debug');
+
+		@content;
+	}
+}
+
+/* Deprecated elements */
+applet,
+basefont,
+center,
+dir,
+font,
+isindex,
+spacer,
+strike {
+	@extend %error;
+}
+
+/* Inline Styles */
+[style] {
+	@extend %error;
+}
+
+/* Faulty or Missing Link Targets */
+a:not([href]),
+a[href='#'],
+a[href=''],
+a[href*='javascript:void(0)'] {
+	@extend %error;
+}
+
+/* Layout tables */
+table table {
+	@extend %error;
+}
+
+/* Unaccessible Images */
+/*
+*	@see	http://www.userfocus.co.uk/articles/alt_text.html
+*/
+img:not([alt]) {
+	@extend %error;
+}
+
+// Missing Document Language
+html:not([lang]),
+html[lang=''] {
+	body {
+		@include alert {
+			content: 'Missing Document Language';
+		}
+	}
+}
+
+// Incorrect Character Set
+meta[charset='UTF-8']:not(:first-child) {
+	& + body {
+		@include alert {
+			content: 'Incorrect Character Set';
+		}
+	}
+}
+
+// Unaccessible Viewport Attributes
+meta[name='viewport'][content*='user-scalable=no'],
+meta[name='viewport'][content*='maximum-scale'],
+meta[name='viewport'][content*='minimum-scale'] {
+	& + body {
+		@include alert {
+			content: 'Unaccessible Viewport Attributes';
+		}
+	}
+}
+
+
+// Unlabelled Form Elements
+input:not([id]),
+select:not([id]),
+textarea:not([id]) {
+	@extend %error;
+}
+
+label:not([for]) {
+	@extend %error;
+}
+
+input:not([name]),
+select:not([name]),
+textarea:not([name]) {
+	@extend %error;
+}
+
+form:not([name]):not([id]) {
+	@extend %error;
+}
+
+// Empty Interactive Elements
+
+button:empty,
+a:empty {
+	@extend %error;
+}
+
+// Unnecessary or Deprecated Attributes
+
+script[type='text/javascript'],
+link[rel='stylesheet'][type='text/css'] {
+	@include alert {
+		content: 'Unnecessary or Deprecated Attributes';
+	}
+
+	@at-root {
+		head {
+			display: block !important; // sass-lint:disable-line no-important
+		}
+	}
+}
+
+
+/* Empty elements not used for scripting */
+*:empty:not([id]),
+p:empty:not([id]),
+li:empty:not([id]),
+th:empty:not([id]),
+td:empty:not([id]),
+div:empty:not([id]),
+span:empty:not([id]) {
+	@extend %error;
+}
+
