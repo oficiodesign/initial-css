@@ -10,11 +10,13 @@ form {
 }
 
 fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
 	max-width: none;
 	min-width: 0;
+
+	padding: 0;
+	margin: 0;
+
+	border: 0;
 }
 
 fieldset fieldset {
@@ -30,27 +32,29 @@ fieldset fieldset {
 /* 4 */
 fieldset > legend,
 legend {
-	/* 1 */
-	box-sizing: border-box;
-	/* 2 */
-	color: inherit;
-	/* 1 */
-	display: table;
+	display: table; /* 1 */
+
+	max-width: 100%; /* 1 */
+
+	padding: 0; /* 3 */
+
 	font-weight: bolder;
-	/* 3 */
-	padding: 0;
-	/* 1 */
-	white-space: normal;
-	/* 1 */
-	max-width: 100%;
+
+	white-space: normal; /* 1 */
+
+	color: inherit; /* 2 */
+
+	box-sizing: border-box; /* 1 */
 }
 
 label {
-	cursor: pointer;
+	padding: 0;
+	margin: 0;
+
 	font-size: small;
 	line-height: inherit;
-	margin: 0;
-	padding: 0;
+
+	cursor: pointer;
 }
 
 label * {
@@ -79,49 +83,49 @@ form br {
  * 6. Set the focus outline to be just around the field border.
  */
 %os-element-reset {
-	// sass-lint:disable-block property-sort-order
+	display: inline-block;
+
+	padding: 1px; /* 2 */ // sass-lint:disable-line property-units
+	margin: 0;
+
+	overflow: visible;
+
+	font-size: inherit; /* 1 */
+	line-height: inherit; /* 1 */
+	font-family: inherit; /* 1 */
+	-webkit-font-smoothing: inherit; // sass-lint:disable-line no-vendor-prefixes
+	letter-spacing: inherit;
+
+	text-align: inherit;
+	text-transform: inherit; /* 3 */
+	white-space: normal;
+	vertical-align: top;
+
+	color: inherit;
+
 	border-width: 1px;
 	border-style: solid;
 	border-color: palette('border');
 	border-radius: 0;
-	/* 4 */
-	box-sizing: border-box;
-	color: inherit;
-	display: inline-block;
-	/* 1 */
-	font-size: inherit;
-	/* 1 */
-	line-height: inherit;
-	/* 1 */
-	font-family: inherit;
-	-webkit-font-smoothing: inherit; // sass-lint:disable-line no-vendor-prefixes
-	letter-spacing: inherit;
-	margin: 0;
+
 	outline: 0;
-	overflow: visible;
-	/* 2 */
-	padding: 1px; // sass-lint:disable-line property-units
-	text-align: inherit;
-	/* 3 */
-	text-transform: inherit;
-	vertical-align: top;
-	white-space: normal;
+
+	box-sizing: border-box; /* 4 */
 
 	&:hover {
 	}
 
 	&:focus {
-		/* 5 */
-		outline: 1px dotted palette('black');
-		/* 6 */
-		outline-offset: 0;
+		outline: 1px dotted palette('black'); /* 5 */
+		outline-offset: 0; /* 6 */
 	}
 }
 
 :disabled,
 :readonly {
-	background: palette('disabled', 'background');
 	color: palette('disabled', 'foreground');
+
+	background: palette('disabled', 'background');
 }
 
 :disabled {
@@ -143,12 +147,12 @@ form br {
  */
 :-moz-placeholder {
 	color: palette('placeholder');
+
 	opacity: 1;
 }
 
 ::-webkit-input-placeholder {
 	color: palette('placeholder');
-	opacity: 1;
 }
 
 :-ms-input-placeholder {
@@ -172,26 +176,28 @@ form br {
 %button-reset {
 	@extend %os-element-reset;
 
-	/* 1 */
-	appearance: button;
-	/* 5 */
-	background-color: palette('button');
-	box-sizing: inherit;
-	/* 2 */
-	cursor: pointer;
-	/* 3 */
-	overflow: visible;
-	/* 6 */
-	padding: 1px 6px; // sass-lint:disable-line property-units
+	width: auto; /* 3 */
+
+	padding: 1px 6px; /* 6 */ // sass-lint:disable-line property-units
+
+	overflow: visible; /* 3 */
+
 	text-indent: 0;
 	white-space: inherit;
-	/* 3 */
-	width: auto;
 
-	/* 4 */
+	cursor: pointer; /* 2 */
+
+	background-color: palette('button'); /* 5 */
+
+	box-sizing: inherit;
+
+	appearance: button; /* 1 */
+
 	&::-moz-focus-inner {
-		border: 0;
+		/* 4 */
 		padding: 0;
+
+		border: 0;
 	}
 
 	&:hover,
@@ -210,7 +216,7 @@ form br {
  * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
 
-html [type='button'] {  // sass-lint:disable-line no-qualifying-elements
+html [type='button'] {
 	@extend %button-reset;
 }
 
@@ -244,16 +250,19 @@ input:-moz-focusring {
  */
 fieldset ol,
 fieldset ul {
-	margin: 0;
 	padding: 0;
+	margin: 0;
 }
 
 fieldset li {
 	display: block;
-	list-style-type: none;
-	margin: 0;
+
 	padding: 0;
+	margin: 0;
+
 	white-space: nowrap;
+
+	list-style-type: none;
 
 	&::before {
 		content: none;
@@ -262,7 +271,8 @@ fieldset li {
 
 li label {
 	display: inline;
-	padding: 0 .5em;
+
+	padding: 0 0.5em;
 }
 
 /**
@@ -276,22 +286,22 @@ li label {
  */
 [type='checkbox'],
 [type='radio'] {
-	/* 1 */
-	box-sizing: border-box;
-	cursor: pointer;
-	/* 3 */
-	height: auto;
-	/* 2 */
-	padding: 0;
-	vertical-align: middle;
 	width: auto;
+	height: auto; /* 3 */
+
+	padding: 0; /* 2 */
+
+	vertical-align: middle;
+
+	cursor: pointer;
+
+	box-sizing: border-box; /* 1 */
 
 	&:hover {
 	}
 
 	&:focus {
-		/* 4 */
-		outline-style: auto;
+		outline-style: auto; /* 4 */
 	}
 }
 
@@ -321,8 +331,9 @@ li:hover {
 
 [disabled] + label,
 :disabled + label {
-	color: palette('disabled', 'foreground');
 	cursor: default;
+
+	color: palette('disabled', 'foreground');
 }
 
 /* text inputs
@@ -335,14 +346,17 @@ li:hover {
 %text-field-reset {
 	@extend %os-element-reset;
 
-	/* 1 */
-	appearance: textfield;
-	box-sizing: inherit;
-	cursor: text;
-	padding: .1em .2em 0;
-	/* 2 */
-	text-indent: .5ex;
 	width: 100%;
+
+	padding: 0.1em 0.2em 0;
+
+	text-indent: 0.5ex; /* 2 */
+
+	cursor: text;
+
+	box-sizing: inherit;
+
+	appearance: textfield; /* 1 */
 
 	&:focus {
 		outline: 1px solid;
@@ -388,10 +402,9 @@ output {
 [type='search'] {
 	@extend %text-field-reset;
 
-	/* 1 */
-	outline-offset: -2px;
-	/* 2 */
-	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+	outline-offset: -2px; /* 1 */
+
+	-webkit-appearance: none; /* 2 */ // sass-lint:disable-line no-vendor-prefixes
 }
 
 /**
@@ -433,72 +446,338 @@ output {
 [type='datetime-local'] {
 }
 
+
+@mixin range-track {
+	&::-webkit-slider-runnable-track {
+		width: 100%;
+
+		@content;
+	}
+
+	&::-moz-range-track {
+		@content;
+	}
+
+	&::-ms-track {
+		width: 100%;
+
+		color: transparent;
+
+		background: transparent;
+	}
+
+	&::-ms-fill-lower {
+		@content;
+	}
+
+	&::-ms-fill-upper {
+		@content;
+	}
+}
+
+@mixin range-thumb ($height) {
+	@if $height == null {
+		@error '`$height` argument is required.';
+	}
+
+	& {
+		height: $height;
+	}
+
+	&::-webkit-slider-thumb {
+		height: $height;
+
+		margin-top: $height / -2;
+
+		appearance: none;
+
+		@content;
+	}
+
+	&::-moz-range-thumb {
+		height: $height;
+
+		appearance: none;
+
+		@content;
+	}
+
+	&::-ms-thumb {
+		height: $height;
+
+		margin-top: 0; // reset value used for webkit. Weird, right?
+
+		appearance: none;
+
+		@content;
+	}
+
+	&::-ms-track {
+		border-width: ($height / 2) 0;
+		border-color: transparent;
+	}
+}
+
+@mixin vertical-input-range {
+	writing-mode: bt-lr;
+
+	-webkit-appearance: slider-vertical; // sass-lint:disable-line no-vendor-prefixes
+}
+
+/**
+ * 1. required for proper track sizing in FF
+ */
+[type='range'] {
+	display: block;
+
+	width: 100%; /* 1 */ // sass-lint:disable-line property-units
+
+	padding: 0;
+
+	vertical-align: middle;
+
+	cursor: pointer;
+
+	border: 0; /* 1 */
+
+	appearance: none;
+
+	@include range-track { // sass-lint:disable-line mixins-before-declarations
+		background-color: palette('button');
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	@include range-thumb ($height: 0.125rem) { // sass-lint:disable-line mixins-before-declarations
+		background-color: palette('button', 'slider');
+
+		border: 0;
+	}
+
+	/**
+	 * 1. Remove the focus border in Firefox.
+	 */
+	&::-moz-focus-outer {
+		border: 0; /* 1 */
+	}
+
+	/* hide the outline behind the border */
+	&:-moz-focusring {
+		outline: 1px solid palette('transparent');
+		outline-offset: -1px;
+	}
+}
+
 /* impossible inputs
 ============================================================================ */
 
-input[type='range'],
 [type='file'],
 [type='color'],
 [type='image'] {
+	padding: 0;
+
+	vertical-align: middle;
+
 	cursor: pointer;
+
+	border: 0;
 }
 
-input[type='image'] {
+/**
+ * Consistent display mode in Firefox when image field is empty.
+ */
+
+[type='image'] {
+	display: inline-block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Consistent background color on Chrome.
+ */
 [type='color'] {
+	background-color: palette('white');
 }
 
+/**
+ * Remove the inside button border in Chrome.
+ */
+::-webkit-color-swatch {
+	border: 0;
+}
+
+/**
+ * Remove the inside button border in Firefox.
+ */
+::-moz-color-swatch {
+	border: 0;
+}
+
+/**
+ * Remove the inside button padding in Chrome.
+ */
+::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+/**
+ * Remove the inside button padding in Firefox.
+ */
+::-moz-color-swatch-wrapper {
+	padding: 0;
+}
+
+
+
+// sobral, confira isso
+//
+/**
+ * 1. Consistent background color on Edge and IE.
+ * 2. override Opera margin and padding
+ */
 [type='file'] {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: normal;
-	border-style: none!important;
-	-webkit-box-align: baseline;
-	cursor: default;
-	-moz-binding: none;
-	font-family: inherit;
 	height: 2em;
-	padding: 0!important; /*opera*/
 	min-width: 250px;
-	margin: 0; /* opera */
+
+	padding: 0 !important; /* 2 */ // sass-lint:disable-line no-important
+	margin: 0; /* 2 */
+
+	font-family: inherit;
+
 	text-align: start !important; // sass-lint:disable-line no-important
 	white-space: nowrap;
+
+	cursor: default;
+
+	background-color: transparent; /* 1 */
+
+	border-style: none !important; // sass-lint:disable-line no-important
+
+	-webkit-box-align: baseline; //sass-lint:disable-line no-vendor-prefixes
+
+	-webkit-appearance: none; //sass-lint:disable-line no-vendor-prefixes
+	   -moz-appearance: none; //sass-lint:disable-line no-vendor-prefixes indentation
+	        appearance: normal; //sass-lint:disable-line indentation
+
+	-moz-binding: none; //sass-lint:disable-line no-vendor-prefixes
 }
 
 [type='file'][multiple] {
 }
 
 [type='file'] > [type='text'] {
-	background-color: inherit;
-	border-color: inherit;
-	color: inherit;
-	font-size: inherit;
 	height: inherit;
+
+	font-size: inherit;
 	letter-spacing: inherit;
+
+	color: inherit;
+
+	background-color: inherit;
+
+	border-color: inherit;
 }
 
 [type='file'] > [type='button'] {
-	appearance: button;
-	-webkit-box-align: center; // sass-lint:disable-line no-vendor-prefixes property-sort-order
-	box-sizing: content-box;
-	font-size: inherit;
 	height: inherit;
+
 	padding: 0;
+
+	font-size: inherit;
+
 	white-space: normal;
+
+	-webkit-box-align: center; // sass-lint:disable-line no-vendor-prefixes
+	box-sizing: content-box;
+
+	appearance: button;
 }
+
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
+ * 2. Consistent background color for all browsers (same than above).
+ * 3. Consistent style, width and color between all fields (same than above).
+ * 4. Change font properties to `inherit` in Safari.
  */
 
 ::-webkit-file-upload-button {
-	/* 1 */
-	-webkit-appearance: button; // sass-lint:disable-line no-vendor-prefixes property-sort-order
+	font: inherit; /* 4 */
+
 	cursor: pointer;
-	/* 2 */
-	font: inherit;
+
+	background-color: palette('button'); /* 2 */
+
+	border-width: 1px; /* 3 */
+	border-style: solid; /* 3 */
+	border-color: palette('border'); /* 3 */
+
+	-webkit-appearance: button; /* 1 */ // sass-lint:disable-line no-vendor-prefixes
+
+	&:hover {
+		background-color: palette('button', 'focus');
+	}
 }
+
+/**
+ * Add a focus outline for color field (Chrome) and file selector field (Chrome & Safari) (same than above).
+ */
+
+:focus::-webkit-color-swatch,
+:focus::-webkit-file-upload-button {
+	outline: 1px dotted palette('black');
+}
+
+/**
+ * Consistent style, width and color between all fields (same than above).
+ */
+
+::-ms-browse {
+	border-width: 1px; /* 1 */
+	border-style: solid; /* 1 */
+	border-color: palette('border'); /* 1 */
+
+	&:hover {
+		background-color: palette('button', 'focus');
+	}
+}
+
+/**
+ * Add a focus outline for file selector field in Edge and IE (same than above).
+ */
+
+:focus::-ms-browse {
+	outline: 1px dotted palette('black');
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* selects
@@ -510,9 +789,10 @@ input[type='image'] {
 
 select,
 option {
-	cursor: pointer;
 	width: auto;
 	min-width: 1.5em;
+
+	cursor: pointer;
 }
 
 /**
@@ -521,14 +801,12 @@ option {
  * 2. Revert to default for Edge
  */
 select {
-	// sass-lint:disable-block property-sort-order
-	/* 1. Mac Aqua off */
-	-webkit-appearance: menulist-button; // sass-lint:disable-line no-vendor-prefixes
 	box-sizing: content-box;
 
+	-webkit-appearance: menulist-button; /* 1. Mac Aqua off */ // sass-lint:disable-line no-vendor-prefixes
+
 	@supports (-ms-accelerator: true) {
-		/* 2 */
-		-webkit-appearance: menulist; // sass-lint:disable-line no-vendor-prefixes
+		-webkit-appearance: menulist; /* 2 */ // sass-lint:disable-line no-vendor-prefixes
 	}
 }
 
@@ -543,8 +821,8 @@ optgroup {
 }
 
 option {
+	padding: 0 0.4em 0 0.1em;
 	margin: 0;
-	padding: 0 .4em 0 .1em;
 
 	&:hover,
 	&:focus {
@@ -552,10 +830,12 @@ option {
 	}
 }
 
-select[multiple] {  // sass-lint:disable-line no-qualifying-elements
+select[multiple] {
+	// sass-lint:disable-line no-qualifying-elements
 }
 
-select[multiple] option {  // sass-lint:disable-line no-qualifying-elements
+select[multiple] option {
+	// sass-lint:disable-line no-qualifying-elements
 
 	&:checked {
 		font-weight: bold;
@@ -567,16 +847,21 @@ select[multiple] option {  // sass-lint:disable-line no-qualifying-elements
 /*
  * 1. Removes default vertical scrollbar in IE6/7/8/9
  * 2. Improves readability and alignment in all browsers
+ * sobral, veja o 2!
  */
 textarea {
 	@extend %text-field-reset;
 
-	cursor: text;
-	line-height: inherit;
 	overflow: auto; /* 1 */
-	resize: vertical;
-	vertical-align: top;
+
+	line-height: inherit;
+
 	white-space: pre;
+	vertical-align: top;
+
+	cursor: text;
+
+	resize: vertical;
 }
 
 
@@ -610,11 +895,13 @@ textarea {
 
 :invalid {
 	border-radius: 0;
+
 	box-shadow: 0 0 5px palette('label', 'danger');
 }
 
 :-moz-ui-invalid {
 	border-radius: 0;
+
 	box-shadow: 0 0 5px palette('label', 'danger');
 }
 
@@ -625,4 +912,13 @@ textarea {
 }
 
 x-moz-errormessage {
+}
+
+/**
+ * Remove the focus outline in Firefox to only keep the original effect.
+ */
+[type='range']:-moz-focusring,
+[type='checkbox']:-moz-focusring,
+[type='radio']:-moz-focusring {
+	outline-width: 0;
 }

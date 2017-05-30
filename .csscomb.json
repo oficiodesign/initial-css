@@ -314,6 +314,8 @@
     "$include breakpoint",
     "$include media",
     "$include mq",
+    "$include range-track",
+    "$include range-thumb",
     "$include on-event"
   ]
 ]
