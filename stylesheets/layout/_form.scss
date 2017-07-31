@@ -447,7 +447,7 @@ output {
 }
 
 
-@mixin range-track ($height, $thumb-height, $bg-fallback) {
+@mixin range-track ($height, $thumb-height, $bg-fallback: null) {
 	&::-webkit-slider-runnable-track {
 		width: 100%;
 
@@ -561,7 +561,7 @@ output {
 
 	appearance: none;
 
-	@include range-track ($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback) { // sass-lint:disable-line mixins-before-declarations
+	@include range-track ($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) { // sass-lint:disable-line mixins-before-declarations
 		background-color: palette('button');
 
 		&:focus {
