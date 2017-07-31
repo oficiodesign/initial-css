@@ -584,7 +584,7 @@ output {
 
 	/* hide the outline behind the border */
 	&:-moz-focusring {
-		outline: 1px solid palette('transparent');
+		outline: 1px solid transparent;
 		outline-offset: -1px;
 	}
 }
