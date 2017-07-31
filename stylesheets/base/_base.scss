@@ -141,6 +141,23 @@ section {
  */
 summary {
 	display: list-item;
+
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&:focus {
+		outline: -webkit-focus-ring-color auto 5px;
+	}
+
+	&::before {
+		padding-right: 0.5em;
+		content: '\25B6';
+	}
+
+	details[open] > &::before {
+		content: '\25BC';
+	}
 }
 
 
