@@ -58,7 +58,7 @@ label {
 }
 
 label * {
-	@include fallback('font-size', 1rem);
+	font-size: 1em;
 }
 
 /* pragraphs inside forms
