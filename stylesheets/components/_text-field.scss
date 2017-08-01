@@ -40,10 +40,6 @@
 	}
 }
 
-output {
-	@extend %text-field-reset;
-}
-
 [type='email'] {
 	@extend %text-field-reset;
 }
