@@ -358,10 +358,6 @@ li :checked + label {
 
 	appearance: textfield; /* 1 */
 
-	&:focus {
-		outline: 1px solid;
-	}
-
 	&:invalid {
 		border-radius: $border-radius;
 
@@ -372,6 +368,10 @@ li :checked + label {
 		border-radius: $border-radius;
 
 		box-shadow: 0 0 5px palette('label', 'danger');
+	}
+
+	&:focus {
+		outline: 1px solid;
 	}
 
 	&:focus:required:invalid {
