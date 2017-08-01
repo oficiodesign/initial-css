@@ -164,7 +164,7 @@
  * Shamelessly borrowed from HTML5Boilerplate:
  * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
  */
-@mixin visuallyhidden {
+@mixin visually-hidden {
 	// sass-lint:disable-block no-duplicate-properties no-important property-units
 	position: absolute !important;
 
@@ -184,9 +184,9 @@
 	border: 0 !important;
 }
 
-@mixin visuallyhidden-focusable {
+@mixin visually-hidden--focusable {
 	// sass-lint:disable-block no-important
-	@include visuallyhidden;
+	@include visually-hidden;
 
 	&:active,
 	&:focus {
