@@ -243,7 +243,10 @@
 			'focus': rgb(50, 152, 255),
 			'active': rgb(229, 0, 80),
 		),
-		'border': rgb(192, 192, 192),
+		'border': (
+			'base': rgb(192, 192, 192),
+			'focus': rgb(0, 0 , 0),
+			),
 		'button': (
 			'base': rgb(225, 225, 225),
 			'focus': rgb(229, 241, 251),
