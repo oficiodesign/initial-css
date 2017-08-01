@@ -325,7 +325,7 @@ li:hover {
 	}
 }
 
-:checked + label {
+li :checked + label {
 	font-weight: bold;
 }
 
