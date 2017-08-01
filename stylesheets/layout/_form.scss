@@ -361,6 +361,21 @@ li :checked + label {
 	&:focus {
 		outline: 1px solid;
 	}
+
+	&:invalid {
+		border-radius: $border-radius;
+
+		box-shadow: 0 0 5px palette('label', 'danger');
+	}
+
+	&:-moz-ui-invalid {
+		border-radius: $border-radius;
+
+		box-shadow: 0 0 5px palette('label', 'danger');
+	}
+
+	&:focus:required:invalid {
+	}
 }
 
 output {
@@ -910,21 +925,6 @@ textarea {
 }
 
 :out-of-range {
-}
-
-:invalid {
-	border-radius: $border-radius;
-
-	box-shadow: 0 0 5px palette('label', 'danger');
-}
-
-:-moz-ui-invalid {
-	border-radius: $border-radius;
-
-	box-shadow: 0 0 5px palette('label', 'danger');
-}
-
-:focus:required:invalid {
 }
 
 [type='submit']:-moz-submit-invalid {
