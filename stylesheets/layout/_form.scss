@@ -913,13 +913,13 @@ textarea {
 }
 
 :invalid {
-	border-radius: 0;
+	border-radius: $border-radius;
 
 	box-shadow: 0 0 5px palette('label', 'danger');
 }
 
 :-moz-ui-invalid {
-	border-radius: 0;
+	border-radius: $border-radius;
 
 	box-shadow: 0 0 5px palette('label', 'danger');
 }

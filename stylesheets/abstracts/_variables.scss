@@ -69,6 +69,10 @@ $palette: (
 );
 
 
+/// Default border-radius
+/// @type Length
+$border-radius: 0 !default;
+
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
