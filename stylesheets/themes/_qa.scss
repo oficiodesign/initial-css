@@ -118,9 +118,14 @@ form:not([name]):not([id]) {
 }
 
 // Empty Interactive Elements
-
 button:empty,
 a:empty {
+	@extend %error;
+}
+
+// Prevent decimal separator issues
+// @see https://ctrl.blog/entry/html5-input-number-localization
+input[type='number']:not([lang]) {
 	@extend %error;
 }
 
