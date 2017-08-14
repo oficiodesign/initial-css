@@ -11,7 +11,7 @@
 /// @author Sobral
 /// @group helpers
 /// @example
-/// 	[aria-busy='true'] { /* any element which can be a parent */
+/// 	[aria-busy='true'] { /* any element which can't be a parent */
 ///			@extend %loading-bg;
 /// 	}
 ///
