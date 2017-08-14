@@ -50,24 +50,56 @@ $palette: (
 		'dark': rgb(64, 68, 71),
 		'x-dark': shade(rgb(64, 68, 71), 10%),
 	),
+	// 'white': rgb(255, 255, 255),
+	// 'black': rgb(0, 0, 0),
+	// 'debug': rgb(255, 0, 0),
 	// 'anchor': (
-	// 	'link': rgb(0, 0, 0),
-	// 	'visited': rgb(0, 0, 0),
-	// 	'hover': rgb(0, 0, 0),
-	// 	'focus': rgb(0, 0, 0),
-	// 	'active': rgb(0, 0, 0),
+	// 	'base': rgb(0, 102, 204),
+	// 	'link': rgb(0, 102, 204),
+	// 	'visited': rgb(128, 0, 128),
+	// 	'hover': rgb(50, 152, 255),
+	// 	'focus': rgb(50, 152, 255),
+	// 	'active': rgb(229, 0, 80),
 	// ),
-	//	'border': (
-	//		'base': rgb(192, 192, 192),
-	//		'focus': rgb(0, 0 , 0),
-	//	),
-	// 'disabled':(
-	// 	'foreground': rgb(0, 0, 0),
-	// 	'background': rgb(0, 0, 0),
+	// 'border': (
+	// 	'base': rgb(192, 192, 192),
+	// 	'focus': rgb(0, 0 , 0),
+	// 	),
+	// 'button': (
+	// 	'base': rgb(225, 225, 225),
+	// 	'focus': rgb(229, 241, 251),
+	// 	'slider': hsl(0, 0%, 40%),
+	// 	'submit': rgb(217, 83, 79),
+	// 	'reset': transparent,
+	// ),
+	// 'disabled': (
+	// 	'foreground': hsl(0, 0%, 42%),
+	// 	'background': hsl(0, 0%, 94%),
 	// ),
 	// 'loading': (
 	// 	'foreground': hsl(0, 0%, 94%),
 	// 	'background': hsla(0, 0%, 7%, 0.8),
+	// ),
+	// 'label': (
+	// 	'default': rgb(119, 119, 119),
+	// 	'primary': rgb(51, 122, 183),
+	// 	'success': rgb(66, 133, 66),
+	// 	'info': rgb(60, 127, 145),
+	// 	'warning': rgb(240, 173, 78),
+	// 	'danger': rgb(217, 83, 79),
+	// ),
+	// 'mark': (
+	// 	'foreground': rgb(51, 51, 51),
+	// 	'background': rgb(215, 255, 90),
+	// ),
+	// 'quotes': hsl(0, 0%, 34%),
+	// 'placeholder': hsl(0, 0%, 34%),
+	// 'selection': rgb(20, 105, 140),
+	// 'tap-highlight': rgb(255, 94, 153),
+	// 'target-highlight': rgb(255, 255, 102),
+	// 'text': (
+	// 	'dark': hsl(0, 0%, 13%),
+	// 	'light': rgb(229, 231, 234),
 	// ),
 );
 
