@@ -63,6 +63,7 @@ $line-lengths: (
 /// @access private
 /// @group configurations
 /// @prop {Map} values - Values are pure colors or the returned value of functions
+/// @require {function} palette
 /// @todo Uncomment and customize the colors or add new ones to match your design needs.
 $palette: (
 	'gray': (

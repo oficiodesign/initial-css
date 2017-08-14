@@ -15,7 +15,7 @@
 /// @param {String} $path - image path
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
-/// @require {variable} $base
+/// @require {variable} $base-url
 @function image($path, $base: $base-url) {
 	@return asset($base, 'images/', $path);
 }
@@ -24,7 +24,7 @@
 /// @param {String} $path - font path
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
-/// @require {variable} $base
+/// @require {variable} $base-url
 @function font($path, $base: $base-url) {
 	@return asset($base, 'fonts/', $path);
 }
@@ -62,7 +62,6 @@
 ///  Calculate the Perceived Brightness of a Color
 /// @access private
 /// @param {color} $color
-/// @require {variable} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
 @function _brightness($color) {
 	$red-magic-number: 241;
@@ -88,9 +87,6 @@
 /// @param {color} $bg-color - background color
 /// @param {color} $light - light text option
 /// @param {color} $dark - dark text option
-/// @require {variable} $bg-color - background color
-/// @require {variable} $light - light text option
-/// @require {variable} $dark - dark text option
 /// @return {Color}
 @function contrasting-color($bg-color, $light, $dark) {
 	@if _brightness($bg-color) < 65% {
@@ -103,7 +99,6 @@
 /// Convert a HSL color to RGB
 /// @access public
 /// @link https://gist.github.com/omgmog/6192734
-/// @require $hsl-color
 /// @param {color} $hsl-color - hsl color
 @function hsl-to-rgb($hsl-color) {
 	@return mix($hsl-color, $hsl-color);
