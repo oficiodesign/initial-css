@@ -128,6 +128,8 @@ $palette: (
 
 
 /// Default border-radius
+/// @group configurations
+/// @todo Customize it to match your design.
 /// @type Length
 $border-radius: 0 !default;
 
@@ -176,7 +178,9 @@ $breakpoints: im-to-em(
 // );
 
 
-/// Relative or absolute URL where all assets are served from
+/// Relative or absolute URL where all assets are served from.
+/// @group configurations
+/// @todo Customize it to match your setup.
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
