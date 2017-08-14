@@ -16,11 +16,20 @@
 $native-font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 
 ///
-// Windows: Consolas,
-// Linux: 'Liberation Mono',
-// OS X: Menlo,
-// Windows (legacy): Courier,
-// default platform fallback: monospace !default;
+/// Default font stack for code samples, considering the platform.
+///
+/// - **Windows**: Consolas;
+/// - **Linux**: Liberation Mono;
+/// - **OS X**: Menlo;
+/// - **Windows (legacy)**: Courier;
+/// - default platform fallback: `monospace !default`;
+///
+/// @example scss
+///
+/// pre > code {
+/// 	font-family: $basic-code-font-stack;
+/// }
+///
 $basic-code-font-stack: Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
 
 
@@ -61,13 +70,17 @@ $ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', '
 /// Serif font-stacks
 
 /// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler Text should be set at minimum of 14 pixels or above.
-/// Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They are faked to bold and italic.
-/// Some of the fonts, like: Garamond, Baskerville and Didot are not as readable on screen as Georgia.
+///
+/// Be aware that:
+/// - Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They are faked to bold and italic.
+/// - Some of the fonts, like Garamond, Baskerville and Didot, are not as readable on screen as Georgia.
+///
 /// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
 /// @link http://www.cssfontstack.com/Baskerville
 $baskerville-font-stack: 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Garamond', 'Times New Roman', serif !default;
 
-/// Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They are faked to bold and italic.
+/// Be aware that Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They are faked to bold and italic.
+///
 /// @link http://www.awayback.com/revised-font-stack/
 /// @link http://www.cssfontstack.com/Big-Caslon
 $big-caslon-font-stack: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', 'Georgia', serif !default;
@@ -85,18 +98,21 @@ $calisto-mt-font-stack: 'Calisto MT', 'Bookman Old Style', 'Bookman', 'Goudy Old
 $cambria-font-stack: 'Cambria', 'Georgia', serif !default;
 
 /// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler Text should be set at minimum of 14 pixels or above.
-/// Some of the fonts, like: Garamond, Baskerville and Didot are not as readable on screen as Georgia.
+///
+/// Be aware that some of the fonts, like Garamond, Baskerville and Didot, are not as readable on screen as Georgia.
+///
 /// @link http://www.awayback.com/revised-font-stack/
 /// @link http://www.cssfontstack.com/Didot
 $didot-font-stack: 'Didot', 'Didot LT STD', 'Hoefler Text', 'Garamond', 'Times New Roman', serif !default;
 
 /// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler Text should be set at minimum of 14 pixels or above.
-/// Some of the fonts, like: Garamond, Baskerville and Didot are not as readable on screen as Georgia.
+/// Be aware that some of the fonts, like Garamond, Baskerville and Didot, are not as readable on screen as Georgia.
 /// @link http://www.awayback.com/revised-font-stack/
 /// @link http://www.cssfontstack.com/Garamond
 $garamond-font-stack: 'Garamond', 'Baskerville', 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif !default;
 
-/// Do not mix Georgia and Times. They're too different
+/// **Do not** mix Georgia and Times. They're too different
+///
 /// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
 /// @link http://www.cssfontstack.com/Georgia
 $georgia-font-stack: 'Georgia', 'Utopia', 'Charter', serif !default;
@@ -112,7 +128,8 @@ $hoefler-text-font-stack: 'Hoefler Text', 'Baskerville old face', 'Garamond', 'T
 /// @link http://www.cssfontstack.com/Lucida-Bright
 $lucidia-bright-font-stack: 'Lucida Bright', 'Georgia', serif !default;
 
-/// Do not mix Georgia and Times. They're too different
+/// **Do not** mix Georgia and Times. They're too different
+///
 /// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
 /// @link http://www.cssfontstack.com/Palatino
 $palatino-font-stack: 'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', serif !default;
