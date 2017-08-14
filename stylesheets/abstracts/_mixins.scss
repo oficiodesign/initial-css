@@ -3,6 +3,10 @@
 // -----------------------------------------------------------------------------
 
 
+/// Helper for an inline-block grid.
+///
+/// To be used together with [`inline-block-item`](#helpers-mixin-inline-block-item).
+///
 /// The used font stack makes grids work on all known environments and
 /// it's developed by the PureCSS framework team
 ///
@@ -13,7 +17,19 @@
 /// - `Droid Sans`: Ships with all versions of Android.
 /// - `Helvetica, Arial, sans-serif`: Common font stack on OS X and Windows.
 ///
+/// @group helpers
 /// @link http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030
+/// @parameter {int} $ie [9] - minimum Internet Explorer version
+///
+/// @example scss
+/// .h-feed {
+/// 	@include inline-block-wrapper($ie: 9);
+/// }
+///
+/// .h-feed > .h-entry {
+/// 	@include inline-block-item($align: 'top', $font-size:  1rem);
+/// }
+///
 @mixin inline-block-wrapper($ie: 9) {
 	// sass-lint:disable-block no-duplicate-properties
 	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
@@ -31,6 +47,26 @@
 	text-rendering: optimizespeed;
 }
 
+/// Helper for an inline-block grid.
+///
+/// To be used together with [`inline-block-wrapper`](#helpers-mixin-inline-block-wrapper).
+///
+/// @group helpers
+/// @parameter {string} $align ['top'] - valid keyword `vertical-aligment` for
+/// the grid cells: `baseline`, `sub`, `super`, `text-top`, `text-bottom`,
+/// `middle`, `top`, `bottom`
+///
+/// @parameter {number} $font-size [1rem] - reset of grid cells font-size
+///
+/// @example scss
+/// .h-feed {
+/// 	@include inline-block-wrapper($ie: 9);
+/// }
+///
+/// .h-feed > .h-entry {
+/// 	@include inline-block-item($align: 'top', $font-size:  1rem);
+/// }
+///
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
 	display: inline-block;
 
