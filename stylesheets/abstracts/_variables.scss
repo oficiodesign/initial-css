@@ -39,9 +39,13 @@ $line-lengths: (
 	'max': 35em,
 ) !default;
 
+/// List all available colors and tones.
+///
 /// @access private
+/// @group configurations
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are pure colors or the returned value of functions
+/// @todo Uncomment and customize the colors or add new ones to match your design needs.
 $palette: (
 	'gray': (
 		'x-light': tint(rgb(229, 231, 234), 10%),
