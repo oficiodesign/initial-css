@@ -59,8 +59,7 @@
 	@return mix(black, $color, $percentage);
 }
 
-
-/// Brightness math
+///  Calculate the Perceived Brightness of a Color
 /// @access private
 /// @param {color} $color
 /// @require {variable} $color
