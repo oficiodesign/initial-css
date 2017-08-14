@@ -8,13 +8,13 @@
 /// To be used together with [`inline-block-item`](#helpers-mixin-inline-block-item).
 ///
 /// The used font stack makes grids work on all known environments and
-/// it's developed by the PureCSS framework team
+/// it's developed by the PureCSS framework team.
 ///
-/// - `FreeSans`: Ships with many Linux distros, including Ubuntu
+/// - `FreeSans`: Ships with many Linux distros, including Ubuntu;
 /// - `Arimo`: Ships with Chrome OS. Arimo has to be defined before Helvetica and
 /// Arial to get picked up by the browser, even though neither is available
-/// in Chrome OS.
-/// - `Droid Sans`: Ships with all versions of Android.
+/// in Chrome OS;
+/// - `Droid Sans`: Ships with all versions of Android;
 /// - `Helvetica, Arial, sans-serif`: Common font stack on OS X and Windows.
 ///
 /// @group helpers
@@ -54,7 +54,7 @@
 /// @group helpers
 /// @parameter {string} $align ['top'] - valid keyword `vertical-aligment` for
 /// the grid cells: `baseline`, `sub`, `super`, `text-top`, `text-bottom`,
-/// `middle`, `top`, `bottom`
+/// `middle`, `top`, `bottom`.
 ///
 /// @parameter {number} $font-size [1rem] - reset of grid cells font-size
 ///
