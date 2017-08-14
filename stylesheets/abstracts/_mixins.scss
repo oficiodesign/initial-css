@@ -81,12 +81,42 @@
 	zoom: 1;
 }
 
+/// Helper for an table grid.
+///
+/// To be used together with [`table-layout-item`](#helpers-mixin-table-layout-item).
+///
+/// @group helpers
+///
+/// @example scss
+/// .h-feed {
+/// 	@include table-layout-wrapper;
+/// }
+///
+/// .h-feed > .h-entry {
+/// 	@include table-layout-item;
+/// }
+///
 @mixin table-layout-wrapper {
 	display: table;
 
 	border-collapse: collapse;
 }
 
+/// Helper for an table grid.
+///
+/// To be used together with [`table-layout-wrapper`](#helpers-mixin-table-layout-wrapper).
+///
+/// @group helpers
+///
+/// @example scss
+/// .h-feed {
+/// 	@include table-layout-wrapper;
+/// }
+///
+/// .h-feed > .h-entry {
+/// 	@include table-layout-item;
+/// }
+///
 @mixin table-layout-item {
 	display: table-cell;
 
