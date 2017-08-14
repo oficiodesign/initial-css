@@ -3,18 +3,37 @@
 // -----------------------------------------------------------------------------
 
 
+/// Title font stack
+///
+/// @access public
+/// @group configurations
+/// @type List
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
 $title-font-stack: $basic-title-font-stack;
 
 
-/// Regular font family
+/// Text body font stack
+///
+/// @access public
+/// @group configurations
 /// @type List
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
 $text-font-stack: $native-font-stack;
 
-/// Code (monospace) font family
+
+/// Code (monospace) font stack
+///
+/// @access public
+/// @group configurations
 /// @type List
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
 $code-font-stack: $basic-code-font-stack;
 
-/// body text font-size
+
+/// Body text font-size
+///
+/// @access public
+/// @group configurations
 /// @type Length
 $body-font-size: 1em !default;
 
