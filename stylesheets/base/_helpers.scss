@@ -64,6 +64,13 @@ embed {
 	@extend %loading-bg;
 
 	background-size: auto;
+
+	&::after {
+		/*
+		 *	Future proof reset
+		 */
+		content: none;
+	}
 }
 
 input,
