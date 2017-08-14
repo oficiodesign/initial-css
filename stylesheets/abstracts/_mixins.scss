@@ -213,7 +213,16 @@
 	white-space: nowrap;
 }
 
-
+///
+/// Helper to justify the last line of an elements list.
+///
+/// @group helpers
+/// @example
+///
+/// .sponsors {
+/// 	@include justify-all;
+/// }
+///
 @mixin justify-all {
 	text-align: justify;
 
