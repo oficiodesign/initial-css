@@ -4,17 +4,6 @@
 
 /* CLASSES
 ============================================================================ */
-/// Add a loading background.
-///
-/// Already applied to `embed` and `img`.
-///
-/// @author Sobral
-/// @group helpers
-/// @example
-/// 	[aria-busy='true'] { /* any element which can't be a parent */
-///			@extend %loading-bg;
-/// 	}
-///
 %loading-bg {
 	background-image: url($base-url + 'loading.svg');
 	background-position: 50% 50%;
@@ -22,17 +11,6 @@
 	background-color: palette('loading', 'background');
 }
 
-/// Add a loading pseudo element over the element content
-///
-/// `[aria-busy='true']` styles are already available.
-///
-/// @author Sobral
-/// @group helpers
-/// @example
-/// 	[aria-busy='true'] { /* any element other than `html` */
-/// 		@extend %loading-el;
-/// 	}
-///
 %loading-el {
 	overflow: hidden;
 
@@ -51,6 +29,25 @@
 	}
 }
 
+/// Content which loads **after** the page does, should be informed to user.
+///
+/// [aria-busy='true'] adds a loading background to any loading element which
+/// can't be a parent and a pseudo element over any element other than `html`.
+///
+/// Don't forget to customize it to your needs. Speacially the background
+/// color.
+///
+/// Already applied to `embed` and `img`, which can cause issues with images
+/// with transparence.
+///
+/// @author Sobral
+/// @group helpers
+/// @example markup
+///
+/// <div aria-busy='true'>
+/// 	[...]
+/// </div>
+///
 [aria-busy='true'] {
 	> body,
 	&:not(html) {
