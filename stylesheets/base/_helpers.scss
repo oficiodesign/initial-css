@@ -11,7 +11,7 @@
 /// @author Sobral
 /// @group helpers
 /// @example
-/// 	.loading { /* any element which can be a parent */
+/// 	[aria-busy='true'] { /* any element which can be a parent */
 ///			@extend %loading-bg;
 /// 	}
 ///
@@ -24,12 +24,12 @@
 
 /// Add a loading pseudo element over the element content
 ///
-/// `.loading` and `.waiting` are already available.
+/// `[aria-busy='true']` styles are already available.
 ///
 /// @author Sobral
 /// @group helpers
 /// @example
-/// 	.loading { /* any element other than `html` */
+/// 	[aria-busy='true'] { /* any element other than `html` */
 /// 		@extend %loading-el;
 /// 	}
 ///
@@ -51,8 +51,7 @@
 	}
 }
 
-.loading,
-.waiting {
+[aria-busy='true'] {
 	> body,
 	&:not(html) {
 		@extend %loading-bg;
@@ -71,8 +70,7 @@ input,
 output,
 keygen,
 textarea {
-	&.loading,
-	&.waiting {
+	&[aria-busy='true'] {
 		@extend %loading-bg;
 
 		background-size: auto;
