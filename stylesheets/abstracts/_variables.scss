@@ -8,7 +8,10 @@
 /// @access public
 /// @group configurations
 /// @type List
-/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks). Or do both.
+///
+/// @example scss
+/// $title-font-stack: ComicSans, $basic-title-font-stack;
 $title-font-stack: $basic-title-font-stack;
 
 
@@ -17,7 +20,10 @@ $title-font-stack: $basic-title-font-stack;
 /// @access public
 /// @group configurations
 /// @type List
-/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks). Or do both.
+///
+/// @example scss
+/// $text-font-stack: ComicSans, $native-font-stack;
 $text-font-stack: $native-font-stack;
 
 
@@ -26,7 +32,10 @@ $text-font-stack: $native-font-stack;
 /// @access public
 /// @group configurations
 /// @type List
-/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks).
+/// @todo Customize it to match your design needs or use one of the already available [font stacks](#font-stacks). Or do both.
+///
+/// @example scss
+/// $code-font-stack: ComicSans, $basic-code-font-stack;
 $code-font-stack: $basic-code-font-stack;
 
 
