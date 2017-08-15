@@ -178,6 +178,7 @@ $breakpoints: im-to-em(
 
 /// Z-indexes map, gathering all Z layers of the application
 /// @access public
+/// @group configurations
 /// @type Map
 $layers: (
 	'modal': 5000,
