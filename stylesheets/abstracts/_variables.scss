@@ -167,15 +167,18 @@ $breakpoints: im-to-em(
 // 1600.
 
 
-// layers map override
-//
-// being the default
-// $layers: (
-//     'modal': 5000,
-//     'dropdown': 4000,
-//     'default': 1,
-//     'below': -1,
-// );
+/// Z-indexes map, gathering all Z layers of the application
+/// @access public
+/// @type Map
+$layers: (
+	'modal': 5000,
+	'dropdown': 4000,
+	'default': 1,
+	'below': -1,
+);
+
+
+
 
 
 /// Relative or absolute URL where all assets are served from.
