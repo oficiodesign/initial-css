@@ -46,13 +46,18 @@ $code-font-stack: $basic-code-font-stack !default;
 /// @type Length
 $body-font-size: 1em !default;
 
+/// Default Leading
+///
+/// @access public
+/// @group configurations
+/// @type number
 $line-height: 1.5 !default;
 
 /// flexible line heights map
 /// @access private
 /// @type Map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are line-heights expressed in `em` due to a browser calc limitation
+/// @prop {number} min - minimum line height expressed unitless
+/// @prop {number} max - maximum line height expressed unitless
 $line-heights: (
 	'min': 1.15,
 	'max': 1.5,
@@ -60,8 +65,10 @@ $line-heights: (
 
 
 /// flexible line length map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are line lenths expressed in `em`
+///
+/// @type Map
+/// @prop {number} min - minimum line length expressed in `em`
+/// @prop {number} max - maximum line length expressed in `em`
 $line-lengths: (
 	'min': 21em,
 	'max': 35em,
@@ -71,7 +78,8 @@ $line-lengths: (
 ///
 /// @access private
 /// @group configurations
-/// @prop {Map} values - Values are pure colors or the returned value of functions
+/// @prop {string} color - Pure colors or a map of tones
+/// @prop {color | map} color.tone - Pure colors or returned color value of functions
 /// @require {function} palette
 /// @todo Customize the colors or add new ones to match your design needs.
 $palette: (
