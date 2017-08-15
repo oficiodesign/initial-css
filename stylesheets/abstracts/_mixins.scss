@@ -2,6 +2,62 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+/* Typography helpers */
+
+@mixin italic-overflow {
+	overflow: visible;
+
+	font-style: italic;
+}
+
+/// Special style for the _&_ used as a conjunction.
+///
+/// @group helpers
+/// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
+/// @require {variable} $ampersand-font-stack
+///
+/// @example scss
+/// h1 {
+/// 	@include alt-ampersand;
+/// }
+///
+/// @example markup
+/// <h1>This <span class="amp">&amp;</span> that</h1>
+///
+@mixin alt-ampersand {
+	.amp { // sass-lint:disable-line no-qualifying-elements
+		@include italic-overflow;
+
+		font-size: 2em;
+		line-height: 0.25;
+		font-family: $ampersand-font-stack;
+
+		vertical-align: middle;
+	}
+}
+
+/// Special style for conjunctions or prepositions.
+///
+/// @group helpers
+/// @require {variable} $alt-font-stack
+///
+/// @example markup
+/// <h1>The Elements <span class="alt">of</span> Typographic Style</h1>
+///
+/// @example scss
+/// h1 {
+/// 	@include alt-preposition;
+/// }
+///
+@mixin alt-preposition {
+	.alt { // sass-lint:disable-line no-qualifying-elements
+		@include italic-overflow;
+
+		font-family: $alt-font-stack;
+	}
+}
+
+
 
 /// Helper for an inline-block grid.
 ///

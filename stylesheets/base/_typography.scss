@@ -22,36 +22,6 @@ body {
 	color: palette('text', 'dark');
 }
 
-/// Special cases font styles
-///
-/// @example markup
-///   The Elements <span class='alt'>of</span> Typographic Style*
-///
-/// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
-///
-%italic-overflow {
-	overflow: visible;
-
-	font-style: italic;
-}
-
-span.alt { // sass-lint:disable-line no-qualifying-elements
-	@extend %italic-overflow;
-
-	font-family: $alt-font-stack;
-}
-
-span.amp { // sass-lint:disable-line no-qualifying-elements
-	@extend %italic-overflow;
-
-	font-size: 2em;
-	line-height: 0.25;
-	font-family: $ampersand-font-stack;
-
-	vertical-align: middle;
-}
-// sass-lint:enable no-qualifying-elements
-
 /* HEADINGS AND TITLES */
 
 /**
