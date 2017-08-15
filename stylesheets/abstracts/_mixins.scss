@@ -348,12 +348,12 @@
 ///
 /// @group helpers
 ///
-/// @example
+/// @example scss
 /// .sponsors {
-/// 	@include justify-all;
+/// 	@include justify-last-line;
 /// }
 ///
-@mixin justify-all {
+@mixin justify-last-line {
 	text-align: justify;
 
 	&::after {
