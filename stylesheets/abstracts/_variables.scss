@@ -12,7 +12,7 @@
 ///
 /// @example scss
 /// $title-font-stack: ComicSans, $basic-title-font-stack;
-$title-font-stack: $basic-title-font-stack;
+$title-font-stack: $basic-title-font-stack !default;
 
 
 /// Text body font stack
@@ -24,7 +24,7 @@ $title-font-stack: $basic-title-font-stack;
 ///
 /// @example scss
 /// $text-font-stack: ComicSans, $native-font-stack;
-$text-font-stack: $native-font-stack;
+$text-font-stack: $native-font-stack !default;
 
 
 /// Code (monospace) font stack
@@ -36,7 +36,7 @@ $text-font-stack: $native-font-stack;
 ///
 /// @example scss
 /// $code-font-stack: ComicSans, $basic-code-font-stack;
-$code-font-stack: $basic-code-font-stack;
+$code-font-stack: $basic-code-font-stack !default;
 
 
 /// Body text font-size
@@ -46,7 +46,7 @@ $code-font-stack: $basic-code-font-stack;
 /// @type Length
 $body-font-size: 1em !default;
 
-$line-height: 1.5;
+$line-height: 1.5 !default;
 
 /// flexible line heights map
 /// @access private
