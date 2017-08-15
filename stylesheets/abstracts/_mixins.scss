@@ -270,9 +270,17 @@
 }
 
 
-/// Helper class to truncate and add ellipsis to a string too long for it to fit
-/// on a single line.
-@mixin ellipsis {
+/// Truncate and add ellipsis to a string too long for it to fit on a single
+/// line.
+///
+/// @group helpers
+///
+/// @example scss
+/// .username {
+/// 	@include truncate;
+/// }
+///
+@mixin truncate {
 	overflow: hidden;
 
 	text-overflow: ellipsis;
