@@ -131,7 +131,7 @@
 /// @return {Number}
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight?v=control#Common_weight_name_mapping
 ///
-/// @example
+/// @example scss
 /// 	h1 {
 /// 		font-weight: font-weight('medium');
 /// 	}
@@ -216,10 +216,11 @@
 /// @group helpers
 /// @param {String} $color-name - Color name
 /// @param {String} $tone ['base'] - Tone name
+/// @require {variable} $palette
 /// @return {color}
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
 ///
-/// @example
+/// @example scss
 /// 	a {
 /// 		color: palette('anchor');
 ///
