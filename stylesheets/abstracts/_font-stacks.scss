@@ -36,13 +36,8 @@ $basic-title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 
 
 /// Font stack for conjunctions or prepositions
 ///
-/// @example scss
-/// h1 > .alt {
-/// 	font-family: $alt-font-stack;
-/// }
-///
 /// @example markup
-/// <h1>The book is <span class="alt">on</span> the table</h1>
+/// The Elements <span class="alt">of</span> Typographic Style
 ///
 $alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
 
@@ -50,11 +45,6 @@ $alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palati
 /// Font stack for the _&_ used as a conjunction
 ///
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
-///
-/// @example scss
-/// h1 > .amp {
-/// 	font-family: $ampersand-font-stack;
-/// }
 ///
 /// @example markup
 /// <h1>This <span class="amp">&amp;</span> that</h1>
