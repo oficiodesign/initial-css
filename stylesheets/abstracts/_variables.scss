@@ -178,7 +178,7 @@ $breakpoints: im-to-em(
 // 1600.
 
 
-/// Z-indexes map, gathering all Z layers of the application
+/// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.
 /// @access public
 /// @type Map
 $layers: (
@@ -187,7 +187,6 @@ $layers: (
 	'default': 1,
 	'below': -1,
 );
-
 
 
 
