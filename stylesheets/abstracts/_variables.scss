@@ -43,7 +43,7 @@ $code-font-stack: $basic-code-font-stack !default;
 ///
 /// @access public
 /// @group configurations
-/// @type Length
+/// @type number
 $body-font-size: 1em !default;
 
 /// Default Leading
@@ -147,11 +147,11 @@ $palette: (
 /// Default border-radius
 /// @group configurations
 /// @todo Customize it to match your design.
-/// @type Length
+/// @type number
 $border-radius: 0 !default;
 
 /// Container's maximum width
-/// @type Length
+/// @type number
 $max-width: 1180px !default;
 
 @function im-to-em($breakpoints, $base-value: 16px) {

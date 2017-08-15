@@ -558,7 +558,7 @@ $no-viewport: false !default;
 /// Triangle helper mixin
 /// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
 /// @param {Color} $color [currentcolor] - Triangle color
-/// @param {Length} $size [1em] - Triangle size
+/// @param {number} $size [1em] - Triangle size
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
 	@if not index(top right bottom left, $direction) {
 		@error 'Direction must be either `top`, `right`, `bottom` or `left`.';
