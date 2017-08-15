@@ -31,22 +31,26 @@
 
 /// Content which loads **after** the page does, should be informed to user.
 ///
-/// [aria-busy='true'] adds a loading background to any loading element which
-/// can't be a parent and a pseudo element over any element other than `html`.
+/// `[aria-busy='true']` adds a loading background to any loading element
+/// which can't be a parent and a pseudo element over any element other than
+/// `html`.
 ///
 /// Don't forget to customize it to your needs. Speacially the background
 /// color.
 ///
-/// Already applied to `embed` and `img`, which can cause issues with images
-/// with transparence.
+/// Already applied to `embed` and `img`, which can cause issues with
+/// transparent images.
 ///
 /// @author Sobral
 /// @group helpers
 ///
 /// @example markup
-/// <div aria-busy="true">
-/// 	[...]
-/// </div>
+///
+/// <dialog open aria-busy="true">
+/// 	<form method="dialog">
+/// 		[...]
+/// 	</form>
+/// </dialog>
 ///
 [aria-busy='true'] {
 	> body,
