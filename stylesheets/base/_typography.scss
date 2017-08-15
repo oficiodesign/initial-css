@@ -113,14 +113,12 @@ article fieldset > p:first-child {
 	&[title] {
 		text-decoration: none;
 
-		cursor: help;
-		/* 1 */
+		cursor: help; /* 1 */
 
 		border-bottom: 1px dotted;
 
 		@supports (text-decoration: dotted underline) {
-			text-decoration: dotted underline;
-			/* 2 */
+			text-decoration: dotted underline; /* 2 */
 
 			border-bottom: inherit;
 		}
@@ -176,7 +174,6 @@ i[lang] {
 /**
  * Address styling not present in IE 8/9.
  */
-
 mark {
 	color: palette('mark', 'foreground');
 
