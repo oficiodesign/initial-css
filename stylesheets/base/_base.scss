@@ -141,7 +141,10 @@ section {
  */
 summary {
 	display: list-item;
+
 	list-style-type: none;
+
+	cursor: pointer;
 
 	&::-webkit-details-marker {
 		display: none;
