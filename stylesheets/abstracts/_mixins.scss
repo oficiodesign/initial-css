@@ -37,6 +37,8 @@
 		font-family: $ampersand-font-stack;
 
 		vertical-align: middle;
+
+		@content;
 	}
 }
 
@@ -58,6 +60,8 @@
 		@include italic-overflow;
 
 		font-family: $alt-font-stack;
+
+		@content;
 	}
 }
 
