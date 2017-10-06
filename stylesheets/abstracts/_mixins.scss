@@ -164,6 +164,8 @@
 	display: table;
 
 	border-collapse: collapse;
+
+	@content;
 }
 
 /// Helper for an table grid.
@@ -185,6 +187,8 @@
 	display: table-cell;
 
 	vertical-align: top;
+
+	@content;
 }
 
 
