@@ -37,6 +37,8 @@
 		font-family: $ampersand-font-stack;
 
 		vertical-align: middle;
+
+		@content;
 	}
 }
 
@@ -58,6 +60,8 @@
 		@include italic-overflow;
 
 		font-family: $alt-font-stack;
+
+		@content;
 	}
 }
 
@@ -160,6 +164,8 @@
 	display: table;
 
 	border-collapse: collapse;
+
+	@content;
 }
 
 /// Helper for an table grid.
@@ -181,6 +187,8 @@
 	display: table-cell;
 
 	vertical-align: top;
+
+	@content;
 }
 
 
