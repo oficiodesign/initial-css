@@ -70,6 +70,13 @@ $line-lengths: (
 	'max': 35em,
 ) !default;
 
+///
+/// @link http://www.modularscale.com/?1&rem&1.25
+$modularscale: (
+	base: 1rem,
+	ratio: 1.25
+);
+
 /// List all available colors and tones.
 ///
 /// @access private
