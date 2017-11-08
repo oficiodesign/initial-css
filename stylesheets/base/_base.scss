@@ -112,6 +112,27 @@ body {
 	min-height: 100%;
 
 	margin: 0;
+
+	@if function-exists(susy-svg-grid) {
+		.grid &::after {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+			z-index: layer('modal');
+
+			pointer-events: none;
+
+			background-image: susy-svg-grid();
+			background-position: center top;
+			background-size: span('all' 'wider') 100%;
+			background-repeat: repeat-y;
+
+			content: '';
+		}
+	}
 }
 
 /* section items HTML5
