@@ -151,10 +151,8 @@ $palette: (
 /// @type number
 $border-radius: 0 !default;
 
-/// Container's maximum width
 /// border default width
 /// @type number
-$max-width: 1180px !default;
 $stroke: 1px !default;
 
 @function im-to-em($breakpoints, $base-value: 16px) {
@@ -185,6 +183,10 @@ $breakpoints: im-to-em(
 // 960
 // 1200
 // 1600.
+
+/// Container's maximum width
+/// @type number
+$max-width: 1180px !default;
 
 
 /// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.
