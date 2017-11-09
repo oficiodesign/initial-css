@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 
 /// Native `url(..)` function wrapper
+/// @group helpers
 /// @param {String} $base - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
 /// @param {String} $path - asset path
@@ -12,6 +13,7 @@
 }
 
 /// Returns URL to an image based on its path
+/// @group helpers
 /// @param {String} $path - image path
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
@@ -21,6 +23,7 @@
 }
 
 /// Returns URL to a font based on its path
+/// @group helpers
 /// @param {String} $path - font path
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
@@ -43,6 +46,7 @@
 
 /// Slightly lighten a color
 /// @access public
+/// @group helpers
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
@@ -52,6 +56,7 @@
 
 /// Slightly darken a color
 /// @access public
+/// @group helpers
 /// @param {Color} $color - color to shade
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
@@ -61,6 +66,7 @@
 
 ///  Calculate the Perceived Brightness of a Color
 /// @access private
+/// @group helpers
 /// @param {color} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
 @function _brightness($color) {
@@ -84,6 +90,7 @@
 
 /// Choose text color based on background
 /// @access public
+/// @group helpers
 /// @param {color} $bg-color - background color
 /// @param {color} $light - light text option
 /// @param {color} $dark - dark text option
@@ -98,6 +105,7 @@
 
 /// Convert a HSL color to RGB
 /// @access public
+/// @group helpers
 /// @link https://gist.github.com/omgmog/6192734
 /// @param {color} $hsl-color - hsl color
 @function hsl-to-rgb($hsl-color) {
@@ -107,6 +115,7 @@
 
 /// Replace `$search` with `$replace` in `$string`
 /// @author Hugo Giraudel
+/// @group helpers
 /// @param {String} $string - Initial string
 /// @param {String} $search - Substring to replace
 /// @param {String} $replace ('') - New value
@@ -127,6 +136,7 @@
 ///
 /// @access public
 /// @author Sobral
+/// @group helpers
 /// @param {String} $weight - Weight name
 /// @return {Number}
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight?v=control#Common_weight_name_mapping
@@ -317,8 +327,8 @@
 
 /// Trims a string by removing leading and trailing spaces
 ///
+/// @group helpers
 /// @param {String} $string - String to trim
-///
 /// @return {String} - String without spaces
 ///
 @function trim($string) {
@@ -331,9 +341,9 @@
 
 /// Find first char which is not a space
 ///
+/// @group helpers
 /// @param {String} $string - String to search
 /// @param {String} $direction ['left'] - Either 'left' or 'right' to indicate search direction
-///
 /// @return {Number} - Index of first non-space character
 ///
 @function first-index($string, $direction: 'left') {
@@ -350,6 +360,7 @@
 
 
 
+/// @group helpers
 @function grid-image($grid: $susy) {
 	// to use double single quotes inside the string save us from encode the double ones
 	// sass-lint:disable-block quotes
