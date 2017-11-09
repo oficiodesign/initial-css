@@ -1,0 +1,29 @@
+{
+  "name": "initial-css",
+  "version": "0.1.0",
+  "description": "CSS Framework",
+  "main": "index.scss",
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:docs": "sassdoc stylesheets/ -d ./build",
+    "prebuild": "npm-run-all --parallel lint clean",
+    "clean": "rimraf ./build/",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:sass": "sass-lint \"./stylesheets/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://sobral@bitbucket.org/sobral/initial-css.git"
+  },
+  "keywords": [
+    "sass"
+  ],
+  "author": "sobral <sobral@eokoe.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "sass-lint": "^1.12.1",
+    "sassdoc": "^2.4.0"
+  }
+}
