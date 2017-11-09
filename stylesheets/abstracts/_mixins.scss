@@ -2,12 +2,48 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+/// Gray placeholder image
+///
+/// @group helpers
+///
+/// @example scss
+/// image[src=""] {
+/// 	@include placeholder-bg;
+/// }
+///
+/// @output
+/// ```css
+/// image[src=""] {
+/// 	background:
+/// 		linear-gradient(
+/// 			to top left,
+/// 			transparent 0%,
+/// 			transparent calc(50% - 1px),
+/// 			palette('black') 50%,
+/// 			transparent calc(50% + 1px),
+/// 			transparent 100%
+/// 		),
+/// 		linear-gradient(
+/// 			to top right,
+/// 			transparent 0%,
+/// 			transparent calc(50% - 1px),
+/// 			palette('black') 50%,
+/// 			transparent calc(50% + 1px),
+/// 			transparent 100%
+/// 		),
+/// 		palette('gray', 'light');
+/// }
+/// ```
+///
 @mixin placeholder-bg {
 	background: linear-gradient(to top left, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), linear-gradient(to top right, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), palette('gray', 'light');
 }
 
 
+/// Special style for the _&_ used as a conjunction.
+///
 /// @access private
+///
 @mixin _italic-overflow {
 	overflow: visible;
 
@@ -28,9 +64,21 @@
 /// @example markup
 /// <h1>This <span class="amp">&amp;</span> that</h1>
 ///
+/// @output
+/// ```css
+/// h1 .amp {
+/// 	overflow: visible;
+/// 	font-style: italic;
+/// 	font-size: 2em;
+/// 	line-height: 0.25;
+/// 	font-family: $ampersand-font-stack;
+/// 	vertical-align: middle;
+/// }
+/// ```
+///
 @mixin alt-ampersand {
 	.amp { // sass-lint:disable-line no-qualifying-elements
-		@include italic-overflow;
+		@include _italic-overflow;
 
 		font-size: 2em;
 		line-height: 0.25;
@@ -55,16 +103,24 @@
 /// 	@include alt-preposition;
 /// }
 ///
+/// @output
+/// ```css
+/// h1 .alt {
+/// 	overflow: visible;
+/// 	font-style: italic;
+/// 	font-family: $alt-font-stack;
+/// }
+/// ```
+///
 @mixin alt-preposition {
 	.alt { // sass-lint:disable-line no-qualifying-elements
-		@include italic-overflow;
+		@include _italic-overflow;
 
 		font-family: $alt-font-stack;
 
 		@content;
 	}
 }
-
 
 
 /// Helper for an inline-block grid.
@@ -87,14 +143,30 @@
 ///
 /// @example scss
 /// .h-feed {
-/// 	@include inline-block-wrapper($ie: 9);
+/// 	@include inline-block-wrapper;
 /// }
 ///
 /// .h-feed > .h-entry {
 /// 	@include inline-block-item($align: 'top', $font-size:  1rem);
 /// }
 ///
-@mixin inline-block-wrapper($ie: 9) {
+/// @output
+/// ```css
+/// .h-feed {
+/// 	font-size: 0;
+/// 	font-family: "FreeSans", "Arimo", "Droid Sans", "Helvetica", "Arial", sans-serif;
+/// 	/* Webkit: collapse white-space between units */
+/// 	letter-spacing: -0.31em;
+/// 	/* reset IE < 8 */
+/// 	letter-spacing: normal\9;
+/// 	/* IE < 8: collapse white-space between units */
+/// 	word-spacing: -0.43em\9;
+/// 	/* Webkit: fixes text-rendering: optimizeLegibility */
+/// 	text-rendering: optimizespeed;
+/// }
+/// ```
+
+@mixin inline-block-wrapper {
 	// sass-lint:disable-block no-duplicate-properties
 	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
 
@@ -124,12 +196,26 @@
 ///
 /// @example scss
 /// .h-feed {
-/// 	@include inline-block-wrapper($ie: 9);
+/// 	@include inline-block-wrapper;
 /// }
 ///
 /// .h-feed > .h-entry {
 /// 	@include inline-block-item($align: 'top', $font-size:  1rem);
 /// }
+///
+/// @output
+/// ```css
+/// .h-feed > .h-entry {
+/// 	display: inline-block;
+/// 	font-size: 1rem;
+/// 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+/// 	letter-spacing: normal;
+/// 	word-spacing: normal;
+/// 	text-rendering: auto;
+/// 	vertical-align: top;
+/// 	zoom: 1;
+/// }
+/// ```
 ///
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
 	display: inline-block;
@@ -145,7 +231,7 @@
 	zoom: 1;
 }
 
-/// Helper for an table grid.
+/// Helper for an table grid layout.
 ///
 /// To be used together with [`table-layout-item`](#helpers-mixin-table-layout-item).
 ///
@@ -160,6 +246,14 @@
 /// 	@include table-layout-item;
 /// }
 ///
+/// @output
+/// ```css
+/// .h-feed {
+/// 	display: table;
+/// 	border-collapse: collapse;
+/// }
+/// ```
+///
 @mixin table-layout-wrapper {
 	display: table;
 
@@ -168,7 +262,7 @@
 	@content;
 }
 
-/// Helper for an table grid.
+/// Helper for an table grid layout.
 ///
 /// To be used together with [`table-layout-wrapper`](#helpers-mixin-table-layout-wrapper).
 ///
@@ -182,6 +276,14 @@
 /// .h-feed > .h-entry {
 /// 	@include table-layout-item;
 /// }
+///
+/// @output
+/// ```css
+/// .h-feed > .h-entry {
+/// 	display: table-cell;
+/// 	vertical-align: top;
+/// }
+/// ```
 ///
 @mixin table-layout-item {
 	display: table-cell;
@@ -207,8 +309,34 @@
 }
 
 
+/// Helper for icon font.
+///
+/// It can be used with Font Awesome
+///
+/// @group helpers
+///
+/// @example scss
+/// .icon {
+/// 	@include icon-font;
+/// }
+///
+/// @output
+/// ```css
+/// .icon {
+/// 	-webkit-font-smoothing: antialiased;
+/// 	-moz-osx-font-smoothing: grayscale;
+/// 	font-style: normal;
+/// 	font-variant: normal;
+/// 	font-weight: normal;
+/// 	font-size: 14px;
+/// 	line-height: 1;
+/// 	text-transform: none;
+/// 	speak: none;
+/// }
+/// ```
+///
 @mixin icon-font {
-	@include font-smoothing(true);
+	@include _font-smoothing(true);
 
 	font-style: normal;
 	font-variant: normal;
@@ -352,6 +480,14 @@
 /// 	@include truncate;
 /// }
 ///
+/// @output
+/// ```css
+/// .username {
+/// 	overflow: hidden;
+/// 	text-overflow: ellipsis;
+/// 	white-space: nowrap;
+/// }
+/// ```
 @mixin truncate {
 	overflow: hidden;
 
@@ -368,6 +504,19 @@
 /// .sponsors {
 /// 	@include justify-last-line;
 /// }
+///
+/// @output
+/// ```css
+/// .sponsors {
+/// 	text-align: justify;
+/// }
+/// .sponsors::after {
+/// 	display: inline-block;
+/// 	width: 100%;
+/// 	height: 0;
+/// 	content: '';
+/// }
+/// ```
 ///
 @mixin justify-last-line {
 	text-align: justify;
@@ -545,6 +694,7 @@ $no-viewport: false !default;
 /// @author Hugo Giraudel
 /// @param {List} $directions - List of initial directions
 /// @return {List} - List of opposite directions
+/// @access private
 @function _opposite-direction($directions) {
 	$opposite-directions: ();
 	$direction-map: (
