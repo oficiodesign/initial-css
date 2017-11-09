@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 @mixin placeholder-bg {
-	background: linear-gradient(to top left, transparent 0%, transparent calc(50% - 0.8px), palette('black') 50%, transparent calc(50% + 0.8px), transparent 100%), linear-gradient(to top right, transparent 0%, transparent calc(50% - 0.8px), palette('black') 50%, transparent calc(50% + 0.8px), transparent 100%), palette('gray', 'light');
+	background: linear-gradient(to top left, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), linear-gradient(to top right, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), palette('gray', 'light');
 }
 
 /* Typography helpers */
