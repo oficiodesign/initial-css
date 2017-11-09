@@ -191,6 +191,21 @@
 	@content;
 }
 
+/// Special style icon fonts.
+///
+/// @access private
+///
+@mixin _font-smoothing($value: true) {
+	// sass-lint:disable-block no-vendor-prefixes
+	@if ($value == true) {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	} @else {
+		-webkit-font-smoothing: subpixel-antialiased;
+		-moz-osx-font-smoothing: auto;
+	}
+}
+
 
 @mixin icon-font {
 	@include font-smoothing(true);
@@ -205,17 +220,6 @@
 	text-transform: none;
 
 	speak: none;
-}
-
-@mixin font-smoothing($value: true) {
-	// sass-lint:disable-block no-vendor-prefixes
-	@if ($value == true) {
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	} @else {
-		-webkit-font-smoothing: subpixel-antialiased;
-		-moz-osx-font-smoothing: auto;
-	}
 }
 
 
