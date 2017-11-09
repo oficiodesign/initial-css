@@ -11,7 +11,7 @@ groups:
   font-stacks: Font-stacks
   hacks: Dirty Hacks & Fixes
   helpers: Helpers
-  normalizer:
+  normalizer: Normalization
 package:
   title: Initial CSS
   name: initial-css
