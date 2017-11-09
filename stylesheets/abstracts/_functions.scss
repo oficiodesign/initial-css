@@ -322,9 +322,6 @@
 	}
 }
 
-
-///--------------------------------------------------------------------------------------------------------------------
-
 /// Trims a string by removing leading and trailing spaces
 ///
 /// @group helpers
@@ -334,19 +331,19 @@
 @function trim($string) {
 	@return str-slice(
 		$string,
-		first-index($string, 'left'),
-		first-index($string, 'right')
+		_first-index($string, 'left'),
+		_first-index($string, 'right')
 	);
 }
 
 /// Find first char which is not a space
 ///
-/// @group helpers
 /// @param {String} $string - String to search
 /// @param {String} $direction ['left'] - Either 'left' or 'right' to indicate search direction
+/// @access private
 /// @return {Number} - Index of first non-space character
 ///
-@function first-index($string, $direction: 'left') {
+@function _first-index($string, $direction: 'left') {
 	@for $i from 1 through str-length($string) {
 		$index: if($direction == 'left', $i, -$i);
 
