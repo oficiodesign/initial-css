@@ -298,7 +298,7 @@
 	}
 
 	@if not map-has-key($default-palette, $color-name) {
-		@error 'unknown color sent to `palette` function: `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
+		@error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
 	}
 
 	$color: map-get($default-palette, $color-name);
