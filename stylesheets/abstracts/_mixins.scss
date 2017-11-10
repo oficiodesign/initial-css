@@ -6,6 +6,8 @@
 ///
 /// @group helpers
 ///
+/// @require {function} palette
+///
 /// @example scss
 /// image[src=""] {
 /// 	@include placeholder-bg;
@@ -19,7 +21,7 @@
 /// 			to top left,
 /// 			transparent 0%,
 /// 			transparent calc(50% - 1px),
-/// 			palette('black') 50%,
+/// 			black 50%,
 /// 			transparent calc(50% + 1px),
 /// 			transparent 100%
 /// 		),
@@ -27,11 +29,11 @@
 /// 			to top right,
 /// 			transparent 0%,
 /// 			transparent calc(50% - 1px),
-/// 			palette('black') 50%,
+/// 			black 50%,
 /// 			transparent calc(50% + 1px),
 /// 			transparent 100%
 /// 		),
-/// 		palette('gray', 'light');
+/// 		silver;
 /// }
 /// ```
 ///
@@ -71,7 +73,7 @@
 /// 	font-style: italic;
 /// 	font-size: 2em;
 /// 	line-height: 0.25;
-/// 	font-family: $ampersand-font-stack;
+/// 	font-family: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
 /// 	vertical-align: middle;
 /// }
 /// ```
@@ -108,7 +110,7 @@
 /// h1 .alt {
 /// 	overflow: visible;
 /// 	font-style: italic;
-/// 	font-family: $alt-font-stack;
+/// 	font-family: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
 /// }
 /// ```
 ///
