@@ -155,7 +155,7 @@ $border-radius: 0 !default;
 /// @type number
 $stroke: 1px !default;
 
-@function im-to-em($breakpoints, $base-value: 16px) {
+@function _im-to-em($breakpoints, $base-value: 16px) {
 	$new-breakpoints: ();
 
 	@each $name, $value in $breakpoints {
@@ -169,7 +169,7 @@ $stroke: 1px !default;
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: im-to-em(
+$breakpoints: _im-to-em(
 	(
 		'phone': 320px,
 		'tablet': 768px,
