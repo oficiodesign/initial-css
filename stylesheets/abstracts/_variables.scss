@@ -208,3 +208,23 @@ $layers: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+
+@function _im-to-px($breakpoints, $base-value: 16px) {
+	$new-breakpoints: ();
+
+	@each $name, $value in $breakpoints {
+		@if (unit($value) != 'em' and unit($value) != 'px') {
+			@error 'all media queries units should be either `em` or `px`. `#{unit($value)}` given.';
+		}
+
+		$px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
+
+		$new-breakpoints: map-merge($new-breakpoints, ($name: $px-value));
+	}
+
+	@return $new-breakpoints;
+}
+
+@if variable-exists('im-media-support') and $im-media-support == false {
+	$breakpoints: _im-to-px($breakpoints);
+}
