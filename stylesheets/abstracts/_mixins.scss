@@ -546,11 +546,11 @@
 	white-space: nowrap;
 }
 
-@mixin image-replacement ($overflow: true) {
+@mixin image-replacement($overflow: true) {
 	@if $overflow {
 		overflow: hidden;
 
-		text-indent: 100%;
+		text-indent: 101%;
 		white-space: nowrap;
 
 		background-repeat: no-repeat;
