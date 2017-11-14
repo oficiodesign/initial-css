@@ -790,6 +790,37 @@ $no-viewport: false !default;
 	}
 }
 
+/// Helper to set a two dimensional proportion to an element.
+///
+/// The height is a minimum. Set the contents height or their position to `absolute`,
+/// if you want to always respect the proportion.
+///
+/// @group helpers
+///
+/// @param {list} $ratio - being a list of 2 elements, width and height, or 3,
+/// width and height separated by a lowercase `x`
+///
+/// @example scss
+/// div {
+/// 	@include aspect-ratio(3 x 4);
+/// }
+///
+/// @output
+/// ```css
+/// div {
+/// 	position: relative;
+/// }
+/// div::before {
+/// 	float: left;
+/// 	padding-top: 133.33333%; /* height / width * 100% */
+/// 	content: '';
+/// }
+/// div::after {
+/// 	clear: both;
+/// 	display: table;
+/// 	content: '';
+/// }
+/// ```
 @mixin aspect-ratio ($ratio) {
 	@if type-of($ratio) != list {
 		@error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
