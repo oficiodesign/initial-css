@@ -371,6 +371,13 @@ rules:
       - 'speak'
       - 'tab-size'
 
+      - 'scroll-behavior'
+      - 'scroll-snap-coordinate'
+      - 'scroll-snap-destination'
+      - 'scroll-snap-points-x'
+      - 'scroll-snap-points-y'
+      - 'scroll-snap-type'
+
   property-units:
     - 2
     - per-property:
