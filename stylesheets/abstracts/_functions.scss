@@ -66,7 +66,6 @@
 
 ///  Calculate the Perceived Brightness of a Color
 /// @access private
-/// @group helpers
 /// @param {color} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
 @function _brightness($color) {
@@ -322,9 +321,6 @@
 	}
 }
 
-
-///--------------------------------------------------------------------------------------------------------------------
-
 /// Trims a string by removing leading and trailing spaces
 ///
 /// @group helpers
@@ -334,19 +330,19 @@
 @function trim($string) {
 	@return str-slice(
 		$string,
-		first-index($string, 'left'),
-		first-index($string, 'right')
+		_first-index($string, 'left'),
+		_first-index($string, 'right')
 	);
 }
 
 /// Find first char which is not a space
 ///
-/// @group helpers
 /// @param {String} $string - String to search
 /// @param {String} $direction ['left'] - Either 'left' or 'right' to indicate search direction
+/// @access private
 /// @return {Number} - Index of first non-space character
 ///
-@function first-index($string, $direction: 'left') {
+@function _first-index($string, $direction: 'left') {
 	@for $i from 1 through str-length($string) {
 		$index: if($direction == 'left', $i, -$i);
 
@@ -356,48 +352,4 @@
 	}
 
 	@return 0;
-}
-
-
-
-/// @group helpers
-@function grid-image($grid: $susy) {
-	// to use double single quotes inside the string save us from encode the double ones
-	// sass-lint:disable-block quotes
-
-	$debug-color: palette('debug');
-
-	$grid: susy-normalize($grid);
-
-	$columns: map-get($grid, 'columns');
-	$gutter: map-get($grid, 'gutters');
-
-	$svg-units: 'em', 'ex', 'px', 'pt', 'pc', 'cm', 'mm', 'in', '%';
-
-	@if index($svg-units, unit($gutter)) == null {
-		@error 'SVG unsuported unit used for gutter-> #{unit($gutter)}';
-	}
-
-	$color: $debug-color + unquote("");
-	$color: if(str-index($color, '#'), '%23' + str-slice($color, 2), $color);
-
-	$x: 0;
-
-	$svg: "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
-
-	@each $column in $columns {
-		@if index($svg-units, unit($column)) == null {
-			@error 'SVG unsuported unit used for column-> #{unit($column)}';
-		}
-
-		$x: $x + $gutter + $column;
-
-		$svg: $svg + "%3Crect x='#{$x}' width='#{$gutter}' height='100%' fill='#{$color}' opacity='0.5'/%3E";
-	}
-
-	$x: $x + $gutter;
-
-	$svg: "data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$x}' height='1#{unit($gutter)}'%3E" + $svg + "%3C/svg%3E";
-
-	@return $svg;
 }

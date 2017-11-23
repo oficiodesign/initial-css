@@ -155,7 +155,7 @@ $border-radius: 0 !default;
 /// @type number
 $stroke: 1px !default;
 
-@function im-to-em($breakpoints, $base-value: 16px) {
+@function _im-to-em($breakpoints, $base-value: 16px) {
 	$new-breakpoints: ();
 
 	@each $name, $value in $breakpoints {
@@ -169,7 +169,7 @@ $stroke: 1px !default;
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: im-to-em(
+$breakpoints: _im-to-em(
 	(
 		'phone': 320px,
 		'tablet': 768px,
@@ -208,3 +208,23 @@ $layers: (
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+
+@function _im-to-px($breakpoints, $base-value: 16px) {
+	$new-breakpoints: ();
+
+	@each $name, $value in $breakpoints {
+		@if (unit($value) != 'em' and unit($value) != 'px') {
+			@error 'all media queries units should be either `em` or `px`. `#{unit($value)}` given.';
+		}
+
+		$px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
+
+		$new-breakpoints: map-merge($new-breakpoints, ($name: $px-value));
+	}
+
+	@return $new-breakpoints;
+}
+
+@if variable-exists('im-media-support') and $im-media-support == false {
+	$breakpoints: _im-to-px($breakpoints);
+}
