@@ -177,6 +177,13 @@ $breakpoints: _im-to-em(
 	)
 ) !default;
 
+$toggle-breakpoints: (
+	'toggle-table-layout': 48em,
+	'toggle-menu': 64em,
+);
+
+$breakpoints: map-merge($breakpoints, $toggle-breakpoints);
+
 // 320
 // 480
 // 760
