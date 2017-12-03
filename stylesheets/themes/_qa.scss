@@ -215,12 +215,48 @@ input[type='number'][lang=''] {
 	}
 }
 
-// Unnecessary or Deprecated Attributes
 
+// Deprecated Attributes
+[align],
+[alink],
+[background],
+[bgcolor],
+[border],
+[clear],
+[color],
+[height],
+[hspace],
+[link],
+[noshade],
+[nowrap],
+[size],
+[start],
+[vlink],
+[vspace],
+[width]  {
+	@include alert {
+		content: 'Deprecated Attribute. Use CSS instead.' !important;
+	}
+}
+
+script[language] {
+	@include alert {
+		content: 'Instead of the `language` attribute, use `type`.' !important;
+	}
+}
+
+table[summary] {
+	@include alert {
+		content: '`summary` attribute is deprecated. Use the <caption> element.' !important;
+	}
+}
+
+
+// Unnecessary Attributes
 script[type='text/javascript'],
 link[rel='stylesheet'][type='text/css'] {
 	@include alert {
-		content: 'Unnecessary or Deprecated Attributes';
+		content: 'Unnecessary Attributes';
 	}
 
 	@at-root {
@@ -228,6 +264,13 @@ link[rel='stylesheet'][type='text/css'] {
 			display: block !important;
 			overflow: visible !important;
 		}
+	}
+}
+
+
+[tabindex]:not([tabindex='-1']):not([tabindex='0']) {
+	@include alert {
+		content: 'Tab order altered.' !important;
 	}
 }
 
