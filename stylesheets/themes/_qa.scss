@@ -28,14 +28,30 @@
 }
 
 /* Deprecated elements */
+acronym,
 applet,
 basefont,
+bgsound,
+big,
+blink,
 center,
+comment,
 dir,
+embed,
 font,
+frame,
+frameset,
 isindex,
+listing,
+marquee,
+multicol,
+nobr,
+noembed,
+plaintext,
 spacer,
-strike {
+strike,
+wbr,
+xmp {
 	@extend %error;
 }
 
