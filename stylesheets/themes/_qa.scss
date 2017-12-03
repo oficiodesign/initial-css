@@ -194,9 +194,6 @@ input[type='image'] {
 	}
 }
 
-// Empty Interactive Elements
-button:empty,
-a:empty {
 	@extend %error;
 
 	+ * {
@@ -233,13 +230,8 @@ link[rel='stylesheet'][type='text/css'] {
 }
 
 
-/* Empty elements not used for scripting */
-p:empty:not([id]),
-li:empty:not([id]),
-th:empty:not([id]),
-td:empty:not([id]),
-div:empty:not([id]),
-span:empty:not([id]) {
+/// Empty element not used for scripting
+*:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(td):not(track):not(wbr):not([id]):not([class*='js-']) {
 	@extend %error;
 
 	@include alert {
