@@ -86,6 +86,8 @@ img:not([alt]) {
 html:not([lang]),
 html[lang=''] {
 	body {
+		@extend %error;
+
 		@include alert {
 			content: 'Missing Document Language.' !important;
 		}
@@ -95,6 +97,8 @@ html[lang=''] {
 // Incorrect Character Set
 meta[charset='UTF-8']:not(:first-child) {
 	& + body {
+		@extend %error;
+
 		@include alert {
 			content: 'Incorrect Character Set.' !important;
 		}
@@ -106,6 +110,8 @@ meta[name='viewport'][content*='user-scalable=no'],
 meta[name='viewport'][content*='maximum-scale'],
 meta[name='viewport'][content*='minimum-scale'] {
 	& + body {
+		@extend %error;
+
 		@include alert {
 			content: 'Unaccessible Viewport Attributes.' !important;
 		}
