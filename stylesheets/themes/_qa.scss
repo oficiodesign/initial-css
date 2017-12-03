@@ -356,3 +356,35 @@ textarea {
 	}
 }
 
+
+
+/**
+* List errors
+----------------------------------------------------------------------
+*/
+
+ol > *:not(li):not(script):not(template),
+ul > *:not(li):not(script):not(template) {
+	@extend %error;
+
+	@include alert {
+		content: 'Unallowed element used as direct child of `<ul>` or `<ol>`.' !important;
+	}
+}
+
+dl > *:not(dd):not(div):not(script):not(template) {
+	@extend %error;
+
+	@include alert {
+		content: 'Unallowed element used as direct child of `<dl>`.' !important;
+	}
+}
+
+dt ~ *:not(dd) {
+	@extend %error;
+
+	@include alert {
+		content: 'Definitions must follow definition terms.' !important;
+	}
+}
+
