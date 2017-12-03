@@ -194,6 +194,11 @@ input[type='image'] {
 	}
 }
 
+
+// Prevent decimal separator issues
+/// @link https://ctrl.blog/entry/html5-input-number-localization
+input[type='number']:not([lang]),
+input[type='number'][lang=''] {
 	@extend %error;
 
 	+ * {
@@ -203,9 +208,6 @@ input[type='image'] {
 	}
 }
 
-// Prevent decimal separator issues
-// @see https://ctrl.blog/entry/html5-input-number-localization
-input[type='number']:not([lang]) {
 	@extend %error;
 
 	@include alert {
