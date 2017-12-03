@@ -391,3 +391,69 @@ dt ~ *:not(dd) {
 	}
 }
 
+/* Boot Crap (specific to Twitter BootStrap class misuse)
+-----------------------------------------------------------------------------*/
+///
+/// Icons used for pure decoration or visual styling If you're using an icon
+/// to add some extra decoration or branding, it does not need to be announced
+/// to users as they are navigating your site or app aurally. Additionally, if
+/// you're using an icon to visually re-emphasize or add styling to content
+/// already present in your HTML, it does not need to be repeated to an
+/// assistive technology-using user. You can make sure this is not read by
+/// adding the `aria- hidden="true"` to your Font Awesome markup.
+///
+/// @link https://github.com/Heydon/REVENGE.CSS/issues/19
+/// @link http://fontawesome.io/accessibility/
+i,
+span {
+	&.fa:not([aria-hidden='true']) {
+		@include alert {
+			content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important;
+		}
+	}
+}
+
+
+
+li {
+	&.divider:not([role='separator']),
+	&:empty:not([role='separator']) {
+		@include alert {
+			content: 'Declare list items used as separator using `[role=separator]`. Or, even better, don\t use them at all.' !important;
+		}
+	}
+
+	&.dropdown-header {
+		@include alert {
+			content: 'Do not use list items as headers for lists, obvs.' !important;
+		}
+	}
+}
+
+.btn:not(button):not([href])::after {
+	@include alert {
+		content: 'Inaccessible control. Use a `button[type]` or a `a[href]`.' !important;
+	}
+}
+
+.disabled > a[href]:not([tabindex='-1']),
+.disabled > button:not([disabled]),
+.disabled[href],
+.disabled:not([disabled]) {
+	@include alert {
+		content: 'Elements improperly disabled.' !important;
+	}
+}
+
+[data-toggle='dropdown']:not([aria-haspopup]) {
+	@include alert {
+		content: 'Hidden menus should be synalized with `[aria-haspopup]`.' !important;
+	}
+}
+
+.button:not(a):not(button):not(input):not([tabindex]),
+.btn:not(a):not(button):not(input):not([tabindex]) {
+	@include alert {
+		content: 'Element impossibly focusable used for as "button".' !important;
+	}
+}
