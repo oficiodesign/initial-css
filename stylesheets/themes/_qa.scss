@@ -54,11 +54,19 @@ strike,
 wbr,
 xmp {
 	@extend %error;
+
+	@include alert {
+		content: 'Deprecated element.' !important;
+	}
 }
 
 /* Inline Styles */
 [style]:not([class*='js-']) {
 	@extend %error;
+
+	@include alert {
+		content: '`style` attribute shouldn\'t be used, despeite being added by some scripts.' !important;
+	}
 }
 
 /* Faulty or Missing Link Targets */
@@ -68,12 +76,22 @@ a {
 	&[href=''],
 	&[href^='javascript'] {
 		@extend %error;
+
+		@include alert {
+			content: 'Links should only be used to navigation. Use a `<button>` instead.' !important;
+		}
 	}
 }
 
 /* Layout tables */
 table table {
 	@extend %error;
+
+	@include alert {
+		content: 'Tables shouldn\'t be nested.' !important;
+	}
+
+	display: block !important;
 }
 
 /* Unaccessible Images */
@@ -82,6 +100,12 @@ table table {
 */
 img:not([alt]) {
 	@extend %error;
+
+	+ * {
+		@include alert {
+			content: '`alt` attribute missing.' !important;
+		}
+	}
 }
 
 // Missing Document Language
@@ -126,6 +150,10 @@ meta[name='viewport'][content*='minimum-scale'] {
 
 label:not([for]) {
 	@extend %error;
+
+	@include alert {
+		content: 'Isn\'t the `for` attribute missing?.' !important;
+	}
 }
 
 // Unlabelled Form Elements
@@ -146,12 +174,22 @@ form:not([name]):not([id]) {
 button:empty,
 a:empty {
 	@extend %error;
+
+	+ * {
+		@include alert {
+			content: 'To prevent decimal separator issues, declared [lang].' !important;
+		}
+	}
 }
 
 // Prevent decimal separator issues
 // @see https://ctrl.blog/entry/html5-input-number-localization
 input[type='number']:not([lang]) {
 	@extend %error;
+
+	@include alert {
+		content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important;
+	}
 }
 
 // Unnecessary or Deprecated Attributes
@@ -165,6 +203,7 @@ link[rel='stylesheet'][type='text/css'] {
 	@at-root {
 		head {
 			display: block !important;
+			overflow: visible !important;
 		}
 	}
 }
@@ -178,5 +217,9 @@ td:empty:not([id]),
 div:empty:not([id]),
 span:empty:not([id]) {
 	@extend %error;
+
+	@include alert {
+		content: 'Empty element should only be used for scripting.' !important;
+	}
 }
 
