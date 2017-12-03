@@ -56,7 +56,7 @@ xmp {
 }
 
 /* Inline Styles */
-[style] {
+[style]:not([class*='js-']) {
 	@extend %error;
 }
 
