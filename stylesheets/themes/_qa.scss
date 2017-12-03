@@ -174,6 +174,24 @@ textarea {
 
 form:not([name]):not([id]) {
 	@extend %error;
+
+/// If the image button (<input type="image">) is used, the label is set in
+/// the alt attribute, for example:
+/// <input type="image" src="searchbutton.png" alt="Search">
+///
+/// @link https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons
+///
+input[type='image'] {
+	&:not([alt])
+	&[alt=''] {
+		@extend %error;
+	}
+
+	+ * {
+		@include alert {
+			content: '`input[type=image]` requires `alt` attribute.' !important;
+		}
+	}
 }
 
 // Empty Interactive Elements
