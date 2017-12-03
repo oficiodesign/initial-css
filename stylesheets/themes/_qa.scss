@@ -288,3 +288,48 @@ link[rel='stylesheet'][type='text/css'] {
 	}
 }
 
+
+/// Misuse of sectioning elements
+article > article,
+section > section,
+section > article,
+section > aside,
+aside > aside,
+aside > section,
+footer > footer {
+	@extend %error;
+
+	@include alert {
+		content: 'Misued section element.' !important;
+	}
+}
+
+article,
+section,
+aside,
+footer {
+	&[role='banner'] {
+		@extend %error;
+
+		@include alert {
+			content: 'Only `<header>` or `<div>` can have `[role=banner]`.' !important;
+		}
+	}
+}
+
+article,
+header,
+section,
+aside {
+	&[role='contentinfo'] {
+		@extend %error;
+
+		@include alert {
+			content: 'Only `<footer>` or `<div>` can have `[role=contentinfo]`.' !important;
+		}
+	}
+
+	@include alert {
+	}
+}
+
