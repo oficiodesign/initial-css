@@ -328,8 +328,31 @@ aside {
 			content: 'Only `<footer>` or `<div>` can have `[role=contentinfo]`.' !important;
 		}
 	}
+/**
+* Helpers
+----------------------------------------------------------------------
+*/
+
+
+[class*='toggle']:not([aria-pressed]) {
+	@extend %error;
 
 	@include alert {
+		content: 'Toggleable elements should have an `aria-pressed` attribute.' !important;
+	}
+}
+
+
+button,
+input,
+select,
+textarea {
+	&.disabled:not([disabled]):not([readonly]) {
+		@extend %error;
+
+		@include alert {
+			content: 'A field shouldn\'t be disabled in appearane only.' !important;
+		}
 	}
 }
 
