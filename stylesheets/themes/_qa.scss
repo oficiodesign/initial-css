@@ -145,8 +145,14 @@ meta[name='viewport'][content*='minimum-scale'] {
 }
 
 
+form[action=''] {
 	@extend %error;
+
+	@include alert {
+		content: '`action` attribute isn\'t required on `form`, but it shouldn\'t be empty.' !important;
+	}
 }
+
 
 label:not([for]) {
 	@extend %error;
