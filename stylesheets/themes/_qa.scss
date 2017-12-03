@@ -4,9 +4,10 @@
 ///
 ///
 ///
+// sass-lint:disable no-important
 
 %error {
-	outline: 5px solid palette('debug') !important; // sass-lint:disable-line no-important
+	outline: 5px solid palette('debug') !important;
 }
 
 @mixin alert {
@@ -86,7 +87,7 @@ html:not([lang]),
 html[lang=''] {
 	body {
 		@include alert {
-			content: 'Missing Document Language';
+			content: 'Missing Document Language.' !important;
 		}
 	}
 }
@@ -95,7 +96,7 @@ html[lang=''] {
 meta[charset='UTF-8']:not(:first-child) {
 	& + body {
 		@include alert {
-			content: 'Incorrect Character Set';
+			content: 'Incorrect Character Set.' !important;
 		}
 	}
 }
@@ -106,7 +107,7 @@ meta[name='viewport'][content*='maximum-scale'],
 meta[name='viewport'][content*='minimum-scale'] {
 	& + body {
 		@include alert {
-			content: 'Unaccessible Viewport Attributes';
+			content: 'Unaccessible Viewport Attributes.' !important;
 		}
 	}
 }
@@ -155,7 +156,7 @@ link[rel='stylesheet'][type='text/css'] {
 
 	@at-root {
 		head {
-			display: block !important; // sass-lint:disable-line no-important
+			display: block !important;
 		}
 	}
 }
