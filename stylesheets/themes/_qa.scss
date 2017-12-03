@@ -62,11 +62,13 @@ xmp {
 }
 
 /* Faulty or Missing Link Targets */
-a:not([href]),
-a[href='#'],
-a[href=''],
-a[href*='javascript:void(0)'] {
-	@extend %error;
+a {
+	&:not([href]),
+	&[href$='#'],
+	&[href=''],
+	&[href^='javascript'] {
+		@extend %error;
+	}
 }
 
 /* Layout tables */
@@ -119,10 +121,6 @@ meta[name='viewport'][content*='minimum-scale'] {
 }
 
 
-// Unlabelled Form Elements
-input:not([id]),
-select:not([id]),
-textarea:not([id]) {
 	@extend %error;
 }
 
@@ -130,10 +128,14 @@ label:not([for]) {
 	@extend %error;
 }
 
-input:not([name]),
-select:not([name]),
-textarea:not([name]) {
-	@extend %error;
+// Unlabelled Form Elements
+input,
+select,
+textarea {
+	&:not([id]),
+	&:not([name]) {
+		@extend %error;
+	}
 }
 
 form:not([name]):not([id]) {
