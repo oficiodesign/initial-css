@@ -383,7 +383,7 @@
 }
 
 /// @content the rules to be applied
-@mixin link-undercover() {
+@mixin link-undercover {
 	&,
 	&:link,
 	&:visited {
