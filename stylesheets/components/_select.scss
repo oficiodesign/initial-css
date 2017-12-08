@@ -15,17 +15,28 @@ option {
 
 /**
  * @see https://github.com/necolas/normalize.css/issues/579#issue-148022816
- * 1. patch to correct an problem in Mac OS only not letting stylize combo boxes
- * 2. Revert to default for Edge
  */
 select {
+	text-indent: 0.01px; // sass-lint:disable-line property-units
+	text-overflow: '';
+
 	box-sizing: content-box;
 
-	-webkit-appearance: menulist-button; /* 1. Mac Aqua off */ // sass-lint:disable-line no-vendor-prefixes
+	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+	-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+	appearance: none;
 
-	@supports (-ms-accelerator: true) {
-		-webkit-appearance: menulist; /* 2 */ // sass-lint:disable-line no-vendor-prefixes
+	&::-ms-expand {
+		display: none;
 	}
+}
+
+select,
+.ie6-9:invalid {
+	padding-right: 1.5em;
+
+	background-image: url('data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==');
+	background-position: 95% 50%;
 }
 
 /**
