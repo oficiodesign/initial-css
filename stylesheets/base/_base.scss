@@ -21,9 +21,9 @@
 ::selection {
 	text-shadow: none;
 
-	color: palette('white');
+	color: palette('selection', 'foreground');
 
-	background-color: palette('selection');
+	background-color: palette('selection', 'background');
 }
 
 /**

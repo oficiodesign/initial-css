@@ -253,7 +253,7 @@
 		'border': (
 			'base': rgb(192, 192, 192),
 			'focus': rgb(0, 0 , 0),
-			),
+		),
 		'button': (
 			'base': rgb(225, 225, 225),
 			'focus': rgb(229, 241, 251),
@@ -283,7 +283,10 @@
 		),
 		'quotes': hsl(0, 0%, 34%),
 		'placeholder': hsl(0, 0%, 34%),
-		'selection': rgb(20, 105, 140),
+		'selection': (
+			'foreground': rgb(255, 255, 255),
+			'background': rgb(20, 105, 140),
+		),
 		'tap-highlight': rgb(255, 94, 153),
 		'target-highlight': rgb(255, 255, 102),
 		'text': (
