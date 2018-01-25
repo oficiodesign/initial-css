@@ -9,6 +9,7 @@ groups:
   components: CSS components
   config: Configuration variables and maps
   font-stacks: Font-stacks
+  qa: Quality assurance
   hacks: Dirty Hacks & Fixes
   helpers: Helpers
   normalizer: Normalization
