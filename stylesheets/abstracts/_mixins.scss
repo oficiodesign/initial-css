@@ -873,8 +873,8 @@ $no-viewport: false !default;
 /// @link http://codepen.io/timbrown/full/akXvRw/
 @mixin fluid-line-height (
 	$font-size: null,
-	$min-line-height: map-get($line-heights, 'min'),
-	$max-line-height: map-get($line-heights, 'max'),
+	$min-line-height: map-get($leadings, 'min'),
+	$max-line-height: map-get($leadings, 'max'),
 	$line-length-lower-gate: map-get($line-lengths, 'min'),
 	$line-length-upper-gate: map-get($line-lengths, 'max')
 ) {

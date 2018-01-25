@@ -47,14 +47,14 @@ $body-font-size: 1em !default;
 ///
 /// @access public
 /// @type number
-$line-height: 1.5 !default;
+$leading: 1.5 !default;
 
 /// flexible line heights map
 /// @access private
 /// @type Map
 /// @prop {number} min - minimum line height expressed unitless
 /// @prop {number} max - maximum line height expressed unitless
-$line-heights: (
+$leadings: (
 	'min': 1.15,
 	'max': 1.5,
 ) !default;

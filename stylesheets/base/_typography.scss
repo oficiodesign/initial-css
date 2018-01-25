@@ -16,7 +16,7 @@
  */
 body {
 	font-size: $body-font-size;
-	line-height: $line-height;
+	line-height: $leading;
 	font-family: $text-font-stack;
 
 	color: palette('text', 'dark');
