@@ -392,3 +392,23 @@
 }
 
 /// @group helpers
+@function grid-image($columns: 1, $gutter: $gutter) {
+	$debug-color: palette('debug');
+
+	$grid-image: transparent 0, transparent $gutter, rgba($debug-color, 0.35) $gutter;
+
+	@for $i from 1 to $columns {
+		$grid-image: append($grid-image, (
+				rgba($debug-color, 0.5) calc(#{100% / $columns * $i} - #{$gutter * 0.5}),
+				transparent calc(#{100% / $columns * $i} - #{$gutter * 0.5}),
+				transparent calc(#{100% / $columns * $i} + #{$gutter * 0.5}),
+				rgba($debug-color, 0.5) calc(#{100% / $columns * $i} + #{$gutter * 0.5})
+			), comma);
+	}
+
+	$grid-image: append($grid-image, (rgba($debug-color, 0.35) calc(100% - #{$gutter}), transparent calc(100% - #{$gutter}), transparent 100%), comma);
+
+	$grid-image: linear-gradient(to right, $grid-image);
+
+	@return $grid-image;
+}
