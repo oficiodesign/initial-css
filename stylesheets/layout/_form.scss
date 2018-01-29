@@ -103,10 +103,10 @@ form br {
 
 	color: inherit;
 
-	border-width: 1px;
+	border-width: $stroke;
 	border-style: solid;
 	border-color: palette('border');
-	border-radius: 0;
+	border-radius: $rounded-corner;
 
 	outline: 0;
 
