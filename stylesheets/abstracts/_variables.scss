@@ -152,11 +152,17 @@ $palette: (
 /// Default border-radius
 /// @todo Customize it to match your design.
 /// @type number
-$border-radius: 0 !default;
+$rounded-corner: 0 !default;
 
 /// border default width
+/// @todo Customize it to match your design.
 /// @type number
 $stroke: 1px !default;
+
+/// gutter default width
+/// @todo Customize it to match your design.
+/// @type number
+$gutter: $leading * $body-font-size / 1em * 1rem;
 
 @function _im-to-em($breakpoints, $base-value: 16px) {
 	$new-breakpoints: ();

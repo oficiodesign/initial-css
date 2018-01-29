@@ -21,13 +21,13 @@
 	appearance: textfield; /* 1 */
 
 	&:invalid {
-		border-radius: $border-radius;
+		border-radius: $rounded-corner;
 
 		box-shadow: 0 0 5px palette('label', 'danger');
 	}
 
 	&:-moz-ui-invalid {
-		border-radius: $border-radius;
+		border-radius: $rounded-corner;
 
 		box-shadow: 0 0 5px palette('label', 'danger');
 	}
