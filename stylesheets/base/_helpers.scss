@@ -86,7 +86,7 @@ textarea {
 }
 
 
-/// Load the Susy grid under the class `grid-debug`
+/// Load grid image background under the class `grid`
 ///
 /// @author Sobral
 /// @group helpers
@@ -99,30 +99,70 @@ textarea {
 /// 	</body>
 /// </html>
 ///
-@if function-exists(susy-svg-grid) {
-	.grid-debug {
-		> body,
-		&:not(html) {
-			&:after {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
+.grid {
+	&::after,
+	&:root::before {
+		position: fixed;
+		top: 0;
+		right: 0;
 
-				z-index: layer('modal');
+		z-index: layer('modal');
 
-				font-size: 1rem;
+		font-size: 1rem;
 
-				pointer-events: none;
+		pointer-events: none;
 
-				background-image: susy-svg-grid();
-				background-position: center top;
-				background-size: span('all' 'wider') 100%;
-				background-repeat: repeat-y;
+		content: 'breakpoint: phone';
+	}
 
-				content: '';
-			}
+	&::after {
+		bottom: 0;
+		left: 0;
+
+		background-image: grid-image(2);
+		background-position: center top;
+
+		content: '';
+
+		@media screen and (min-width: breakpoint('phablet')) {
+			background-image: grid-image(3);
+		}
+
+		@media screen and (min-width: breakpoint('tablet')) {
+			background-image: grid-image(4);
+		}
+
+		@media screen and (min-width: breakpoint('desktop')) {
+			background-image: grid-image(5);
+		}
+
+		@media screen and (min-width: breakpoint('wide')) {
+			background-image: grid-image(6);
+			background-size: $max-width 100%;
+		}
+	}
+
+	&:root::before {
+		padding: $gutter;
+
+		background-color: palette('debug');
+
+		opacity: 0.75;
+
+		@media screen and (min-width: breakpoint('phablet')) {
+			content: 'breakpoint: phablet';
+		}
+
+		@media screen and (min-width: breakpoint('tablet')) {
+			content: 'breakpoint: tablet';
+		}
+
+		@media screen and (min-width: breakpoint('desktop')) {
+			content: 'breakpoint: desktop';
+		}
+
+		@media screen and (min-width: breakpoint('wide')) {
+			content: 'breakpoint: wide';
 		}
 	}
 }
