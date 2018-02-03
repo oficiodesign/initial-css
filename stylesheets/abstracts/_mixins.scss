@@ -903,3 +903,10 @@ $no-viewport: false !default;
 		line-height: $max-line-height;
 	}
 }
+
+
+@mixin hyphens {
+	hyphens: auto;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
