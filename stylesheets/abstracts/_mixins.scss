@@ -592,16 +592,17 @@ $no-viewport: false !default;
 			@if str-index(unit($value), 'v') != null {
 				@if $fallbacks == null {
 					@error 'fallback values, the 3rd parameter, are required for viewport units';
+				} @else {
+					$fallback-units: join($fallback-units, 'viewport');
 				}
-				$fallback-units: join($fallback-units, 'viewport');
 			} @else {
 				$fallback-units: join($fallback-units, unit($value));
 			}
-		} @elseif $fallbacks == null {
+		} @else if $fallbacks == null {
 			@error 'fallback values, the 3rd parameter, are required for everything except `rem` numbers';
-		} @elseif str-index($value, 'calc') {
+		} @else if str-index($value, 'calc') {
 			$fallback-units: join($fallback-units, 'calc');
-		} @elseif str-index($value, 'gradient') {
+		} @else if str-index($value, 'gradient') {
 			$fallback-units: join($fallback-units, 'gradient');
 		}
 

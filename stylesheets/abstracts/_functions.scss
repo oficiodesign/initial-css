@@ -9,7 +9,7 @@
 /// @param {String} $path - asset path
 /// @return {Url}
 @function asset($base, $type, $path) {
-	@return url($base + $type + $path);
+	@return url('#{$base}#{$type}#{$path}');
 }
 
 /// Returns URL to an image based on its path
@@ -301,18 +301,16 @@
 
 	@if variable-exists('palette') and type-of($palette) == 'map' {
 		$default-palette: map-merge($default-palette, $palette);
-	}
-
-	@if not map-has-key($default-palette, $color-name) {
+	} @elseif not map-has-key($default-palette, $color-name) {
 		@error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
+	} @else {
+		$color: map-get($default-palette, $color-name);
 	}
-
-	$color: map-get($default-palette, $color-name);
 
 	@if $tone != null {
 		@if type-of($color) == 'color' or $color == 'transparent' {
 			@error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one tone available for color `#{$color-name}`-> `#{$color}`';
-		} @elseif not map-has-key($color, $tone) {
+		} @else if not map-has-key($color, $tone) {
 			@error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$color-name}`-> `#{map-keys($color)}`';
 		} @else {
 			@return map-get(map-get($default-palette, $color-name), $tone);
@@ -399,13 +397,11 @@
 @function grid-image($columns: 1, $gutter: $gutter) {
 	$color: rgba(palette('debug'), 0.35);
 	$grid-image: $color 0, $color $gutter, transparent $gutter;
+
 	@for $i from 1 to $columns {
 		$multiplier: $i / $columns;
-		$grid-image: append($grid-image, ( transparent calc(#{100% * $multiplier} - #{$gutter *      $multiplier }), $color calc(#{100% * $multiplier} - #{$gutter *      $multiplier }), $color calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)}), transparent calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)})), comma);
+		$grid-image: append($grid-image, ( transparent calc(#{100% * $multiplier} - #{$gutter * $multiplier }), $color calc(#{100% * $multiplier} - #{$gutter * $multiplier }), $color calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)}), transparent calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)})), comma);
 	}
-	$grid-image: append($grid-image, (transparent calc(100% - #{$gutter}), $color calc(100% - #{$gutter}), $color 100%), comma);
-	$grid-image: linear-gradient(to right, $grid-image);
-	@return $grid-image;
+
+	@return linear-gradient(to right, #{append($grid-image, (transparent calc(100% - #{$gutter}), $color calc(100% - #{$gutter}), $color 100%), comma)});
 }
-
-
