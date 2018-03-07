@@ -37,6 +37,18 @@ $text-font-stack: $native-font-stack !default;
 $code-font-stack: $basic-code-font-stack !default;
 
 
+/// Font weights map
+/// @access private
+/// @prop {string} weight - Pure colors or a map of tones
+/// @require {function} font-weight
+/// @todo Customize the weights or add new ones to match your design needs.
+/// @type Map
+$font-weights: (
+	'text': 400,
+	'heading': 700,
+);
+
+
 /// Body text font-size
 ///
 /// @access public

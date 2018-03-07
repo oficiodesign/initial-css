@@ -177,11 +177,15 @@
 
 	$weight: to-lower-case($weight);
 
-	@if not map-has-key($weights, $weight) {
+	@if variable-exists('font-weights') and type-of($font-weights) =='map' {
+		$default-weights: map-merge($default-weights, $font-weights);
+	}
+
+	@if not map-has-key($default-weights, $weight) {
 		@error 'unknown value sent to `font-weight` function-> #{$weight}.';
 	}
 
-	@return map-get($weights, $weight);
+	@return map-get($default-weights, $weight);
 }
 
 
