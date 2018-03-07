@@ -193,8 +193,10 @@ $gutter: $leading * $body-font-size / 1em * 1rem;
 $breakpoints: _im-to-em(
 	(
 		'phone': 320px,
+		'phablet': 480px,
 		'tablet': 768px,
-		'desktop': 1024px
+		'desktop': 1024px,
+		'wide': 1280px,
 	)
 ) !default;
 
