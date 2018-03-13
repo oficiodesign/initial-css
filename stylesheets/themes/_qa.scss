@@ -68,7 +68,7 @@ xmp {
 	@extend %error;
 
 	@include alert {
-		content: '`style` attribute shouldn\'t be used, despeite being added by some scripts.' !important;
+		content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important;
 	}
 }
 
@@ -182,7 +182,7 @@ form:not([name]):not([id]) {
 
 /// If the image button (<input type="image">) is used, the label is set in
 /// the alt attribute, for example:
-/// <input type="image" src="searchbutton.png" alt="Search">
+/// <input type="image" src="search-button.png" alt="Search">
 ///
 /// @link https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons
 ///
@@ -308,7 +308,7 @@ header > footer {
 	@extend %error;
 
 	@include alert {
-		content: 'Misued section element.' !important;
+		content: 'Misused section element.' !important;
 	}
 }
 
@@ -364,7 +364,7 @@ textarea {
 		@extend %error;
 
 		@include alert {
-			content: 'A field shouldn\'t be disabled in appearane only.' !important;
+			content: 'A field shouldn\'t be disabled in appearance only.' !important;
 		}
 	}
 }
@@ -457,7 +457,7 @@ li {
 
 [data-toggle='dropdown']:not([aria-haspopup]) {
 	@include alert {
-		content: 'Hidden menus should be synalized with `[aria-haspopup]`.' !important;
+		content: 'Hidden menus should be signalized with `[aria-haspopup]`.' !important;
 	}
 }
 
