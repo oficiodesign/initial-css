@@ -294,12 +294,17 @@ link[rel='stylesheet'][type='text/css'] {
 
 /// Misuse of sectioning elements
 article > article,
+address > article,
 section > section,
-section > article,
-section > aside,
+address > section,
 aside > aside,
-aside > section,
-footer > footer {
+address > aside,
+header > header,
+address > header,
+footer > header,
+footer > footer,
+address > footer,
+header > footer {
 	@extend %error;
 
 	@include alert {
