@@ -242,6 +242,8 @@
 /// 		}
 /// 	}
 @function palette($color-name, $tone: null) {
+	$color: transparent;
+
 	$default-palette: (
 		'white': rgb(255, 255, 255),
 		'black': rgb(0, 0, 0),
@@ -304,10 +306,12 @@
 
 	@if variable-exists('palette') and type-of($palette) == 'map' {
 		$default-palette: map-merge($default-palette, $palette);
-	} @elseif not map-has-key($default-palette, $color-name) {
-		@error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
-	} @else {
+	}
+
+	@if map-has-key($default-palette, $color-name) {
 		$color: map-get($default-palette, $color-name);
+	} @else {
+		@error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
 	}
 
 	@if $tone != null {
@@ -321,7 +325,7 @@
 	} @else {
 		@if type-of($color) == 'color' or $color == 'transparent' {
 			@return $color;
-		} @elseif type-of($color) == 'map' and not map-has-key($color, 'base') {
+		} @else if type-of($color) == 'map' and not map-has-key($color, 'base') {
 			@error 'color `#{$color}` misses `base` tone';
 		} @else {
 			@return map-get($color, 'base');
