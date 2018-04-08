@@ -146,7 +146,7 @@
 /// 	}
 @function font-weight($weight: 'normal') {
 
-	$weights: (
+	$default-weights: (
 		'thin': 100,
 		'hairline': 100,
 		'extralight': 200,
