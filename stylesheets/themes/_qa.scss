@@ -161,7 +161,7 @@ label:not([for]) {
 	@extend %error;
 
 	@include alert {
-		content: 'Isn\'t the `for` attribute missing?.' !important;
+		content: 'Isn\'t the `for` attribute missing?' !important;
 	}
 }
 
@@ -177,6 +177,24 @@ textarea {
 
 form:not([name]):not([id]) {
 	@extend %error;
+}
+
+/// Too many options
+///
+/// @link https://uxdesign.cc/design-better-forms-96fadca0f49c
+///
+form li {
+	&:nth-child(6),
+	&:nth-child(6) ~ li {
+		@extend %error;
+
+	}
+
+	&:nth-child(6) {
+		@include alert {
+			content: 'Too many options. Use a `select`, instead.' !important;
+		}
+	}
 }
 
 
