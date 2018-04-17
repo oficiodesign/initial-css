@@ -301,7 +301,7 @@ link[rel='stylesheet'][type='text/css'] {
 
 
 /// Empty element not used for scripting
-*:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(td):not(track):not(wbr):not([id]):not([class*='js-']) {
+*:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*='js-']) {
 	@extend %error;
 
 	@include alert {
