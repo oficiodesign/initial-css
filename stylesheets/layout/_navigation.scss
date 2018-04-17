@@ -28,6 +28,8 @@ menu a,
 nav a {
 	display: block;
 
+	overflow: hidden;
+
 	&:link {
 		text-decoration: none;
 	}
