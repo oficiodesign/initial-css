@@ -15,6 +15,7 @@
  * Basic typography style for copy text
  */
 body {
+	font-weight: font-weight('text');
 	font-size: $body-font-size;
 	line-height: $leading;
 	font-family: $text-font-stack;
@@ -38,7 +39,7 @@ h6,
 legend,
 caption,
 details > summary {
-	font-weight: bold;
+	font-weight: font-weight('heading');
 	font-family: $title-font-stack;
 	font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
 
@@ -162,7 +163,7 @@ strong {
 
 b,
 strong {
-	font-weight: bolder; /* 2 */
+	font-weight: font-weight('bold'); /* 2 */
 }
 // sass-lint:enable no-mergeable-selectors
 
