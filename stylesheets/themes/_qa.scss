@@ -364,6 +364,16 @@ aside {
 ----------------------------------------------------------------------
 */
 
+* + .menu-controller,
+body * .menu-controller {
+	@extend %error;
+
+	position: fixed;
+
+	display: block;
+
+	content: '`.menu-controller`, if present, should the first child of `<body>`.';
+}
 
 [class*='toggle']:not([aria-pressed]) {
 	@extend %error;
