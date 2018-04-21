@@ -364,6 +364,14 @@ aside {
 ----------------------------------------------------------------------
 */
 
+.menu-controller:not([hidden]) {
+	position: fixed;
+	
+	display: block;
+
+	content: '`.menu-controller` should be hidden by default, not using CSS.';
+}
+
 * + .menu-controller,
 body * .menu-controller {
 	@extend %error;
