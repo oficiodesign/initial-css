@@ -86,6 +86,17 @@
 	@return 100% * $number / 255;
 }
 
+/// Mix a transparent color with its backgound
+/// @access private
+/// @param {color} $foreground - Foreground transparent color
+/// @param {color} $background - Background opaque color
+/// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
+@function _transparent-mixed-color($foreground, $background) {
+	$percent: alpha($foreground) * 100%;
+	$opaque: opacify($foreground, 1);
+
+	@return mix($opaque, $background, $percent);
+}
 
 /// Choose text color based on background
 /// @access public
@@ -203,7 +214,7 @@
 /// 		z-index: layer('modal');
 /// 	}
 @function layer($layer: 'default') {
-// sass-lint:disable-block indentation
+	// sass-lint:disable-block indentation
 	$default-layers: (
 		'modal': 5000,
 		'dropdown': 4000,
