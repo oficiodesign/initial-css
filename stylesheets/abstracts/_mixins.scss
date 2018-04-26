@@ -585,7 +585,6 @@ $no-viewport: false !default;
 @mixin fallback($property, $values, $fallbacks: null) {
 	$fallback-values: if($fallbacks == null, (), $fallbacks);
 	$fallback-units: ();
-	$i: 1;
 
 	@each $value in $values {
 		@if type-of($value) == number {
@@ -613,11 +612,7 @@ $no-viewport: false !default;
 				$fallback-values: join($fallback-values, $value);
 			}
 		}
-
-		$i: $i + 1;
 	}
-
-	$print-fallback: _print-fallback($fallback-units);
 
 	// sass-lint:disable-block indentation brace-style
 	@if (index($fallback-units, 'alpha') != null and $no-alpha != false) or
