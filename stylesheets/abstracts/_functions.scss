@@ -113,6 +113,37 @@
 	@return mix($opaque, $background, $percent);
 }
 
+/// Automagically computes the best equivalent RGBA color.
+/// @access private
+/// @param {color} $desired-color - Desired color to match against background
+/// @param {color} $background-color - Background opaque color
+/// @link https://stackoverflow.com/a/38265284
+@function _alphaize($desired-color, $background-color) {
+	$r1: red($background-color);
+	$g1: green($background-color);
+	$b1: blue($background-color);
+
+	$r2: red($desired-color);
+	$g2: green($desired-color);
+	$b2: blue($desired-color);
+
+	$alpha: 0;
+	$r: -1;
+	$g: -1;
+	$b: -1;
+
+	@while $alpha < 1 and ($r < 0 or $g < 0 or $b < 0
+						   or $r > 255 or $g > 255 or $b > 255) {
+		$alpha: $alpha + 1/256;
+		$inv: 1 / $alpha;
+		$r: $r2 * $inv + $r1 * (1 - $inv);
+		$g: $g2 * $inv + $g1 * (1 - $inv);
+		$b: $b2 * $inv + $b1 * (1 - $inv);
+	}
+
+	@return rgba($r, $g, $b, $alpha);
+}
+
 /// Choose text color based on background
 /// @access public
 /// @group helpers
