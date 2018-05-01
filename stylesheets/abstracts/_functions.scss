@@ -101,6 +101,29 @@
 	@return 100% * $number / 255;
 }
 
+/// Calculate the luminance for a color.
+/// @access private
+/// @param {color} $color
+/// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+@function _luminance($color) {
+	$red: nth($_mdc-linear-channel-values, red($color) + 1);
+	$green: nth($_mdc-linear-channel-values, green($color) + 1);
+	$blue: nth($_mdc-linear-channel-values, blue($color) + 1);
+
+	@return .2126 * $red + .7152 * $green + .0722 * $blue;
+}
+
+/// Calculate the contrast ratio between two colors using their luminance
+/// @access private
+/// @param {color} $color
+/// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+@function _contrast($fg-color, $bg-color) {
+	$fore-lum: _luminance($fg-color) + .05;
+	$back-lum: _luminance($bg-color) + .05;
+
+	@return max($back-lum, $fore-lum) / min($back-lum, $fore-lum);
+}
+
 /// Mix a transparent color with its backgound
 /// @access private
 /// @param {color} $foreground - Foreground transparent color
