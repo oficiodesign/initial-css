@@ -106,7 +106,7 @@
 /// @param {color} $foreground - Foreground transparent color
 /// @param {color} $background - Background opaque color
 /// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
-@function _transparent-mixed-color($foreground, $background) {
+@function _opacize($foreground, $background) {
 	$percent: alpha($foreground) * 100%;
 	$opaque: opacify($foreground, 1);
 
