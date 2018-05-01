@@ -64,10 +64,25 @@
 	@return mix(black, $color, $percentage);
 }
 
+/// @link http://www.antimath.info/css/sass-sqrt-function/
+@function _sqrt($r) {
+	$x0: 1;
+	$x1: $x0;
+
+	@for $i from 1 through 10 {
+		$x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+		$x0: $x1;
+	}
+
+	@return $x1;
+}
+
+
 /// Calculate the Perceived Brightness of a Color
 /// @access private
 /// @param {color} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+/// @link http://alienryderflex.com/hsp.html
 @function _brightness($color) {
 	$red-magic-number: 241;
 	$green-magic-number: 691;
@@ -80,7 +95,7 @@
 	$blue-component: blue($color);
 
 	// Calculate a brightness value in 3d color space between 0 and 255
-	$number: sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
+	$number: _sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
 
 	// Convert to percentage and return
 	@return 100% * $number / 255;
