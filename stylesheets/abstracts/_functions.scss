@@ -182,6 +182,135 @@
 	}
 }
 
+
+$_default-text-color--dark: palette('text', 'dark');
+$_default-text-color--light: palette('text', 'light');
+
+/// Determine whether to use dark or light text on top of given color.
+/// If background preferable color not provide, returns black for dark text and white for light text.
+/// @access public
+/// @group helpers
+/// @param {color} $bg-color - background color
+/// @param {color} $fg-color - foreground color
+/// @param {string} $level - WCAG level, being 'AAA' or 'AA'
+/// @return {Color}
+/// @link https://www.madebymike.com.au/writing/accessible-contrast-with-less-and-sass/
+@function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
+	$level: to-upper-case($level);
+	$steps: 10 20 30 40 50 60 70 80 90 100;
+
+	$threshold: if($level == 'AA', 4.5, 7);
+	$fg-has-alpha: false;
+
+	@if $level != 'AA' and $level != 'AAA' {
+		@warn 'Unknown `$level` submitted. Allowed: `AA`, `AAA`. Assuming `AAA`';
+	}
+
+	@if alpha($bg-color) < 1 {
+		@error 'Background color can\'t have alpha channel. `#{$bg-color}` given';
+	}
+
+	@if $fg-color != null {
+
+		@if alpha($fg-color) < 1 {
+			$fg-color: _opacize($fg-color, $bg-color);
+			$fg-has-alpha: true;
+		}
+
+		$ratio: _contrast($fg-color, $bg-color);
+
+		@if ($ratio >= $threshold) {
+			@return if($fg-has-alpha, _alphaize($fg-color, $bg-color), $fg-color);
+		}
+
+		@if _luminance($bg-color) >= 0.5 {
+			// @for $percent from 0 through 100 {
+			@each $percent in $steps {
+				$darker: darken($fg-color, $percent);
+				$darker-ratio: _contrast($fg-color, $darker);
+
+				@if ($darker-ratio >= $threshold) {
+					@return if($fg-has-alpha, _alphaize($darker, $bg-color), $darker);
+				}
+			}
+		} @else {
+			// @for $percent from 0 through 100 {
+			@each $percent in $steps {
+				$lighter: lighten($fg-color, $percent);
+				$lighter-ratio: _contrast($fg-color, $lighter);
+
+				@if ($lighter-ratio >= $threshold) {
+					@return if($fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
+				}
+			}
+		}
+
+		// @each $percent in $steps {
+		// @for $percent from 0 through 100 {
+		// 	$lighter: lighten($fg-color, $percent);
+		// 	$darker: darken($fg-color, $percent);
+
+		// 	$darker-ratio: _contrast($fg-color, $darker);
+		// 	$lighter-ratio: _contrast($fg-color, $lighter);
+
+		// 	@if ($lighter-ratio > $darker-ratio) {
+		// 		@if ($lighter-ratio >= $threshold) {
+		// 			@return if($fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
+		// 		}
+		// 	}
+
+		// 	@if ($darker-ratio > $lighter-ratio) {
+		// 		@if ($darker-ratio >= $threshold) {
+		// 			@return if($fg-has-alpha, _alphaize($darker, $bg-color), $darker);
+		// 		}
+		// 	}
+		// }
+	}
+
+	@if _contrast($bg-color, rgb(0, 0, 0)) < $threshold {
+		@return rgb(255, 255, 255);
+	} @else if _contrast($bg-color, rgb(255, 255, 255)) < $threshold {
+		@return rgb(0, 0, 0);
+	} @else {
+		@warn 'It\'s impossible to find a color with enough contrast. Fallbacking to `transparent` to force you to choose a proper one.';
+
+		@return transparent;
+	}
+}
+
+
+@function _text-contrast-alias($bg-color, $fg-color, $level) {
+	@if type-of($bg-color) != 'color' {
+		@if type-of($bg-color) == 'string' {
+			$bg-color: palette($bg-color);
+		} @else if type-of($bg-color) == 'list' {
+			$bg-color: palette(nth($bg-color, 1), nth($bg-color, 2));
+		} @else {
+			@error 'Background color submitted to `text-contrast()`, `#{$bg-color}`, isn\'t valid.';
+		}
+	}
+
+	@if type-of($fg-color) != 'color' {
+		@if type-of($fg-color) == 'string' {
+			$fg-color: palette($fg-color);
+		} @else if type-of($fg-color) == 'list' {
+			$fg-color: palette(nth($fg-color, 1), nth($fg-color, 2));
+		} @else {
+			@error 'Foreground color submitted to `text-contrast()`, `#{$fg-color}`, isn\'t valid.';
+		}
+	}
+
+	@return text-contrast($bg-color, $fg-color, $level);
+}
+
+@function text-contrast--small($bg-color, $fg-color: null) {
+	@return _text-contrast-alias($bg-color, $fg-color, 'AAA');
+}
+
+@function text-contrast--big($bg-color, $fg-color: null) {
+	@return _text-contrast-alias($bg-color, $fg-color, 'AA');
+}
+
 /// Convert a HSL color to RGB
 /// @access public
 /// @group helpers
