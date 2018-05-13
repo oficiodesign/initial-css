@@ -231,7 +231,6 @@
 	}
 }
 
-
 $_default-text-color--dark: palette('text', 'dark');
 $_default-text-color--light: palette('text', 'light');
 
@@ -246,12 +245,31 @@ $_default-text-color--light: palette('text', 'light');
 /// @link https://www.madebymike.com.au/writing/accessible-contrast-with-less-and-sass/
 @function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
 	$level: to-upper-case($level);
-	$steps: 10 20 30 40 50 60 70 80 90 100;
-	$lightest-color: rgb(255, 255, 255);
-	$darkest-color: rgb(0, 0, 0);
-
+	$lightest-color: if(variable-exists('$_default-text-color--light'), $_default-text-color--light, rgb(255, 255, 255));
+	$darkest-color: if(variable-exists('$_default-text-color--dark'), $_default-text-color--dark, rgb(0, 0, 0));
+	$lighter-ratio: 0;
+	$darker-ratio: 0;
+	$light-fg: if($fg-color == null, $lightest-color, $fg-color);
+	$dark-fg: if($fg-color == null, $darkest-color, $fg-color);
 	$threshold: if($level == 'AA', 4.5, 7);
-	$fg-has-alpha: false;
+	$light-fg-has-alpha: false;
+	$dark-fg-has-alpha: false;
+
+	@if type-of($lightest-color) != 'color' {
+		@error '`$_default-text-color--light` must be a color. Value `#{$lightest-color}` provided is of type `#{type-of($lightest-color)}`';
+	}
+
+	@if type-of($darkest-color) != 'color' {
+		@error '`$_default-text-color--dark` must be a color. Value `#{$darkest-color}` provided is of type `#{type-of($darkest-color)}`';
+	}
+
+	@if type-of($bg-color) != 'color' {
+		@error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{type-of(bg-color)}`';
+	}
+
+	@if type-of($fg-color) != 'color' and $fg-color != null {
+		@error 'Foreground must be a color. Value `#{$fg-color}` provided is of type `#{type-of(fg-color)}`';
+	}
 
 	@if $level != 'AA' and $level != 'AAA' {
 		@warn 'Unknown `$level` submitted. Allowed: `AA`, `AAA`. Assuming `AAA`';
@@ -261,71 +279,39 @@ $_default-text-color--light: palette('text', 'light');
 		@error 'Background color can\'t have alpha channel. `#{$bg-color}` given';
 	}
 
-	@if $fg-color != null {
-
-		@if alpha($fg-color) < 1 {
-			$fg-color: _opacize($fg-color, $bg-color);
-			$fg-has-alpha: true;
-		}
-
-		$ratio: _contrast($fg-color, $bg-color);
-
-		@if ($ratio >= $threshold) {
-			@return if($fg-has-alpha, _alphaize($fg-color, $bg-color), $fg-color);
-		}
-
-		@if _luminance($bg-color) >= 0.5 {
-			// @for $percent from 0 through 100 {
-			@each $percentage in $steps {
-				$darker: mix($darkest-color, $fg-color, $percentage);
-				$darker-ratio: _contrast($fg-color, $darker);
-
-				@if ($darker-ratio >= $threshold) {
-					@return if($fg-has-alpha, _alphaize($darker, $bg-color), $darker);
-				}
-			}
-		} @else {
-			// @for $percent from 0 through 100 {
-			@each $percentage in $steps {
-				$lighter: mix($lightest-color, $fg-color, $percentage);
-				$lighter-ratio: _contrast($fg-color, $lighter);
-
-				@if ($lighter-ratio >= $threshold) {
-					@return if($fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
-				}
-			}
-		}
-
-		// @each $percent in $steps {
-		// @for $percent from 0 through 100 {
-		// 	$lighter: lighten($fg-color, $percent);
-		// 	$darker: darken($fg-color, $percent);
-
-		// 	$darker-ratio: _contrast($fg-color, $darker);
-		// 	$lighter-ratio: _contrast($fg-color, $lighter);
-
-		// 	@if ($lighter-ratio > $darker-ratio) {
-		// 		@if ($lighter-ratio >= $threshold) {
-		// 			@return if($fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
-		// 		}
-		// 	}
-
-		// 	@if ($darker-ratio > $lighter-ratio) {
-		// 		@if ($darker-ratio >= $threshold) {
-		// 			@return if($fg-has-alpha, _alphaize($darker, $bg-color), $darker);
-		// 		}
-		// 	}
-		// }
+	@if alpha($light-fg) < 1 {
+		$light-fg: _opacize($light-fg, $bg-color);
+		$light-fg-has-alpha: true;
 	}
 
-	@if _contrast($bg-color, rgb(0, 0, 0)) < $threshold {
-		@return rgb(255, 255, 255);
-	} @else if _contrast($bg-color, rgb(255, 255, 255)) < $threshold {
-		@return rgb(0, 0, 0);
-	} @else {
-		@warn 'It\'s impossible to find a color with enough contrast. Fallbacking to `transparent` to force you to choose a proper one.';
+	@if alpha($dark-fg) < 1 {
+		$dark-fg: _opacize($dark-fg, $bg-color);
+		$dark-fg-has-alpha: true;
+	}
 
-		@return transparent;
+	$lighter-ratio: _contrast($bg-color, $light-fg);
+	$darker-ratio: _contrast($bg-color, $dark-fg);
+
+	@if $lighter-ratio >= $threshold {
+		@return if($light-fg-has-alpha, _alphaize($light-fg, $bg-color), $light-fg);
+	} @else if $darker-ratio >= $threshold {
+		@return if($dark-fg-has-alpha, _alphaize($dark-fg, $bg-color), $dark-fg);
+	}
+
+	@for $i from 1 through 10 {
+		$lighter: mix($lightest-color, $light-fg, $i * 10%);
+		$darker: mix($darkest-color, $dark-fg, $i * 10%);
+
+		$darker-ratio: _contrast($bg-color, $darker);
+		$lighter-ratio: _contrast($bg-color, $lighter);
+
+		@if ($lighter-ratio >= $threshold) {
+			@return if($light-fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
+		}
+
+		@if ($darker-ratio >= $threshold) {
+			@return if($dark-fg-has-alpha, _alphaize($darker, $bg-color), $darker);
+		}
 	}
 }
 
