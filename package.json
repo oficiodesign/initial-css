@@ -13,11 +13,11 @@
     "clean:compilationTest": "rimraf ./testResults/**/*.css",
     "compile:sass": "node-sass ./stylesheets --output-style compressed --output ./testResults",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:sass": "sass-lint \"./stylesheets/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
+    "lint:sass": "sass-lint \"./{stylesheets,tests}/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
     "pretest": "npm-run-all clean lint",
-    "compile:tests": "node-sass ./stylesheets/tests --output ./stylesheets/tests --outputStyle expanded",
+    "compile:tests": "node-sass ./tests --output ./tests --outputStyle expanded",
     "test": "npm-run-all compile:sass",
-    "watch": "onchange \"./stylesheets/**/*.scss\" -- npm run compile:tests",
+    "watch": "onchange \"./{stylesheets,tests}/**/*.scss\" -- npm run compile:tests",
     "start": "npm-run-all compile:tests watch"
   },
   "repository": {
