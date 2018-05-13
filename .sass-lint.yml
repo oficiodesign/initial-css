@@ -52,7 +52,7 @@ rules:
       convention: hyphenatedlowercase
   hex-length:
     - 1
-    - style: short
+    - style: long
   hex-notation:
     - 1
     - style: lowercase
