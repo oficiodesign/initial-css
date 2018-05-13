@@ -186,6 +186,7 @@
 /// @access private
 /// @param {color} $desired-color - Desired color to match against background
 /// @param {color} $background-color - Background opaque color
+/// @author Tobia
 /// @link https://stackoverflow.com/a/38265284
 @function _alphaize($desired-color, $background-color) {
 	$r1: red($background-color);
