@@ -209,6 +209,9 @@
 		$b: $b2 * $inv + $b1 * (1 - $inv);
 	}
 
+	// browsers round the alpha to 2 decimal place, so we need to do it too
+	$alpha: _to-fixed($alpha, 2);
+
 	@return rgba($r, $g, $b, $alpha);
 }
 
