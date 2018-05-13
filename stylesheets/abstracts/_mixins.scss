@@ -403,7 +403,6 @@
 /// Event wrapper
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
-/// @content the rules to be applied
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
 	@if $self {
@@ -431,11 +430,13 @@
 	}
 }
 
-/**
- * Hide element while making it readable for screen readers
- * Shamelessly borrowed from HTML5Boilerplate:
- * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
- */
+///
+/// Hide element while making it readable for screen readers
+/// Shamelessly borrowed from HTML5Boilerplate
+///
+/// @group helpers
+/// @link https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+///
 @mixin visually-hidden {
 	// sass-lint:disable-block no-duplicate-properties no-important property-units
 	position: absolute !important;
@@ -535,12 +536,30 @@
 	}
 }
 
-/**
- * Hide text while making it readable for screen readers
- * 1. Needed in WebKit-based browsers because of an implementation bug;
- *    See: https://code.google.com/p/chromium/issues/detail?id=457146
- */
+/// Hide text while making it readable for screen readers
+///
+/// @group helpers
+///
+/// @example scss
+/// .site-label {
+/// 	@include hide-text;
+/// }
+///
+/// @output
+/// ```css
+/// .site-label {
+/// 	padding: 0;
+/// 	overflow: hidden;
+/// 	text-indent: 101%;
+/// 	white-space: nowrap;
+/// }
+/// ```
+///
 @mixin hide-text {
+	/**
+	 * 1. Needed in WebKit-based browsers because of an implementation bug;
+	 *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+	 */
 	/* 1 */
 	padding: 0;
 
@@ -579,6 +598,7 @@ $no-viewport: false !default;
 
 /// Helper to conditionally output css values
 /// @author Robson Sobral
+/// @group helpers
 /// @param {String} $property - Property name
 /// @param {List} $values - Default values
 /// @param {List} $fallbacks - Non required fallback values
@@ -639,17 +659,16 @@ $no-viewport: false !default;
 /// iPhone 6 and 6 Plus cannot run iOS 7, so are not targeted by this fix.
 /// Target devices running iOS 8+ will incidentally execute the media query,
 /// but this will still produce the expected result; so this is not a problem.
-///
-/// @example css
-///   height: 50vh;
-///   font-size: 5vmin;
-///
-/// @example scss
-///   @include viewport-unit(height, 50vh);
-///   @include viewport-unit(font-size, 5vmin);
-///
+/// @group helpers
 /// @link https://gist.github.com/BenMorel/e9e34c08360ebbbd0634
 /// @link http://caniuse.com/#feat=viewport-units
+///
+/// @example scss
+/// .hero {
+/// 	@include viewport-unit(height, 50vh);
+/// 	@include viewport-unit(font-size, 5vmin);
+/// }
+///
 @mixin viewport-unit($property, $value) {
 	// sass-lint:disable-block indentation
 

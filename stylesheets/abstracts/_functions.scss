@@ -61,9 +61,9 @@
 }
 
 
-/// Power function
-/// @param {Number} $x
-/// @param {Number} $n
+/// Exponentiation function
+/// @param {Number} $number
+/// @param {Number} $exponent
 /// @access private
 /// @author Hugo Giraudel
 /// @return {Number}
@@ -388,9 +388,9 @@ $_default-text-color--light: palette('text', 'light');
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight?v=control#Common_weight_name_mapping
 ///
 /// @example scss
-/// 	h1 {
-/// 		font-weight: font-weight('medium');
-/// 	}
+/// h1 {
+/// 	font-weight: font-weight('medium');
+/// }
 @function font-weight($weight: 'normal') {
 
 	$default-weights: (
