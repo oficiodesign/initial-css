@@ -44,6 +44,65 @@
 	@return $number;
 }
 
+/// @access private
+/// @author Mihai Vaduva
+/// @param {Number} $float - Number to get the square root
+/// @link http://www.antimath.info/css/sass-sqrt-function/
+@function _sqrt($r) {
+	$x0: 1;
+	$x1: $x0;
+
+	@for $i from 1 through 10 {
+		$x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+		$x0: $x1;
+	}
+
+	@return $x1;
+}
+
+
+/// Power function
+/// @param {Number} $x
+/// @param {Number} $n
+/// @access private
+/// @author Hugo Giraudel
+/// @return {Number}
+/// @link https://css-tricks.com/snippets/sass/power-function/
+@function _pow($number, $exponent) {
+	$value: 1;
+
+	@if round($exponent) != $exponent {
+		@error '`$n` must be an integer. This is a simple Exponentiation function. Exponent floats aren\'t supported. `#{$n}` given.`';
+	}
+
+	@if $exponent > 0 {
+		@for $i from 1 through $exponent {
+			$value: $value * $number;
+		}
+	}
+
+	@return $value;
+}
+
+/// toFixed() function in Sass
+/// @author Hugo Giraudel
+/// @param {Number} $float - Number to format
+/// @param {Number} $digits [2] - Number of digits to leave
+/// @access private
+/// @return {Number}
+@function _to-fixed($float, $digits: 2) {
+	$sass-precision: 10;
+
+	@if $digits > $sass-precision {
+		@warn 'Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now. The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`.';
+	}
+
+	$pow: _pow(10, $digits);
+
+	@return round($float * $pow) / $pow;
+}
+
+
 /// Slightly lighten a color
 /// @access public
 /// @group helpers
@@ -63,20 +122,6 @@
 @function shade($color, $percentage) {
 	@return mix(black, $color, $percentage);
 }
-
-/// @link http://www.antimath.info/css/sass-sqrt-function/
-@function _sqrt($r) {
-	$x0: 1;
-	$x1: $x0;
-
-	@for $i from 1 through 10 {
-		$x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
-		$x0: $x1;
-	}
-
-	@return $x1;
-}
-
 
 /// Calculate the Perceived Brightness of a Color
 /// @access private
@@ -101,16 +146,76 @@
 	@return 100% * $number / 255;
 }
 
+/// Calculate the luminance for a color.
+/// @access private
+/// @param {color} $color
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+/// @link https://www.w3.org/TR/WCAG20/#relativeluminancedef
+@function _luminance($color) {
+	$red: nth($_mdc-linear-channel-values, red($color) + 1);
+	$green: nth($_mdc-linear-channel-values, green($color) + 1);
+	$blue: nth($_mdc-linear-channel-values, blue($color) + 1);
+
+	@return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+/// Calculate the contrast ratio between two colors using their luminance
+/// @access private
+/// @param {color} $color
+/// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+@function _contrast($fg-color, $bg-color) {
+	$fore-lum: _luminance($fg-color) + 0.05;
+	$back-lum: _luminance($bg-color) + 0.05;
+
+	@return max($back-lum, $fore-lum) / min($back-lum, $fore-lum);
+}
+
 /// Mix a transparent color with its backgound
 /// @access private
 /// @param {color} $foreground - Foreground transparent color
 /// @param {color} $background - Background opaque color
 /// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
-@function _transparent-mixed-color($foreground, $background) {
-	$percent: alpha($foreground) * 100%;
+@function _opacize($foreground, $background) {
+	// browsers round the alpha to 2 decimal place, so we need to do it too
+	$percent: _to-fixed(alpha($foreground), 2) * 100%;
 	$opaque: opacify($foreground, 1);
 
 	@return mix($opaque, $background, $percent);
+}
+
+/// Automagically computes the best equivalent RGBA color.
+/// @access private
+/// @param {color} $desired-color - Desired color to match against background
+/// @param {color} $background-color - Background opaque color
+/// @author Tobia
+/// @link https://stackoverflow.com/a/38265284
+@function _alphaize($desired-color, $background-color) {
+	$r1: red($background-color);
+	$g1: green($background-color);
+	$b1: blue($background-color);
+
+	$r2: red($desired-color);
+	$g2: green($desired-color);
+	$b2: blue($desired-color);
+
+	$alpha: 0;
+	$r: -1;
+	$g: -1;
+	$b: -1;
+
+	@while $alpha < 1 and ($r < 0 or $g < 0 or $b < 0 or $r > 255 or $g > 255 or $b > 255) {
+		$alpha: $alpha + 1/256;
+		$inv: 1 / $alpha;
+		$r: $r2 * $inv + $r1 * (1 - $inv);
+		$g: $g2 * $inv + $g1 * (1 - $inv);
+		$b: $b2 * $inv + $b1 * (1 - $inv);
+	}
+
+	// browsers round the alpha to 2 decimal place, so we need to do it too
+	$alpha: _to-fixed($alpha, 2);
+
+	@return rgba($r, $g, $b, $alpha);
 }
 
 /// Choose text color based on background
@@ -126,6 +231,124 @@
 	} @else {
 		@return $dark;
 	}
+}
+
+$_default-text-color--dark: palette('text', 'dark');
+$_default-text-color--light: palette('text', 'light');
+
+/// Determine whether to use dark or light text on top of given color.
+/// If background preferable color not provide, returns black for dark text and white for light text.
+/// @access public
+/// @group helpers
+/// @param {color} $bg-color - background color
+/// @param {color} $fg-color - foreground color
+/// @param {string} $level - WCAG level, being 'AAA' or 'AA'
+/// @return {Color}
+/// @link https://www.madebymike.com.au/writing/accessible-contrast-with-less-and-sass/
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+@function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
+	$level: to-upper-case($level);
+	$lightest-color: if(variable-exists('$_default-text-color--light'), $_default-text-color--light, rgb(255, 255, 255));
+	$darkest-color: if(variable-exists('$_default-text-color--dark'), $_default-text-color--dark, rgb(0, 0, 0));
+	$lighter-ratio: 0;
+	$darker-ratio: 0;
+	$light-fg: if($fg-color == null, $lightest-color, $fg-color);
+	$dark-fg: if($fg-color == null, $darkest-color, $fg-color);
+	$threshold: if($level == 'AA', 4.5, 7);
+	$light-fg-has-alpha: false;
+	$dark-fg-has-alpha: false;
+
+	@if type-of($lightest-color) != 'color' {
+		@error '`$_default-text-color--light` must be a color. Value `#{$lightest-color}` provided is of type `#{type-of($lightest-color)}`';
+	}
+
+	@if type-of($darkest-color) != 'color' {
+		@error '`$_default-text-color--dark` must be a color. Value `#{$darkest-color}` provided is of type `#{type-of($darkest-color)}`';
+	}
+
+	@if type-of($bg-color) != 'color' {
+		@error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{type-of(bg-color)}`';
+	}
+
+	@if type-of($fg-color) != 'color' and $fg-color != null {
+		@error 'Foreground must be a color. Value `#{$fg-color}` provided is of type `#{type-of(fg-color)}`';
+	}
+
+	@if $level != 'AA' and $level != 'AAA' {
+		@warn 'Unknown `$level` submitted. Allowed: `AA`, `AAA`. Assuming `AAA`';
+	}
+
+	@if alpha($bg-color) < 1 {
+		@error 'Background color can\'t have alpha channel. `#{$bg-color}` given';
+	}
+
+	@if alpha($light-fg) < 1 {
+		$light-fg: _opacize($light-fg, $bg-color);
+		$light-fg-has-alpha: true;
+	}
+
+	@if alpha($dark-fg) < 1 {
+		$dark-fg: _opacize($dark-fg, $bg-color);
+		$dark-fg-has-alpha: true;
+	}
+
+	$lighter-ratio: _contrast($bg-color, $light-fg);
+	$darker-ratio: _contrast($bg-color, $dark-fg);
+
+	@if $lighter-ratio >= $threshold {
+		@return if($light-fg-has-alpha, _alphaize($light-fg, $bg-color), $light-fg);
+	} @else if $darker-ratio >= $threshold {
+		@return if($dark-fg-has-alpha, _alphaize($dark-fg, $bg-color), $dark-fg);
+	}
+
+	@for $i from 1 through 10 {
+		$lighter: mix($lightest-color, $light-fg, $i * 10%);
+		$darker: mix($darkest-color, $dark-fg, $i * 10%);
+
+		$darker-ratio: _contrast($bg-color, $darker);
+		$lighter-ratio: _contrast($bg-color, $lighter);
+
+		@if ($lighter-ratio >= $threshold) {
+			@return if($light-fg-has-alpha, _alphaize($lighter, $bg-color), $lighter);
+		}
+
+		@if ($darker-ratio >= $threshold) {
+			@return if($dark-fg-has-alpha, _alphaize($darker, $bg-color), $darker);
+		}
+	}
+}
+
+
+@function _text-contrast-alias($bg-color, $fg-color, $level) {
+	@if type-of($bg-color) != 'color' {
+		@if type-of($bg-color) == 'string' {
+			$bg-color: palette($bg-color);
+		} @else if type-of($bg-color) == 'list' {
+			$bg-color: palette(nth($bg-color, 1), nth($bg-color, 2));
+		} @else {
+			@error 'Background color submitted to `text-contrast()`, `#{$bg-color}`, isn\'t valid.';
+		}
+	}
+
+	@if type-of($fg-color) != 'color' {
+		@if type-of($fg-color) == 'string' {
+			$fg-color: palette($fg-color);
+		} @else if type-of($fg-color) == 'list' {
+			$fg-color: palette(nth($fg-color, 1), nth($fg-color, 2));
+		} @else {
+			@error 'Foreground color submitted to `text-contrast()`, `#{$fg-color}`, isn\'t valid.';
+		}
+	}
+
+	@return text-contrast($bg-color, $fg-color, $level);
+}
+
+@function text-contrast--small($bg-color, $fg-color: null) {
+	@return _text-contrast-alias($bg-color, $fg-color, 'AAA');
+}
+
+@function text-contrast--big($bg-color, $fg-color: null) {
+	@return _text-contrast-alias($bg-color, $fg-color, 'AA');
 }
 
 /// Convert a HSL color to RGB

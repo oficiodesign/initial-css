@@ -15,7 +15,10 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:sass": "sass-lint \"./stylesheets/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
     "pretest": "npm-run-all clean lint",
-    "test": "npm-run-all compile:sass"
+    "compile:tests": "node-sass ./stylesheets/tests --output ./stylesheets/tests --outputStyle expanded",
+    "test": "npm-run-all compile:sass",
+    "watch": "onchange \"./stylesheets/**/*.scss\" -- npm run compile:tests",
+    "start": "npm-run-all compile:tests watch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
   "devDependencies": {
     "node-sass": "^4.8.3",
     "npm-run-all": "^4.1.2",
+    "onchange": "^3.3.0",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
     "sassdoc": "^2.4.0"
