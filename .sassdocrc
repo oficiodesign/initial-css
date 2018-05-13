@@ -13,6 +13,16 @@ groups:
   hacks: Dirty Hacks & Fixes
   helpers: Helpers
   normalizer: Normalization
+herman:
+  sass:
+    includepaths:
+      - 'stylesheets/abstracts'
+    includes:
+      - 'constants'
+      - 'font-stacks'
+      - 'functions'
+      - 'variables'
+      - 'mixins'
 package:
   title: Initial CSS
   name: initial-css
@@ -21,4 +31,5 @@ package:
   homepage: URL to your project’s homepage
   description: css boilerplate and collection of helpers for SASS and CSS
 strict: true
+theme: herman
 verbose: true
