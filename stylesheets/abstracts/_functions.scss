@@ -218,20 +218,6 @@
 	@return rgba($r, $g, $b, $alpha);
 }
 
-/// Choose text color based on background
-/// @access public
-/// @group helpers
-/// @param {color} $bg-color - background color
-/// @param {color} $light - light text option
-/// @param {color} $dark - dark text option
-/// @return {Color}
-@function contrasting-color($bg-color, $light, $dark) {
-	@if _brightness($bg-color) < 65% {
-		@return $light;
-	} @else {
-		@return $dark;
-	}
-}
 
 $_default-text-color--dark: palette('text', 'dark');
 $_default-text-color--light: palette('text', 'light');
