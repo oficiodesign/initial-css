@@ -44,6 +44,9 @@
 	@return $number;
 }
 
+/// @access private
+/// @author Mihai Vaduva
+/// @param {Number} $float - Number to get the square root
 /// @link http://www.antimath.info/css/sass-sqrt-function/
 @function _sqrt($r) {
 	$x0: 1;
