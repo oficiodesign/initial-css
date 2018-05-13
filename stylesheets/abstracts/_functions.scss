@@ -90,11 +90,11 @@
 /// @param {Number} $digits [2] - Number of digits to leave
 /// @access private
 /// @return {Number}
-	$sass-precision: 5;
 @function _to-fixed($float, $digits: 2) {
+	$sass-precision: 10;
 
 	@if $digits > $sass-precision {
-		@warn "Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now."+"The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`."+"See https://github.com/sass/sass/issues/1122 for further informations.";
+		@warn 'Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now. The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`.';
 	}
 
 	$pow: _pow(10, $digits);
