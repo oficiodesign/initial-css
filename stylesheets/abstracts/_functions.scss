@@ -65,20 +65,23 @@
 /// @param {Number} $x
 /// @param {Number} $n
 /// @access private
+/// @author Hugo Giraudel
 /// @return {Number}
-@function _pow($x, $n) {
-	$ret: 1;
+/// @link https://css-tricks.com/snippets/sass/power-function/
+@function _pow($number, $exponent) {
+	$value: 1;
 
-	@if $n >= 0 {
-		@for $i from 1 through $n {
-			$ret: $ret * $x;
-		}
-	} @else {
-		@for $i from $n to 0 {
-			$ret: $ret / $x;
+	@if round($exponent) != $exponent {
+		@error '`$n` must be an integer. This is a simple Exponentiation function. Exponent floats aren\'t supported. `#{$n}` given.`';
+	}
+
+	@if $exponent > 0 {
+		@for $i from 1 through $exponent {
+			$value: $value * $number;
 		}
 	}
-	@return $ret;
+
+	@return $value;
 }
 
 /// toFixed() function in Sass
