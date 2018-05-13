@@ -326,13 +326,10 @@ object > img {
 * 1. Improving quality of image resampling
 * @see  https://developer.mozilla.org/En/CSS/Image-rendering
 * @see  code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
-*
-* 2. prevent images higher than viewport
 */
 img {
 	height: auto;
 	max-width: 100%;
-	max-height: 90vh; /* 2 */
 
 	image-rendering: optimizeQuality; /* 1 */
 	-ms-interpolation-mode: bicubic; /* 1 */ // sass-lint:disable-line no-misspelled-properties
