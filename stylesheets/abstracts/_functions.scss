@@ -152,9 +152,13 @@
 /// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 /// @link https://www.w3.org/TR/WCAG20/#relativeluminancedef
 @function _luminance($color) {
-	$red: nth($_mdc-linear-channel-values, red($color) + 1);
-	$green: nth($_mdc-linear-channel-values, green($color) + 1);
-	$blue: nth($_mdc-linear-channel-values, blue($color) + 1);
+	$red: red($color) + 1;
+	$green: green($color) + 1;
+	$blue: blue($color) + 1;
+
+	$red: nth($_mdc-linear-channel-values, $red);
+	$green: nth($_mdc-linear-channel-values, $green);
+	$blue: nth($_mdc-linear-channel-values, $blue);
 
 	@return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
@@ -234,8 +238,8 @@ $_default-text-color--light: palette('text', 'light');
 /// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 @function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
 	$level: to-upper-case($level);
-	$lightest-color: if(variable-exists('$_default-text-color--light'), $_default-text-color--light, rgb(255, 255, 255));
-	$darkest-color: if(variable-exists('$_default-text-color--dark'), $_default-text-color--dark, rgb(0, 0, 0));
+	$lightest-color: rgb(255, 255, 255);
+	$darkest-color: rgb(0, 0, 0);
 	$lighter-ratio: 0;
 	$darker-ratio: 0;
 	$light-fg: if($fg-color == null, $lightest-color, $fg-color);
@@ -243,14 +247,6 @@ $_default-text-color--light: palette('text', 'light');
 	$threshold: if($level == 'AA', 4.5, 7);
 	$light-fg-has-alpha: false;
 	$dark-fg-has-alpha: false;
-
-	@if type-of($lightest-color) != 'color' {
-		@error '`$_default-text-color--light` must be a color. Value `#{$lightest-color}` provided is of type `#{type-of($lightest-color)}`';
-	}
-
-	@if type-of($darkest-color) != 'color' {
-		@error '`$_default-text-color--dark` must be a color. Value `#{$darkest-color}` provided is of type `#{type-of($darkest-color)}`';
-	}
 
 	@if type-of($bg-color) != 'color' {
 		@error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{type-of(bg-color)}`';
@@ -276,6 +272,22 @@ $_default-text-color--light: palette('text', 'light');
 	@if alpha($dark-fg) < 1 {
 		$dark-fg: _opacize($dark-fg, $bg-color);
 		$dark-fg-has-alpha: true;
+	}
+
+	@if variable-exists('$_default-text-color--light') {
+		@if type-of($_default-text-color--light) !='color' {
+			@error '`$_default-text-color--light` must be a color. Value `#{$_default-text-color--light}` provided is of type `#{type-of($_default-text-color--light)}`';
+		} @else {
+			$lightest-color: $_default-text-color--light;
+		}
+	}
+
+	@if variable-exists('$_default-text-color--dark') {
+		@if type-of($_default-text-color--dark) !='color' {
+			@error '`$_default-text-color--dark` must be a color. Value `#{$_default-text-color--dark}` provided is of type `#{type-of($_default-text-color--dark)}`';
+		} @else {
+			$darkest-color: $_default-text-color--dark;
+		}
 	}
 
 	$lighter-ratio: _contrast($bg-color, $light-fg);
