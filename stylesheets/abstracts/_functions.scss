@@ -149,7 +149,8 @@
 /// Calculate the luminance for a color.
 /// @access private
 /// @param {color} $color
-/// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+/// @link https://www.w3.org/TR/WCAG20/#relativeluminancedef
 @function _luminance($color) {
 	$red: nth($_mdc-linear-channel-values, red($color) + 1);
 	$green: nth($_mdc-linear-channel-values, green($color) + 1);
@@ -162,6 +163,7 @@
 /// @access private
 /// @param {color} $color
 /// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 @function _contrast($fg-color, $bg-color) {
 	$fore-lum: _luminance($fg-color) + 0.05;
 	$back-lum: _luminance($bg-color) + 0.05;
@@ -243,6 +245,7 @@ $_default-text-color--light: palette('text', 'light');
 /// @param {string} $level - WCAG level, being 'AAA' or 'AA'
 /// @return {Color}
 /// @link https://www.madebymike.com.au/writing/accessible-contrast-with-less-and-sass/
+/// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 @function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
 	$level: to-upper-case($level);
 	$lightest-color: if(variable-exists('$_default-text-color--light'), $_default-text-color--light, rgb(255, 255, 255));
