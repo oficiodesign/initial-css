@@ -578,20 +578,56 @@ $colors: #000000
 @each $color in $colors {
 	$selector: to-lower-case(str_slice(#{$color}, 2, 7));
 
-	.c-#{$selector} {
+	.color--blackwhite-#{$selector} {
 		@include text-contrast($color);
 
 		background-color: $color;
 	}
 
-	.m-#{$selector} {
+	.color--mono-#{$selector} {
 		@include text-contrast($color, $color);
 
 		background-color: $color;
 	}
 
-	.a-#{$selector} {
+	.color--alpha-#{$selector} {
 		@include text-contrast($color, rgba($color, 0.15));
+
+		background-color: $color;
+	}
+
+	.color--complementary-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, 180));
+
+		background-color: $color;
+	}
+
+	.color--compound-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, 210));
+
+		background-color: $color;
+	}
+
+	.color--analogous-1-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, 30));
+
+		background-color: $color;
+	}
+
+	.color--analogous-2-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, -30));
+
+		background-color: $color;
+	}
+
+	.color--triadic-1-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, 120));
+
+		background-color: $color;
+	}
+
+	.color--triadic-2-#{$selector} {
+		@include text-contrast($color, adjust_hue($color, 240));
 
 		background-color: $color;
 	}
