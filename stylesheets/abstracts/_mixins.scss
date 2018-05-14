@@ -13,8 +13,7 @@
 /// 	@include placeholder-bg;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// image[src=""] {
 /// 	background:
 /// 		linear-gradient(
@@ -35,7 +34,6 @@
 /// 		),
 /// 		silver;
 /// }
-/// ```
 ///
 @mixin placeholder-bg {
 	background: linear-gradient(to top left, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), linear-gradient(to top right, transparent 0%, transparent calc(50% - 1px), palette('black') 50%, transparent calc(50% + 1px), transparent 100%), palette('gray', 'light');
@@ -66,8 +64,7 @@
 /// @example html
 /// <h1>This <span class="amp">&amp;</span> that</h1>
 ///
-/// @output
-/// ```css
+/// @output css
 /// h1 .amp {
 /// 	overflow: visible;
 /// 	font-style: italic;
@@ -76,7 +73,6 @@
 /// 	font-family: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
 /// 	vertical-align: middle;
 /// }
-/// ```
 ///
 @mixin alt-ampersand {
 	.amp { // sass-lint:disable-line no-qualifying-elements
@@ -105,14 +101,12 @@
 /// 	@include alt-preposition;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// h1 .alt {
 /// 	overflow: visible;
 /// 	font-style: italic;
 /// 	font-family: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
 /// }
-/// ```
 ///
 @mixin alt-preposition {
 	.alt { // sass-lint:disable-line no-qualifying-elements
@@ -152,8 +146,7 @@
 /// 	@include inline-block-item($align: 'top', $font-size:  1rem);
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .h-feed {
 /// 	font-size: 0;
 /// 	font-family: "FreeSans", "Arimo", "Droid Sans", "Helvetica", "Arial", sans-serif;
@@ -166,8 +159,7 @@
 /// 	/* Webkit: fixes text-rendering: optimizeLegibility */
 /// 	text-rendering: optimizespeed;
 /// }
-/// ```
-
+///
 @mixin inline-block-wrapper {
 	// sass-lint:disable-block no-duplicate-properties
 	$_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
@@ -205,8 +197,7 @@
 /// 	@include inline-block-item($align: 'top', $font-size:  1rem);
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .h-feed > .h-entry {
 /// 	display: inline-block;
 /// 	font-size: 1rem;
@@ -217,7 +208,6 @@
 /// 	vertical-align: top;
 /// 	zoom: 1;
 /// }
-/// ```
 ///
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
 	display: inline-block;
@@ -248,13 +238,11 @@
 /// 	@include table-layout-item;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .h-feed {
 /// 	display: table;
 /// 	border-collapse: collapse;
 /// }
-/// ```
 ///
 @mixin table-layout-wrapper {
 	display: table;
@@ -279,13 +267,11 @@
 /// 	@include table-layout-item;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .h-feed > .h-entry {
 /// 	display: table-cell;
 /// 	vertical-align: top;
 /// }
-/// ```
 ///
 @mixin table-layout-item {
 	display: table-cell;
@@ -322,8 +308,7 @@
 /// 	@include icon-font;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .icon {
 /// 	-webkit-font-smoothing: antialiased;
 /// 	-moz-osx-font-smoothing: grayscale;
@@ -335,7 +320,6 @@
 /// 	text-transform: none;
 /// 	speak: none;
 /// }
-/// ```
 ///
 @mixin icon-font {
 	@include _font-smoothing(true);
@@ -487,14 +471,13 @@
 /// 	@include truncate;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .username {
 /// 	overflow: hidden;
 /// 	text-overflow: ellipsis;
 /// 	white-space: nowrap;
 /// }
-/// ```
+///
 @mixin truncate {
 	overflow: hidden;
 
@@ -512,8 +495,7 @@
 /// 	@include justify-last-line;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .sponsors {
 /// 	text-align: justify;
 /// }
@@ -523,7 +505,6 @@
 /// 	height: 0;
 /// 	content: '';
 /// }
-/// ```
 ///
 @mixin justify-last-line {
 	text-align: justify;
@@ -545,15 +526,13 @@
 /// 	@include hide-text;
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// .site-label {
 /// 	padding: 0;
 /// 	overflow: hidden;
 /// 	text-indent: 101%;
 /// 	white-space: nowrap;
 /// }
-/// ```
 ///
 @mixin hide-text {
 	/**
@@ -824,8 +803,7 @@ $no-viewport: false !default;
 /// 	@include aspect-ratio(3 x 4);
 /// }
 ///
-/// @output
-/// ```css
+/// @output css
 /// div {
 /// 	position: relative;
 /// }
@@ -839,7 +817,7 @@ $no-viewport: false !default;
 /// 	display: table;
 /// 	content: '';
 /// }
-/// ```
+///
 @mixin aspect-ratio ($ratio) {
 	@if type-of($ratio) != list {
 		@error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
