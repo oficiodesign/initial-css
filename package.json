@@ -36,6 +36,6 @@
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
     "sassdoc": "^2.5.0",
-    "sassdoc-theme-herman": "^3.0.0",
+    "sassdoc-theme-herman": "^3.0.0"
   }
 }
