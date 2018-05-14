@@ -14,6 +14,7 @@ groups:
   helpers: Helpers
   normalizer: Normalization
 herman:
+  customCSS: './testResults/index.css'
   sass:
     includepaths:
       - 'stylesheets/abstracts'
