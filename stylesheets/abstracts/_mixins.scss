@@ -63,7 +63,7 @@
 /// 	@include alt-ampersand;
 /// }
 ///
-/// @example markup
+/// @example html
 /// <h1>This <span class="amp">&amp;</span> that</h1>
 ///
 /// @output
@@ -97,7 +97,7 @@
 /// @group helpers
 /// @require {variable} $alt-font-stack
 ///
-/// @example markup
+/// @example html
 /// <h1>The Elements <span class="alt">of</span> Typographic Style</h1>
 ///
 /// @example scss
