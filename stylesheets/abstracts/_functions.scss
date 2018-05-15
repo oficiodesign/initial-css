@@ -316,39 +316,6 @@ $_default-text-color--light: palette('text', 'light');
 	}
 }
 
-
-@function _text-contrast-alias($bg-color, $fg-color, $level) {
-	@if type-of($bg-color) != 'color' {
-		@if type-of($bg-color) == 'string' {
-			$bg-color: palette($bg-color);
-		} @else if type-of($bg-color) == 'list' {
-			$bg-color: palette(nth($bg-color, 1), nth($bg-color, 2));
-		} @else {
-			@error 'Background color submitted to `text-contrast()`, `#{$bg-color}`, isn\'t valid.';
-		}
-	}
-
-	@if type-of($fg-color) != 'color' {
-		@if type-of($fg-color) == 'string' {
-			$fg-color: palette($fg-color);
-		} @else if type-of($fg-color) == 'list' {
-			$fg-color: palette(nth($fg-color, 1), nth($fg-color, 2));
-		} @else {
-			@error 'Foreground color submitted to `text-contrast()`, `#{$fg-color}`, isn\'t valid.';
-		}
-	}
-
-	@return text-contrast($bg-color, $fg-color, $level);
-}
-
-@function text-contrast--small($bg-color, $fg-color: null) {
-	@return _text-contrast-alias($bg-color, $fg-color, 'AAA');
-}
-
-@function text-contrast--big($bg-color, $fg-color: null) {
-	@return _text-contrast-alias($bg-color, $fg-color, 'AA');
-}
-
 /// Convert a HSL color to RGB
 /// @access public
 /// @group helpers
