@@ -322,12 +322,43 @@ object > img {
 	pointer-events: none;
 }
 
+/// Stylize broken images
+/// @author [Ire Aderinokun](https://ireaderinokun.com/)
+/// @author Sobral
+/// @group helpers
+/// @link https://bitsofco.de/styling-broken-images/
+%broken-image {
+	font-style: normal;
+
+	text-align: center;
+
+	&::before {
+		display: block;
+
+		margin-bottom: $leading * 1em;
+
+		content: '\f127' ' Broken Image of ' attr(alt);
+	}
+
+	&::after {
+		display: block;
+
+		font-size: small;
+
+		color: palette('gray');
+
+		content: '(url: ' attr(src) ')';
+	}
+}
+
 /**
 * 1. Improving quality of image resampling
 * @see  https://developer.mozilla.org/En/CSS/Image-rendering
 * @see  code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
 */
 img {
+	@extend %broken-image;
+
 	height: auto;
 	max-width: 100%;
 
