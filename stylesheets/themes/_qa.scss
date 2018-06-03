@@ -338,6 +338,7 @@ header > footer {
 	}
 }
 
+// Bad aria
 article,
 section,
 aside,
@@ -364,6 +365,39 @@ aside {
 	}
 }
 
+
+/// @link https://axesslab.com/text-splitting/
+a :not([role='text']) {
+	> b,
+	> bdo,
+	> br,
+	> cite,
+	> code,
+	> dfn,
+	> em,
+	> i,
+	> samp,
+	> small,
+	> span,
+	> strong {
+		&:not([role='text']) {
+			@extend %error;
+
+			@include alert {
+				content: 'Elements inside `a` make VoiceOver announce them as separate links, except if sinalized otherwise being inside a `span[role="text"]`.' !important;
+			}
+		}
+	}
+}
+
+/// @link https://axesslab.com/text-splitting/
+[role='text']:not(span) {
+	@extend %error;
+
+	@include alert {
+		content: 'A element with `[role="text"]` loses it\'s semantics. Are you sure you are using it right?' !important;
+	}
+}
 
 
 
