@@ -108,10 +108,34 @@ html {
 	tab-size: 4;
 }
 
+/**
+ * 1. Set sticky footer
+ * 2. Prevents IE10-11 flex container bug
+ * https: //github.com/philipwalton/flexbugs#flexbug-3
+ */
 body {
+	display: flex; /* 1 */
+
+	flex-direction: column;
+
+	height: 100Vh; /* 2 */
 	min-height: 100%;
 
 	margin: 0;
+
+	color: palette('black');
+
+	> * {
+		flex-shrink: 0; /* 1 */
+	}
+}
+
+/**
+ * 1. Set sticky footer
+ */
+main,
+[role='main'] {
+	flex-grow: 1; /* 1 */
 }
 
 /* section items HTML5
