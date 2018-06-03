@@ -511,8 +511,10 @@
 
 	&::after {
 		display: inline-block;
+
 		width: 100%;
 		height: 0;
+
 		content: '';
 	}
 }
@@ -689,7 +691,6 @@ $no-viewport: false !default;
 	}
 }
 
-
 /// Returns the opposite direction of each direction in a list
 /// @author Hugo Giraudel
 /// @param {List} $directions - List of initial directions
@@ -744,19 +745,11 @@ $no-viewport: false !default;
 		border-top: $perpendicular-borders;
 		border-bottom: $perpendicular-borders;
 	}
-
-	content: '';
 }
-
-
-
-
-
 
 /// Compute the maximum depth of a map
 /// @param {Map} $map
 /// @return {Number} max depth of `$map`
-
 @function depth($map) {
 	$level: 1;
 
