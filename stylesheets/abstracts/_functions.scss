@@ -314,6 +314,14 @@ $_default-text-color--light: palette('text', 'light');
 			@return if($dark-fg-has-alpha, _alphaize($darker, $bg-color), $darker);
 		}
 	}
+
+	@if _contrast($bg-color, $lightest-color) >= $threshold {
+		@return $lightest-color;
+	} @else if _contrast($bg-color, $darkest-color) >= $threshold {
+		@return $darkest-color;
+	} @else {
+		@error 'It\'s impossible to find a color with enough contrast.';
+	}
 }
 
 /// Convert a HSL color to RGB
