@@ -181,8 +181,7 @@
 /// @param {color} $background - Background opaque color
 /// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
 @function _opacize($foreground, $background) {
-	// browsers round the alpha to 2 decimal place, so we need to do it too
-	$percent: _to-fixed(alpha($foreground), 2) * 100%;
+	$percent: alpha($foreground) * 100%;
 	$opaque: opacify($foreground, 1);
 
 	@return mix($opaque, $background, $percent);
@@ -215,9 +214,6 @@
 		$g: $g2 * $inv + $g1 * (1 - $inv);
 		$b: $b2 * $inv + $b1 * (1 - $inv);
 	}
-
-	// browsers round the alpha to 2 decimal place, so we need to do it too
-	$alpha: _to-fixed($alpha, 2);
 
 	@return rgba($r, $g, $b, $alpha);
 }
