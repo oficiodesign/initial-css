@@ -3,10 +3,6 @@
 		@content;
 	}
 
-	.progress-bar {
-		@content;
-	}
-
 	@content;
 }
 
@@ -19,27 +15,54 @@
 		@content;
 	}
 
-	.progress-bar > span {
+	> div {
 		@include hide-text;
 
+		float: left;
+
+		display: block;
+
+		height: 100%;
+		max-width: 100%;
+
+		line-height: inherit;
+
+		border-radius: 0;
+
 		@content;
+
+		&:first-child {
+			border-top-left-radius: $rounded-corner;
+			border-bottom-left-radius: $rounded-corner;
+		}
+
+		&:last-child {
+			border-top-right-radius: $rounded-corner;
+			border-bottom-right-radius: $rounded-corner;
+		}
 	}
 }
 
-progress {
+progress,
+[role='progressbar'] {
+	@include progress-bar-fg {
+		background: linear-gradient(90deg, transparent 50%, palette('button', 'submit') 50%) center/50px 50px transparent;
+	}
+	@include progress-bar-bg {
+		background: linear-gradient(90deg, transparent 50%, palette('button', 'base') 50%) center/50px 50px transparent;
+	}
+
+	display: block;
+
 	width: 100%;
 	height: $leading * 1em;
 
 	color: palette('button', 'submit');
 
+	background-color: palette('disabled', 'background');
 	// Get rid of default border in Firefox.
+
 	border: 0;
 
-	@include progress-bar-fg { // sass-lint:disable-line mixins-before-declarations
-		background: linear-gradient(90deg, transparent 50%, palette('button', 'submit') 50%) center/50px 50px transparent;
-	}
-
-	@include progress-bar-bg { // sass-lint:disable-line mixins-before-declarations
-		background: linear-gradient(90deg, transparent 50%, palette('button', 'base') 50%) center/50px 50px transparent;
-	}
+	appearance: none;
 }
