@@ -5,7 +5,8 @@
  *
  * Within any `document` or `application`, the author **SHOULD** mark no more than one element with the `main` role.
  *
- * The `[role='main']` element can be a `main` or an `article`
+ * An `article` element can have the `[role='main']`
  */
+main,
 [role='main'] {
 }
