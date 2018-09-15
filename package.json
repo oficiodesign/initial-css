@@ -15,7 +15,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:sass": "sass-lint \"./{stylesheets,tests}/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
     "pretest": "npm-run-all clean lint",
-    "compile:tests": "node-sass ./tests --output ./tests --outputStyle expanded",
+    "compile:tests": "node-sass --precision 10 --source-map true --output ./tests ./tests",
     "test": "npm-run-all compile:sass",
     "watch": "onchange \"./{stylesheets,tests}/**/*.scss\" -- npm run compile:tests",
     "start": "npm-run-all compile:tests watch"
