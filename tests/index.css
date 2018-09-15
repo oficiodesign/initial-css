@@ -1,15 +1,5 @@
 @charset "UTF-8";
 /**
- * Hide element while making it readable for screen readers
- * Shamelessly borrowed from HTML5Boilerplate:
- * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
- */
-/**
- * Hide text while making it readable for screen readers
- * 1. Needed in WebKit-based browsers because of an implementation bug;
- *    See: https://code.google.com/p/chromium/issues/detail?id=457146
- */
-/**
  * 1. Make all elements from the DOM inherit from the parent box-sizing
  * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
  */
