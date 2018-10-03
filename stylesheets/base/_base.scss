@@ -65,7 +65,6 @@ textarea,
 	animation: highlight 0.8s ease-out;
 
 	@keyframes highlight {
-		// sass-lint:disable-block no-color-literals
 		0% {
 			background-color: rgba(palette('target-highlight'), 1);
 		}
