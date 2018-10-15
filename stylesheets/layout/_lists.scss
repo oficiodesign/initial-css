@@ -5,8 +5,6 @@
  */
 ul,
 ol {
-	@include fallback('margin', 0 0 1.5rem);
-
 	padding-left: 1em;
 	margin: 0;
 }
