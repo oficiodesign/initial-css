@@ -205,7 +205,7 @@ form li {
 /// @link https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons
 ///
 input[type='image'] {
-	&:not([alt])
+	&:not([alt]),
 	&[alt=''] {
 		@extend %error;
 	}
