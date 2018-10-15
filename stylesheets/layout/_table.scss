@@ -102,7 +102,7 @@ tbody td {
 	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
 		text-align: left;
 
-		&[title] {
+		&[aria-label] {
 			text-align: right;
 
 			&::before {
@@ -110,7 +110,7 @@ tbody td {
 
 				font-style: italic;
 
-				content: attr(title)': ';
+				content: attr(aria-label)': ';
 			}
 		}
 	}
