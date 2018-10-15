@@ -26,6 +26,8 @@ nav li {
 
 menu a,
 nav a {
+	@include link-undercover;
+
 	display: block;
 
 	overflow: hidden;
