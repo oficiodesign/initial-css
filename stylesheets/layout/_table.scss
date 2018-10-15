@@ -40,6 +40,13 @@ table {
 	empty-cells: show;
 }
 
+thead,
+tfoot {
+	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+		display: none;
+	}
+}
+
 table p,
 table li {
 	font-size: 1em;
@@ -76,10 +83,6 @@ thead th,
 thead td {
 	text-align: right;
 	vertical-align: bottom;
-
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		display: none;
-	}
 }
 
 thead th:first-child,

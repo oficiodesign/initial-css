@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Add
 
 - Rounded corners to tables
+- Missing rule to hide `tfoot` on narrow screens
 
 ### Changed
 
