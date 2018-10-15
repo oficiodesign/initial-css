@@ -33,7 +33,10 @@ table {
 	font-family: inherit;
 	font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
 
-	border-collapse: collapse;
+	border-radius: $rounded-corner;
+
+	border-collapse: separate;
+	border-spacing: 0;
 	empty-cells: show;
 }
 
