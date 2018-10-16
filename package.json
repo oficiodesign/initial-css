@@ -12,6 +12,7 @@
     "clean:testResults": "rimraf ./testResults/**/*.xml",
     "clean:compilationTest": "rimraf ./testResults/**/*.css",
     "compile:sass": "node-sass ./stylesheets --output-style compressed --output ./testResults",
+    "fix:lint": "sass-lint-auto-fix",
     "lint": "npm-run-all --parallel lint:*",
     "lint:sass": "sass-lint \"./{stylesheets,tests}/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
     "pretest": "npm-run-all clean lint",
@@ -36,6 +37,7 @@
     "onchange": "^4.0.0",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
+    "sass-lint-auto-fix": "^0.15.0",
     "sassdoc": "^2.5.0",
     "sassdoc-theme-herman": "^3.0.0"
   }
