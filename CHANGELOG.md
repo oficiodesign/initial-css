@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Max line length on article paragraphs
 - Missing rule to hide `tfoot` on narrow screens
+- Narrow variation of maximum section width
 - Reset links inside navigation lists
 - Rounded corners to tables
 
