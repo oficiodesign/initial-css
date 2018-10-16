@@ -293,7 +293,6 @@ rules:
       - 'border-image-width'
       - 'border-image-outset'
       - 'border-image-repeat'
-      - 'border-spacing'
       - 'border-radius'
       - 'border-top-left-radius'
       - 'border-top-right-radius'
@@ -338,6 +337,7 @@ rules:
 
       - 'table-layout'
       - 'border-collapse'
+      - 'border-spacing'
       - 'empty-cells'
       - 'caption-side'
 

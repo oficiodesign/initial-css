@@ -24,14 +24,27 @@ td {
 }
 
 table {
-	@include fallback('margin', 0 0 1.5em 0);/* line-height */
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: #{$leading * 1em};
+	margin-left: 0;
 
 	font-size: 100%;
 	font-family: inherit;
 	font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
 
-	border-collapse: collapse;
+	border-radius: $rounded-corner;
+
+	border-collapse: separate;
+	border-spacing: 0;
 	empty-cells: show;
+}
+
+thead,
+tfoot {
+	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+		display: none;
+	}
 }
 
 table p,
@@ -68,12 +81,7 @@ td {
 
 thead th,
 thead td {
-	text-align: right;
 	vertical-align: bottom;
-
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		display: none;
-	}
 }
 
 thead th:first-child,
@@ -96,10 +104,12 @@ tbody th {
 tbody td {
 	text-align: right;
 
+	font-variant-numeric: lining-nums oldstyle-nums;
+
 	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
 		text-align: left;
 
-		&[title] {
+		&[aria-label] {
 			text-align: right;
 
 			&::before {
@@ -107,12 +117,10 @@ tbody td {
 
 				font-style: italic;
 
-				content: attr(title)': ';
+				content: attr(aria-label)': ';
 			}
 		}
 	}
-
-	font-variant-numeric: lining-nums oldstyle-nums;
 }
 
 td img {
@@ -121,7 +129,6 @@ td img {
 
 tbody tr:nth-of-type(odd) > th,
 tbody tr:nth-of-type(odd) > td {
-
 	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
 		background-color: transparent;
 	}

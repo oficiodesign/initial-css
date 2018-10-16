@@ -81,6 +81,8 @@ p {
  * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
  */
 article p {
+	max-width: map-get($line-lengths, 'max');
+
 	orphans: 3;
 	widows: 3;
 }
