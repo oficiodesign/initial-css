@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `border-spacing` property order lint
 - Maximum section width unit
 - Prevent table accessibility issues on mobile
 
