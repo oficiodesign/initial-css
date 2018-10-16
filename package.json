@@ -19,6 +19,9 @@
     "compile:tests": "node-sass --precision 10 --source-map true --output ./tests ./tests",
     "test": "npm-run-all compile:sass",
     "watch": "onchange \"./{stylesheets,tests}/**/*.scss\" -- npm run compile:tests",
+    "preversion": "git checkout master && git merge develop",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
+    "postversion": "git checkout develop && git merge master",
     "start": "npm-run-all compile:tests watch"
   },
   "repository": {
@@ -31,6 +34,7 @@
   "author": "sobral <sobral@eokoe.com>",
   "license": "MIT",
   "devDependencies": {
+    "changelog-verify": "^1.1.0",
     "csscomb": "^4.2.0",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.3",
@@ -39,6 +43,7 @@
     "sass-lint": "^1.12.1",
     "sass-lint-auto-fix": "^0.15.0",
     "sassdoc": "^2.5.0",
-    "sassdoc-theme-herman": "^3.0.0"
+    "sassdoc-theme-herman": "^3.0.0",
+    "version-changelog": "^3.1.0"
   }
 }
