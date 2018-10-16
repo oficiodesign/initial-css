@@ -405,6 +405,8 @@
 
 	&:active,
 	&:focus {
+		position: static !important;
+
 		width: auto !important;
 		height: auto !important;
 

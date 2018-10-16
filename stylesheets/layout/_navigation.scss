@@ -47,6 +47,10 @@ nav a {
 .skip-links {
 }
 
+.skip-links a {
+	@include visually-hidden--focusable;
+}
+
 /* pagination
 ---------------------------------------------------------------------------- */
 .pagination {
