@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0][] - 2018-10-16
+
 ### Added
 
 - Max line length on article paragraphs
@@ -35,3 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Conflicting settings between CSSComb and SassLint
 - Table head cells alignment
 - Unnecessary fallback margin on lists
+
+
+[Unreleased]: undefined/compare/v0.2.0...HEAD
+[0.2.0]: undefined/tree/v0.2.0
