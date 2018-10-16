@@ -30,5 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Conflicting settings between CSSComb and SassLint
 - Table head cells alignment
 - Unnecessary fallback margin on lists
