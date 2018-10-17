@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1][] - 2018-10-17
+
 ### Changed
 
 - sass lint variable name config to allow BEM
@@ -43,5 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unnecessary fallback margin on lists
 
 
-[Unreleased]: undefined/compare/v0.2.0...HEAD
+[Unreleased]: undefined/compare/v0.2.1...HEAD
+[0.2.1]: undefined/compare/v0.2.0...v0.2.1
 [0.2.0]: undefined/tree/v0.2.0
