@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Normalize `str-slice` and `adjust-hue` functions
+
 ### Fixed
 
 - `pre` typographic and basic styles mixed on `typography.scss`

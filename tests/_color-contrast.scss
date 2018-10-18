@@ -60,7 +60,7 @@
 }
 
 @each $color in $colors {
-	$selector: to-lower-case(str_slice(#{$color}, 2, 7));
+	$selector: to-lower-case(str-slice(#{$color}, 2, 7));
 
 	.color--blackwhite-#{$selector} {
 		@include text-contrast($color);
@@ -81,37 +81,37 @@
 	}
 
 	.color--complementary-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, 180));
+		@include text-contrast($color, adjust-hue($color, 180));
 
 		background-color: $color;
 	}
 
 	.color--compound-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, 210));
+		@include text-contrast($color, adjust-hue($color, 210));
 
 		background-color: $color;
 	}
 
 	.color--analogous-1-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, 30));
+		@include text-contrast($color, adjust-hue($color, 30));
 
 		background-color: $color;
 	}
 
 	.color--analogous-2-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, -30));
+		@include text-contrast($color, adjust-hue($color, -30));
 
 		background-color: $color;
 	}
 
 	.color--triadic-1-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, 120));
+		@include text-contrast($color, adjust-hue($color, 120));
 
 		background-color: $color;
 	}
 
 	.color--triadic-2-#{$selector} {
-		@include text-contrast($color, adjust_hue($color, 240));
+		@include text-contrast($color, adjust-hue($color, 240));
 
 		background-color: $color;
 	}
