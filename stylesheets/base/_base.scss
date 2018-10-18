@@ -480,3 +480,18 @@ address {
 
 	font-style: italic;
 }
+
+/* Coode blocks
+---------------------------------------------------------------------------- */
+pre {
+	padding: $leading * 0.5rem $gutter * 0.5;
+	margin: 0 0 $leading * 1rem;
+
+	overflow: auto;
+
+	font-size: ms(-1);
+
+	color: palette('text', 'light');
+
+	background-color: palette('text', 'dark');
+}

@@ -259,11 +259,6 @@ kbd {
  */
 pre {
 	// sass-lint:disable-block no-duplicate-properties
-	padding: 0;
-	margin: 0;
-
-	overflow: auto;
-
 	word-wrap: break-word; /* IE */
 	white-space: pre; /* CSS2 */
 	white-space: pre-wrap; /* CSS 2.1 */
