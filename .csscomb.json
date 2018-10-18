@@ -26,9 +26,9 @@
   "unitless-zero": true,
   "vendor-prefix-align": true,
   "sort-order": [
-
-
-
+    [
+      "$variable"
+    ],
     [
       "$include"
     ],
