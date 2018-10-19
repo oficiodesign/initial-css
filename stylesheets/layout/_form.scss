@@ -29,8 +29,7 @@ fieldset fieldset {
  *    `fieldset` elements in all browsers.
  * 4. to override default firefox style
  */
-/* 4 */
-fieldset > legend,
+fieldset > legend, /* 4 */
 legend {
 	display: table; /* 1 */
 

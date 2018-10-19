@@ -34,8 +34,7 @@
 	appearance: button; /* 1 */
 
 	&::-moz-focus-inner {
-		/* 4 */
-		padding: 0;
+		padding: 0; /* 4 */
 
 		border: 0;
 	}
