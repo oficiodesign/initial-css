@@ -19,9 +19,9 @@
     "compile:tests": "node-sass --precision 10 --source-map true --output ./tests ./tests",
     "test": "npm-run-all compile:sass",
     "watch": "onchange \"./{stylesheets,tests}/**/*.scss\" -- npm run compile:tests",
-    "preversion": "git checkout master && git merge develop",
+    "preversion": "git checkout master && git merge dev",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
-    "postversion": "git checkout develop && git merge master",
+    "postversion": "git checkout dev && git merge master",
     "start": "npm-run-all compile:tests watch"
   },
   "repository": {

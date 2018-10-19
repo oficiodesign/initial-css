@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Normalize `else if` conditionals
 - Normalize `str-slice` and `adjust-hue` functions
+- Rename `develop` branch as `dev`
 
 ### Fixed
 
