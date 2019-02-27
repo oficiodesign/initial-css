@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- inherit default fields reset on `<select>`
+- inherit default text fields reset on `<select>`
 
 ### Fixed
 
