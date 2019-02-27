@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- rename `variables.scss` to `config.scss`
 - inherit default text fields reset on `<select>`
 - some QA errors changed to warnings
 
