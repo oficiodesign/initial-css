@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - missing constants on QA styles
 - white-space inside textarea not being respected
+- wrong path of loading background
 
 ### Removed
 
