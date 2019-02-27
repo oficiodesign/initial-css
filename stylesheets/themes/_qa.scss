@@ -13,6 +13,10 @@
 	outline: 5px solid palette('debug') !important;
 }
 
+%warning {
+	outline: 5px solid palette('warning') !important;
+}
+
 @mixin alert {
 	&::before {
 		position: absolute;
@@ -71,7 +75,7 @@ xmp {
 
 /* Inline Styles */
 [style]:not([class*='js-']) {
-	@extend %error;
+	@extend %warning;
 
 	@include alert {
 		content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important;
@@ -144,7 +148,7 @@ img[srcset]:not([sizes]) {
  */
 [aria-busy]:not([aria-hidden]),
 [aria-hidden]:not([aria-busy]) {
-	@extend %error;
+	@extend %warning;
 
 	+ * {
 		@include alert {
@@ -211,14 +215,17 @@ label:not([for]) {
 input,
 select,
 textarea {
-	&:not([id]),
-	&:not([name]) {
+	&:not([id]) {
 		@extend %error;
+	}
+
+	&:not([name]) {
+		@extend %warning;
 	}
 }
 
 form:not([name]):not([id]) {
-	@extend %error;
+	@extend %warning;
 }
 
 /// Too many options
@@ -275,7 +282,7 @@ input[type='number'][lang=''] {
 
 
 button:not([type]) {
-	@extend %error;
+	@extend %warning;
 
 	@include alert {
 		content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important;
@@ -339,12 +346,14 @@ link[rel='stylesheet'][type='text/css'] {
 
 		head * {
 			display: none;
+		}
 	}
-}
 }
 
 
 [tabindex]:not([tabindex='-1']):not([tabindex='0']) {
+	@extend %error;
+
 	@include alert {
 		content: 'Tab order altered.' !important;
 	}
@@ -435,7 +444,7 @@ a :not([role='text']) {
 
 /// @link https://axesslab.com/text-splitting/
 [role='text']:not(span) {
-	@extend %error;
+	@extend %warning;
 
 	@include alert {
 		content: 'A element with `[role="text"]` loses it\'s semantics. Are you sure you are using it right?' !important;
