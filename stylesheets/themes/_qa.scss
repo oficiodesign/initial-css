@@ -92,6 +92,17 @@ a {
 	}
 }
 
+img[usemap] {
+	a &,
+	button & {
+		@extend %error;
+
+		@include alert {
+			content: 'You cannot use this attribute if the <img> element is a descendant of an <a> or <button> element.' !important;
+		}
+	}
+}
+
 /* Layout tables */
 table table {
 	@extend %error;

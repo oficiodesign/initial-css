@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - focus ring removoal on elements focusable only by script
 - `:focus-within` to `<label>`
 - `!important` to `<template>` and `[hidden]`
+- QA test:
+  - use of `[usemap]` inside `<a>` or `<button>`
 
 ### Changed
 
