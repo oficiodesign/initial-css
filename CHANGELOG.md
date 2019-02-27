@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - missing constants on QA styles
+- moving links on focus
 - white-space inside textarea not being respected
 - wrong path of loading background
 
