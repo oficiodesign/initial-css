@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - focus ring removoal on elements focusable only by script
 
+### Changed
+
+- inherit default fields reset on `<select>`
+
 ### Fixed
 
 - missing constants on QA styles
