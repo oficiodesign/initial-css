@@ -61,6 +61,15 @@ textarea,
 	touch-action: manipulation; /* 1 */
 }
 
+/**
+ * If the user can't focus, why should we represent it?
+ */
+[tabindex='-1'] {
+	&:focus {
+		outline: 0;
+	}
+}
+
 :target {
 	animation: highlight 0.8s ease-out;
 

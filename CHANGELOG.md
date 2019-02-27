@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- focus ring removoal on elements focusable only by script
+
 ### Fixed
 
 - missing constants on QA styles
