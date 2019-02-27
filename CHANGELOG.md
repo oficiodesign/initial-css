@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - default background to text fields
 - focus ring removoal on elements focusable only by script
 - `:focus-within` to `<label>`
+- `!important` to `<template>` and `[hidden]`
 
 ### Changed
 
