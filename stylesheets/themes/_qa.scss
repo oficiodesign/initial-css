@@ -128,6 +128,17 @@ img:not([alt]) {
 	}
 }
 
+img[sizes]:not([srcset]),
+img[srcset]:not([sizes]) {
+	@extend %error;
+
+	+ * {
+		@include alert {
+			content: 'Incomplete responsive image.' !important;
+		}
+	}
+}
+
 // Missing Document Language
 html:not([lang]),
 html[lang=''] {
