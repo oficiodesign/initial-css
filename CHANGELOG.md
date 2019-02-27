@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- obsolete indentation of text fields
 - outdated image rendering properties
 
 ## [0.2.2][] - 2018-10-18
