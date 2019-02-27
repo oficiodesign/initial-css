@@ -54,6 +54,9 @@ label {
 	line-height: inherit;
 
 	cursor: pointer;
+
+	&:focus-within {
+	}
 }
 
 label * {
