@@ -139,6 +139,20 @@ img[srcset]:not([sizes]) {
 	}
 }
 
+/**
+ * @see https://developer.paciellogroup.com/blog/2018/05/short-note-on-being-busy/
+ */
+[aria-busy]:not([aria-hidden]),
+[aria-hidden]:not([aria-busy]) {
+	@extend %error;
+
+	+ * {
+		@include alert {
+			content: 'Elements with `aria-busy` should have `aria-hidden`.' !important;
+		}
+	}
+}
+
 // Missing Document Language
 html:not([lang]),
 html[lang=''] {

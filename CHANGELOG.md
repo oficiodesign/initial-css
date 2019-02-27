@@ -16,8 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `:focus-within` to `<label>`
 - `!important` to `<template>` and `[hidden]`
 - QA tests:
-  - incomplete responsive images
-  - use of `[usemap]` inside `<a>` or `<button>`
+  - flag incomplete responsive images
+  - flag use of `[usemap]` inside `<a>` or `<button>`
+  - elements with `aria-busy` should have `aria-hidden`
 
 ### Changed
 
