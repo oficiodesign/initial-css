@@ -99,6 +99,8 @@ textarea {
 /// </html>
 ///
 .grid {
+	$n: $_mobile-columns - 1;
+
 	&::after,
 	&:root::before {
 		position: fixed;
@@ -118,27 +120,10 @@ textarea {
 		bottom: 0;
 		left: 0;
 
-		background-image: grid-image(2);
+		background-image: grid-image($n);
 		background-position: center top;
 
 		content: '';
-
-		@media screen and (min-width: breakpoint('phablet')) {
-			background-image: grid-image(3);
-		}
-
-		@media screen and (min-width: breakpoint('tablet')) {
-			background-image: grid-image(4);
-		}
-
-		@media screen and (min-width: breakpoint('desktop')) {
-			background-image: grid-image(5);
-		}
-
-		@media screen and (min-width: breakpoint('wide')) {
-			background-image: grid-image(6);
-			background-size: $max-width 100%;
-		}
 	}
 
 	&:root::before {
@@ -146,22 +131,42 @@ textarea {
 
 		background-color: palette('debug');
 
+		content: 'breakpoint: #{$n}col';
+
 		opacity: 0.75;
+	}
 
-		@media screen and (min-width: breakpoint('phablet')) {
-			content: 'breakpoint: phablet';
-		}
+	@each $key,
+	$value in $breakpoints {
+		$n: $n + 1;
 
-		@media screen and (min-width: breakpoint('tablet')) {
-			content: 'breakpoint: tablet';
-		}
+		@if map-get($toggle-breakpoints, $key)==null {
+			@media screen and (min-width: breakpoint($key)) {
+				&::after {
+					background-image: grid-image($n);
+				}
 
-		@media screen and (min-width: breakpoint('desktop')) {
-			content: 'breakpoint: desktop';
-		}
-
-		@media screen and (min-width: breakpoint('wide')) {
-			content: 'breakpoint: wide';
+				&:root::before {
+					content: 'breakpoint: #{$key}';
+				}
+			}
 		}
 	}
+
+	@media screen and (min-width: $max-width) {
+		&::after {
+			background-size: $max-width 100%;
+		}
+	}
+}
+
+.container {
+	max-width: $max-width;
+
+	padding-top: $leading * 4rem;
+	padding-right: $gutter;
+	padding-bottom: $leading * 4rem;
+	padding-left: $gutter;
+	margin-right: auto;
+	margin-left: auto;
 }
