@@ -11,10 +11,14 @@
  * @see  http://archivist.incutio.com/viewlist/css-discuss/98999
  * @see  http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  * @see  http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
+ * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
-
 %button-reset {
 	@extend %os-element-reset;
+
+	display: flex;
+
+	align-items: center;
 
 	width: auto; /* 3 */
 
@@ -22,7 +26,6 @@
 
 	overflow: visible; /* 3 */
 
-	text-indent: 0;
 	white-space: inherit;
 
 	cursor: pointer; /* 2 */
@@ -41,7 +44,9 @@
 
 	&:hover,
 	&:focus {
-		background-color: palette('button', 'focus');
+		&:not([type='reset']) {
+			background-color: palette('button', 'focus');
+		}
 	}
 
 	&:active {
@@ -56,10 +61,16 @@ button,
 
 [type='reset'] {
 	@extend %button-reset;
+
+	color: palette('button', 'submit');
+
+	background-color: palette('button', 'reset');
 }
 
 [type='submit'] {
 	@extend %button-reset;
+
+	background-color: palette('button', 'submit');
 }
 
 /**

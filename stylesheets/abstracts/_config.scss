@@ -181,6 +181,11 @@ $stroke: 1px !default;
 /// @type number
 $gutter: $leading * $body-font-size / 1em * 1rem;
 
+/// column basis width
+/// @todo Customize it to match your design.
+/// @type number
+$column-basis: 17rem;
+
 $_mobile-columns: 2;
 $_new-width: 0;
 $_device-width: 20em;
