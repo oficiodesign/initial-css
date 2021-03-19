@@ -48,17 +48,6 @@
 	}
 }
 
-/**
- * Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- * and `video` controls.
- * Please note that this fix DOES NOT work for buttons contained inside table elements.
- * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
- */
-
-html [type='button'] {
-	@extend %button-reset;
-}
-
 button,
 [role='button'],
 [type='button'] {
