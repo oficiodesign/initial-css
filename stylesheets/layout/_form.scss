@@ -158,38 +158,6 @@ form br {
 	color: palette('placeholder', 'focus');
 }
 
-:-moz-placeholder {
-	@include placeholder;
-}
-
-:focus:-moz-placeholder {
-	@include placeholder--focus;
-}
-
-::-moz-placeholder {
-	@include placeholder;
-}
-
-:focus::-moz-placeholder {
-	@include placeholder--focus;
-}
-
-::-webkit-input-placeholder {
-	@include placeholder;
-}
-
-:focus::-webkit-input-placeholder {
-	@include placeholder--focus;
-}
-
-:-ms-input-placeholder {
-	@include placeholder;
-}
-
-:focus:-ms-input-placeholder {
-	@include placeholder--focus;
-}
-
 ::placeholder {
 	@include placeholder;
 }
@@ -238,22 +206,6 @@ form br {
 [type='image'] {
 	display: inline-block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
