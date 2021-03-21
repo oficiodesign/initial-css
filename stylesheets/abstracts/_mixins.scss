@@ -355,7 +355,7 @@
 }
 
 /// Make a context based selector a little more friendly
-/// @author Hugo Giraudel
+/// @author Kitty Giraudel
 /// @param {String} $context
 @mixin when-inside($context) {
 	#{$context} & {
@@ -642,7 +642,7 @@ $no-viewport: false !default;
 }
 
 /// Returns the opposite direction of each direction in a list
-/// @author Hugo Giraudel
+/// @author Kitty Giraudel
 /// @param {List} $directions - List of initial directions
 /// @return {List} - List of opposite directions
 /// @access private
