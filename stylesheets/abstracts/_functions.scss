@@ -66,7 +66,7 @@
 /// @param {Number} $number
 /// @param {Number} $exponent
 /// @access private
-/// @author Hugo Giraudel
+/// @author Kitty Giraudel
 /// @return {Number}
 /// @link https://css-tricks.com/snippets/sass/power-function/
 @function _pow($number, $exponent) {
@@ -86,7 +86,7 @@
 }
 
 /// toFixed() function in Sass
-/// @author Hugo Giraudel
+/// @author Kitty Giraudel
 /// @param {Number} $float - Number to format
 /// @param {Number} $digits [2] - Number of digits to leave
 /// @access private
@@ -332,7 +332,7 @@ $_default-text-color--light: palette('text', 'light');
 
 
 /// Replace `$search` with `$replace` in `$string`
-/// @author Hugo Giraudel
+/// @author Kitty Giraudel
 /// @group helpers
 /// @param {String} $string - Initial string
 /// @param {String} $search - Substring to replace
