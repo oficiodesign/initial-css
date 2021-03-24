@@ -124,7 +124,7 @@ form br {
 }
 
 :disabled,
-:readonly {
+:read-only {
 	color: palette('disabled', 'foreground');
 
 	background: palette('disabled', 'background');
@@ -134,7 +134,7 @@ form br {
 	cursor: not-allowed;
 }
 
-:readonly {
+:read-only {
 	cursor: default;
 }
 

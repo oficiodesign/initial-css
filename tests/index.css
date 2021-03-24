@@ -1021,14 +1021,14 @@ html [type='button'], button,
     /* 6 */ }
 
 :disabled,
-:readonly {
+:read-only {
   color: #6b6b6b;
   background: #f0f0f0; }
 
 :disabled {
   cursor: not-allowed; }
 
-:readonly {
+:read-only {
   cursor: default; }
 
 /**
