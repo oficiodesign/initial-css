@@ -1,118 +1,118 @@
 @mixin text-contrast($b, $f: null) {
-	@if text-contrast($b, $f) == transparent {
-		&::before {
-			content: 'Impossible for ';
+  @if text-contrast($b, $f) == transparent {
+    &::before {
+      content: 'Impossible for ';
 
-			filter: invert(100%);
-		}
-	} @else {
-		text-align: right;
+      filter: invert(100%);
+    }
+  } @else {
+    text-align: right;
 
-		color: text-contrast($b, $f);
+    color: text-contrast($b, $f);
 
-		&::before {
-			display: block;
+    &::before {
+      display: block;
 
-			margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
 
-			text-align: left;
+      text-align: left;
 
-			content: '\25a0\a0' + quote(#{text-contrast($b, $f)});
-		}
-	}
+      content: '\25a0\a0'+ quote(#{text-contrast($b, $f)});
+    }
+  }
 }
 
 .colors {
-	display: flex;
+  display: flex;
 
-	flex-wrap: wrap;
+  flex-wrap: wrap;
 
-	padding: 0;
+  padding: 0;
 }
 
 .color {
-	display: block;
+  display: block;
 
-	flex-grow: 1;
-	flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
 
-	width: 25%;
+  width: 25%;
 
-	padding: 0.75rem;
-	margin: 0;
+  padding: 0.75rem;
+  margin: 0;
 
-	font-weight: bold;
-	font-size: small;
-	line-height: 1;
+  font-weight: font-weight('bold');
+  font-size: small;
+  line-height: 1;
 
-	text-align: center;
+  text-align: center;
 
-	list-style-type: none;
+  list-style-type: none;
 
-	&::before,
-	&::after {
-		position: static;
-	}
+  &::before,
+  &::after {
+    position: static;
+  }
 
-	@media screen and (min-width: #{768 / 16 * 1em}) {
-		width: 12.5%;
-	}
+  @media screen and (min-width: #{768 / 16 * 1em}) {
+    width: 12.5%;
+  }
 }
 
 @each $color in $colors {
-	$selector: to-lower-case(str-slice(#{$color}, 2, 7));
+  $selector: to-lower-case(str-slice(#{$color}, 2, 7));
 
-	.color--blackwhite-#{$selector} {
-		@include text-contrast($color);
+  .color--blackwhite-#{$selector} {
+    @include text-contrast($color);
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--mono-#{$selector} {
-		@include text-contrast($color, $color);
+  .color--mono-#{$selector} {
+    @include text-contrast($color, $color);
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--alpha-#{$selector} {
-		@include text-contrast($color, rgba($color, 0.15));
+  .color--alpha-#{$selector} {
+    @include text-contrast($color, rgba($color, 0.15));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--complementary-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, 180));
+  .color--complementary-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, 180));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--compound-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, 210));
+  .color--compound-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, 210));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--analogous-1-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, 30));
+  .color--analogous-1-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, 30));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--analogous-2-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, -30));
+  .color--analogous-2-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, -30));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--triadic-1-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, 120));
+  .color--triadic-1-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, 120));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 
-	.color--triadic-2-#{$selector} {
-		@include text-contrast($color, adjust-hue($color, 240));
+  .color--triadic-2-#{$selector} {
+    @include text-contrast($color, adjust-hue($color, 240));
 
-		background-color: $color;
-	}
+    background-color: $color;
+  }
 }

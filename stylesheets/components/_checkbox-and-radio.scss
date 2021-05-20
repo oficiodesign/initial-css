@@ -1,34 +1,35 @@
 /* checkboxes and radio buttons
 ---------------------------------------------------------------------------- */
+
 /**
  * All checkboxes and readio buttons as list-items
  * <li><label for="id">label</label> <input type="checkbox" id="id" /></li>
  */
 fieldset ol,
 fieldset ul {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 fieldset li {
-	display: block;
+  display: block;
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	white-space: nowrap;
+  white-space: nowrap;
 
-	list-style-type: none;
+  list-style-type: none;
 
-	&::before {
-		content: none;
-	}
+  &::before {
+    content: none;
+  }
 }
 
 li label {
-	display: inline;
+  display: inline;
 
-	padding: 0 0.5em;
+  padding: 0 0.5em;
 }
 
 /**
@@ -42,52 +43,52 @@ li label {
  */
 [type='checkbox'],
 [type='radio'] {
-	width: auto;
-	height: auto; /* 3 */
+  width: auto;
+  height: auto; /* 3 */
 
-	padding: 0; /* 2 */
+  padding: 0; /* 2 */
 
-	vertical-align: middle;
+  vertical-align: middle;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	box-sizing: border-box; /* 1 */
+  box-sizing: border-box; /* 1 */
 
-	&:hover {
-	}
+  // &:hover {
+  // }
 
-	&:focus {
-		outline-style: auto; /* 4 */
-	}
+  &:focus {
+    outline-style: auto; /* 4 */
+  }
 }
 
-[type='radio'] {
-	&:indeterminate {
-	}
+// [type='radio'] {
+//   &:indeterminate {
+//   }
 
-	&:checked {
-	}
-}
+//   &:checked {
+//   }
+// }
 
-[type='checkbox'] {
-	&:checked {
-	}
-}
+// [type='checkbox'] {
+//   &:checked {
+//   }
+// }
 
 li:hover {
-	> input,
-	> label {
-		color: palette('black');
-	}
+  > input,
+  > label {
+    color: palette('black');
+  }
 }
 
 li :checked + label {
-	font-weight: bold;
+  font-weight: font-weight('bold');
 }
 
 [disabled] + label,
 :disabled + label {
-	cursor: default;
+  cursor: default;
 
-	color: palette('disabled', 'foreground');
+  color: palette('disabled', 'foreground');
 }

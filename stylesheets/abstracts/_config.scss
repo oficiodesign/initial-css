@@ -14,7 +14,6 @@
 /// $title-font-stack: ComicSans, $basic-title-font-stack;
 $title-font-stack: $basic-title-font-stack !default;
 
-
 /// Text body font stack
 ///
 /// @access public
@@ -24,7 +23,6 @@ $title-font-stack: $basic-title-font-stack !default;
 /// @example scss
 /// $text-font-stack: ComicSans, $native-font-stack;
 $text-font-stack: $native-font-stack !default;
-
 
 /// Code (monospace) font stack
 ///
@@ -36,7 +34,6 @@ $text-font-stack: $native-font-stack !default;
 /// $code-font-stack: ComicSans, $basic-code-font-stack;
 $code-font-stack: $basic-code-font-stack !default;
 
-
 /// Font weights map
 /// @access private
 /// @prop {string} weight - Pure colors or a map of tones
@@ -44,11 +41,11 @@ $code-font-stack: $basic-code-font-stack !default;
 /// @todo Customize the weights or add new ones to match your design needs.
 /// @type Map
 $font-weights: (
-	'text': 400,
-	'bold': 600,
-	'heading': 600,
+  'text': 400,
+  'bold': 600,
+  'extrabold': 800,
+  'heading': 600,
 );
-
 
 /// Body text font-size
 ///
@@ -68,10 +65,9 @@ $leading: 1.5 !default;
 /// @prop {number} min - minimum line height expressed unitless
 /// @prop {number} max - maximum line height expressed unitless
 $leadings: (
-	'min': 1.15,
-	'max': 1.5,
+  'min': 1.15,
+  'max': 1.5,
 ) !default;
-
 
 /// flexible line length map
 ///
@@ -79,15 +75,15 @@ $leadings: (
 /// @prop {number} min - minimum line length expressed in `em`
 /// @prop {number} max - maximum line length expressed in `em`
 $line-lengths: (
-	'min': 21em,
-	'max': 35em,
+  'min': 21em,
+  'max': 35em,
 ) !default;
 
 ///
 /// @link http://www.modularscale.com/?1&rem&1.25
 $modularscale: (
-	base: 1rem,
-	ratio: 1.25
+  base: 1rem,
+  ratio: 1.25,
 );
 
 /// List all available colors and tones.
@@ -98,73 +94,72 @@ $modularscale: (
 /// @require {function} palette
 /// @todo Customize the colors or add new ones to match your design needs.
 $palette: (
-	'gray': (
-		'x-light': tint(rgb(229, 231, 234), 10%),
-		'light': rgb(229, 231, 234),
-		'base': rgb(151, 153, 156),
-		'dark': rgb(64, 68, 71),
-		'x-dark': shade(rgb(64, 68, 71), 10%),
-	),
-	'white': rgb(255, 255, 255),
-	'black': rgb(0, 0, 0),
-	'debug': rgb(255, 0, 0),
-	'warning': rgb(255, 190, 0),
-	'anchor': (
-		'base': rgb(0, 102, 204),
-		'link': rgb(0, 102, 204),
-		'visited': rgb(128, 0, 128),
-		'hover': rgb(50, 152, 255),
-		'focus': rgb(50, 152, 255),
-		'active': rgb(229, 0, 80),
-	),
-	'border': (
-		'base': rgb(192, 192, 192),
-		'focus': rgb(0, 0 , 0),
-		),
-	'button': (
-		'base': rgb(225, 225, 225),
-		'focus': rgb(229, 241, 251),
-		'slider': hsl(0, 0%, 40%),
-		'submit': rgb(217, 83, 79),
-		'reset': transparent,
-	),
-	'disabled': (
-		'foreground': hsl(0, 0%, 42%),
-		'background': hsl(0, 0%, 94%),
-	),
-	'loading': (
-		'foreground': hsl(0, 0%, 94%),
-		'background': hsla(0, 0%, 7%, 0.8),
-	),
-	'label': (
-		'default': rgb(119, 119, 119),
-		'primary': rgb(51, 122, 183),
-		'success': rgb(66, 133, 66),
-		'info': rgb(60, 127, 145),
-		'warning': rgb(240, 173, 78),
-		'danger': rgb(217, 83, 79),
-	),
-	'mark': (
-		'foreground': rgb(51, 51, 51),
-		'background': rgb(215, 255, 90),
-	),
-	'placeholder': (
-		'base': hsl(0, 0%, 34%),
-		'focus': hsl(0, 0%, 56%),
-	),
-	'quotes': hsl(0, 0%, 34%),
-	'selection': (
-		'foreground': rgb(255, 255, 255),
-		'background': rgb(20, 105, 140),
-	),
-	'tap-highlight': rgb(255, 94, 153),
-	'target-highlight': rgb(255, 255, 102),
-	'text': (
-		'dark': hsl(0, 0%, 13%),
-		'light': rgb(229, 231, 234),
-	),
+  'gray': (
+    'x-light': tint(rgb(229, 231, 234), 10%),
+    'light': rgb(229, 231, 234),
+    'base': rgb(151, 153, 156),
+    'dark': rgb(64, 68, 71),
+    'x-dark': shade(rgb(64, 68, 71), 10%),
+  ),
+  'white': rgb(255, 255, 255),
+  'black': rgb(0, 0, 0),
+  'debug': rgb(255, 0, 0),
+  'warning': rgb(255, 190, 0),
+  'anchor': (
+    'base': rgb(0, 102, 204),
+    'link': rgb(0, 102, 204),
+    'visited': rgb(128, 0, 128),
+    'hover': rgb(50, 152, 255),
+    'focus': rgb(50, 152, 255),
+    'active': rgb(229, 0, 80),
+  ),
+  'border': (
+    'base': rgb(192, 192, 192),
+    'focus': rgb(0, 0, 0),
+  ),
+  'button': (
+    'base': rgb(225, 225, 225),
+    'focus': rgb(229, 241, 251),
+    'slider': hsl(0, 0%, 40%),
+    'submit': rgb(217, 83, 79),
+    'reset': transparent,
+  ),
+  'disabled': (
+    'foreground': hsl(0, 0%, 42%),
+    'background': hsl(0, 0%, 94%),
+  ),
+  'loading': (
+    'foreground': hsl(0, 0%, 94%),
+    'background': hsla(0, 0%, 7%, 0.8),
+  ),
+  'label': (
+    'default': rgb(119, 119, 119),
+    'primary': rgb(51, 122, 183),
+    'success': rgb(66, 133, 66),
+    'info': rgb(60, 127, 145),
+    'warning': rgb(240, 173, 78),
+    'danger': rgb(217, 83, 79),
+  ),
+  'mark': (
+    'foreground': rgb(51, 51, 51),
+    'background': rgb(215, 255, 90),
+  ),
+  'placeholder': (
+    'base': hsl(0, 0%, 34%),
+    'focus': hsl(0, 0%, 56%),
+  ),
+  'quotes': hsl(0, 0%, 34%),
+  'selection': (
+    'foreground': rgb(255, 255, 255),
+    'background': rgb(20, 105, 140),
+  ),
+  'tap-highlight': rgb(255, 94, 153),
+  'target-highlight': rgb(255, 255, 102),
+  'text': (
+    'dark': hsl(0, 0%, 13%),
+    'light': rgb(229, 231, 234),
+  ),
 );
-
 
 /// Default border-radius
 /// @todo Customize it to match your design.
@@ -192,33 +187,37 @@ $_device-width: 20em;
 $_i: $_mobile-columns;
 
 @function _im-to-em($breakpoints, $base-value: 16px) {
-	$new-breakpoints: ();
+  $new-breakpoints: ();
 
-	@each $name, $value in $breakpoints {
-		$em-value: ($value / $base-value) * 1em;
-		$new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
-	}
+  @each $name, $value in $breakpoints {
+    $em-value: ($value / $base-value) * 1em;
+    $new-breakpoints: map-merge(
+      $new-breakpoints,
+      (
+        $name: $em-value,
+      )
+    );
+  }
 
-	@return $new-breakpoints;
+  @return $new-breakpoints;
 }
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: _im-to-em(
-	(
-		'phone__portrait': 320px,
-		'phone__landscape': 480px,
-		'tablet__portrait__portrait': 768px,
-		'tablet__portrait__landscape': 1024px,
-		'tablet__landscape': 1280px,
-		'wide': 1600px,
-	)
+  (
+    'phone': 320px,
+    'phablet': 480px,
+    'tablet': 768px,
+    'desktop': 1024px,
+    'wide': 1280px,
+  )
 ) !default;
 
 $toggle-breakpoints: (
-	'toggle-table-layout': 48em,
-	'toggle-menu': 64em,
+  'toggle-table-layout': 48em,
+  'toggle-menu': 64em,
 );
 
 $breakpoints: map-merge($breakpoints, $toggle-breakpoints);
@@ -235,26 +234,28 @@ $breakpoints: map-merge($breakpoints, $toggle-breakpoints);
 $max-width: 80em !default; // 1180px
 $max-width--narrow: 40.75em; // 668 px
 
-$breakpoints: map-merge($breakpoints, ('#{$_mobile-columns}col': $_device-width));
+$breakpoints: map-merge(
+  $breakpoints,
+  (
+    '#{$_mobile-columns}col': $_device-width,
+  )
+);
 
 @while $_device-width <= $max-width {
-	$_device-width: $_device-width / $_i * ($_i + 1);
-	$_i: $_i + 1;
-	$breakpoints: map-merge($breakpoints, ('#{$_i}col': $_device-width));
+  $_device-width: $_device-width / $_i * ($_i + 1);
+  $_i: $_i + 1;
+  $breakpoints: map-merge($breakpoints, ('#{$_i}col': $_device-width));
 }
 
 /// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.
 /// @access public
 /// @type Map
 $layers: (
-	'modal': 5000,
-	'dropdown': 4000,
-	'default': 1,
-	'below': -1,
+  'modal': 5000,
+  'dropdown': 4000,
+  'default': 1,
+  'below': -1,
 );
-
-
-
 
 /// Relative or absolute URL where all assets are served from.
 /// @todo Customize it to match your setup.
@@ -264,24 +265,34 @@ $layers: (
 $base-url: '/assets/' !default;
 
 @function _im-to-px($breakpoints, $base-value: 16px) {
-	$new-breakpoints: ();
+  $new-breakpoints: ();
 
-	@each $name, $value in $breakpoints {
-		$px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
-		$new-breakpoints: map-merge($new-breakpoints, ($name: $px-value));
+  @each $name, $value in $breakpoints {
+    $px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
+    $new-breakpoints: map-merge(
+      $new-breakpoints,
+      (
+        $name: $px-value,
+      )
+    );
 
-		@if (unit($value) != 'em' and unit($value) != 'px') {
-			@error 'all media queries units should be either `em` or `px`. `#{unit($value)}` given.';
-		} @else {
-			$px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
-			$new-breakpoints: map-merge($new-breakpoints, ($name: $px-value));
-		}
-	}
+    @if (unit($value) != 'em' and unit($value) != 'px') {
+      @error 'all media queries units should be either `em` or `px`. `#{unit($value)}` given.';
+    } @else {
+      $px-value: if(unit($value) == 'em', $value / 1em * $base-value, $value);
+      $new-breakpoints: map-merge(
+        $new-breakpoints,
+        (
+          $name: $px-value,
+        )
+      );
+    }
+  }
 
-	@return $new-breakpoints;
+  @return $new-breakpoints;
 }
 
 @if variable-exists('im-media-support') and $im-media-support == false {
-	$breakpoints: _im-to-px($breakpoints);
-	$max-width: $max-width / 1em * 16px;
+  $breakpoints: _im-to-px($breakpoints);
+  $max-width: $max-width / 1em * 16px;
 }

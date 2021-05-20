@@ -1,26 +1,27 @@
 /* FORMS
 ============================================================================ */
+
 /**
  * Property compatibility table for form widgets
  * @see https://developer.mozilla.org/en-US/docs/Property_compatibility_table_for_form_widgets
  */
 
 form {
-	margin: 0;
+  margin: 0;
 }
 
 fieldset {
-	max-width: none;
-	min-width: 0;
+  max-width: none;
+  min-width: 0;
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	border: 0;
+  border: 0;
 }
 
-fieldset fieldset {
-}
+// fieldset fieldset {
+// }
 
 /**
  * 1. Correct the text wrapping in Edge and IE.
@@ -31,45 +32,45 @@ fieldset fieldset {
  */
 fieldset > legend, /* 4 */
 legend {
-	display: table; /* 1 */
+  display: table; /* 1 */
 
-	max-width: 100%; /* 1 */
+  max-width: 100%; /* 1 */
 
-	padding: 0; /* 3 */
+  padding: 0; /* 3 */
 
-	font-weight: bolder;
+  font-weight: font-weight('extrabold');
 
-	white-space: normal; /* 1 */
+  white-space: normal; /* 1 */
 
-	color: inherit; /* 2 */
+  color: inherit; /* 2 */
 
-	box-sizing: border-box; /* 1 */
+  box-sizing: border-box; /* 1 */
 }
 
 label {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	font-size: small;
-	line-height: inherit;
+  font-size: small;
+  line-height: inherit;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	&:focus-within {
-	}
+  // &:focus-within {
+  // }
 }
 
 label * {
-	font-size: 1em;
+  font-size: 1em;
 }
 
 /* pragraphs inside forms
 ---------------------------------------------------------------------------- */
-form p {
-}
+// form p {
+// }
 
 form br {
-	clear: both;
+  clear: both;
 }
 
 /* common rules
@@ -85,104 +86,106 @@ form br {
  * 6. Set the focus outline to be just around the field border.
  */
 %os-element-reset {
-	display: inline-block;
+  display: inline-block;
 
-	padding: 1px; /* 2 */ // sass-lint:disable-line property-units
-	margin: 0;
+  padding: 1px; /* 2 */ // stylelint-disable-next-line property-units
+  margin: 0;
 
-	overflow: visible;
+  overflow: visible;
 
-	font-size: inherit; /* 1 */
-	line-height: inherit; /* 1 */
-	font-family: inherit; /* 1 */
-	-webkit-font-smoothing: inherit; // sass-lint:disable-line no-vendor-prefixes
-	letter-spacing: inherit;
+  font-size: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  font-family: inherit; /* 1 */
+  -webkit-font-smoothing: inherit; // stylelint-disable-next-line no-vendor-prefixes
+  letter-spacing: inherit;
 
-	text-align: inherit;
-	text-transform: inherit; /* 3 */
-	white-space: normal;
-	vertical-align: top;
+  text-align: inherit;
+  text-transform: inherit; /* 3 */
+  white-space: normal;
+  vertical-align: top;
 
-	color: inherit;
+  color: inherit;
 
-	border-width: $stroke;
-	border-style: solid;
-	border-color: palette('border');
-	border-radius: $rounded-corner;
+  border-width: $stroke;
+  border-style: solid;
+  border-color: palette('border');
+  border-radius: $rounded-corner;
 
-	outline: 0;
+  outline: 0;
 
-	box-sizing: border-box; /* 4 */
+  box-sizing: border-box; /* 4 */
 
-	&:hover {
-	}
+  // &:hover {
+  // }
 
-	&:focus {
-		outline: 1px dotted palette('black'); /* 5 */
-		outline-offset: 0; /* 6 */
-	}
+  &:focus {
+    outline: 1px dotted palette('black'); /* 5 */
+    outline-offset: 0; /* 6 */
+  }
 }
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
 :disabled,
 :readonly {
-	color: palette('disabled', 'foreground');
+  color: palette('disabled', 'foreground');
 
-	background: palette('disabled', 'background');
+  background: palette('disabled', 'background');
 }
 
 :disabled {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 :readonly {
-	cursor: default;
+  /* stylelint-disable-line */
+  cursor: default;
 }
+/* stylelint-enable selector-pseudo-class-no-unknown */
 
-:enabled {
-}
+// :enabled {
+// }
 
-:optional {
-}
+// :optional {
+// }
 
 /**
  * Correct the text style of placeholders
  */
 
 @mixin placeholder {
-	color: palette('placeholder');
+  color: palette('placeholder');
 
-	opacity: 1;
+  opacity: 1;
 }
 
 @mixin placeholder--focus {
-	color: palette('placeholder', 'focus');
+  color: palette('placeholder', 'focus');
 }
 
 ::placeholder {
-	@include placeholder;
+  @include placeholder;
 }
 
 :focus::placeholder {
-	@include placeholder--focus;
+  @include placeholder--focus;
 }
 
 /* complex inputs
 ============================================================================ */
-[type='date'] {
-}
+// [type='date'] {
+// }
 
-[type='month'] {
-}
+// [type='month'] {
+// }
 
-[type='week'] {
-}
+// [type='week'] {
+// }
 
-[type='time'] {
-}
+// [type='time'] {
+// }
 
-[type='datetime-local'] {
-}
-
+// [type='datetime-local'] {
+// }
 
 /* impossible inputs
 ============================================================================ */
@@ -190,13 +193,13 @@ form br {
 [type='file'],
 [type='color'],
 [type='image'] {
-	padding: 0;
+  padding: 0;
 
-	vertical-align: middle;
+  vertical-align: middle;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	border: 0;
+  border: 0;
 }
 
 /**
@@ -204,111 +207,105 @@ form br {
  */
 
 [type='image'] {
-	display: inline-block;
+  display: inline-block;
 }
-
 
 /**
  * Consistent background color on Chrome.
  */
 [type='color'] {
-	background-color: palette('white');
+  background-color: palette('white');
 }
 
 /**
  * Remove the inside button border in Chrome.
  */
 ::-webkit-color-swatch {
-	border: 0;
+  border: 0;
 }
 
 /**
  * Remove the inside button border in Firefox.
  */
 ::-moz-color-swatch {
-	border: 0;
+  border: 0;
 }
 
 /**
  * Remove the inside button padding in Chrome.
  */
 ::-webkit-color-swatch-wrapper {
-	padding: 0;
+  padding: 0;
 }
 
 /**
  * Remove the inside button padding in Firefox.
  */
 ::-moz-color-swatch-wrapper {
-	padding: 0;
+  padding: 0;
 }
 
-
-
-// sobral, confira isso
-//
 /**
  * 1. Consistent background color on Edge and IE.
  * 2. override Opera margin and padding
  */
 [type='file'] {
-	height: 2em;
-	min-width: 250px;
+  height: 2em;
+  min-width: 250px;
 
-	padding: 0 !important; /* 2 */ // sass-lint:disable-line no-important
-	margin: 0; /* 2 */
+  padding: 0 !important; /* 2 */ /* stylelint-disable-line */
+  margin: 0; /* 2 */
 
-	font-family: inherit;
+  font-family: inherit;
 
-	text-align: start !important; // sass-lint:disable-line no-important
-	white-space: nowrap;
+  text-align: start !important; /* stylelint-disable-line */
+  white-space: nowrap;
 
-	cursor: default;
+  cursor: default;
 
-	background-color: transparent; /* 1 */
+  background-color: transparent; /* 1 */
 
-	border-style: none !important; // sass-lint:disable-line no-important
+  border-style: none !important; /* stylelint-disable-line */
 
-	-webkit-box-align: baseline; //sass-lint:disable-line no-vendor-prefixes
+  box-align: baseline; /* stylelint-disable-line */
 
-	-webkit-appearance: none; //sass-lint:disable-line no-vendor-prefixes
-	   -moz-appearance: none; //sass-lint:disable-line no-vendor-prefixes indentation
-	        appearance: normal; //sass-lint:disable-line indentation
+  appearance: none; /* stylelint-disable-line */
+  appearance: none; /* stylelint-disable-line */
+  appearance: normal; //stylelint-disable-next-line indentation
 
-	-moz-binding: none; //sass-lint:disable-line no-vendor-prefixes
+  -moz-binding: none; /* stylelint-disable-line */
 }
 
-[type='file'][multiple] {
-}
+// [type='file'][multiple] {
+// }
 
 [type='file'] > [type='text'] {
-	height: inherit;
+  height: inherit;
 
-	font-size: inherit;
-	letter-spacing: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
 
-	color: inherit;
+  color: inherit;
 
-	background-color: inherit;
+  background-color: inherit;
 
-	border-color: inherit;
+  border-color: inherit;
 }
 
 [type='file'] > [type='button'] {
-	height: inherit;
+  height: inherit;
 
-	padding: 0;
+  padding: 0;
 
-	font-size: inherit;
+  font-size: inherit;
 
-	white-space: normal;
+  white-space: normal;
 
-	-webkit-box-align: center; // sass-lint:disable-line no-vendor-prefixes
-	box-sizing: content-box;
+  box-align: center; /* stylelint-disable-line */
+  box-sizing: content-box;
 
-	appearance: button;
+  appearance: button;
 }
-
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -318,21 +315,21 @@ form br {
  */
 
 ::-webkit-file-upload-button {
-	font: inherit; /* 4 */
+  font: inherit; /* 4 */
 
-	cursor: pointer;
+  cursor: pointer;
 
-	background-color: palette('button'); /* 2 */
+  background-color: palette('button'); /* 2 */
 
-	border-width: 1px; /* 3 */
-	border-style: solid; /* 3 */
-	border-color: palette('border'); /* 3 */
+  border-width: 1px; /* 3 */
+  border-style: solid; /* 3 */
+  border-color: palette('border'); /* 3 */
 
-	-webkit-appearance: button; /* 1 */ // sass-lint:disable-line no-vendor-prefixes
+  appearance: button; /* 1 */ // stylelint-disable-next-line no-vendor-prefixes
 
-	&:hover {
-		background-color: palette('button', 'focus');
-	}
+  &:hover {
+    background-color: palette('button', 'focus');
+  }
 }
 
 /**
@@ -341,7 +338,7 @@ form br {
 
 :focus::-webkit-color-swatch,
 :focus::-webkit-file-upload-button {
-	outline: 1px dotted palette('black');
+  outline: 1px dotted palette('black');
 }
 
 /**
@@ -349,13 +346,13 @@ form br {
  */
 
 ::-ms-browse {
-	border-width: 1px; /* 1 */
-	border-style: solid; /* 1 */
-	border-color: palette('border'); /* 1 */
+  border-width: 1px; /* 1 */
+  border-style: solid; /* 1 */
+  border-color: palette('border'); /* 1 */
 
-	&:hover {
-		background-color: palette('button', 'focus');
-	}
+  &:hover {
+    background-color: palette('button', 'focus');
+  }
 }
 
 /**
@@ -363,56 +360,41 @@ form br {
  */
 
 :focus::-ms-browse {
-	outline: 1px dotted palette('black');
+  outline: 1px dotted palette('black');
 }
 
+// /* ALERTS and FORMS */
+// .success {
+// }
 
+// :valid {
+// }
 
+// :in-range {
+// }
 
+// :required:valid {
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-/* ALERTS and FORMS */
-.success {
-}
-
-:valid {
-}
-
-:in-range {
-}
-
-:required:valid {
-}
-
-.warning {
-}
+// .warning {
+// }
 
 [required],
 :required {
-	box-shadow: none;
+  box-shadow: none;
 }
 
-.alert {
-}
+// .alert {
+// }
 
-:out-of-range {
-}
+// :out-of-range {
+// }
 
-[type='submit']:-moz-submit-invalid {
-}
+// [type='submit']:-moz-submit-invalid {
+// }
 
-x-moz-errormessage {
-}
+// x-moz-errormessage {
+// }
 
 /**
  * Remove the focus outline in Firefox to only keep the original effect.
@@ -420,5 +402,5 @@ x-moz-errormessage {
 [type='range']:-moz-focusring,
 [type='checkbox']:-moz-focusring,
 [type='radio']:-moz-focusring {
-	outline-width: 0;
+  outline-width: 0;
 }

@@ -7,49 +7,47 @@
 /// @link https://github.com/Heydon/REVENGE.CSS
 ////
 
-// sass-lint:disable no-important
+/* stylelint-disable declaration-no-important */
 
 %error {
-	outline: 5px solid palette('debug') !important;
+  outline: 5px solid palette('debug') !important;
 }
 
 %warning {
-	outline: 5px solid palette('warning') !important;
+  outline: 5px solid palette('warning') !important;
 }
 
 @mixin alert {
-	&::before {
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
 
-		display: block;
-		z-index: layer('modal');
+    display: block;
+    z-index: layer('modal');
 
-		padding: 1em;
+    padding: 1em;
 
-		font-weight: font-weight('heavy');
+    font-weight: font-weight('heavy');
 
-		text-align: center;
+    text-align: center;
 
-		color: palette('white');
+    color: palette('white');
 
-		background-color: palette('debug');
+    background-color: palette('debug');
 
-		@content;
-	}
+    @content;
+  }
 }
 
 /* Deprecated elements */
 acronym,
 applet,
 basefont,
-bgsound,
 big,
 blink,
 center,
-comment,
 dir,
 embed,
 font,
@@ -58,7 +56,6 @@ frameset,
 isindex,
 listing,
 marquee,
-multicol,
 nobr,
 noembed,
 plaintext,
@@ -66,81 +63,82 @@ spacer,
 strike,
 wbr,
 xmp {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Deprecated element.' !important;
-	}
+  @include alert {
+    content: 'Deprecated element.' !important;
+  }
 }
 
 /* Inline Styles */
 [style]:not([class*='js-']) {
-	@extend %warning;
+  @extend %warning;
 
-	@include alert {
-		content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important;
-	}
+  @include alert {
+    content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important;
+  }
 }
 
 /* Faulty or Missing Link Targets */
 a {
-	&:not([href]),
-	&[href$='#'],
-	&[href=''],
-	&[href^='javascript'] {
-		@extend %error;
+  &:not([href]),
+  &[href$='#'],
+  &[href=''],
+  &[href^='javascript'] {
+    @extend %error;
 
-		@include alert {
-			content: 'Links should only be used to navigation. Use a `<button>` instead.' !important;
-		}
-	}
+    @include alert {
+      content: 'Links should only be used to navigation. Use a `<button>` instead.' !important;
+    }
+  }
 }
 
 img[usemap] {
-	a &,
-	button & {
-		@extend %error;
+  a &,
+  button & {
+    @extend %error;
 
-		@include alert {
-			content: 'You cannot use this attribute if the <img> element is a descendant of an <a> or <button> element.' !important;
-		}
-	}
+    @include alert {
+      content: 'You cannot use this attribute if the <img> element is a descendant of an <a> or <button> element.' !important;
+    }
+  }
 }
 
 /* Layout tables */
 table table {
-	@extend %error;
+  @extend %error;
 
-	display: block !important;
+  display: block !important;
 
-	@include alert {
-		content: 'Tables shouldn\'t be nested.' !important;
-	}
+  @include alert {
+    content: 'Tables shouldn\'t be nested.' !important;
+  }
 }
 
 /* Unaccessible Images */
+
 /*
 *	@see	http://www.userfocus.co.uk/articles/alt_text.html
 */
 img:not([alt]) {
-	@extend %error;
+  @extend %error;
 
-	+ * {
-		@include alert {
-			content: '`alt` attribute missing.' !important;
-		}
-	}
+  + * {
+    @include alert {
+      content: '`alt` attribute missing.' !important;
+    }
+  }
 }
 
 img[sizes]:not([srcset]),
 img[srcset]:not([sizes]) {
-	@extend %error;
+  @extend %error;
 
-	+ * {
-		@include alert {
-			content: 'Incomplete responsive image.' !important;
-		}
-	}
+  + * {
+    @include alert {
+      content: 'Incomplete responsive image.' !important;
+    }
+  }
 }
 
 /**
@@ -148,84 +146,82 @@ img[srcset]:not([sizes]) {
  */
 [aria-busy]:not([aria-hidden]),
 [aria-hidden]:not([aria-busy]) {
-	@extend %warning;
+  @extend %warning;
 
-	+ * {
-		@include alert {
-			content: 'Elements with `aria-busy` should have `aria-hidden`.' !important;
-		}
-	}
+  + * {
+    @include alert {
+      content: 'Elements with `aria-busy` should have `aria-hidden`.' !important;
+    }
+  }
 }
 
 // Missing Document Language
 html:not([lang]),
 html[lang=''] {
-	body {
-		@extend %error;
+  body {
+    @extend %error;
 
-		@include alert {
-			content: 'Missing Document Language.' !important;
-		}
-	}
+    @include alert {
+      content: 'Missing Document Language.' !important;
+    }
+  }
 }
 
 // Incorrect Character Set
 meta[charset='UTF-8']:not(:first-child) {
-	& + body {
-		@extend %error;
+  & + body {
+    @extend %error;
 
-		@include alert {
-			content: 'Incorrect Character Set.' !important;
-		}
-	}
+    @include alert {
+      content: 'Incorrect Character Set.' !important;
+    }
+  }
 }
 
 // Unaccessible Viewport Attributes
 meta[name='viewport'][content*='user-scalable=no'],
 meta[name='viewport'][content*='maximum-scale'],
 meta[name='viewport'][content*='minimum-scale'] {
-	& + body {
-		@extend %error;
+  & + body {
+    @extend %error;
 
-		@include alert {
-			content: 'Unaccessible Viewport Attributes.' !important;
-		}
-	}
+    @include alert {
+      content: 'Unaccessible Viewport Attributes.' !important;
+    }
+  }
 }
-
 
 form[action=''] {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: '`action` attribute isn\'t required on `form`, but it shouldn\'t be empty.' !important;
-	}
+  @include alert {
+    content: '`action` attribute isn\'t required on `form`, but it shouldn\'t be empty.' !important;
+  }
 }
 
-
 label:not([for]) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Isn\'t the `for` attribute missing?' !important;
-	}
+  @include alert {
+    content: 'Isn\'t the `for` attribute missing?' !important;
+  }
 }
 
 // Unlabelled Form Elements
 input,
 select,
 textarea {
-	&:not([id]) {
-		@extend %error;
-	}
+  &:not([id]) {
+    @extend %error;
+  }
 
-	&:not([name]) {
-		@extend %warning;
-	}
+  &:not([name]) {
+    @extend %warning;
+  }
 }
 
 form:not([name]):not([id]) {
-	@extend %warning;
+  @extend %warning;
 }
 
 /// Too many options
@@ -233,19 +229,17 @@ form:not([name]):not([id]) {
 /// @link https://uxdesign.cc/design-better-forms-96fadca0f49c
 ///
 form li {
-	&:nth-child(6),
-	&:nth-child(6) ~ li {
-		@extend %error;
+  &:nth-child(6),
+  &:nth-child(6) ~ li {
+    @extend %error;
+  }
 
-	}
-
-	&:nth-child(6) {
-		@include alert {
-			content: 'Too many options. Use a `select`, instead.' !important;
-		}
-	}
+  &:nth-child(6) {
+    @include alert {
+      content: 'Too many options. Use a `select`, instead.' !important;
+    }
+  }
 }
-
 
 /// If the image button (<input type="image">) is used, the label is set in
 /// the alt attribute, for example:
@@ -254,41 +248,38 @@ form li {
 /// @link https://www.w3.org/WAI/tutorials/forms/labels/#labelling-buttons
 ///
 input[type='image'] {
-	&:not([alt]),
-	&[alt=''] {
-		@extend %error;
-	}
+  &:not([alt]),
+  &[alt=''] {
+    @extend %error;
+  }
 
-	+ * {
-		@include alert {
-			content: '`input[type=image]` requires `alt` attribute.' !important;
-		}
-	}
+  + * {
+    @include alert {
+      content: '`input[type=image]` requires `alt` attribute.' !important;
+    }
+  }
 }
-
 
 // Prevent decimal separator issues
 /// @link https://ctrl.blog/entry/html5-input-number-localization
 input[type='number']:not([lang]),
 input[type='number'][lang=''] {
-	@extend %error;
+  @extend %error;
 
-	+ * {
-		@include alert {
-			content: 'To prevent decimal separator issues, declared [lang].' !important;
-		}
-	}
+  + * {
+    @include alert {
+      content: 'To prevent decimal separator issues, declared [lang].' !important;
+    }
+  }
 }
-
 
 button:not([type]) {
-	@extend %warning;
+  @extend %warning;
 
-	@include alert {
-		content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important;
-	}
+  @include alert {
+    content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important;
+  }
 }
-
 
 // Deprecated Attributes
 [align],
@@ -308,67 +299,65 @@ button:not([type]) {
 [vlink],
 [vspace],
 [width] {
-	@include alert {
-		content: 'Deprecated Attribute. Use CSS instead.' !important;
-	}
+  @include alert {
+    content: 'Deprecated Attribute. Use CSS instead.' !important;
+  }
 }
 
 script[language] {
-	@include alert {
-		content: 'Instead of the `language` attribute, use `type`.' !important;
-	}
+  @include alert {
+    content: 'Instead of the `language` attribute, use `type`.' !important;
+  }
 }
 
 table[summary] {
-	@include alert {
-		content: '`summary` attribute is deprecated. Use the <caption> element.' !important;
-	}
+  @include alert {
+    content: '`summary` attribute is deprecated. Use the <caption> element.' !important;
+  }
 }
-
 
 // Unnecessary Attributes
 script[type='text/javascript'],
 link[rel='stylesheet'][type='text/css'] {
-	@include alert {
-		content: 'Unnecessary Attributes';
-	}
+  @include alert {
+    content: 'Unnecessary Attributes';
+  }
 
-	@at-root {
-		// In order to display messages in <head>
-		// @thanks to Xavier Zalawa a.k.a. @7studio
-		// Based on an idea from Mathias Bynens
-		// @see https://mathiasbynens.be/notes/css-hidden-elements
-		head {
-			display: block !important;
+  @at-root {
+    // In order to display messages in <head>
+    // @thanks to Xavier Zalawa a.k.a. @7studio
+    // Based on an idea from Mathias Bynens
+    // @see https://mathiasbynens.be/notes/css-hidden-elements
+    head {
+      display: block !important;
 
-			overflow: visible !important;
-		}
+      overflow: visible !important;
+    }
 
-		head * {
-			display: none;
-		}
-	}
+    head * {
+      display: none;
+    }
+  }
 }
-
 
 [tabindex]:not([tabindex='-1']):not([tabindex='0']) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Tab order altered.' !important;
-	}
+  @include alert {
+    content: 'Tab order altered.' !important;
+  }
 }
 
-
+/* stylelint-disable selector-type-no-unknown */
 /// Empty element not used for scripting
 *:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*='js-']) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Empty element should only be used for scripting.' !important;
-	}
+  @include alert {
+    content: 'Empty element should only be used for scripting.' !important;
+  }
 }
-
+/* stylelint-enable selector-type-no-unknown */
 
 /// Misuse of sectioning elements
 article > article,
@@ -383,11 +372,11 @@ footer > header,
 footer > footer,
 address > footer,
 header > footer {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Misused section element.' !important;
-	}
+  @include alert {
+    content: 'Misused section element.' !important;
+  }
 }
 
 // Bad aria
@@ -395,63 +384,60 @@ article,
 section,
 aside,
 footer {
-	&[role='banner'] {
-		@extend %error;
+  &[role='banner'] {
+    @extend %error;
 
-		@include alert {
-			content: 'Only `<header>` or `<div>` can have `[role=banner]`.' !important;
-		}
-	}
+    @include alert {
+      content: 'Only `<header>` or `<div>` can have `[role=banner]`.' !important;
+    }
+  }
 }
 
 article,
 header,
 section,
 aside {
-	&[role='contentinfo'] {
-		@extend %error;
+  &[role='contentinfo'] {
+    @extend %error;
 
-		@include alert {
-			content: 'Only `<footer>` or `<div>` can have `[role=contentinfo]`.' !important;
-		}
-	}
+    @include alert {
+      content: 'Only `<footer>` or `<div>` can have `[role=contentinfo]`.' !important;
+    }
+  }
 }
-
 
 /// @link https://axesslab.com/text-splitting/
 a :not([role='text']) {
-	> b,
-	> bdo,
-	> br,
-	> cite,
-	> code,
-	> dfn,
-	> em,
-	> i,
-	> samp,
-	> small,
-	> span,
-	> strong {
-		&:not([role='text']) {
-			@extend %error;
+  > b,
+  > bdo,
+  > br,
+  > cite,
+  > code,
+  > dfn,
+  > em,
+  > i,
+  > samp,
+  > small,
+  > span,
+  > strong {
+    &:not([role='text']) {
+      @extend %error;
 
-			@include alert {
-				content: 'Elements inside `a` make VoiceOver announce them as separate links, except if sinalized otherwise being inside a `span[role="text"]`.' !important;
-			}
-		}
-	}
+      @include alert {
+        content: 'Elements inside `a` make VoiceOver announce them as separate links, except if sinalized otherwise being inside a `span[role="text"]`.' !important;
+      }
+    }
+  }
 }
 
 /// @link https://axesslab.com/text-splitting/
 [role='text']:not(span) {
-	@extend %warning;
+  @extend %warning;
 
-	@include alert {
-		content: 'A element with `[role="text"]` loses it\'s semantics. Are you sure you are using it right?' !important;
-	}
+  @include alert {
+    content: 'A element with `[role="text"]` loses it\'s semantics. Are you sure you are using it right?' !important;
+  }
 }
-
-
 
 /**
 * Helpers
@@ -459,47 +445,44 @@ a :not([role='text']) {
 */
 
 .menu-controller:not([hidden]) {
-	position: fixed;
+  position: fixed;
 
-	display: block;
+  display: block;
 
-	content: '`.menu-controller` should be hidden by default, not using CSS.';
+  content: '`.menu-controller` should be hidden by default, not using CSS.';
 }
 
 * + .menu-controller,
 body * .menu-controller {
-	@extend %error;
+  @extend %error;
 
-	position: fixed;
+  position: fixed;
 
-	display: block;
+  display: block;
 
-	content: '`.menu-controller`, if present, should the first child of `<body>`.';
+  content: '`.menu-controller`, if present, should the first child of `<body>`.';
 }
 
 [class*='toggle']:not([aria-pressed]) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Toggleable elements should have an `aria-pressed` attribute.' !important;
-	}
+  @include alert {
+    content: 'Toggleable elements should have an `aria-pressed` attribute.' !important;
+  }
 }
-
 
 button,
 input,
 select,
 textarea {
-	&.disabled:not([disabled]):not([readonly]) {
-		@extend %error;
+  &.disabled:not([disabled]):not([readonly]) {
+    @extend %error;
 
-		@include alert {
-			content: 'A field shouldn\'t be disabled in appearance only.' !important;
-		}
-	}
+    @include alert {
+      content: 'A field shouldn\'t be disabled in appearance only.' !important;
+    }
+  }
 }
-
-
 
 /**
 * List errors
@@ -508,31 +491,31 @@ textarea {
 
 ol > *:not(li):not(script):not(template),
 ul > *:not(li):not(script):not(template) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Unallowed element used as direct child of `<ul>` or `<ol>`.' !important;
-	}
+  @include alert {
+    content: 'Unallowed element used as direct child of `<ul>` or `<ol>`.' !important;
+  }
 }
 
 dl > *:not(dt):not(dd):not(div):not(script):not(template) {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Unallowed element used as direct child of `<dl>`.' !important;
-	}
+  @include alert {
+    content: 'Unallowed element used as direct child of `<dl>`.' !important;
+  }
 }
 
 :not(dt):not(dd) + dd {
-	@extend %error;
+  @extend %error;
 
-	@include alert {
-		content: 'Definitions must follow definition terms.' !important;
-	}
+  @include alert {
+    content: 'Definitions must follow definition terms.' !important;
+  }
 }
 
 /* Boot Crap (specific to Twitter BootStrap class misuse)
------------------------------------------------------------------------------*/
+----------------------------------------------------------------------------- */
 ///
 /// Icons used for pure decoration or visual styling If you're using an icon
 /// to add some extra decoration or branding, it does not need to be announced
@@ -546,54 +529,54 @@ dl > *:not(dt):not(dd):not(div):not(script):not(template) {
 /// @link http://fontawesome.io/accessibility/
 i,
 span {
-	&.fa:not([aria-hidden='true']) {
-		@include alert {
-			content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important;
-		}
-	}
+  &.fa:not([aria-hidden='true']) {
+    @include alert {
+      content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important;
+    }
+  }
 }
 
-
-
 li {
-	&.divider:not([role='separator']),
-	&:empty:not([role='separator']) {
-		@include alert {
-			content: 'Declare list items used as separator using `[role=separator]`. Or, even better, don\t use them at all.' !important;
-		}
-	}
+  &.divider:not([role='separator']),
+  &:empty:not([role='separator']) {
+    @include alert {
+      content: 'Declare list items used as separator using `[role=separator]`. Or, even better, don\t use them at all.' !important;
+    }
+  }
 
-	&.dropdown-header {
-		@include alert {
-			content: 'Do not use list items as headers for lists, obvs.' !important;
-		}
-	}
+  &.dropdown-header {
+    @include alert {
+      content: 'Do not use list items as headers for lists, obvs.' !important;
+    }
+  }
 }
 
 .btn:not(button):not([href])::after {
-	@include alert {
-		content: 'Inaccessible control. Use a `button[type]` or a `a[href]`.' !important;
-	}
+  @include alert {
+    content: 'Inaccessible control. Use a `button[type]` or a `a[href]`.' !important;
+  }
 }
 
 .disabled > a[href]:not([tabindex='-1']),
 .disabled > button:not([disabled]),
 .disabled[href],
 .disabled:not([disabled]) {
-	@include alert {
-		content: 'Elements improperly disabled.' !important;
-	}
+  @include alert {
+    content: 'Elements improperly disabled.' !important;
+  }
 }
 
 [data-toggle='dropdown']:not([aria-haspopup]) {
-	@include alert {
-		content: 'Hidden menus should be signalized with `[aria-haspopup]`.' !important;
-	}
+  @include alert {
+    content: 'Hidden menus should be signalized with `[aria-haspopup]`.' !important;
+  }
 }
 
 .button:not(a):not(button):not(input):not([tabindex]),
 .btn:not(a):not(button):not(input):not([tabindex]) {
-	@include alert {
-		content: 'Element impossibly focusable used for as "button".' !important;
-	}
+  @include alert {
+    content: 'Element impossibly focusable used for as "button".' !important;
+  }
 }
+
+/* stylelint-enable declaration-no-important */

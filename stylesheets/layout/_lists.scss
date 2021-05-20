@@ -1,16 +1,17 @@
 /* LISTS
 ============================================================================ */
+
 /**
  * @see http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/
  */
 ul,
 ol {
-	padding-left: 1em;
-	margin: 0;
+  padding-left: 1em;
+  margin: 0;
 }
 
 ol {
-	counter-reset: li;
+  counter-reset: li;
 }
 
 /**
@@ -19,64 +20,64 @@ ol {
  * @see https://github.com/necolas/normalize.css/issues/334
  */
 article li {
-	position: relative;
+  position: relative;
 
-	padding-left: 0;
-	margin: 0;
+  padding-left: 0;
+  margin: 0;
 
-	list-style: none;
+  list-style: none;
 
-	&::before {
-		position: absolute;
-		left: -0.5em;
+  &::before {
+    position: absolute;
+    left: -0.5em;
 
-		z-index: layer('default'); // required to prevent Blink clipping issues on columns
+    z-index: layer('default'); // required to prevent Blink clipping issues on columns
 
-		font-weight: bold;
-	}
+    font-weight: font-weight('bold');
+  }
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 article ul > li::before {
-	content: '-\a0';
+  content: '-\a0';
 }
 
 article ol > li::before {
-	left: 1em;
+  left: 1em;
 
-	content: counter(li)'.\00a0';
-	counter-increment: li;
+  content: counter(li) '.\00a0';
+  counter-increment: li;
 }
 
-li ol,
-li ul {
-}
+// li ol,
+// li ul {
+// }
 
 /* definition
 ---------------------------------------------------------------------------- */
 dl {
-	@include fallback('margin', 0 0 1.5rem);
+  @include fallback('margin', 0 0 1.5rem);
 
-	padding: 0;
+  padding: 0;
 }
 
 dt,
 dd {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 dt {
-	font-weight: bold;
+  font-weight: font-weight('bold');
 }
 
 dd {
-	@include fallback('margin', 0 0 1.5rem);
+  @include fallback('margin', 0 0 1.5rem);
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

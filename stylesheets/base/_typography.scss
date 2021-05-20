@@ -5,22 +5,22 @@
 *,
 ::before,
 ::after {
-	line-height: inherit;
+  line-height: inherit;
 
-	text-decoration: inherit; /* 1 */
-	vertical-align: inherit; /* 2 */
+  text-decoration: inherit; /* 1 */
+  vertical-align: inherit; /* 2 */
 }
 
 /**
  * Basic typography style for copy text
  */
 body {
-	font-weight: font-weight('text');
-	font-size: $body-font-size;
-	line-height: $leading;
-	font-family: $text-font-stack;
+  font-weight: font-weight('text');
+  font-size: $body-font-size;
+  line-height: $leading;
+  font-family: $text-font-stack;
 
-	color: palette('text', 'dark');
+  color: palette('text', 'dark');
 }
 
 /* HEADINGS AND TITLES */
@@ -39,12 +39,12 @@ h6,
 legend,
 caption,
 details > summary {
-	font-weight: font-weight('heading');
-	font-family: $title-font-stack;
-	font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+  font-weight: font-weight('heading');
+  font-family: $title-font-stack;
+  font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
 
-	break-after: avoid;
-	page-break-after: avoid;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 h1 a,
@@ -56,39 +56,40 @@ h6 a,
 legend a,
 caption a,
 dt a {
-	text-decoration: inherit;
+  text-decoration: inherit;
 
-	color: inherit;
+  color: inherit;
 
-	&:link {
-		text-decoration: inherit;
+  &:link {
+    text-decoration: inherit;
 
-		color: inherit;
-	}
+    color: inherit;
+  }
 }
 
 p {
-	padding: 0;
-	/*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		-ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		-webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;*/
-	margin-top: 0;
-	margin-bottom: $leading * 1em;
+  padding: 0;
+
+  /*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+    -ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+    -webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+    font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1; */
+  margin-top: 0;
+  margin-bottom: $leading * 1em;
 }
 
 /**
  * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
  */
 article p {
-	max-width: map-get($line-lengths, 'max');
+  max-width: map-get($line-lengths, 'max');
 
-	orphans: 3;
-	widows: 3;
+  orphans: 3;
+  widows: 3;
 }
 
-article p + p {
-}
+// article p + p {
+// }
 
 article h1 + p,
 article h2 + p,
@@ -98,9 +99,9 @@ article h5 + p,
 article h6 + p,
 article legend + p,
 article fieldset > p:first-child {
-	margin-top: 0;
+  margin-top: 0;
 
-	text-indent: 0;
+  text-indent: 0;
 }
 
 /* INLINE TEXT
@@ -116,35 +117,35 @@ article fieldset > p:first-child {
  */
 
 %abbr-title {
-	&[title] {
-		text-decoration: none;
+  &[title] {
+    text-decoration: none;
 
-		cursor: help; /* 1 */
+    cursor: help; /* 1 */
 
-		border-bottom: 1px dotted;
+    border-bottom: 1px dotted;
 
-		@supports (text-decoration: dotted underline) {
-			text-decoration: dotted underline; /* 2 */
+    @supports (text-decoration: dotted underline) {
+      text-decoration: dotted underline; /* 2 */
 
-			border-bottom: inherit;
-		}
-	}
+      border-bottom: inherit;
+    }
+  }
 }
 
 abbr {
-	@extend %abbr-title;
+  @extend %abbr-title;
 
-	letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
 }
 
 /**
  * 1. Address styling not present in Safari 5 and Chrome.
  */
 dfn {
-	@extend %abbr-title;
+  @extend %abbr-title;
 
-	font-style: italic; /* 1 */
-	font-size: 1em;
+  font-style: italic; /* 1 */
+  font-size: 1em;
 }
 
 /**
@@ -156,45 +157,46 @@ dfn {
  * @see https://github.com/necolas/normalize.css/pull/342#issuecomment-173801037
  */
 
-// sass-lint:disable no-mergeable-selectors
-b,
-strong {
-	// sass-lint:disable-block no-duplicate-properties
-	font-weight: bold;
-	font-weight: inherit; /* 1 */
-}
+/* stylelint-disable no-duplicate-selectors */
 
 b,
 strong {
-	font-weight: font-weight('bold'); /* 2 */
+  // stylelint:disable-block no-duplicate-properties
+  font-weight: font-weight('bold');
+  font-weight: inherit; /* 1 */
 }
-// sass-lint:enable no-mergeable-selectors
+b,
+strong {
+  font-weight: font-weight('bold'); /* 2 */
+}
 
-em,
-i {
-}
+/* stylelint-enable no-duplicate-selectors */
 
-i[lang] {
-}
+// em,
+// i {
+// }
+
+// i[lang] {
+// }
 
 /**
  * Address styling not present in IE 8/9.
  */
 mark {
-	color: palette('mark', 'foreground');
+  color: palette('mark', 'foreground');
 
-	background: palette('mark', 'background');
+  background: palette('mark', 'background');
 }
 
-meter {
-}
+// meter {
+// }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-	font-size: 83.3333%;
-	line-height: inherit;
+  font-size: 83.3333%;
+  line-height: inherit;
 }
 
 /**
@@ -204,33 +206,33 @@ small {
  */
 sub,
 sup {
-	position: relative;
+  position: relative;
 
-	font-size: 83.3333%; /* 1 */
-	line-height: 0;
+  font-size: 83.3333%; /* 1 */
+  line-height: 0;
 
-	vertical-align: baseline;
+  vertical-align: baseline;
 }
 
 sub {
-	bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 sup {
-	top: -0.5em;
+  top: -0.5em;
 }
 
 time {
-	font-style: italic;
+  font-style: italic;
 
-	&[pubdate] {
-		cursor: help;
-	}
+  &[pubdate] {
+    cursor: help;
+  }
 }
-
 
 /* codes
 ============================================================================ */
+
 /**
  * 1. Address odd `em`-unit font size rendering in all browsers.
  * @see https://github.com/necolas/normalize.css/pull/295#issuecomment-34787724
@@ -242,15 +244,15 @@ kbd,
 pre,
 samp,
 var {
-	font-size: 1em; /* 1 */
-	font-family: $code-font-stack, monospace, monospace; /* 2 */
+  font-size: 1em; /* 1 */
+  font-family: $code-font-stack, monospace; /* 2 */
 }
 
-code {
-}
+// code {
+// }
 
-kbd {
-}
+// kbd {
+// }
 
 /**
  * Formatting quoted code in blog posts: CSS2.1 white-space: pre-wrap
@@ -258,84 +260,84 @@ kbd {
  * Contain overflow in all browsers.
  */
 pre {
-	// sass-lint:disable-block no-duplicate-properties
-	word-wrap: break-word; /* IE */
-	white-space: pre; /* CSS2 */
-	white-space: pre-wrap; /* CSS 2.1 */
-	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+  // sass-lint:disable-block no-duplicate-properties
+  white-space: pre; /* CSS2 */
+  white-space: pre-wrap; /* CSS 2.1 */
+  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 }
 
 samp {
-	font-style: italic;
+  font-style: italic;
 }
 
 var {
-	font-style: italic;
+  font-style: italic;
 }
 
 /* text edition
 ============================================================================ */
 del,
 s {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 s {
-	font-style: italic;
+  font-style: italic;
 }
 
 %updated {
-	&::before {
-		font-weight: bold;
+  &::before {
+    font-weight: font-weight('bold');
 
-		text-decoration: none;
+    text-decoration: none;
 
-		content: '[update] ';
-	}
+    content: '[update] ';
+  }
 
-	&[datetime]::before {
-		content: '[update\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]::before {
+    content: '[update\00A0\2192\00A0'attr(datetime) '] ';
+  }
 
-	&::after {
-		text-decoration: none;
+  &::after {
+    text-decoration: none;
 
-		content: ' [/update] ';
-	}
+    content: ' [/update] ';
+  }
 }
 
 ins {
-	@extend %updated;
+  @extend %updated;
 
-	text-decoration: underline;
+  text-decoration: underline;
 
-	&:lang(pt)::before {
-		content: ' [inserido] ';
-	}
+  &:lang(pt)::before {
+    content: ' [inserido] ';
+  }
 
-	&[datetime]:lang(pt)::before {
-		content: ' [inserido\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]:lang(pt)::before {
+    content: ' [inserido\00A0\2192\00A0'attr(datetime) '] ';
+  }
 
-	&:lang(pt)::after {
-		content: ' [/inserido] ';
-	}
+  &:lang(pt)::after {
+    content: ' [/inserido] ';
+  }
 }
 
 del {
-	@extend %updated;
+  @extend %updated;
 
-	&:lang(pt)::before {
-		content: ' [excluído] ';
-	}
+  &:lang(pt)::before {
+    content: ' [excluído] ';
+  }
 
-	&[datetime]:lang(pt)::before {
-		content: ' [excluído\00A0\2192\00A0' attr(datetime) '] ';
-	}
+  &[datetime]:lang(pt)::before {
+    content: ' [excluído\00A0\2192\00A0'attr(datetime) '] ';
+  }
 
-	&:lang(pt)::after {
-		content: ' [/excluído] ';
-	}
+  &:lang(pt)::after {
+    content: ' [/excluído] ';
+  }
 }
 
 /* quotes
@@ -359,61 +361,61 @@ del {
 /// </blockquote>
 ///
 
-blockquote {
-}
+// blockquote {
+// }
 
-blockquote > p {
-	&::before {
+// blockquote > p {
+//   &::before {
+//   }
 
-	}
-
-	&:last-of-type::after {
-
-	}
-}
+//   &:last-of-type::after {
+//   }
+// }
 
 q,
 blockquote {
-	font-style: italic;
+  font-style: italic;
 
-	color: palette('quotes');
+  color: palette('quotes');
 }
 
 cite {
-	font-style: italic;
-	font-size: 1em;
+  font-style: italic;
+  font-size: 1em;
 }
 
 blockquote footer {
-	&::before {
-		content: '\2014 \00A0';
-	}
+  &::before {
+    content: '\2014 \00A0';
+  }
 }
 
 blockquote footer cite {
-	font-style: italic;
+  font-style: italic;
 }
 
-q {
-}
+// q {
+// }
 
 blockquote p,
 blockquote pre,
 blockquote li {
-	font-size: 1em;
+  font-size: 1em;
 }
 
-blockquote.verse { // sass-lint:disable-line no-qualifying-elements
-	text-align: center;
+blockquote.verse {
+  // stylelint-disable-next-line no-qualifying-elements
+  text-align: center;
 }
 
-blockquote.verse p { // sass-lint:disable-line no-qualifying-elements
-	display: inline-block;
+blockquote.verse p {
+  // stylelint-disable-next-line no-qualifying-elements
+  display: inline-block;
 
-	width: auto;
+  width: auto;
 
-	margin-right: auto;
-	margin-left: auto;
+  margin-right: auto;
+  margin-left: auto;
 
-	text-align: left;
+  text-align: left;
 }

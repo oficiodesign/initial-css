@@ -1,6 +1,6 @@
-
 /* buttons
 ---------------------------------------------------------------------------- */
+
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Improve usability and consistency of cursor style between image-type `input` and others.
@@ -14,63 +14,60 @@
  * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
 %button-reset {
-	@extend %os-element-reset;
+  @extend %os-element-reset;
 
-	display: flex;
+  display: flex;
 
-	align-items: center;
+  align-items: center;
 
-	width: auto; /* 3 */
+  width: auto; /* 3 */
 
-	padding: 1px 6px; /* 6 */ // sass-lint:disable-line property-units
+  padding: 1px 6px; /* 6 */ // stylelint-disable-next-line property-units
 
-	overflow: visible; /* 3 */
+  overflow: visible; /* 3 */
 
-	white-space: inherit;
+  white-space: inherit;
 
-	cursor: pointer; /* 2 */
+  cursor: pointer; /* 2 */
 
-	background-color: palette('button'); /* 5 */
+  background-color: palette('button'); /* 5 */
 
-	box-sizing: inherit;
+  box-sizing: inherit;
 
-	appearance: button; /* 1 */
+  appearance: button; /* 1 */
 
-	&::-moz-focus-inner {
-		padding: 0; /* 4 */
+  &::-moz-focus-inner {
+    padding: 0; /* 4 */
 
-		border: 0;
-	}
+    border: 0;
+  }
 
-	&:hover,
-	&:focus {
-		&:not([type='reset']) {
-			background-color: palette('button', 'focus');
-		}
-	}
-
-	&:active {
-	}
+  &:hover,
+  &:focus {
+    &:not([type='reset']) {
+      background-color: palette('button', 'focus');
+    }
+  }
 }
 
 button,
 [role='button'],
 [type='button'] {
-	@extend %button-reset;
+  @extend %button-reset;
 }
 
 [type='reset'] {
-	@extend %button-reset;
+  @extend %button-reset;
 
-	color: palette('button', 'submit');
+  color: palette('button', 'submit');
 
-	background-color: palette('button', 'reset');
+  background-color: palette('button', 'reset');
 }
 
 [type='submit'] {
-	@extend %button-reset;
+  @extend %button-reset;
 
-	background-color: palette('button', 'submit');
+  background-color: palette('button', 'submit');
 }
 
 /**
@@ -78,5 +75,5 @@ button,
 */
 button:-moz-focusring,
 input:-moz-focusring {
-	outline: 1px dotted ButtonText;
+  outline: 1px dotted ButtonText;
 }

@@ -9,32 +9,32 @@
 *,
 ::before,
 ::after {
-	background-repeat: no-repeat;
+  background-repeat: no-repeat;
 
-	box-sizing: inherit;
+  box-sizing: inherit;
 
-	tab-size: inherit;
+  tab-size: inherit;
 }
 
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
-	text-shadow: none;
+  text-shadow: none;
 
-	color: palette('selection', 'foreground');
+  color: palette('selection', 'foreground');
 
-	background-color: palette('selection', 'background');
+  background-color: palette('selection', 'background');
 }
 
 /**
  * ARIA roles should include visual cursor hints
  */
 [aria-busy='true'] {
-	cursor: progress;
+  cursor: progress;
 }
 
 [aria-controls] {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*
@@ -42,7 +42,7 @@
  * inoperable elements (opinionated).
  */
 [aria-disabled] {
-	cursor: default;
+  cursor: default;
 }
 
 /*
@@ -58,30 +58,30 @@ select,
 summary,
 textarea,
 [tabindex] {
-	touch-action: manipulation; /* 1 */
+  touch-action: manipulation; /* 1 */
 }
 
 /**
  * If the user can't focus, why should we represent it?
  */
 [tabindex='-1'] {
-	&:focus {
-		outline: 0;
-	}
+  &:focus {
+    outline: 0;
+  }
 }
 
 :target {
-	animation: highlight 0.8s ease-out;
+  animation: highlight 0.8s ease-out;
 
-	@keyframes highlight {
-		0% {
-			opacity: 0;
-		}
+  @keyframes highlight {
+    0% {
+      opacity: 0;
+    }
 
-		100% {
-			opacity: 1;
-		}
-	}
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 /**
@@ -94,22 +94,22 @@ textarea,
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
 html {
-	height: 100%; /* 2 */
+  height: 100%; /* 2 */
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	overflow-y: scroll; /* 3 */
+  overflow-y: scroll; /* 3 */
 
-	font-size: 100.01%; /* 1 */
+  font-size: 100.01%; /* 1 */
 
-	text-size-adjust: 100%; /* 4 */
+  text-size-adjust: 100%; /* 4 */
 
-	background: palette('white');
+  background: palette('white');
 
-	box-sizing: border-box;
+  box-sizing: border-box;
 
-	tab-size: 4;
+  tab-size: 4;
 }
 
 /**
@@ -118,22 +118,21 @@ html {
  * https: //github.com/philipwalton/flexbugs#flexbug-3
  */
 body {
-	display: flex; /* 1 */
+  display: flex; /* 1 */
 
-	flex-direction: column; /* 1 */
+  flex-direction: column; /* 1 */
 
-	height: 100vh; /* 2 */
-	min-height: 100%;
+  height: 100vh; /* 2 */
+  min-height: 100%;
 
-	margin: 0;
+  margin: 0;
 
-	color: palette('black');
+  color: palette('black');
+  background-color: transparent;
 
-	background-color: transparent;
-
-	> * {
-		flex-shrink: 0; /* 1 */
-	}
+  > * {
+    flex-shrink: 0; /* 1 */
+  }
 }
 
 /**
@@ -141,11 +140,12 @@ body {
  */
 main,
 [role='main'] {
-	flex-grow: 1; /* 1 */
+  flex-grow: 1; /* 1 */
 }
 
 /* section items HTML5
 ============================================================================ */
+
 /**
  * Correct `block` display not defined for any HTML5 element in IE 8/9.
  * Correct `block` display not defined for `details` or `summary` in IE 10/11
@@ -163,38 +163,37 @@ main,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 /*
  * Add the correct display in all browsers.
  */
 summary {
-	display: list-item;
+  display: list-item;
 
-	list-style-type: none;
+  list-style-type: none;
 
-	cursor: pointer;
+  cursor: pointer;
 
-	&::-webkit-details-marker {
-		display: none;
-	}
+  &::-webkit-details-marker {
+    display: none;
+  }
 
-	&:focus {
-		outline: -webkit-focus-ring-color auto 5px;
-	}
+  &:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
 
-	&::before {
-		padding-right: 0.5em;
+  &::before {
+    padding-right: 0.5em;
 
-		content: '\25B6';
-	}
+    content: '\25B6';
+  }
 
-	details[open] > &::before {
-		content: '\25BC';
-	}
+  details[open] > &::before {
+    content: '\25BC';
+  }
 }
-
 
 /**
  * Address `[hidden]` styling not present in IE 8/9.
@@ -202,25 +201,23 @@ summary {
  */
 [hidden],
 template {
-	display: none !important; // sass-lint:disable-line no-important
+  display: none !important; /* stylelint-disable-line */
 }
 
 /**
  * Visually hidden content should remain accessible
  */
 [hidden][aria-hidden='false'] {
-	position: absolute;
+  position: absolute;
 
-	display: inherit;
+  display: inherit;
 
-	clip: rect(0, 0, 0, 0);
+  clip: rect(0, 0, 0, 0);
 
-	&:focus {
-		clip: auto;
-	}
+  &:focus {
+    clip: auto;
+  }
 }
-
-
 
 /* BLOCK TEXT
 ============================================================================ */
@@ -231,48 +228,50 @@ template {
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
+
 /**
  */
 hr {
-	/* line-height */
-	@include fallback('margin', calc(#{$leading * 1em} - 1px) 0 #{$leading * 1em}, #{$leading * 1em} 0);
+  /* line-height */
+  @include fallback('margin', calc(#{$leading * 1em} - 1px) 0 #{$leading * 1em}, #{$leading * 1em} 0);
 
-	clear: both;
+  clear: both;
 
-	display: block;
+  display: block;
 
-	height: 0; /* 1 */
+  height: 0; /* 1 */
 
-	padding: 0;
+  padding: 0;
 
-	overflow: visible; /* 2 */
+  overflow: visible; /* 2 */
 
-	color: palette('gray');
+  color: palette('gray');
 
-	border: 0;
-	border-top: 1px solid palette('gray');
+  border: 0;
+  border-top: 1px solid palette('gray');
 
-	box-sizing: content-box; /* 1 */
+  box-sizing: content-box; /* 1 */
 }
 
 /* MEDIA ELEMENTS
 ============================================================================ */
+
 /**
  * Corrects overflow displayed oddly in IE9
  */
 svg:not(:root) {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /**
  * SVGs should fallback to their surrounding text color
  */
 svg {
-	fill: currentColor;
+  fill: currentColor;
 }
 
 a > svg {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 /**
@@ -286,9 +285,9 @@ iframe,
 progress,
 svg,
 video {
-	display: inline-block; /* 1 */
+  display: inline-block; /* 1 */
 
-	vertical-align: middle; /* 2 */
+  vertical-align: middle; /* 2 */
 }
 
 /**
@@ -297,55 +296,55 @@ video {
  * Remove excess height in iOS 5 devices.
  */
 audio:not([controls]) {
-	display: none;
+  display: none;
 
-	height: 0;
+  height: 0;
 }
 
 meter,
 progress {
-	background-size: auto;
+  background-size: auto;
 
-	appearance: none;
+  appearance: none;
 }
 
-audio {
-}
+// audio {
+// }
 
 iframe,
 img,
 object {
-	font-size: 83.3333%;
+  font-size: 83.3333%;
 
-	color: currentColor;
+  color: currentColor;
 
-	border-style: none;
+  border-style: none;
 }
 
 img,
 embed,
 object,
 video {
-	max-width: 100%;
+  max-width: 100%;
 }
 
-video {
-}
+// video {
+// }
 
 video > source {
-	width: 100%;
-	height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .ie:not(.ie6-8),
 object > img {
-	position: relative;
+  position: relative;
 
-	z-index: layer('below');
+  z-index: layer('below');
 
-	font-size: 1em;
+  font-size: 1em;
 
-	pointer-events: none;
+  pointer-events: none;
 }
 
 /// Stylize broken images
@@ -354,27 +353,27 @@ object > img {
 /// @group helpers
 /// @link https://bitsofco.de/styling-broken-images/
 %broken-image {
-	font-style: normal;
+  font-style: normal;
 
-	text-align: center;
+  text-align: center;
 
-	&::before {
-		display: block;
+  &::before {
+    display: block;
 
-		margin-bottom: $leading * 1em;
+    margin-bottom: $leading * 1em;
 
-		content: '\f127' ' Broken Image of ' attr(alt);
-	}
+    content: '\f127'' Broken Image of ' attr(alt);
+  }
 
-	&::after {
-		display: block;
+  &::after {
+    display: block;
 
-		font-size: small;
+    font-size: small;
 
-		color: palette('gray');
+    color: palette('gray');
 
-		content: '(url: ' attr(src) ')';
-	}
+    content: '(url: ' attr(src) ')';
+  }
 }
 
 /**
@@ -383,129 +382,129 @@ object > img {
 * @see  https://code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
 */
 img {
-	@extend %broken-image;
+  @extend %broken-image;
 
-	height: auto;
-	max-width: 100%;
+  height: auto;
+  max-width: 100%;
 
-	image-rendering: auto; /* 1 */
+  image-rendering: auto; /* 1 */
 }
 
 [usemap] {
-	color: palette('anchor');
+  color: palette('anchor');
 }
 
-map {
-}
+// map {
+// }
 
-area {
-}
+// area {
+// }
 
-object {
-}
+// object {
+// }
 
 li img,
 p img {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 a img,
 a > picture {
-	border: 0;
+  border: 0;
 }
 
 /* links
 ============================================================================ */
 a {
-	// sass-lint:disable-block property-sort-order
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	font-size: 100%;
+  font-size: 100%;
 
-	vertical-align: baseline;
+  vertical-align: baseline;
+  // sass-lint:disable-block property-sort-order
 
-	color: palette('anchor', 'base');
+  color: palette('anchor', 'base');
 
-	@include on-event {
-		text-decoration: underline;
-	}
+  @include on-event {
+    text-decoration: underline;
+  }
 
-	&:link {
-		text-decoration: underline;
+  &:link {
+    text-decoration: underline;
 
-		cursor: pointer;
-		-webkit-tap-highlight-color: palette('tap-highlight'); // sass-lint:disable-line no-vendor-prefixes
+    cursor: pointer;
+    -webkit-tap-highlight-color: palette('tap-highlight'); // stylelint-disable-next-line no-vendor-prefixes
 
-		color: palette('anchor', 'link');
-	}
+    color: palette('anchor', 'link');
+  }
 
-	&:visited {
-		color: palette('anchor', 'visited');
+  &:visited {
+    color: palette('anchor', 'visited');
 
-		@include on-event {
-			text-decoration: underline;
-		}
-	}
+    @include on-event {
+      text-decoration: underline;
+    }
+  }
 
-	&:hover,
-	&:focus {
-	}
+  // &:hover,
+  // &:focus {
+  // }
 
-	&:hover {
-		color: palette('anchor', 'hover');
-	}
+  &:hover {
+    color: palette('anchor', 'hover');
+  }
 
-	&:focus {
-		color: palette('anchor', 'focus');
+  &:focus {
+    color: palette('anchor', 'focus');
 
-		outline: 1px dotted;
-		outline-offset: 2px;
-	}
+    outline: 1px dotted;
+    outline-offset: 2px;
+  }
 
-	/**
+  /**
 	* Improve readability when focused and also mouse hovered in all browsers.
 	*/
-	&:hover,
-	&:active {
-		outline-width: 0;
-	}
+  &:hover,
+  &:active {
+    outline-width: 0;
+  }
 
-	/**
+  /**
 	* Remove the gray background color from active links in IE 10.
 	* @see https://github.com/necolas/normalize.css/issues/473
 	*/
-	&:active {
-		color: palette('anchor', 'active');
+  &:active {
+    color: palette('anchor', 'active');
 
-		background-color: transparent;
-	}
+    background-color: transparent;
+  }
 
-	&[target='_blank'],
-	&[rel='external'] {
-	}
+  // &[target='_blank'],
+  // &[rel='external'] {
+  // }
 }
 
 /* Contact info and addresses
 ---------------------------------------------------------------------------- */
 address {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	font-style: italic;
+  font-style: italic;
 }
 
 /* Coode blocks
 ---------------------------------------------------------------------------- */
 pre {
-	padding: $leading * 0.5rem $gutter * 0.5;
-	margin: 0 0 $leading * 1rem;
+  padding: $leading * 0.5rem $gutter * 0.5;
+  margin: 0 0 $leading * 1rem;
 
-	overflow: auto;
+  overflow: auto;
 
-	font-size: ms(-1);
+  font-size: ms(-1);
 
-	color: palette('text', 'light');
+  color: palette('text', 'light');
 
-	background-color: palette('text', 'dark');
+  background-color: palette('text', 'dark');
 }
