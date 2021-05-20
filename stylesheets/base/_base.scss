@@ -120,7 +120,7 @@ html {
 body {
   display: flex; /* 1 */
 
-  flex-direction: column;
+	flex-direction: column; /* 1 */
 
   height: 100vh; /* 2 */
   min-height: 100%;
@@ -129,9 +129,11 @@ body {
 
   color: palette('black');
 
-  > * {
-    flex-shrink: 0; /* 1 */
-  }
+	background-color: transparent;
+
+	> * {
+		flex-shrink: 0; /* 1 */
+	}
 }
 
 /**

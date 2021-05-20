@@ -14,9 +14,11 @@
 
   cursor: text;
 
-  background: palette('text', 'light');
+	color: palette('text', 'dark');
 
-  box-sizing: inherit;
+	background-color: palette('white');
+
+	box-sizing: inherit;
 
   appearance: textfield; /* 1 */
 

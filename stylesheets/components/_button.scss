@@ -11,19 +11,23 @@
  * @see  http://archivist.incutio.com/viewlist/css-discuss/98999
  * @see  http://www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  * @see  http://christophzillgens.com/en/articles/equal-height-input-and-button-elements-in-firefox-and-safari
+ * @see  http://www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
  */
-
 %button-reset {
   @extend %os-element-reset;
 
-  width: auto; /* 3 */
+	display: flex;
+
+	align-items: center;
+
+	width: auto; /* 3 */
 
   padding: 1px 6px; /* 6 */ // stylelint-disable-next-line property-units
   overflow: visible; /* 3 */
 
   text-indent: 0;
 
-  white-space: inherit;
+	white-space: inherit;
 
   cursor: pointer; /* 2 */
 
@@ -39,10 +43,27 @@
     border: 0;
   }
 
-  &:hover,
-  &:focus {
-    background-color: palette('button', 'focus');
-  }
+	&:hover,
+	&:focus {
+		&:not([type='reset']) {
+			background-color: palette('button', 'focus');
+		}
+	}
+
+	&:active {
+	}
+}
+
+/**
+ * Avoid the WebKit bug in Android 4.0.* where (1) destroys native `audio`
+ * and `video` controls.
+ * Please note that this fix DOES NOT work for buttons contained inside table elements.
+ * @see https://github.com/necolas/normalize.css/commit/79b3d21b697e94675d748cd9d42409b83318d2b5
+ * @see https://github.com/necolas/normalize.css/issues/20
+ */
+
+html [type='button'] {
+	appearance: button;
 }
 
 button,
@@ -52,11 +73,17 @@ button,
 }
 
 [type='reset'] {
-  @extend %button-reset;
+	@extend %button-reset;
+
+	color: palette('button', 'submit');
+
+	background-color: palette('button', 'reset');
 }
 
 [type='submit'] {
-  @extend %button-reset;
+	@extend %button-reset;
+
+	background-color: palette('button', 'submit');
 }
 
 /**

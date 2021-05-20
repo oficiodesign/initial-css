@@ -98,8 +98,13 @@ textarea {
 /// </html>
 ///
 .grid {
-  &::after,
-  &:root::before {
+	$n: $_mobile-columns - 1;
+
+	&::after,
+	&:root::before {
+		position: fixed;
+		top: 0;
+		right: 0;
 
     position: fixed;
 
@@ -115,52 +120,53 @@ textarea {
 
   &::after {
 
-    bottom: 0;
+		background-image: grid-image($n);
+		background-position: center top;
 
-    left: 0;
-    background-image: grid-image(2);
-    background-position: center top;
-    content: '';
-
-    @media screen and (min-width: breakpoint('phablet')) {
-      background-image: grid-image(3);
-    }
-
-    @media screen and (min-width: breakpoint('tablet')) {
-      background-image: grid-image(4);
-    }
-
-    @media screen and (min-width: breakpoint('desktop')) {
-      background-image: grid-image(5);
-    }
-
-    @media screen and (min-width: breakpoint('wide')) {
-      background-image: grid-image(6);
-      background-size: $max-width 100%;
-    }
-  }
+		content: '';
+	}
 
   &:root::before {
 
     padding: $gutter;
     background-color: palette('debug');
 
-    opacity: 0.75;
+		content: 'breakpoint: #{$n}col';
 
-    @media screen and (min-width: breakpoint('phablet')) {
-      content: 'breakpoint: phablet';
-    }
+		opacity: 0.75;
+	}
 
-    @media screen and (min-width: breakpoint('tablet')) {
-      content: 'breakpoint: tablet';
-    }
+	@each $key,
+	$value in $breakpoints {
+		$n: $n + 1;
 
-    @media screen and (min-width: breakpoint('desktop')) {
-      content: 'breakpoint: desktop';
-    }
+		@if map-get($toggle-breakpoints, $key)==null {
+			@media screen and (min-width: breakpoint($key)) {
+				&::after {
+					background-image: grid-image($n);
+				}
 
-    @media screen and (min-width: breakpoint('wide')) {
-      content: 'breakpoint: wide';
-    }
-  }
+				&:root::before {
+					content: 'breakpoint: #{$key}';
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: $max-width) {
+		&::after {
+			background-size: $max-width 100%;
+		}
+	}
+}
+
+.container {
+	max-width: $max-width;
+
+	padding-top: $leading * 4rem;
+	padding-right: $gutter;
+	padding-bottom: $leading * 4rem;
+	padding-left: $gutter;
+	margin-right: auto;
+	margin-left: auto;
 }
