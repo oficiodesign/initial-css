@@ -1,68 +1,68 @@
 @mixin progress-bar-bg {
-	&::-webkit-progress-bar {
-		@content;
-	}
+  &::-webkit-progress-bar {
+    @content;
+  }
 
-	@content;
+  @content;
 }
 
 @mixin progress-bar-fg {
-	&[value]::-moz-progress-bar {
-		@content;
-	}
+  &[value]::-moz-progress-bar {
+    @content;
+  }
 
-	&[value]::-webkit-progress-value {
-		@content;
-	}
+  &[value]::-webkit-progress-value {
+    @content;
+  }
 
-	> div {
-		@include hide-text;
+  > div {
+    @include hide-text;
 
-		float: left;
+    float: left;
 
-		display: block;
+    display: block;
+    height: 100%;
 
-		height: 100%;
-		max-width: 100%;
+    max-width: 100%;
 
-		line-height: inherit;
+    line-height: inherit;
 
-		border-radius: 0;
+    border-radius: 0;
 
-		@content;
+    @content;
 
-		&:first-child {
-			border-top-left-radius: $rounded-corner;
-			border-bottom-left-radius: $rounded-corner;
-		}
+    &:first-child {
+      border-top-left-radius: $rounded-corner;
+      border-bottom-left-radius: $rounded-corner;
+    }
 
-		&:last-child {
-			border-top-right-radius: $rounded-corner;
-			border-bottom-right-radius: $rounded-corner;
-		}
-	}
+    &:last-child {
+      border-top-right-radius: $rounded-corner;
+      border-bottom-right-radius: $rounded-corner;
+    }
+  }
 }
 
 progress,
 [role='progressbar'] {
-	@include progress-bar-fg {
-		background: linear-gradient(90deg, transparent 50%, palette('button', 'submit') 50%) center/50px 50px transparent;
-	}
-	@include progress-bar-bg {
-		background: linear-gradient(90deg, transparent 50%, palette('button', 'base') 50%) center/50px 50px transparent;
-	}
+  @include progress-bar-fg {
+    background: linear-gradient(90deg, transparent 50%, palette('button', 'submit') 50%) center/50px 50px transparent;
+  }
+  @include progress-bar-bg {
+    background: linear-gradient(90deg, transparent 50%, palette('button', 'base') 50%) center/50px 50px transparent;
+  }
 
-	display: block;
+  display: block;
 
-	width: 100%;
-	height: $leading * 1em;
+  width: 100%;
+  // Get rid of default border in Firefox.
 
-	color: palette('button', 'submit');
+  height: $leading * 1em;
 
-	background-color: palette('disabled', 'background');
-	// Get rid of default border in Firefox.
+  color: palette('button', 'submit');
 
-	border: 0;
+  background-color: palette('disabled', 'background');
+  border: 0;
 
-	appearance: none;
+  appearance: none;
 }

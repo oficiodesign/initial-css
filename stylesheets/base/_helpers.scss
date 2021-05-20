@@ -5,28 +5,28 @@
 /* CLASSES
 ============================================================================ */
 %loading-bg {
-	background-image: image('loading.svg');
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	background-color: palette('loading', 'background');
+  background-image: image('loading.svg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-color: palette('loading', 'background');
 }
 
 %loading-el {
-	overflow: hidden;
 
-	cursor: wait;
+  overflow: hidden;
+  cursor: wait;
 
-	&::after {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+  &::after {
+    position: absolute;
 
-		z-index: layer('modal');
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-		content: '';
-	}
+    z-index: layer('modal');
+    content: '';
+  }
 }
 
 /// Content which loads **after** the page does, should be informed to user.
@@ -53,38 +53,37 @@
 /// </dialog>
 ///
 [aria-busy='true'] {
-	> body,
-	&:not(html) {
-		@extend %loading-bg;
-		@extend %loading-el;
-	}
+  > body,
+  &:not(html) {
+    @extend %loading-bg;
+    @extend %loading-el;
+  }
 }
 
 img:not([src$='.png']):not([src$='.gif']),
 embed {
-	@extend %loading-bg;
+  @extend %loading-bg;
 
-	background-size: auto;
+  background-size: auto;
 
-	&::after {
-		/*
+  &::after {
+    /*
 		 *	Future proof reset
 		 */
-		content: none;
-	}
+    content: none;
+  }
 }
 
 input,
 output,
 keygen,
 textarea {
-	&[aria-busy='true'] {
-		@extend %loading-bg;
+  &[aria-busy='true'] {
+    @extend %loading-bg;
 
-		background-size: auto;
-	}
+    background-size: auto;
+  }
 }
-
 
 /// Load grid image background under the class `grid`
 ///
@@ -99,69 +98,69 @@ textarea {
 /// </html>
 ///
 .grid {
-	&::after,
-	&:root::before {
-		position: fixed;
-		top: 0;
-		right: 0;
+  &::after,
+  &:root::before {
 
-		z-index: layer('modal');
+    position: fixed;
 
-		font-size: 1rem;
+    top: 0;
 
-		pointer-events: none;
+    right: 0;
 
-		content: 'breakpoint: phone';
-	}
+    z-index: layer('modal');
+    font-size: 1rem;
+    pointer-events: none;
+    content: 'breakpoint: phone';
+  }
 
-	&::after {
-		bottom: 0;
-		left: 0;
+  &::after {
 
-		background-image: grid-image(2);
-		background-position: center top;
+    bottom: 0;
 
-		content: '';
+    left: 0;
+    background-image: grid-image(2);
+    background-position: center top;
+    content: '';
 
-		@media screen and (min-width: breakpoint('phablet')) {
-			background-image: grid-image(3);
-		}
+    @media screen and (min-width: breakpoint('phablet')) {
+      background-image: grid-image(3);
+    }
 
-		@media screen and (min-width: breakpoint('tablet')) {
-			background-image: grid-image(4);
-		}
+    @media screen and (min-width: breakpoint('tablet')) {
+      background-image: grid-image(4);
+    }
 
-		@media screen and (min-width: breakpoint('desktop')) {
-			background-image: grid-image(5);
-		}
+    @media screen and (min-width: breakpoint('desktop')) {
+      background-image: grid-image(5);
+    }
 
-		@media screen and (min-width: breakpoint('wide')) {
-			background-image: grid-image(6);
-			background-size: $max-width 100%;
-		}
-	}
+    @media screen and (min-width: breakpoint('wide')) {
+      background-image: grid-image(6);
+      background-size: $max-width 100%;
+    }
+  }
 
-	&:root::before {
-		padding: $gutter;
+  &:root::before {
 
-		background-color: palette('debug');
+    padding: $gutter;
+    background-color: palette('debug');
 
-		opacity: 0.75;
+    opacity: 0.75;
 
-		@media screen and (min-width: breakpoint('phablet')) {
-			content: 'breakpoint: phablet';
-		}
+    @media screen and (min-width: breakpoint('phablet')) {
+      content: 'breakpoint: phablet';
+    }
 
-		@media screen and (min-width: breakpoint('tablet')) {
-			content: 'breakpoint: tablet';
-		}
+    @media screen and (min-width: breakpoint('tablet')) {
+      content: 'breakpoint: tablet';
+    }
 
-		@media screen and (min-width: breakpoint('desktop')) {
-			content: 'breakpoint: desktop';
-		}
+    @media screen and (min-width: breakpoint('desktop')) {
+      content: 'breakpoint: desktop';
+    }
 
-		@media screen and (min-width: breakpoint('wide')) {
-			content: 'breakpoint: wide';
-		}
-	}
+    @media screen and (min-width: breakpoint('wide')) {
+      content: 'breakpoint: wide';
+    }
+  }
 }

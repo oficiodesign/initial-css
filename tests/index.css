@@ -472,7 +472,7 @@ dfn {
  */
 b,
 strong {
-  font-weight: bold;
+  font-weight: $font-weights('bold');
   font-weight: inherit;
   /* 1 */ }
 
@@ -571,7 +571,7 @@ s {
   font-style: italic; }
 
 ins::before, del::before {
-  font-weight: bold;
+  font-weight: $font-weights('bold');
   text-decoration: none;
   content: '[update] '; }
 
@@ -746,7 +746,7 @@ article li {
     position: absolute;
     left: -0.5em;
     z-index: 1;
-    font-weight: bold; }
+    font-weight: $font-weights('bold'); }
   article li:last-child {
     margin-bottom: 0; }
 
@@ -770,7 +770,7 @@ dd {
   margin: 0; }
 
 dt {
-  font-weight: bold; }
+  font-weight: $font-weights('bold'); }
 
 dd {
   margin: 0 0 1.5rem; }
@@ -865,7 +865,7 @@ table li {
       margin-bottom: 0; } }
 
 th {
-  font-weight: bold; }
+  font-weight: $font-weights('bold'); }
 
 td {
   font-family: inherit; }
@@ -1381,7 +1381,7 @@ li:hover > label {
   color: black; }
 
 li :checked + label {
-  font-weight: bold; }
+  font-weight: $font-weights('bold'); }
 
 [disabled] + label,
 :disabled + label {
@@ -1470,7 +1470,7 @@ select,
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
-  font-weight: bold; }
+  font-weight: $font-weights('bold'); }
 
 option {
   padding: 0 0.4em 0 0.1em;
@@ -1479,7 +1479,7 @@ option {
     color: black; }
 
 select[multiple] option:checked {
-  font-weight: bold; }
+  font-weight: $font-weights('bold'); }
 
 /**
  * 1. required for proper track sizing in FF
@@ -1630,7 +1630,7 @@ textarea {
   a,
   a:link,
   a:visited {
-    font-weight: bold;
+    font-weight: $font-weights('bold');
     text-decoration: underline;
     color: #444444 !important;
     background: transparent; }
@@ -1704,7 +1704,7 @@ textarea {
   width: 25%;
   padding: 0.75rem;
   margin: 0;
-  font-weight: bold;
+  font-weight: $font-weights('bold');
   font-size: small;
   line-height: 1;
   text-align: center;

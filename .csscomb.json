@@ -1,55 +1,26 @@
 {
-  "exclude": [
-    ".git/**",
-    "node_modules/**",
-    "bower_components/**"
-  ],
+  "exclude": [".git/**", "node_modules/**", "bower_components/**"],
   "always-semicolon": true,
   "color-case": "lower",
-
   "color-shorthand": false,
   "element-case": "lower",
   "eof-newline": true,
   "leading-zero": true,
-
   "quotes": "single",
   "space-before-colon": "",
   "space-after-colon": " ",
   "space-after-combinator": " ",
-
   "space-before-opening-brace": " ",
-
-
   "space-before-selector-delimiter": "",
-
   "strip-spaces": true,
   "unitless-zero": true,
   "vendor-prefix-align": true,
   "sort-order": [
-    [
-      "$variable"
-    ],
-    [
-      "$include"
-    ],
-    [
-      "$extend"
-    ],
-    [
-      "position",
-      "top",
-      "right",
-      "bottom",
-      "left"
-    ],
-    [
-      "float",
-      "clear"
-    ],
-    [
-      "display",
-      "z-index"
-    ],
+    ["$include"],
+    ["$extend"],
+    ["position", "top", "right", "bottom", "left"],
+    ["float", "clear"],
+    ["display", "z-index"],
     [
       "align-content",
       "align-items",
@@ -75,14 +46,7 @@
       "grid-column-gap",
       "grid-row-gap"
     ],
-    [
-      "width",
-      "height",
-      "max-width",
-      "max-height",
-      "min-width",
-      "min-height"
-    ],
+    ["width", "height", "max-width", "max-height", "min-width", "min-height"],
     [
       "padding",
       "padding-top",
@@ -100,13 +64,7 @@
       "margin-bottom-collapse",
       "margin-left-collapse"
     ],
-    [
-      "overflow",
-      "overflow-x",
-      "overflow-y",
-      "clip",
-      "clip-path"
-    ],
+    ["overflow", "overflow-x", "overflow-y", "clip", "clip-path"],
     [
       "src",
       "font",
@@ -127,12 +85,7 @@
       "letter-spacing",
       "word-spacing"
     ],
-    [
-      "text-emphasis",
-      "text-emphasis-style",
-      "text-emphasis-color",
-      "text-emphasis-position"
-    ],
+    ["text-emphasis", "text-emphasis-style", "text-emphasis-color", "text-emphasis-position"],
     [
       "column",
       "column-width",
@@ -147,14 +100,7 @@
       "orphans",
       "widows"
     ],
-    [
-      "break-after",
-      "break-before",
-      "break-inside",
-      "page-break-after",
-      "page-break-before",
-      "page-break-inside"
-    ],
+    ["break-after", "break-before", "break-inside", "page-break-after", "page-break-before", "page-break-inside"],
     [
       "hyphens",
       "text-align",
@@ -178,21 +124,9 @@
       "text-combine-upright",
       "text-orientation"
     ],
-    [
-      "list-style",
-      "list-style-type",
-      "list-style-position",
-      "list-style-image"
-    ],
-    [
-      "cursor",
-      "pointer-events",
-      "touch-action",
-      "-webkit-tap-highlight-color"
-    ],
-    [
-      "color"
-    ],
+    ["list-style", "list-style-type", "list-style-position", "list-style-image"],
+    ["cursor", "pointer-events", "touch-action", "-webkit-tap-highlight-color"],
+    ["color"],
     [
       "background",
       "background-image",
@@ -243,19 +177,8 @@
       "border-radius-bottomleft",
       "border-radius-topleft"
     ],
-    [
-      "content",
-      "counter-increment",
-      "counter-reset",
-      "quotes"
-    ],
-    [
-      "outline",
-      "outline-color",
-      "outline-offset",
-      "outline-style",
-      "outline-width"
-    ],
+    ["content", "counter-increment", "counter-reset", "quotes"],
+    ["outline", "outline-color", "outline-offset", "outline-style", "outline-width"],
     [
       "opacity",
       "filter",
@@ -270,22 +193,8 @@
       "transform-style",
       "zoom"
     ],
-    [
-      "-webkit-box-align",
-      "box-align",
-      "box-flex",
-      "box-orient",
-      "box-pack",
-      "box-shadow",
-      "box-sizing"
-    ],
-    [
-      "table-layout",
-      "border-collapse",
-      "border-spacing",
-      "empty-cells",
-      "caption-side"
-    ],
+    ["-webkit-box-align", "box-align", "box-flex", "box-orient", "box-pack", "box-shadow", "box-sizing"],
+    ["table-layout", "border-collapse", "border-spacing", "empty-cells", "caption-side"],
     [
       "will-change",
       "animation",

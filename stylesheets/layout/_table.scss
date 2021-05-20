@@ -7,134 +7,134 @@ tfoot,
 tr,
 th,
 td {
-	width: auto;
-	height: auto;
 
-	font-size: 1em;
+  width: auto;
 
-	vertical-align: top;
+  height: auto;
 
-	background-color: transparent;
+  font-size: 1em;
 
-	border: 0;
+  vertical-align: top;
+  background-color: transparent;
+  border: 0;
 
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		display: block;
-	}
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    display: block;
+  }
 }
 
 table {
-	margin-top: 0;
-	margin-right: 0;
-	margin-bottom: #{$leading * 1em};
-	margin-left: 0;
+  margin-top: 0;
+  margin-right: 0;
 
-	font-size: 100%;
-	font-family: inherit;
-	font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
+  margin-bottom: #{$leading * 1em};
 
-	border-radius: $rounded-corner;
+  margin-left: 0;
+  font-size: 100%;
 
-	border-collapse: separate;
-	border-spacing: 0;
-	empty-cells: show;
+  font-family: inherit;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
+  border-radius: $rounded-corner;
+  border-collapse: separate;
+  border-spacing: 0;
+  empty-cells: show;
 }
 
 thead,
 tfoot {
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		display: none;
-	}
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    display: none;
+  }
 }
 
 table p,
 table li {
-	font-size: 1em;
+  font-size: 1em;
 }
 
-caption {
-}
+// caption {
+// }
 
 tr {
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		@include fallback('margin', 0 0 1.5rem);
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    @include fallback('margin', 0 0 1.5rem);
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 th {
-	font-weight: bold;
+  font-weight: $font-weights('bold');
 }
 
 td {
-	font-family: inherit;
+  font-family: inherit;
 
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		&:empty {
-			display: none;
-		}
-	}
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    &:empty {
+      display: none;
+    }
+  }
 }
 
 thead th,
 thead td {
-	vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 thead th:first-child,
 tfoot th:first-child {
-	text-align: left;
+  text-align: left;
 }
 
-thead > tr:nth-last-of-type(odd) > th,
-thead > tr:nth-last-of-type(odd) > td {
-}
+// thead > tr:nth-last-of-type(odd) > th,
+// thead > tr:nth-last-of-type(odd) > td {
+// }
 
 tbody {
-	font-family: mono-space, monospace;
+  font-family: mono-space, monospace;
 }
 
 tbody th {
-	text-align: left;
+  text-align: left;
 }
 
 tbody td {
-	text-align: right;
+  font-variant-numeric: lining-nums oldstyle-nums;
 
-	font-variant-numeric: lining-nums oldstyle-nums;
+  text-align: right;
 
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		text-align: left;
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    text-align: left;
 
-		&[aria-label] {
-			text-align: right;
+    &[aria-label] {
+      text-align: right;
 
-			&::before {
-				float: left;
+      &::before {
 
-				font-style: italic;
+        float: left;
 
-				content: attr(aria-label)': ';
-			}
-		}
-	}
+        font-style: italic;
+        content: attr(aria-label) ': ';
+      }
+    }
+  }
 }
 
 td img {
-	vertical-align: top;
+  vertical-align: top;
 }
 
 tbody tr:nth-of-type(odd) > th,
 tbody tr:nth-of-type(odd) > td {
-	@media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-		background-color: transparent;
-	}
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    background-color: transparent;
+  }
 }
 
 tfoot th,
 tfoot td {
-	vertical-align: top;
+  vertical-align: top;
 }

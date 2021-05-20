@@ -1,5 +1,6 @@
 /* selects
 ---------------------------------------------------------------------------- */
+
 /**
  * Known limitation: by default, Chrome and Safari on OS X allow very limited
  * styling of `select`, unless a `border` property is set.
@@ -7,38 +8,35 @@
 
 select,
 option {
-	width: auto;
-	min-width: 1.5em;
 
-	cursor: pointer;
+  width: auto;
+  min-width: 1.5em;
+  cursor: pointer;
 }
 
 /**
  * @see https://github.com/necolas/normalize.css/issues/579#issue-148022816
  */
 select {
-	@extend %text-field-reset;
+  @extend %text-field-reset;
+  text-indent: 0.01px; // stylelint-disable-next-line property-units
+  text-overflow: '';
 
-	text-indent: 0.01px; // sass-lint:disable-line property-units
-	text-overflow: '';
+  box-sizing: content-box;
 
-	box-sizing: content-box;
+  appearance: none; // stylelint-disable-next-line no-vendor-prefixes
 
-	-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-	   -moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-	        appearance: none;
-
-	&::-ms-expand {
-		display: none;
-	}
+  &::-ms-expand {
+    display: none;
+  }
 }
 
 select,
 .ie6-9:invalid {
-	padding-right: 1.5em;
+  padding-right: 1.5em;
+  background-image: url('data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==');
 
-	background-image: url('data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==');
-	background-position: 95% 50%;
+  background-position: 95% 50%;
 }
 
 /**
@@ -46,29 +44,29 @@ select,
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
-	@extend %os-element-reset;
+  @extend %os-element-reset;
 
-	font-weight: bold;
+  font-weight: $font-weights('bold');
 }
 
 option {
-	padding: 0 0.4em 0 0.1em;
-	margin: 0;
+  padding: 0 0.4em 0 0.1em;
+  margin: 0;
 
-	&:hover,
-	&:focus {
-		color: palette('black');
-	}
+  &:hover,
+  &:focus {
+    color: palette('black');
+  }
 }
 
 select[multiple] {
-	// sass-lint:disable-line no-qualifying-elements
+  // stylelint-disable-next-line no-qualifying-elements
 }
 
 select[multiple] option {
-	// sass-lint:disable-line no-qualifying-elements
+  // stylelint-disable-next-line no-qualifying-elements
 
-	&:checked {
-		font-weight: bold;
-	}
+  &:checked {
+    font-weight: $font-weights('bold');
+  }
 }

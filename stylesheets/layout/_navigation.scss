@@ -1,70 +1,67 @@
 /* navigation
 ---------------------------------------------------------------------------- */
-menu,
-nav {
-}
+// menu,
+// nav {
+// }
 
 menu ul,
 menu ol,
 nav ul,
 nav ol {
-	padding: 0;
-	margin: 0;
-
-	list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 menu li,
 nav li {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	&::before {
-		content: none;
-	}
+  &::before {
+    content: none;
+  }
 }
 
 menu a,
 nav a {
-	@include link-undercover;
+  @include link-undercover;
 
-	display: block;
+  display: block;
 
-	overflow: hidden;
+  overflow: hidden;
 
-	&:link {
-		text-decoration: none;
-	}
+  &:link {
+    text-decoration: none;
+  }
 }
 
 .current > a {
-	pointer-events: none;
+  pointer-events: none;
 }
 
-
-/* access
----------------------------------------------------------------------------- */
-.skip-links {
-}
+// /* access
+// ---------------------------------------------------------------------------- */
+// .skip-links {
+// }
 
 .skip-links a {
-	@include visually-hidden--focusable;
+  @include visually-hidden--focusable;
 }
 
-/* pagination
----------------------------------------------------------------------------- */
-.pagination {
-}
+// /* pagination
+// ---------------------------------------------------------------------------- */
+// .pagination {
+// }
 
-.pagination__current {
-}
+// .pagination__current {
+// }
 
-.pagination__previous {
-}
+// .pagination__previous {
+// }
 
-.pagination__next {
-}
-
+// .pagination__next {
+// }
 
 /// .menu-controller styles
 ///
@@ -75,17 +72,17 @@ nav a {
 ///
 
 [for='menu-controller'] {
-	&::before {
-		font-size: 2em;
-		line-height: 0.75;
-		font-family: sans-serif;
+  &::before {
+    font-size: 2em;
 
-		vertical-align: middle;
+    line-height: 0.75;
+    font-family: sans-serif;
 
-		content: '\20\2261\20';
-	}
+    vertical-align: middle;
+    content: '\20\2261\20';
+  }
 
-	@media screen and (min-width: breakpoint('toggle-menu')) {
-		display: none;
-	}
+  @media screen and (min-width: breakpoint('toggle-menu')) {
+    display: none;
+  }
 }

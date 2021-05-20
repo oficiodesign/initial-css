@@ -13,7 +13,7 @@
 // Android: 'Roboto',
 // Basic web fallback: 'Helvetica Neue', Arial, sans-serif !default;
 
-$native-font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
+$native-font-stack: -apple-system, system-ui, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Helvetica Neue', arial, sans-serif !default;
 
 ///
 /// Default font stack for code samples, considering the platform.
@@ -29,8 +29,7 @@ $native-font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'R
 /// 	font-family: $basic-code-font-stack;
 /// }
 ///
-$basic-code-font-stack: Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
-
+$basic-code-font-stack: consolas, 'Liberation Mono', menlo, courier, monospace !default;
 
 $basic-title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
@@ -41,7 +40,6 @@ $basic-title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 
 ///
 $alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'palatino linotype', 'Book Antiqua', 'Georgia', serif;
 
-
 /// Font stack for the _&_ used as a conjunction
 ///
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
@@ -49,8 +47,8 @@ $alt-font-stack: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palati
 /// @example html
 /// <h1>This <span class="amp">&amp;</span> that</h1>
 ///
-$ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
-
+$ampersand-font-stack: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L',
+  'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
 
 /// Serif font-stacks
 
@@ -77,7 +75,8 @@ $bodoni-mt-font-stack: 'Bodoni MT', 'Didot', 'Didot LT STD', 'Hoefler Text', 'Ga
 $book-antiqua-font-stack: 'Book Antiqua', 'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Georgia', serif !default;
 
 /// @link http://www.cssfontstack.com/Calisto-MT
-$calisto-mt-font-stack: 'Calisto MT', 'Bookman Old Style', 'Bookman', 'Goudy Old Style', 'Garamond', 'Hoefler Text', 'Bitstream Charter', 'Georgia', serif !default;
+$calisto-mt-font-stack: 'Calisto MT', 'Bookman Old Style', 'Bookman', 'Goudy Old Style', 'Garamond', 'Hoefler Text', 'Bitstream Charter',
+  'Georgia', serif !default;
 
 /// @link http://www.cssfontstack.com/Cambria
 $cambria-font-stack: 'Cambria', 'Georgia', serif !default;
@@ -120,7 +119,8 @@ $lucidia-bright-font-stack: 'Lucida Bright', 'Georgia', serif !default;
 $palatino-font-stack: 'Palatino', 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', serif !default;
 
 /// @link http://www.cssfontstack.com/Perpetua
-$perpetua-font-stack: 'Perpetua', 'Baskerville', 'Big Caslon', 'Palatino Linotype', 'Palatino', 'URW Palladio L', 'Nimbus Roman No9 L', serif !default;
+$perpetua-font-stack: 'Perpetua', 'Baskerville', 'Big Caslon', 'Palatino Linotype', 'Palatino', 'URW Palladio L', 'Nimbus Roman No9 L',
+  serif !default;
 
 /// @link http://www.cssfontstack.com/Rockwell
 $rockwell-font-stack: 'Rockwell', 'Courier Bold', 'Courier', 'Georgia', 'Times', 'Times New Roman', serif !default;
@@ -130,8 +130,6 @@ $rockwell-bold-font-stack: 'Rockwell Extra Bold', 'Rockwell Bold', monospace !de
 
 /// @link http://www.cssfontstack.com/Times-New-Roman
 $times-new-roman-font-stack: 'TimesNewRoman', 'Times New Roman', 'Times', 'Baskerville', serif !default;
-
-
 
 /// Sans-Serif font-stacks
 
@@ -186,7 +184,8 @@ $gill-sans-font-stack: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif !defau
 $helvetica-font-stack: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// @link http://www.cssfontstack.com/Impact
-$impact-font-stack: 'Impact', 'Haettenschweiler', 'Franklin Gothic Bold', 'Charcoal', 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', sans-serif !default;
+$impact-font-stack: 'Impact', 'Haettenschweiler', 'Franklin Gothic Bold', 'Charcoal', 'Helvetica Inserat', 'Bitstream Vera Sans Bold',
+  'Arial Black', sans-serif !default;
 
 /// Lucida Grande, Futura and Tahoma are mechanically obliqued to fake an italic.
 /// @link http://www.awayback.com/revised-font-stack/
@@ -210,8 +209,6 @@ $trebuchet-font-stack: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', '
 /// @link http://www.cssfontstack.com/Verdana
 $verdana-font-stack: 'Verdana', 'Geneva', sans-serif !default;
 
-
-
 /// Monospaced font-stacks
 
 /// @link http://www.cssfontstack.com/Consolas
@@ -232,8 +229,6 @@ $monaco-font-stack: 'monaco', 'Consolas', 'Lucida Console', monospace !default;
 /// @link http://www.cssfontstack.com/Andale-Mono
 $andale-font-stack: 'Andale Mono', 'AndaleMono', monospace !default;
 
-
-
 /// Fantasy font-stacks
 
 /// @link http://www.cssfontstack.com/Copperplate
@@ -242,14 +237,10 @@ $copperplate-font-stack: 'Copperplate', 'Copperplate Gothic Light', fantasy !def
 /// @link http://www.cssfontstack.com/Papyrus
 $papyrus-font-stack: 'Papyrus', fantasy !default;
 
-
-
 /// Script font-stacks
 
 /// @link http://www.cssfontstack.com/Brush-Script-MT
 $brush-font-stack: 'Brush Script MT', cursive !default;
-
-
 
 /// Google font-stacks
 

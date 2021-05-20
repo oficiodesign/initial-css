@@ -12,9 +12,9 @@
     "clean:testResults": "rimraf ./testResults/**/*.xml",
     "clean:compilationTest": "rimraf ./testResults/**/*.css",
     "compile:sass": "node-sass ./stylesheets --output-style compressed --output ./testResults",
-    "fix:lint": "sass-lint-auto-fix",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:sass": "sass-lint \"./{stylesheets,tests}/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
+    "lint:sass": "stylelint '**/*.scss' --syntax=scss --formatter --output-file ./testResults/stylelint.xml",
+    "sass:fix": "stylelint '**/*.scss' --syntax=scss --fix",
     "pretest": "npm-run-all clean lint",
     "compile:tests": "node-sass --precision 10 --source-map true --output ./tests ./tests",
     "test": "npm-run-all compile:sass",
@@ -22,6 +22,8 @@
     "preversion": "git checkout master && git merge dev",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git checkout dev && git merge master",
+    "prettier:check": "prettier --check \"src/app/**/*.ts\"",
+    "prettier:write": "prettier --write .",
     "start": "npm-run-all compile:tests watch"
   },
   "repository": {
@@ -39,11 +41,18 @@
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.3",
     "onchange": "^4.0.0",
+    "prettier": "^2.3.0",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
     "sass-lint-auto-fix": "^0.15.0",
     "sassdoc": "^2.5.0",
     "sassdoc-theme-herman": "^3.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-scss": "^3.19.0",
     "version-changelog": "^3.1.0"
   }
 }
