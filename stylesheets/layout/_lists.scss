@@ -20,7 +20,6 @@ ol {
  * @see https://github.com/necolas/normalize.css/issues/334
  */
 article li {
-
   position: relative;
   padding-left: 0;
 
@@ -28,7 +27,6 @@ article li {
   list-style: none;
 
   &::before {
-
     position: absolute;
     left: -0.5em;
 

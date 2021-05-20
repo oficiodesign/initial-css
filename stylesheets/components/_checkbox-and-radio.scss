@@ -43,7 +43,6 @@ li label {
  */
 [type='checkbox'],
 [type='radio'] {
-
   width: auto;
 
   height: auto; /* 3 */
@@ -88,7 +87,6 @@ li :checked + label {
 
 [disabled] + label,
 :disabled + label {
-
   cursor: default;
   color: palette('disabled', 'foreground');
 }

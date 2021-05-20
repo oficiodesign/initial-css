@@ -7,7 +7,6 @@ tfoot,
 tr,
 th,
 td {
-
   width: auto;
 
   height: auto;
@@ -113,7 +112,6 @@ tbody td {
       text-align: right;
 
       &::before {
-
         float: left;
 
         font-style: italic;

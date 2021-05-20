@@ -16,18 +16,18 @@
 %button-reset {
   @extend %os-element-reset;
 
-	display: flex;
+  display: flex;
 
-	align-items: center;
+  align-items: center;
 
-	width: auto; /* 3 */
+  width: auto; /* 3 */
 
   padding: 1px 6px; /* 6 */ // stylelint-disable-next-line property-units
   overflow: visible; /* 3 */
 
   text-indent: 0;
 
-	white-space: inherit;
+  white-space: inherit;
 
   cursor: pointer; /* 2 */
 
@@ -38,20 +38,19 @@
   appearance: button; /* 1 */
 
   &::-moz-focus-inner {
-
     padding: 0; /* 4 */
     border: 0;
   }
 
-	&:hover,
-	&:focus {
-		&:not([type='reset']) {
-			background-color: palette('button', 'focus');
-		}
-	}
+  &:hover,
+  &:focus {
+    &:not([type='reset']) {
+      background-color: palette('button', 'focus');
+    }
+  }
 
-	&:active {
-	}
+  // &:active {
+  // }
 }
 
 /**
@@ -63,7 +62,7 @@
  */
 
 html [type='button'] {
-	appearance: button;
+  appearance: button;
 }
 
 button,
@@ -73,17 +72,17 @@ button,
 }
 
 [type='reset'] {
-	@extend %button-reset;
+  @extend %button-reset;
 
-	color: palette('button', 'submit');
+  color: palette('button', 'submit');
 
-	background-color: palette('button', 'reset');
+  background-color: palette('button', 'reset');
 }
 
 [type='submit'] {
-	@extend %button-reset;
+  @extend %button-reset;
 
-	background-color: palette('button', 'submit');
+  background-color: palette('button', 'submit');
 }
 
 /**

@@ -31,7 +31,6 @@ fieldset {
  */
 fieldset > legend, /* 4 */
 legend {
-
   display: table; /* 1 */
 
   max-width: 100%; /* 1 */
@@ -47,7 +46,6 @@ legend {
 }
 
 label {
-
   padding: 0;
   margin: 0;
   font-size: small;
@@ -123,8 +121,9 @@ form br {
   }
 }
 
+/* stylelint-disable selector-pseudo-class-no-unknown */
 :disabled,
-:readonly { /* stylelint-disable-line */
+:readonly {
   color: palette('disabled', 'foreground');
   background: palette('disabled', 'background');
 }
@@ -133,9 +132,11 @@ form br {
   cursor: not-allowed;
 }
 
-:readonly { /* stylelint-disable-line */
+:readonly {
+  /* stylelint-disable-line */
   cursor: default;
 }
+/* stylelint-enable selector-pseudo-class-no-unknown */
 
 // :enabled {
 // }
@@ -188,7 +189,6 @@ form br {
 [type='file'],
 [type='color'],
 [type='image'] {
-
   padding: 0;
 
   vertical-align: middle;
@@ -245,7 +245,6 @@ form br {
  * 2. override Opera margin and padding
  */
 [type='file'] {
-
   height: 2em;
 
   min-width: 250px;
@@ -275,7 +274,6 @@ form br {
 // }
 
 [type='file'] > [type='text'] {
-
   height: inherit;
 
   font-size: inherit;
@@ -288,7 +286,6 @@ form br {
 }
 
 [type='file'] > [type='button'] {
-
   height: inherit;
   padding: 0;
 
@@ -310,7 +307,6 @@ form br {
  */
 
 ::-webkit-file-upload-button {
-
   font: inherit; /* 4 */
   cursor: pointer;
 

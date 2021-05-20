@@ -12,19 +12,19 @@
 }
 
 %loading-el {
-
   overflow: hidden;
+
   cursor: wait;
 
   &::after {
     position: absolute;
-
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 
     z-index: layer('modal');
+
     content: '';
   }
 }
@@ -98,75 +98,70 @@ textarea {
 /// </html>
 ///
 .grid {
-	$n: $_mobile-columns - 1;
+  $n: $_mobile-columns - 1;
 
-	&::after,
-	&:root::before {
-		position: fixed;
-		top: 0;
-		right: 0;
-
+  &::after,
+  &:root::before {
     position: fixed;
-
     top: 0;
-
     right: 0;
 
     z-index: layer('modal');
+
     font-size: 1rem;
+
     pointer-events: none;
+
     content: 'breakpoint: phone';
   }
 
   &::after {
+    background-image: grid-image($n);
+    background-position: center top;
 
-		background-image: grid-image($n);
-		background-position: center top;
-
-		content: '';
-	}
+    content: '';
+  }
 
   &:root::before {
-
     padding: $gutter;
+
     background-color: palette('debug');
 
-		content: 'breakpoint: #{$n}col';
+    content: 'breakpoint: #{$n}col';
 
-		opacity: 0.75;
-	}
+    opacity: 0.75;
+  }
 
-	@each $key,
-	$value in $breakpoints {
-		$n: $n + 1;
+  @each $key, $value in $breakpoints {
+    $n: $n + 1;
 
-		@if map-get($toggle-breakpoints, $key)==null {
-			@media screen and (min-width: breakpoint($key)) {
-				&::after {
-					background-image: grid-image($n);
-				}
+    @if map-get($toggle-breakpoints, $key) ==null {
+      @media screen and (min-width: breakpoint($key)) {
+        &::after {
+          background-image: grid-image($n);
+        }
 
-				&:root::before {
-					content: 'breakpoint: #{$key}';
-				}
-			}
-		}
-	}
+        &:root::before {
+          content: 'breakpoint: #{$key}';
+        }
+      }
+    }
+  }
 
-	@media screen and (min-width: $max-width) {
-		&::after {
-			background-size: $max-width 100%;
-		}
-	}
+  @media screen and (min-width: $max-width) {
+    &::after {
+      background-size: $max-width 100%;
+    }
+  }
 }
 
 .container {
-	max-width: $max-width;
+  max-width: $max-width;
 
-	padding-top: $leading * 4rem;
-	padding-right: $gutter;
-	padding-bottom: $leading * 4rem;
-	padding-left: $gutter;
-	margin-right: auto;
-	margin-left: auto;
+  padding-top: $leading * 4rem;
+  padding-right: $gutter;
+  padding-bottom: $leading * 4rem;
+  padding-left: $gutter;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -39,7 +39,6 @@ h6,
 legend,
 caption,
 details > summary {
-
   font-weight: $font-weights('heading');
   font-family: $title-font-stack;
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
@@ -56,12 +55,10 @@ h6 a,
 legend a,
 caption a,
 dt a {
-
   text-decoration: inherit;
   color: inherit;
 
   &:link {
-
     text-decoration: inherit;
     color: inherit;
   }
@@ -118,14 +115,12 @@ article fieldset > p:first-child {
 
 %abbr-title {
   &[title] {
-
     text-decoration: none;
 
     cursor: help; /* 1 */
     border-bottom: 1px dotted;
 
     @supports (text-decoration: dotted underline) {
-
       text-decoration: dotted underline; /* 2 */
       border-bottom: inherit;
     }
@@ -172,7 +167,6 @@ strong {
 
 /* stylelint-enable no-duplicate-selectors */
 
-
 // em,
 // i {
 // }
@@ -184,7 +178,6 @@ strong {
  * Address styling not present in IE 8/9.
  */
 mark {
-
   color: palette('mark', 'foreground');
   background: palette('mark', 'background');
 }
@@ -289,7 +282,6 @@ s {
 
 %updated {
   &::before {
-
     font-weight: $font-weights('bold');
 
     text-decoration: none;
@@ -301,7 +293,6 @@ s {
   }
 
   &::after {
-
     text-decoration: none;
     content: ' [/update] ';
   }
@@ -375,7 +366,6 @@ del {
 
 q,
 blockquote {
-
   font-style: italic;
   color: palette('quotes');
 }

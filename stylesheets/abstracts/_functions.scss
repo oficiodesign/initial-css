@@ -142,9 +142,8 @@
   $number: _sqrt(
     (
       ($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) +
-      ($blue-component * $blue-component * $blue-magic-number)
-    ) / $brightness-divisor
-  );
+      ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor
+    );
 
   // Convert to percentage and return
   @return 100% * $number / 255;
@@ -590,14 +589,20 @@ $_default-text-color--light: palette('text', 'light');
 ///
 ///
 @function breakpoint($breakpoint: null) {
-	$default-breakpoints: (
-		'phone__portrait': 20em, // 320px,
-		'phone__landscape': 30em, // 480px,
-		'tablet__portrait': 48em, // 768px,
-		'tablet__landscape': 64em, // 1024px,
-		'desktop': 80em, // 1280px,
-		'wide': 100em, // 1600px,
-	);
+  $default-breakpoints: (
+    'phone__portrait': 20em,
+    // 320px,
+    'phone__landscape': 30em,
+    // 480px,
+    'tablet__portrait': 48em,
+    // 768px,
+    'tablet__landscape': 64em,
+    // 1024px,
+    'desktop': 80em,
+    // 1280px,
+    'wide': 100em,
+    // 1600px,
+  );
 
   @if $breakpoint == null {
     @error 'A breakpoint name is required. Availabe values-> `#{map-keys($default-breakpoints)}`';

@@ -205,14 +205,14 @@ $_i: $_mobile-columns;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: _im-to-em(
-	(
-		'phone__portrait': 320px,
-		'phone__landscape': 480px,
-		'tablet__portrait__portrait': 768px,
-		'tablet__portrait__landscape': 1024px,
-		'tablet__landscape': 1280px,
-		'wide': 1600px,
-	)
+  (
+    'phone__portrait': 320px,
+    'phone__landscape': 480px,
+    'tablet__portrait__portrait': 768px,
+    'tablet__portrait__landscape': 1024px,
+    'tablet__landscape': 1280px,
+    'wide': 1600px,
+  )
 ) !default;
 
 $toggle-breakpoints: (
@@ -234,12 +234,22 @@ $breakpoints: map-merge($breakpoints, $toggle-breakpoints);
 $max-width: 80em !default; // 1180px
 $max-width--narrow: 40.75em; // 668 px
 
-$breakpoints: map-merge($breakpoints, ('#{$_mobile-columns}col': $_device-width));
+$breakpoints: map-merge(
+  $breakpoints,
+  (
+    '#{$_mobile-columns}col': $_device-width,
+  )
+);
 
 @while $_device-width <= $max-width {
-	$_device-width: $_device-width / $_i * ($_i + 1);
-	$_i: $_i + 1;
-	$breakpoints: map-merge($breakpoints, ('#{$_i}col': $_device-width));
+  $_device-width: $_device-width / $_i * ($_i + 1);
+  $_i: $_i + 1;
+  $breakpoints: map-merge(
+    $breakpoints,
+    (
+      '#{$_i}col': $_device-width,
+    )
+  );
 }
 
 /// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.
@@ -288,6 +298,6 @@ $base-url: '/assets/' !default;
 }
 
 @if variable-exists('im-media-support') and $im-media-support == false {
-	$breakpoints: _im-to-px($breakpoints);
-	$max-width: $max-width / 1em * 16px;
+  $breakpoints: _im-to-px($breakpoints);
+  $max-width: $max-width / 1em * 16px;
 }

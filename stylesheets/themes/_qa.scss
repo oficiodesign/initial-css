@@ -19,7 +19,6 @@
 
 @mixin alert {
   &::before {
-
     position: absolute;
 
     top: 0;
@@ -445,7 +444,6 @@ a :not([role='text']) {
 */
 
 .menu-controller:not([hidden]) {
-
   position: fixed;
 
   display: block;

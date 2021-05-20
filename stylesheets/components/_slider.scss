@@ -77,7 +77,6 @@
   }
 
   &::-ms-thumb {
-
     margin-top: 0; // reset value used for webkit. Weird, right?
     appearance: none;
 
@@ -86,7 +85,6 @@
 }
 
 @mixin vertical-input-range {
-
   writing-mode: bt-lr;
   appearance: slider-vertical; // stylelint-disable-next-line no-vendor-prefixes
 }
@@ -95,7 +93,6 @@
  * 1. required for proper track sizing in FF
  */
 [type='range'] {
-
   display: block;
 
   width: 100%; /* 1 */

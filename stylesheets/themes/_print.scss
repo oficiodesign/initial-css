@@ -6,7 +6,6 @@
 	 * @see http://www.merttol.com/articles/css/too-light-for-print.html
 	 */
   * {
-
     text-shadow: none !important;
 
     color: rgb(0, 0, 0) !important; /* Black prints faster: h5bp.com/s */
@@ -14,7 +13,6 @@
   }
 
   body {
-
     font: 12pt/1.33333 'Palatino Linotype', Palatino, 'Times New Roman', Times, serif;
 
     color: rgb(0, 0, 0);
@@ -24,7 +22,6 @@
   a,
   a:link,
   a:visited {
-
     font-weight: $font-weights('bold');
 
     text-decoration: underline;
@@ -56,14 +53,12 @@
   }
 
   abbr[title]::after {
-
     font-style: italic;
     content: ' (' attr(title) ')';
   }
 
   pre,
   blockquote {
-
     page-break-inside: avoid;
     border: 1px solid rgb(153, 153, 153);
   }
@@ -110,7 +105,6 @@
   }
 
   [role='main'] {
-
     float: none !important;
 
     width: auto;
