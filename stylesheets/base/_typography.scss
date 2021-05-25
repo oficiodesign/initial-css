@@ -15,7 +15,7 @@
  * Basic typography style for copy text
  */
 body {
-  font-weight: $font-weight('text');
+  font-weight: font-weight('text');
   font-size: $body-font-size;
 
   line-height: $leading;
@@ -39,7 +39,7 @@ h6,
 legend,
 caption,
 details > summary {
-  font-weight: $font-weights('heading');
+  font-weight: font-weight('heading');
   font-family: $title-font-stack;
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
   break-after: avoid;
@@ -157,12 +157,12 @@ dfn {
 b,
 strong {
   // stylelint:disable-block no-duplicate-properties
-  font-weight: $font-weights('bold');
+  font-weight: font-weight('bold');
   font-weight: inherit; /* 1 */
 }
 b,
 strong {
-  font-weight: $font-weights('bold'); /* 2 */
+  font-weight: font-weight('bold'); /* 2 */
 }
 
 /* stylelint-enable no-duplicate-selectors */
@@ -282,7 +282,7 @@ s {
 
 %updated {
   &::before {
-    font-weight: $font-weights('bold');
+    font-weight: font-weight('bold');
 
     text-decoration: none;
     content: '[update] ';

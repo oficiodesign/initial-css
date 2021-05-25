@@ -45,7 +45,7 @@ select,
 optgroup {
   @extend %os-element-reset;
 
-  font-weight: $font-weights('bold');
+  font-weight: font-weight('bold');
 }
 
 option {
@@ -66,6 +66,6 @@ select[multiple] option {
   // stylelint-disable-next-line no-qualifying-elements
 
   &:checked {
-    font-weight: $font-weights('bold');
+    font-weight: font-weight('bold');
   }
 }

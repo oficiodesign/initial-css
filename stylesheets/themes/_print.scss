@@ -22,7 +22,7 @@
   a,
   a:link,
   a:visited {
-    font-weight: $font-weights('bold');
+    font-weight: font-weight('bold');
 
     text-decoration: underline;
 

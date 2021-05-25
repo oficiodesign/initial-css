@@ -280,7 +280,7 @@
 
   font-style: normal;
   font-variant: normal;
-  font-weight: $font-weights('normal');
+  font-weight: font-weight('normal');
   font-size: 14px; /* font-awesome pixel perfection is at 14px and multiples of 14 */ // stylelint-disable-next-line property-units
   line-height: 1;
 

@@ -30,7 +30,7 @@
 
     z-index: layer('modal');
     padding: 1em;
-    font-weight: $font-weights('heavy');
+    font-weight: font-weight('heavy');
 
     text-align: center;
     color: palette('white');
