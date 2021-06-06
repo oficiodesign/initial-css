@@ -92,6 +92,7 @@
 /// @return {Number}
 @function _to-fixed($float, $digits: 2) {
   $sass-precision: 10;
+  $pow: 0;
 
   @if $digits > $sass-precision {
     @warn 'Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now. The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`.';
@@ -245,6 +246,8 @@ $_default-text-color--light: palette('text', 'light');
   $threshold: if($level == 'AA', 4.5, 7);
   $light-fg-has-alpha: false;
   $dark-fg-has-alpha: false;
+  $lighter-ratio: 0;
+  $darker-ratio: 0;
 
   @if type-of($bg-color) != 'color' {
     @error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{type-of(bg-color)}`';
@@ -554,7 +557,11 @@ $_default-text-color--light: palette('text', 'light');
 /// @return {String} - String without spaces
 ///
 @function trim($string) {
-  @return str-slice($string, _first-index($string, 'left'), _first-index($string, 'right'));
+  @return str-slice(
+    $string,
+    _first-index($string, 'left'),
+    _first-index($string, 'right')
+  );
 }
 
 /// Find first char which is not a space
@@ -590,18 +597,12 @@ $_default-text-color--light: palette('text', 'light');
 ///
 @function breakpoint($breakpoint: null) {
   $default-breakpoints: (
-    'phone__portrait': 20em,
-    // 320px,
-    'phone__landscape': 30em,
-    // 480px,
-    'tablet__portrait': 48em,
-    // 768px,
-    'tablet__landscape': 64em,
-    // 1024px,
-    'desktop': 80em,
-    // 1280px,
-    'wide': 100em,
-    // 1600px,
+    'phone__portrait': 20em, // 320px,
+    'phone__landscape': 30em, // 480px,
+    'tablet__portrait': 48em, // 768px,
+    'tablet__landscape': 64em, // 1024px,
+    'desktop': 80em, // 1280px,
+    'wide': 100em, // 1600px,
   );
 
   @if $breakpoint == null {

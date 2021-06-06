@@ -10,6 +10,7 @@ nav ul,
 nav ol {
   padding: 0;
   margin: 0;
+
   list-style: none;
 }
 
@@ -74,11 +75,11 @@ nav a {
 [for='menu-controller'] {
   &::before {
     font-size: 2em;
-
     line-height: 0.75;
     font-family: sans-serif;
 
     vertical-align: middle;
+
     content: '\20\2261\20';
   }
 

@@ -23,10 +23,10 @@
   width: auto; /* 3 */
 
   padding: 1px 6px; /* 6 */ // stylelint-disable-next-line property-units
+
   overflow: visible; /* 3 */
 
   text-indent: 0;
-
   white-space: inherit;
 
   cursor: pointer; /* 2 */
@@ -39,6 +39,7 @@
 
   &::-moz-focus-inner {
     padding: 0; /* 4 */
+
     border: 0;
   }
 

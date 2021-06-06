@@ -20,20 +20,21 @@
 @mixin alert {
   &::before {
     position: absolute;
-
     top: 0;
-
     right: 0;
-
     left: 0;
-    display: block;
 
+    display: block;
     z-index: layer('modal');
+
     padding: 1em;
+
     font-weight: font-weight('heavy');
 
     text-align: center;
+
     color: palette('white');
+
     background-color: palette('debug');
 
     @content;
@@ -447,6 +448,7 @@ a :not([role='text']) {
   position: fixed;
 
   display: block;
+
   content: '`.menu-controller` should be hidden by default, not using CSS.';
 }
 

@@ -120,6 +120,9 @@
 /// }
 ///
 @mixin inline-block-wrapper {
+  // sass-lint:disable-block no-duplicate-properties
+  $_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
+
   font-size: 0;
   font-family: $_inline-block-font-stack;
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
@@ -127,9 +130,6 @@
   word-spacing: -0.43em\9; /* IE < 8: collapse white-space between units */
 
   text-rendering: optimizeSpeed; /* Webkit: fixes text-rendering: optimizeLegibility */
-  // sass-lint:disable-block no-duplicate-properties
-
-  $_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
 }
 
 /// Helper for an inline-block grid.
@@ -598,9 +598,10 @@ $no-viewport: false !default;
 /// }
 ///
 @mixin viewport-unit($property, $value) {
-  // sass-lint:disable-block indentation
-  #{$property}: $value;
   $unit: unit($value);
+  // sass-lint:disable-block indentation
+
+  #{$property}: $value;
 
   @if (index((vw, vh, vmin, vmax), $unit) != null) {
     $devices: ((768px, 1024px), (320px, 480px), (320px, 568px));
@@ -667,13 +668,14 @@ $no-viewport: false !default;
 /// @param {Color} $color [currentcolor] - Triangle color
 /// @param {number} $size [1em] - Triangle size
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
+  $perpendicular-borders: $size solid transparent;
+
   z-index: 2;
 
   width: 0;
   height: 0;
 
   border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // stylelint-disable-next-line property-sort-order
-  $perpendicular-borders: $size solid transparent;
   @if not index(top right bottom left, $direction) {
     @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
   }
@@ -754,10 +756,10 @@ $no-viewport: false !default;
 /// }
 ///
 @mixin aspect-ratio($ratio) {
-  position: relative;
-
   $w: nth($ratio, 1);
   $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
+
+  position: relative;
   @if type-of($ratio) != list {
     @error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
   } @else if length($ratio) == 3 and nth($ratio, 2) != 'x' {

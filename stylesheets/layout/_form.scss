@@ -16,6 +16,7 @@ fieldset {
 
   padding: 0;
   margin: 0;
+
   border: 0;
 }
 
@@ -42,15 +43,17 @@ legend {
   white-space: normal; /* 1 */
 
   color: inherit; /* 2 */
+
   box-sizing: border-box; /* 1 */
 }
 
 label {
   padding: 0;
   margin: 0;
-  font-size: small;
 
+  font-size: small;
   line-height: inherit;
+
   cursor: pointer;
 
   // &:focus-within {
@@ -84,6 +87,7 @@ form br {
  */
 %os-element-reset {
   display: inline-block;
+
   padding: 1px; /* 2 */ // stylelint-disable-next-line property-units
   margin: 0;
 
@@ -94,22 +98,21 @@ form br {
   font-family: inherit; /* 1 */
   -webkit-font-smoothing: inherit; // stylelint-disable-next-line no-vendor-prefixes
   letter-spacing: inherit;
+
   text-align: inherit;
   text-transform: inherit; /* 3 */
-
   white-space: normal;
-
   vertical-align: top;
+
   color: inherit;
 
   border-width: $stroke;
-
   border-style: solid;
-
   border-color: palette('border');
   border-radius: $rounded-corner;
 
   outline: 0;
+
   box-sizing: border-box; /* 4 */
 
   // &:hover {
@@ -125,6 +128,7 @@ form br {
 :disabled,
 :readonly {
   color: palette('disabled', 'foreground');
+
   background: palette('disabled', 'background');
 }
 
@@ -194,6 +198,7 @@ form br {
   vertical-align: middle;
 
   cursor: pointer;
+
   border: 0;
 }
 
@@ -246,27 +251,28 @@ form br {
  */
 [type='file'] {
   height: 2em;
-
   min-width: 250px;
-  padding: 0 !important; /* 2 */ /* stylelint-disable-line */
 
+  padding: 0 !important; /* 2 */ /* stylelint-disable-line */
   margin: 0; /* 2 */
 
   font-family: inherit;
-  text-align: start !important; /* stylelint-disable-line */
 
+  text-align: start !important; /* stylelint-disable-line */
   white-space: nowrap;
 
   cursor: default;
 
   background-color: transparent; /* 1 */
+
   border-style: none !important; /* stylelint-disable-line */
+
   box-align: baseline; /* stylelint-disable-line */
-  appearance: none; /* stylelint-disable-line */
 
   appearance: none; /* stylelint-disable-line */
-
+  appearance: none; /* stylelint-disable-line */
   appearance: normal; //stylelint-disable-next-line indentation
+
   -moz-binding: none; /* stylelint-disable-line */
 }
 
@@ -277,9 +283,10 @@ form br {
   height: inherit;
 
   font-size: inherit;
-
   letter-spacing: inherit;
+
   color: inherit;
+
   background-color: inherit;
 
   border-color: inherit;
@@ -287,13 +294,14 @@ form br {
 
 [type='file'] > [type='button'] {
   height: inherit;
+
   padding: 0;
 
   font-size: inherit;
 
   white-space: normal;
-  box-align: center; /* stylelint-disable-line */
 
+  box-align: center; /* stylelint-disable-line */
   box-sizing: content-box;
 
   appearance: button;
@@ -308,14 +316,15 @@ form br {
 
 ::-webkit-file-upload-button {
   font: inherit; /* 4 */
+
   cursor: pointer;
 
   background-color: palette('button'); /* 2 */
+
   border-width: 1px; /* 3 */
-
   border-style: solid; /* 3 */
-
   border-color: palette('border'); /* 3 */
+
   appearance: button; /* 1 */ // stylelint-disable-next-line no-vendor-prefixes
 
   &:hover {

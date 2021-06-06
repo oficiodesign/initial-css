@@ -8,13 +8,14 @@ tr,
 th,
 td {
   width: auto;
-
   height: auto;
 
   font-size: 1em;
 
   vertical-align: top;
+
   background-color: transparent;
+
   border: 0;
 
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
@@ -25,15 +26,15 @@ td {
 table {
   margin-top: 0;
   margin-right: 0;
-
   margin-bottom: #{$leading * 1em};
-
   margin-left: 0;
-  font-size: 100%;
 
+  font-size: 100%;
   font-family: inherit;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
+
   border-radius: $rounded-corner;
+
   border-collapse: separate;
   border-spacing: 0;
   empty-cells: show;
@@ -101,9 +102,9 @@ tbody th {
 }
 
 tbody td {
-  font-variant-numeric: lining-nums oldstyle-nums;
-
   text-align: right;
+
+  font-variant-numeric: lining-nums oldstyle-nums;
 
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     text-align: left;
@@ -115,6 +116,7 @@ tbody td {
         float: left;
 
         font-style: italic;
+
         content: attr(aria-label) ': ';
       }
     }

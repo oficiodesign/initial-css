@@ -10,6 +10,13 @@
   }
 
   &::-ms-track {
+    width: 100%;
+
+    color: transparent;
+
+    background: transparent;
+
+    border-color: transparent;
     @if type-of($height) != 'number' or unitless($height) {
       @error '`$height` argument is required to be a not unitless number due MS Edge and IE necessary hacks.';
     }
@@ -17,13 +24,6 @@
     @if type-of($thumb-height) != 'number' or unitless($thumb-height) {
       @error '`$thumb-height` argument is required to be a not unitless number due MS Edge and IE necessary hacks.';
     }
-
-    width: 100%;
-    color: transparent;
-
-    background: transparent;
-
-    border-color: transparent;
 
     @if unit($height) != unit($thumb-height) {
       border-width: calc((#{$thumb-height} - #{$height}) / 2) 0;
@@ -59,6 +59,7 @@
   }
 
   &::-webkit-slider-thumb {
+    appearance: none;
     @content;
 
     @if unit($height) != unit($track-height) {
@@ -66,18 +67,16 @@
     } @else {
       margin-top: ($height - $track-height) / -2;
     }
-
-    appearance: none;
   }
 
   &::-moz-range-thumb {
-    @content;
-
     appearance: none;
+    @content;
   }
 
   &::-ms-thumb {
     margin-top: 0; // reset value used for webkit. Weird, right?
+
     appearance: none;
 
     @content;
@@ -86,6 +85,7 @@
 
 @mixin vertical-input-range {
   writing-mode: bt-lr;
+
   appearance: slider-vertical; // stylelint-disable-next-line no-vendor-prefixes
 }
 
@@ -106,6 +106,7 @@
   background: transparent;
 
   border: 0; /* 1 */
+
   appearance: none;
 
   @include range-track($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) {

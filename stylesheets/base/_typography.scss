@@ -17,9 +17,9 @@
 body {
   font-weight: font-weight('text');
   font-size: $body-font-size;
-
   line-height: $leading;
   font-family: $text-font-stack;
+
   color: palette('text', 'dark');
 }
 
@@ -42,6 +42,7 @@ details > summary {
   font-weight: font-weight('heading');
   font-family: $title-font-stack;
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+
   break-after: avoid;
   page-break-after: avoid;
 }
@@ -56,10 +57,12 @@ legend a,
 caption a,
 dt a {
   text-decoration: inherit;
+
   color: inherit;
 
   &:link {
     text-decoration: inherit;
+
     color: inherit;
   }
 }
@@ -68,9 +71,9 @@ p {
   padding: 0;
 
   /*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		-ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		-webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-		font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1; */
+    -ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+    -webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
+    font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1; */
   margin-top: 0;
   margin-bottom: $leading * 1em;
 }
@@ -118,10 +121,12 @@ article fieldset > p:first-child {
     text-decoration: none;
 
     cursor: help; /* 1 */
+
     border-bottom: 1px dotted;
 
     @supports (text-decoration: dotted underline) {
       text-decoration: dotted underline; /* 2 */
+
       border-bottom: inherit;
     }
   }
@@ -138,8 +143,8 @@ abbr {
  */
 dfn {
   @extend %abbr-title;
-  font-style: italic; /* 1 */
 
+  font-style: italic; /* 1 */
   font-size: 1em;
 }
 
@@ -179,6 +184,7 @@ strong {
  */
 mark {
   color: palette('mark', 'foreground');
+
   background: palette('mark', 'background');
 }
 
@@ -201,8 +207,8 @@ small {
 sub,
 sup {
   position: relative;
-  font-size: 83.3333%; /* 1 */
 
+  font-size: 83.3333%; /* 1 */
   line-height: 0;
 
   vertical-align: baseline;
@@ -285,6 +291,7 @@ s {
     font-weight: font-weight('bold');
 
     text-decoration: none;
+
     content: '[update] ';
   }
 
@@ -294,6 +301,7 @@ s {
 
   &::after {
     text-decoration: none;
+
     content: ' [/update] ';
   }
 }
@@ -367,6 +375,7 @@ del {
 q,
 blockquote {
   font-style: italic;
+
   color: palette('quotes');
 }
 
@@ -406,7 +415,7 @@ blockquote.verse p {
   width: auto;
 
   margin-right: auto;
-
   margin-left: auto;
+
   text-align: left;
 }

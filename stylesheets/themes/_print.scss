@@ -9,6 +9,7 @@
     text-shadow: none !important;
 
     color: rgb(0, 0, 0) !important; /* Black prints faster: h5bp.com/s */
+
     background: transparent !important;
   }
 
@@ -16,6 +17,7 @@
     font: 12pt/1.33333 'Palatino Linotype', Palatino, 'Times New Roman', Times, serif;
 
     color: rgb(0, 0, 0);
+
     background: rgb(255, 255, 255) none;
   }
 
@@ -27,6 +29,7 @@
     text-decoration: underline;
 
     color: rgb(68, 68, 68) !important;
+
     background: transparent;
   }
 
@@ -34,8 +37,8 @@
     font-style: italic;
 
     word-wrap: break-word;
-
     white-space: pre-wrap;
+
     color: rgb(51, 51, 51);
 
     content: ' (' attr(href) ') ';
@@ -54,12 +57,14 @@
 
   abbr[title]::after {
     font-style: italic;
+
     content: ' (' attr(title) ')';
   }
 
   pre,
   blockquote {
     page-break-inside: avoid;
+
     border: 1px solid rgb(153, 153, 153);
   }
 
@@ -108,9 +113,10 @@
     float: none !important;
 
     width: auto;
-    padding: 0;
 
+    padding: 0;
     margin: 0 5%;
+
     border: 0;
   }
 

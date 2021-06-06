@@ -44,13 +44,14 @@ li label {
 [type='checkbox'],
 [type='radio'] {
   width: auto;
-
   height: auto; /* 3 */
 
   padding: 0; /* 2 */
 
   vertical-align: middle;
+
   cursor: pointer;
+
   box-sizing: border-box; /* 1 */
 
   // &:hover {
@@ -88,5 +89,6 @@ li :checked + label {
 [disabled] + label,
 :disabled + label {
   cursor: default;
+
   color: palette('disabled', 'foreground');
 }
