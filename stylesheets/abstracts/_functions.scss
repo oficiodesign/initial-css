@@ -412,7 +412,7 @@ $_default-text-color--light: palette('text', 'light');
 ///
 /// @access public
 /// @group helpers
-/// @param {String} $layer - Layer’s name
+/// @param {String} $layer - Name of the layer
 /// @require {variable} $layers
 /// @return {Number}
 ///
@@ -587,7 +587,7 @@ $_default-text-color--light: palette('text', 'light');
 ///
 /// @access public
 /// @group helpers
-/// @param {String} $breakpoint - breakpoint’s name
+/// @param {String} $breakpoint - name of the break point
 /// @require {variable} $breakpoints
 /// @return {Number}
 ///
