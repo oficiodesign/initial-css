@@ -75,7 +75,7 @@ xmp {
   @extend %warning;
 
   @include alert {
-    content: "`style` attribute shouldn't be used, despite being added by some scripts." !important;
+    content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important;
   }
 }
 
@@ -111,7 +111,7 @@ table table {
   display: block !important;
 
   @include alert {
-    content: "Tables shouldn't be nested." !important;
+    content: 'Tables shouldn\'t be nested.' !important;
   }
 }
 
@@ -195,7 +195,7 @@ form[action=''] {
   @extend %error;
 
   @include alert {
-    content: "`action` attribute isn't required on `form`, but it shouldn't be empty." !important;
+    content: '`action` attribute isn\'t required on `form`, but it shouldn\'t be empty.' !important;
   }
 }
 
@@ -203,7 +203,7 @@ label:not([for]) {
   @extend %error;
 
   @include alert {
-    content: "Isn't the `for` attribute missing?" !important;
+    content: 'Isn\'t the `for` attribute missing?' !important;
   }
 }
 
@@ -277,7 +277,7 @@ button:not([type]) {
   @extend %warning;
 
   @include alert {
-    content: "The default `type` of a button is `submit`, but this isn't clear to all developers. To avoid confusion, declare it." !important;
+    content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important;
   }
 }
 
@@ -479,7 +479,7 @@ textarea {
     @extend %error;
 
     @include alert {
-      content: "A field shouldn't be disabled in appearance only." !important;
+      content: 'A field shouldn\'t be disabled in appearance only.' !important;
     }
   }
 }
