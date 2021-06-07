@@ -11,7 +11,7 @@
     "clean:build": "rimraf ./build/",
     "clean:testResults": "rimraf ./testResults/**/*.xml",
     "clean:compilationTest": "rimraf ./testResults/**/*.css",
-    "compile:sass": "node-sass ./stylesheets --output-style compressed --output ./testResults",
+    "compile:sass": "node-sass ./stylesheets --output-style --output ./testResults",
     "fix:lint": "sass-lint-auto-fix",
     "lint": "npm-run-all --parallel lint:*",
     "lint:sass": "sass-lint \"./{stylesheets,tests}/**/*.scss\" --verbose --no-exit --format junit --output ./testReports/sassLint.xml",
