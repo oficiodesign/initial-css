@@ -175,7 +175,9 @@ section {
  * Add the correct display in all browsers.
  */
 summary {
-  display: list-item;
+  position: relative;
+
+  display: block;
 
   list-style-type: none;
 
@@ -186,17 +188,81 @@ summary {
   }
 
   &:focus {
-    outline: -webkit-focus-ring-color auto 5px;
+    position: relative;
+
+    outline: 0;
+
+    &::after {
+      @include focused;
+
+      position: absolute;
+      top: $gutter * -0.5;
+      right: $gutter * -0.5;
+      bottom: $gutter * -0.5;
+      left: $gutter * -0.5;
+
+      width: auto;
+      height: auto;
+
+      pointer-events: none;
+
+      content: '';
+    }
+  }
+
+  &:hover,
+  &:focus {
+    &::before {
+      @include triangle('bottom', palette('black'), 0.25em);
+    }
   }
 
   &::before {
-    padding-right: 0.5em;
+    @include triangle('left', palette('gray'), 0.25em);
 
-    content: '\25B6';
+    position: absolute;
+    top: $leading * 0.5em;
+    right: 0;
+
+    content: '';
   }
 
   details[open] > &::before {
-    content: '\25BC';
+    @include triangle('bottom', palette('gray'), 0.25em);
+
+    content: '';
+  }
+
+  details[open] > &:hover,
+  details[open] > &:focus {
+    &::before {
+      @include triangle('left', palette('black'), 0.25em);
+    }
+  }
+
+  details > & ~ * {
+    overflow: hidden;
+
+    animation-name: slideDown;
+    animation-duration: 300ms;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      animation-name: none;
+    }
+
+    @keyframes slideDown {
+      0% {
+        max-height: 0;
+
+        opacity: 0;
+      }
+
+      100% {
+        max-height: 999em;
+
+        opacity: 1;
+      }
+    }
   }
 }
 

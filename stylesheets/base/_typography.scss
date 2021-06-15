@@ -45,6 +45,22 @@ details > summary {
 
   break-after: avoid;
   page-break-after: avoid;
+summary {
+  color: palette('accent');
+
+  text-decoration: none;
+
+  details > & {
+    margin-bottom: 0;
+
+    transition-duration: 300ms;
+    transition-property: margin-bottom;
+    transition-timing-function: ease-out;
+  }
+
+  [open] > & {
+    margin-bottom: my.$gutter;
+  }
 }
 
 h1 a,
@@ -64,6 +80,14 @@ dt a {
     text-decoration: inherit;
 
     color: inherit;
+  }
+}
+
+details {
+  margin-bottom: my.$gutter * 2;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
