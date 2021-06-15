@@ -126,8 +126,8 @@ form br {
 
 /* stylelint-disable selector-pseudo-class-no-unknown */
 :disabled,
-:readonly {
   color: palette('disabled', 'foreground');
+:read-only {
 
   background: palette('disabled', 'background');
 }
@@ -136,8 +136,8 @@ form br {
   cursor: not-allowed;
 }
 
-:readonly {
   /* stylelint-disable-line */
+:read-only {
   cursor: default;
 }
 /* stylelint-enable selector-pseudo-class-no-unknown */

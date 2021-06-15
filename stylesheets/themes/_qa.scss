@@ -475,7 +475,7 @@ button,
 input,
 select,
 textarea {
-  &.disabled:not([disabled]):not([readonly]) {
+  &.disabled:not([disabled]):not([read-only]) {
     @extend %error;
 
     @include alert {
