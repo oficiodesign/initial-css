@@ -22,12 +22,16 @@ option {
 select {
   @extend %text-field-reset;
 
-  text-indent: 0.01px; // stylelint-disable-next-line property-units
+  width: 100%;
+
+  text-indent: 0.01px; // stylelint-disable-line property-units
   text-overflow: '';
 
-  box-sizing: content-box;
+  box-sizing: border-box;
 
-  appearance: none; // stylelint-disable-next-line no-vendor-prefixes
+  -moz-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  appearance: none;
 
   &::-ms-expand {
     display: none;
@@ -36,10 +40,10 @@ select {
 
 select,
 .ie6-9:invalid {
-  padding-right: 1.5em;
+  padding-right: $gutter;
 
-  background-image: url('data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==');
-  background-position: 95% 50%;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'6\' viewBox=\'0 0 12 6\'%3E%3Cpolygon fill=\'#a8a8a8\' points=\'0,0 12,0 6,6\'/%3E%3C/svg%3E');
+  background-position: right 6px top 50%;
 }
 
 /**
@@ -67,12 +71,10 @@ option {
   }
 }
 
-select[multiple] {
-  // stylelint-disable-next-line no-qualifying-elements
+select[multiple] { // stylelint-disable-line no-qualifying-elements
 }
 
-select[multiple] option {
-  // stylelint-disable-next-line no-qualifying-elements
+select[multiple] option { // stylelint-disable-line no-qualifying-elements
 
   &:checked {
     font-weight: font-weight('bold');

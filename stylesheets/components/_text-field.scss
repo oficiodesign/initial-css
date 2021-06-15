@@ -8,30 +8,91 @@
 %text-field-reset {
   @extend %os-element-reset;
 
-  width: 100%;
+  display: flex;
 
-  padding: 0.1em 0.2em 0;
+  align-items: center;
+  width: 100%;
+  height: $gutter * 2;
+
+  padding: $gutter * 0.5 0;
+  margin: 0; // vertical margins break floating labels
 
   cursor: text;
 
   color: palette('text', 'dark');
 
-  background-color: palette('white');
+  background-color: palette('text', 'light');
+
+  border: solid $stroke palette('border');
 
   box-sizing: inherit;
 
-  appearance: textfield; /* 1 */
+  appearance: none; /* 1 */
 
-  &:invalid {
-    border-radius: $rounded-corner;
+  &:placeholder-shown ~ label {
+    pointer-events: none;
 
-    box-shadow: 0 0 5px palette('label', 'danger');
+    color: palette('gray');
+
+    transform: translateY(calc(100% + #{$gutter * 0.5}));
+  }
+
+  &:focus ~ label,
+  &:hover ~ label,
+  ~ label:hover,
+  ~ label {
+    display: block;
+
+    order: -1;
+
+    max-width: 100%;
+    min-height: $gutter; // field height - padding
+
+    margin-right: $gutter * 0.5;
+    margin-left: $gutter * 0.5;
+
+    overflow: hidden;
+
+    font-size: smaller;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    pointer-events: auto;
+
+    color: palette('text', 'faded');
+
+    transform: translate(0, 0);
+
+    transition-duration: 0.25s;
+    transition-property: color, transform, opacity;
+    transition-timing-function: ease-out;
+  }
+
+  &:focus ~ label,
+  &:hover ~ label,
+  ~ label:hover {
+    color: palette('text', 'title');
+
+    transform: translate(0, 0);
   }
 
   &:-moz-ui-invalid {
     border-radius: $rounded-corner;
 
-    box-shadow: 0 0 5px palette('label', 'danger');
+    box-shadow: none;
+  }
+
+  &:invalid {
+    border-radius: $rounded-corner;
+
+    box-shadow: 0 0 5px palette('feedback', 'danger');
+  }
+
+  &.error:invalid {
+    border-color: palette('feedback', 'danger');
+
+    box-shadow: 0 0 0 4px color.scale(palette('feedback', 'danger'), $alpha: 50%);
   }
 
   &:focus {
@@ -39,6 +100,21 @@
   }
 
   &:focus:required:invalid {
+  }
+
+  ~ small {
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    color: palette('disabled', 'foreground');
+
+    background: palette('disabled', 'background');
+  }
+
+  &:read-only {
+    cursor: default;
   }
 }
 
@@ -83,7 +159,7 @@
 
   outline-offset: -2px; /* 1 */
 
-  appearance: none; /* 2 */ // stylelint-disable-next-line no-vendor-prefixes
+  -webkit-appearance: none; /* 2 */ // stylelint-disable-line property-no-vendor-prefix
 }
 
 /**
@@ -93,7 +169,7 @@
  */
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
-  appearance: none; // stylelint-disable-next-line no-vendor-prefixes
+  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
 }
 
 [type='tel'] {
@@ -108,7 +184,13 @@
   @extend %text-field-reset;
 }
 
-/* textareas
+[type='date'] {
+  @extend %text-field-reset;
+
+  line-height: 1;
+}
+
+/* text areas
 ---------------------------------------------------------------------------- */
 
 /*
@@ -118,6 +200,10 @@
  */
 textarea {
   @extend %text-field-reset;
+
+  align-items: flex-start;
+
+  height: $gutter * 8;
 
   overflow: auto; /* 1 */
 

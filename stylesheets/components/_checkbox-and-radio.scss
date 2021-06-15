@@ -11,7 +11,8 @@ fieldset ul {
   margin: 0;
 }
 
-fieldset li {
+fieldset ol li,
+fieldset ul li {
   display: block;
 
   padding: 0;
@@ -28,6 +29,8 @@ fieldset li {
 
 li label {
   display: inline;
+
+  white-space: normal;
 
   padding: 0 0.5em;
 }
@@ -70,10 +73,12 @@ li label {
   }
 }
 
-// [type='checkbox'] {
-//   &:checked {
-//   }
-// }
+[type='checkbox'] {
+  border-radius: $rounded-corner;
+
+  &:checked {
+  }
+}
 
 li:hover {
   > input,
@@ -83,7 +88,7 @@ li:hover {
 }
 
 li :checked + label {
-  font-weight: font-weight('bold');
+  font-weight: bold;
 }
 
 [disabled] + label,

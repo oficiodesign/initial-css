@@ -16,15 +16,18 @@
 %button-reset {
   @extend %os-element-reset;
 
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
   width: auto; /* 3 */
+  min-height: $gutter * 2;
 
-  padding: 1px 6px; /* 6 */ // stylelint-disable-next-line property-units
+  padding: 1px 6px; /* 6 */ // stylelint-disable-line property-units
 
   overflow: visible; /* 3 */
+
+  text-indent: 0;
 
   white-space: inherit;
 
@@ -34,7 +37,21 @@
 
   box-sizing: inherit;
 
+  border: $stroke;
+
   appearance: button; /* 1 */
+
+  [role='group'] > &,
+  fieldset > & {
+    margin-right: $gutter * 0.5;
+
+    &:only-child {
+      display: flex;
+
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
 
   &::-moz-focus-inner {
     padding: 0; /* 4 */
@@ -48,14 +65,23 @@
       background-color: palette('button', 'focus');
     }
   }
+
+  &:active {
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
+.like-a__button,
 button,
 [role='button'],
 [type='button'] {
   @extend %button-reset;
 }
 
+.like-a__button--reset,
 [type='reset'] {
   @extend %button-reset;
 
@@ -64,10 +90,27 @@ button,
   background-color: palette('button', 'reset');
 }
 
+.like-a__button--submit,
 [type='submit'] {
   @extend %button-reset;
 
   background-color: palette('button', 'submit');
+  justify-content: center;
+  width: $gutter * 12;
+
+  text-align: center;
+
+  &:disabled {
+    color: palette('disabled', 'background');
+
+    background-color: palette('disabled', 'foreground');
+  }
+
+  p > & {
+    margin-top: $gutter;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 /**

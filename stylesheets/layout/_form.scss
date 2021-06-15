@@ -170,23 +170,6 @@ form br {
   @include placeholder--focus;
 }
 
-/* complex inputs
-============================================================================ */
-// [type='date'] {
-// }
-
-// [type='month'] {
-// }
-
-// [type='week'] {
-// }
-
-// [type='time'] {
-// }
-
-// [type='datetime-local'] {
-// }
-
 /* impossible inputs
 ============================================================================ */
 
@@ -267,11 +250,11 @@ form br {
 
   border-style: none !important; /* stylelint-disable-line */
 
-  box-align: baseline; /* stylelint-disable-line */
+  -webkit-box-align: baseline; // stylelint-disable-line property-no-vendor-prefix
 
-  appearance: none; /* stylelint-disable-line */
-  appearance: none; /* stylelint-disable-line */
-  appearance: normal; //stylelint-disable-next-line indentation
+  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  -moz-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  appearance: normal;
 
   -moz-binding: none; /* stylelint-disable-line */
 }
@@ -301,7 +284,7 @@ form br {
 
   white-space: normal;
 
-  box-align: center; /* stylelint-disable-line */
+  -webkit-box-align: center; // stylelint-disable-line property-no-vendor-prefix
   box-sizing: content-box;
 
   appearance: button;
@@ -325,7 +308,7 @@ form br {
   border-style: solid; /* 3 */
   border-color: palette('border'); /* 3 */
 
-  appearance: button; /* 1 */ // stylelint-disable-next-line no-vendor-prefixes
+  -webkit-appearance: button; /* 1 */ // stylelint-disable-line property-no-vendor-prefix
 
   &:hover {
     background-color: palette('button', 'focus');
