@@ -42,7 +42,7 @@ article li {
 }
 
 article ul > li::before {
-  content: '-\a0';
+  content: '•\a0';
 }
 
 article ol > li::before {
