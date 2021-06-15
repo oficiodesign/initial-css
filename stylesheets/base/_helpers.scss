@@ -99,6 +99,85 @@ textarea {
   }
 }
 
+.skeleton {
+  pointer-events: none;
+  background-color: transparent;
+
+  &.skeleton__bone--vertebra,
+  &.skeleton__bone,
+  .skeleton__bone--vertebra,
+  .skeleton__bone {
+    @include my.on-event(true) {
+      text-decoration: none;
+      border: 0;
+      border-radius: my.$rounded-corner;
+
+      &::before,
+      &::after {
+        all: unset;
+        position: static;
+        display: block;
+        height: 0;
+        content: '';
+        border: 0;
+      }
+
+      &::before {
+        height: 1em;
+      }
+    }
+  }
+
+  .skeleton__bone {
+    @include my.on-event(true) {
+      display: block;
+      background-color: #d9d9d9;
+      background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+      background-repeat: no-repeat;
+      background-size: 450px 400px;
+      animation: shimmer 1s linear infinite;
+    }
+  }
+
+  .skeleton__bone--vertebra {
+    @include my.on-event(true) {
+      &::before,
+      &::after {
+        display: inline-block;
+        height: 1em;
+        background-color: #d9d9d9;
+        background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+        background-repeat: no-repeat;
+        background-size: 450px 400px;
+        animation: shimmer 1s linear infinite;
+        box-decoration-break: clone;
+      }
+
+      &::before {
+        width: 100%;
+        max-width: 37.5em;
+        content: '\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0';
+      }
+
+      &::after {
+        width: 66%;
+        max-width: 22.5em;
+        content: '\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0';
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -450px 0;
+  }
+
+  100% {
+    background-position: 450px 0;
+  }
+}
+
 /// Load grid image background under the class `grid`
 ///
 /// @author Sobral
