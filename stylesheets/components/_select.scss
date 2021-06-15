@@ -11,6 +11,8 @@ option {
   width: auto;
   min-width: 1.5em;
 
+  line-height: 1;
+
   cursor: pointer;
 }
 
@@ -53,6 +55,11 @@ optgroup {
 option {
   padding: 0 0.4em 0 0.1em;
   margin: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:hover,
   &:focus {
