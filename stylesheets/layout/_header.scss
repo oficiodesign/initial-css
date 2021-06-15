@@ -13,3 +13,38 @@
  */
 [role='banner'] {
 }
+/// .menu-controller styles
+///
+/// @group helpers
+///
+/// @example html
+/// <label for="menu-controller" onclick>menu</label>
+///
+[for='menu-controller'] {
+  position: fixed;
+  top: my.$gutter * 0.25;
+  left: my.$gutter * 0.25;
+  z-index: my.layer('default');
+  background-color: my.palette('white');
+
+  > svg {
+    display: block;
+    width: my.$gutter * 1.5;
+    height: my.$gutter * 1.5;
+  }
+
+  [id='menu-controller']:checked ~ &::after {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background-color: my.palette('white');
+    opacity: 0.75;
+  }
+
+  @media screen and (min-width: my.breakpoint('toggle-menu')) {
+    display: none;
+  }
+}
