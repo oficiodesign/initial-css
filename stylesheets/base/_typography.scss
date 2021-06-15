@@ -384,17 +384,16 @@ del {
 /// 	</footer>
 /// </blockquote>
 ///
+blockquote {
+}
 
-// blockquote {
-// }
+blockquote > p {
+  &::before {
+  }
 
-// blockquote > p {
-//   &::before {
-//   }
-
-//   &:last-of-type::after {
-//   }
-// }
+  &:last-of-type::after {
+  }
+}
 
 q,
 blockquote {
