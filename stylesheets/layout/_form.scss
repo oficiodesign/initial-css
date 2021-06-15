@@ -64,10 +64,70 @@ label * {
   font-size: 1em;
 }
 
-/* pragraphs inside forms
+/* paragraphs inside forms
 ---------------------------------------------------------------------------- */
-// form p {
-// }
+fieldset,
+form p {
+  position: relative;
+
+  flex-basis: 100%;
+  flex-grow: 1;
+
+  max-width: none;
+
+  margin-bottom: my.$gutter;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &[data-size] {
+    display: flex;
+
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    min-width: my.$max-width * 0.2; /* 256px */
+  }
+
+  &[data-size='20'] {
+    flex-basis: calc(20% - #{my.$gutter});
+
+    min-width: my.$max-width * 0.125; /* 160px */
+  }
+
+  &[data-size='25'] {
+    flex-basis: calc(25% - #{my.$gutter});
+
+    min-width: my.$max-width * 0.15; /* 192px */
+  }
+
+  &[data-size='33'] {
+    flex-basis: calc(33% - #{my.$gutter});
+
+    min-width: my.$max-width * 0.175; /* 224px */
+  }
+
+  &[data-size='40'] {
+    flex-basis: calc(40% - #{my.$gutter});
+  }
+
+  &[data-size='50'] {
+    flex-basis: calc(50% - #{my.$gutter});
+  }
+
+  &[data-size='60'] {
+    flex-basis: calc(60% - #{my.$gutter});
+  }
+
+  &[data-size='75'] {
+    flex-basis: calc(75% - #{my.$gutter});
+  }
+
+  &[data-size='80'] {
+    flex-basis: calc(80% - #{my.$gutter});
+  }
+}
 
 form br {
   clear: both;
