@@ -52,9 +52,9 @@ article ol > li::before {
   counter-increment: li;
 }
 
-// li ol,
-// li ul {
-// }
+li ol,
+li ul {
+}
 
 /* definition
 ---------------------------------------------------------------------------- */

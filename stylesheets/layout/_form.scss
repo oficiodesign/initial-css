@@ -20,8 +20,8 @@ fieldset {
   border: 0;
 }
 
-// fieldset fieldset {
-// }
+fieldset fieldset {
+}
 
 /**
  * 1. Correct the text wrapping in Edge and IE.
@@ -115,8 +115,8 @@ form br {
 
   box-sizing: border-box; /* 4 */
 
-  // &:hover {
-  // }
+  &:hover {
+  }
 
   &:focus {
     outline: 1px dotted palette('black'); /* 5 */
@@ -142,11 +142,11 @@ form br {
 }
 /* stylelint-enable selector-pseudo-class-no-unknown */
 
-// :enabled {
-// }
+:enabled {
+}
 
-// :optional {
-// }
+:optional {
+}
 
 /**
  * Correct the text style of placeholders

@@ -54,21 +54,21 @@ li label {
 
   box-sizing: border-box; /* 1 */
 
-  // &:hover {
-  // }
+  &:hover {
+  }
 
   &:focus {
     outline-style: auto; /* 4 */
   }
 }
 
-// [type='radio'] {
-//   &:indeterminate {
-//   }
+[type='radio'] {
+  &:indeterminate {
+  }
 
-//   &:checked {
-//   }
-// }
+  &:checked {
+  }
+}
 
 // [type='checkbox'] {
 //   &:checked {

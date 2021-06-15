@@ -18,6 +18,7 @@
     "block-closing-brace-newline-after": null,
     "block-opening-brace-space-before": "always",
     "block-opening-brace-space-after": "never-single-line",
+    "block-no-empty": null,
     "color-named": "never",
     "declaration-colon-space-before": "never",
     "declaration-colon-space-after": "always",

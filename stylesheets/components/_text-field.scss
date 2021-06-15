@@ -38,16 +38,16 @@
     outline: 1px solid;
   }
 
-  // &:focus:required:invalid {
-  // }
+  &:focus:required:invalid {
+  }
 }
 
 [type='email'] {
   @extend %text-field-reset;
 }
 
-// [type='email'][multiple] {
-// }
+[type='email'][multiple] {
+}
 
 [type='number'] {
   @extend %text-field-reset;

@@ -1,8 +1,8 @@
 /* navigation
 ---------------------------------------------------------------------------- */
-// menu,
-// nav {
-// }
+menu,
+nav {
+}
 
 menu ul,
 menu ol,
@@ -52,17 +52,9 @@ nav a {
 
 // /* pagination
 // ---------------------------------------------------------------------------- */
-// .pagination {
-// }
+.pagination {
+}
 
-// .pagination__current {
-// }
-
-// .pagination__previous {
-// }
-
-// .pagination__next {
-// }
 
 /// .menu-controller styles
 ///
@@ -79,11 +71,16 @@ nav a {
     font-family: sans-serif;
 
     vertical-align: middle;
+.pagination__current {
+}
 
     content: '\20\2261\20';
   }
+.pagination__previous {
+}
 
   @media screen and (min-width: breakpoint('toggle-menu')) {
     display: none;
   }
+.pagination__next {
 }
