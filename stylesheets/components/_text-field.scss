@@ -96,7 +96,7 @@
   }
 
   &:focus {
-    outline: 1px solid;
+    @include focused;
   }
 
   &:focus:required:invalid {

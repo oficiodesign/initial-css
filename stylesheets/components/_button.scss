@@ -62,6 +62,8 @@
   &:hover,
   &:focus {
     &:not([type='reset']) {
+      @include focused;
+
       background-color: palette('button', 'focus');
     }
   }
