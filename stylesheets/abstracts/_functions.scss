@@ -619,28 +619,3 @@ $_default-text-color--light: palette('text', 'light');
 
   @return map-get($default-breakpoints, $breakpoint);
 }
-
-/// @group helpers
-@function grid-image($columns: 1, $gutter: $gutter) {
-  $color: rgba(palette('debug'), 0.35);
-  $grid-image: $color 0, $color $gutter, transparent $gutter;
-
-  @for $i from 1 to $columns {
-    $multiplier: $i / $columns;
-    $grid-image: append(
-      $grid-image,
-      (
-        transparent calc(#{100% * $multiplier} - #{$gutter * $multiplier}),
-        $color calc(#{100% * $multiplier} - #{$gutter * $multiplier}),
-        $color calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)}),
-        transparent calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)})
-      ),
-      comma
-    );
-  }
-
-  @return linear-gradient(
-    to right,
-    #{append($grid-image, (transparent calc(100% - #{$gutter}), $color calc(100% - #{$gutter}), $color 100%), comma)}
-  );
-}

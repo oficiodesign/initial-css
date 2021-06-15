@@ -52,6 +52,36 @@
     $_placeholder-bg__color
   );
 }
+
+/// Grid background image
+///
+/// @access public
+///
+@mixin grid-image($columns: 1, $gutter: c.$gutter) {
+  $color: rgba(f.palette('feedback', 'danger'), 0.35);
+  $grid-image: $color 0, $color $gutter, transparent $gutter;
+
+  @for $i from 1 to $columns {
+    $multiplier: math.div($i, $columns);
+    $grid-image: list.append(
+      $grid-image,
+      (
+        transparent calc(#{100% * $multiplier} - #{$gutter * $multiplier}),
+        $color calc(#{100% * $multiplier} - #{$gutter * $multiplier}),
+        $color calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)}),
+        transparent calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)})
+      ),
+      'comma'
+    );
+  }
+
+  background-image: linear-gradient(
+    to right,
+    #{list.append($grid-image, (transparent calc(100% - #{c.$gutter}), $color calc(100% - #{c.$gutter}), $color 100%), 'comma')}
+  );
+}
+
+
 /// Special style for the _&_ used as a conjunction.
 ///
 /// @access private
