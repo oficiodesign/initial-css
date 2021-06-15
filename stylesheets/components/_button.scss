@@ -1,3 +1,6 @@
+@use '../layout/form';
+@use '../abstracts' as my;
+
 /* buttons
 ---------------------------------------------------------------------------- */
 
@@ -21,7 +24,7 @@
   align-items: center;
 
   width: auto; /* 3 */
-  min-height: $gutter * 2;
+  min-height: my.$gutter * 2;
 
   padding: 1px 6px; /* 6 */ // stylelint-disable-line property-units
 
@@ -33,17 +36,17 @@
 
   cursor: pointer; /* 2 */
 
-  background-color: palette('button'); /* 5 */
+  background-color: my.palette('button'); /* 5 */
 
   box-sizing: inherit;
 
-  border: $stroke;
+  border: my.$stroke;
 
   appearance: button; /* 1 */
 
   [role='group'] > &,
   fieldset > & {
-    margin-right: $gutter * 0.5;
+    margin-right: my.$gutter * 0.5;
 
     &:only-child {
       display: flex;
@@ -62,9 +65,9 @@
   &:hover,
   &:focus {
     &:not([type='reset']) {
-      @include focused;
+      @include my.focused;
 
-      background-color: palette('button', 'focus');
+      background-color: my.palette('button', 'focus');
     }
   }
 
@@ -87,29 +90,29 @@ button,
 [type='reset'] {
   @extend %button-reset;
 
-  color: palette('button', 'submit');
+  color: my.palette('button', 'submit');
 
-  background-color: palette('button', 'reset');
+  background-color: my.palette('button', 'reset');
 }
 
 .like-a__button--submit,
 [type='submit'] {
   @extend %button-reset;
 
-  background-color: palette('button', 'submit');
+  background-color: my.palette('button', 'submit');
   justify-content: center;
-  width: $gutter * 12;
+  width: my.$gutter * 12;
 
   text-align: center;
 
   &:disabled {
-    color: palette('disabled', 'background');
+    color: my.palette('disabled', 'background');
 
-    background-color: palette('disabled', 'foreground');
+    background-color: my.palette('disabled', 'foreground');
   }
 
   p > & {
-    margin-top: $gutter;
+    margin-top: my.$gutter;
     margin-right: auto;
     margin-left: auto;
   }

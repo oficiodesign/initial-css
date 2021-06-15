@@ -1,3 +1,5 @@
+@use '../abstracts' as my;
+
 // -----------------------------------------------------------------------------
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
@@ -28,14 +30,15 @@
   }
 }
 
+
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
   text-shadow: none;
 
-  color: palette('selection', 'foreground');
+  color: my.palette('selection', 'foreground');
 
-  background-color: palette('selection', 'background');
+  background-color: my.palette('selection', 'background');
 }
 
 /**
@@ -122,7 +125,7 @@ html {
 
   text-size-adjust: 100%; /* 4 */
 
-  background: palette('white');
+  background: my.palette('white');
 
   box-sizing: border-box;
 
@@ -153,8 +156,7 @@ body {
 
   margin: 0;
 
-  color: palette('black');
-  background-color: transparent;
+  color: my.palette('black');
 
   > * {
     flex-shrink: 0; /* 1 */
@@ -214,13 +216,13 @@ summary {
     outline: 0;
 
     &::after {
-      @include focused;
+      @include my.focused;
 
       position: absolute;
-      top: $gutter * -0.5;
-      right: $gutter * -0.5;
-      bottom: $gutter * -0.5;
-      left: $gutter * -0.5;
+      top: my.$gutter * -0.5;
+      right: my.$gutter * -0.5;
+      bottom: my.$gutter * -0.5;
+      left: my.$gutter * -0.5;
 
       width: auto;
       height: auto;
@@ -234,22 +236,22 @@ summary {
   &:hover,
   &:focus {
     &::before {
-      @include triangle('bottom', palette('black'), 0.25em);
+      @include my.triangle('bottom', my.palette('black'), 0.25em);
     }
   }
 
   &::before {
-    @include triangle('left', palette('gray'), 0.25em);
+    @include my.triangle('left', my.palette('neutral', 'base'), 0.25em);
 
     position: absolute;
-    top: $leading * 0.5em;
+    top: my.$leading * 0.5em;
     right: 0;
 
     content: '';
   }
 
   details[open] > &::before {
-    @include triangle('bottom', palette('gray'), 0.25em);
+    @include my.triangle('bottom', my.palette('neutral', 'base'), 0.25em);
 
     content: '';
   }
@@ -257,7 +259,7 @@ summary {
   details[open] > &:hover,
   details[open] > &:focus {
     &::before {
-      @include triangle('left', palette('black'), 0.25em);
+      @include my.triangle('left', my.palette('black'), 0.25em);
     }
   }
 
@@ -293,7 +295,7 @@ summary {
  */
 [hidden],
 template {
-  display: none !important; /* stylelint-disable-line */
+  display: none !important; // stylelint-disable-line declaration-no-important
 }
 
 /**
@@ -325,7 +327,7 @@ template {
  */
 hr {
   /* line-height */
-  @include fallback('margin', calc(#{$leading * 1em} - 1px) 0 #{$leading * 1em}, #{$leading * 1em} 0);
+  @include my.fallback('margin', calc(#{my.$leading * 1em} - 1px) 0 #{my.$leading * 1em}, #{my.$leading * 1em} 0);
 
   clear: both;
 
@@ -337,10 +339,10 @@ hr {
 
   overflow: visible; /* 2 */
 
-  color: palette('gray');
+  color: my.palette('neutral');
 
   border: 0;
-  border-top: 1px solid palette('gray');
+  border-top: 1px solid my.palette('neutral');
 
   box-sizing: content-box; /* 1 */
 }
@@ -432,7 +434,7 @@ video > source {
 object > img {
   position: relative;
 
-  z-index: layer('below');
+  z-index: my.layer('below');
 
   font-size: 1em;
 
@@ -440,10 +442,12 @@ object > img {
 }
 
 /// Stylize broken images
+///
 /// @author [Ire Aderinokun](https://ireaderinokun.com/)
 /// @author Sobral
 /// @group helpers
 /// @link https://bitsofco.de/styling-broken-images/
+///
 %broken-image {
   font-style: normal;
 
@@ -452,7 +456,7 @@ object > img {
   &::before {
     display: block;
 
-    margin-bottom: $leading * 1em;
+    margin-bottom: my.$gutter;
 
     content: '\f127'' Broken Image of ' attr(alt);
   }
@@ -462,7 +466,7 @@ object > img {
 
     font-size: small;
 
-    color: palette('gray');
+    color: my.palette('neutral');
 
     content: '(url: ' attr(src) ')';
   }
@@ -483,7 +487,7 @@ img {
 }
 
 [usemap] {
-  color: palette('anchor');
+  color: my.palette('anchor');
 }
 
 map {
@@ -516,9 +520,9 @@ a {
   vertical-align: baseline;
   // sass-lint:disable-block property-sort-order
 
-  color: palette('anchor', 'base');
+  color: my.palette('anchor', 'base');
 
-  @include on-event {
+  @include my.on-event {
     text-decoration: underline;
   }
 
@@ -526,48 +530,50 @@ a {
     text-decoration: underline;
 
     cursor: pointer;
-    -webkit-tap-highlight-color: palette('tap-highlight'); // stylelint-disable-next-line no-vendor-prefixes
+    -webkit-tap-highlight-color: my.palette('tap-highlight'); // stylelint-disable-line property-no-vendor-prefix
 
-    color: palette('anchor', 'link');
+    color: my.palette('anchor', 'link');
   }
 
   &:visited {
-    color: palette('anchor', 'visited');
+    color: my.palette('anchor', 'visited');
 
-    @include on-event {
+    @include my.on-event {
       text-decoration: underline;
     }
   }
 
-  // &:hover,
-  // &:focus {
-  // }
+  &:hover,
+  &:focus {
+    @supports (text-decoration-color: my.palette('accent')) {
+      text-decoration-color: my.palette('accent');
+    }
+  }
 
   &:hover {
-    color: palette('anchor', 'hover');
+    color: my.palette('anchor', 'hover');
   }
 
   &:focus {
-    color: palette('anchor', 'focus');
+    @include my.focused;
 
-    outline: 1px dotted;
-    outline-offset: 2px;
+    color: my.palette('anchor', 'focus');
   }
 
   /**
-	* Improve readability when focused and also mouse hovered in all browsers.
-	*/
+  * Improve readability when focused and also mouse hovered in all browsers.
+  */
   &:hover,
   &:active {
     outline-width: 0;
   }
 
   /**
-	* Remove the gray background color from active links in IE 10.
-	* @see https://github.com/necolas/normalize.css/issues/473
-	*/
+  * Remove the gray background color from active links in IE 10.
+  * @see https://github.com/necolas/normalize.css/issues/473
+  */
   &:active {
-    color: palette('anchor', 'active');
+    color: my.palette('anchor', 'active');
 
     background-color: transparent;
   }
@@ -589,14 +595,14 @@ address {
 /* Coode blocks
 ---------------------------------------------------------------------------- */
 pre {
-  padding: $leading * 0.5rem $gutter * 0.5;
-  margin: 0 0 $leading * 1rem;
+  padding: my.$leading * 0.5rem my.$gutter * 0.5;
+  margin: 0 0 my.$leading * 1rem;
 
   overflow: auto;
 
-  font-size: ms(-1);
+  font-size: smaller;
 
-  color: palette('text', 'light');
+  color: my.palette('text', 'light');
 
-  background-color: palette('text', 'dark');
+  background-color: my.palette('text', 'dark');
 }

@@ -2,35 +2,54 @@ autofill:
   - throw
   - content
   - require
+dest: './build'
 exclude:
   - ./css/*
   - ./stylesheets/vendor/*
 groups:
-  components: CSS components
-  config: Configuration variables and maps
-  font-stacks: Font-stacks
-  qa: Quality assurance
-  hacks: Dirty Hacks & Fixes
-  helpers: Helpers
+  undefined: General
   normalizer: Normalization
+  config: Configuration variables and maps
+  components: CSS components
+  helpers: Helpers
+  hacks: Dirty Hacks & Fixes
+  qa: Quality assurance
+
+  Design guide:
+    config-grid-and-graphics: General
+    config-palettes: Color Palettes
+    config-typography: Typography
+
+  Constants:
+    math: Mathematics
+    font-stacks: Font stacks
+
+package: "./package.json"
+
+display:
+  access:
+    - private
+    - public
+  alias: true
+  watermark: true
+  descriptionPath: "README.md"
+
 herman:
-  customCSS: './testResults/index.css'
+  displayColors:
+    - "hex"
+    - "hsl"
   sass:
-    includepaths:
-      - 'stylesheets/abstracts'
-    includes:
-      - 'constants'
-      - 'font-stacks'
-      - 'functions'
-      - 'variables'
-      - 'mixins'
-package:
-  title: Initial CSS
-  name: initial-css
-  version: 0.1
-  license: your project’s license
-  homepage: URL to your project’s homepage
-  description: css boilerplate and collection of helpers for SASS and CSS
+    includePaths:
+      - ./stylesheets/abstracts
+    jsonFile: ./testResults/json.css
+    use:
+      - file: config/typography
+        namespace: "*"
+      - file: constants/font-stacks
+        namespace: "*"
+      - file: mixins
+        namespace: "*"
+
 strict: true
 theme: herman
 verbose: true

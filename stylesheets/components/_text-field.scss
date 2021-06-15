@@ -1,3 +1,8 @@
+@use 'sass:color';
+
+@use '../layout/form';
+@use '../abstracts' as my;
+
 /* text inputs
 ---------------------------------------------------------------------------- */
 
@@ -12,18 +17,18 @@
 
   align-items: center;
   width: 100%;
-  height: $gutter * 2;
+  height: my.$gutter * 2;
 
-  padding: $gutter * 0.5 0;
+  padding: my.$gutter * 0.5 0;
   margin: 0; // vertical margins break floating labels
 
   cursor: text;
 
-  color: palette('text', 'dark');
+  color: my.palette('text', 'dark');
 
-  background-color: palette('text', 'light');
+  background-color: my.palette('text', 'light');
 
-  border: solid $stroke palette('border');
+  border: solid my.$stroke my.palette('border');
 
   box-sizing: inherit;
 
@@ -32,9 +37,9 @@
   &:placeholder-shown ~ label {
     pointer-events: none;
 
-    color: palette('gray');
+    color: my.palette('neutral', 'base');
 
-    transform: translateY(calc(100% + #{$gutter * 0.5}));
+    transform: translateY(calc(100% + #{my.$gutter * 0.5}));
   }
 
   &:focus ~ label,
@@ -46,10 +51,10 @@
     order: -1;
 
     max-width: 100%;
-    min-height: $gutter; // field height - padding
+    min-height: my.$gutter; // field height - padding
 
-    margin-right: $gutter * 0.5;
-    margin-left: $gutter * 0.5;
+    margin-right: my.$gutter * 0.5;
+    margin-left: my.$gutter * 0.5;
 
     overflow: hidden;
 
@@ -60,7 +65,7 @@
 
     pointer-events: auto;
 
-    color: palette('text', 'faded');
+    color: my.palette('text', 'faded');
 
     transform: translate(0, 0);
 
@@ -72,31 +77,31 @@
   &:focus ~ label,
   &:hover ~ label,
   ~ label:hover {
-    color: palette('text', 'title');
+    color: my.palette('text', 'title');
 
     transform: translate(0, 0);
   }
 
   &:-moz-ui-invalid {
-    border-radius: $rounded-corner;
+    border-radius: my.$rounded-corner;
 
     box-shadow: none;
   }
 
   &:invalid {
-    border-radius: $rounded-corner;
+    border-radius: my.$rounded-corner;
 
-    box-shadow: 0 0 5px palette('feedback', 'danger');
+    box-shadow: 0 0 5px my.palette('feedback', 'danger');
   }
 
   &.error:invalid {
-    border-color: palette('feedback', 'danger');
+    border-color: my.palette('feedback', 'danger');
 
-    box-shadow: 0 0 0 4px color.scale(palette('feedback', 'danger'), $alpha: 50%);
+    box-shadow: 0 0 0 4px color.scale(my.palette('feedback', 'danger'), $alpha: 50%);
   }
 
   &:focus {
-    @include focused;
+    @include my.focused;
   }
 
   &:focus:required:invalid {
@@ -108,9 +113,9 @@
   &:disabled {
     cursor: not-allowed;
 
-    color: palette('disabled', 'foreground');
+    color: my.palette('disabled', 'foreground');
 
-    background: palette('disabled', 'background');
+    background: my.palette('disabled', 'background');
   }
 
   &:read-only {
@@ -141,7 +146,7 @@
 [type='number']::-webkit-outer-spin-button {
   margin: 0; // Apparently some margin are still there even though it's hidden
 
-  -webkit-appearance: none;
+  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
 }
 
 [type='password'] {
@@ -203,7 +208,7 @@ textarea {
 
   align-items: flex-start;
 
-  height: $gutter * 8;
+  height: my.$gutter * 8;
 
   overflow: auto; /* 1 */
 
@@ -214,4 +219,21 @@ textarea {
   cursor: text;
 
   resize: vertical;
+}
+
+.char-counter {
+  display: block;
+  padding: 0.25em;
+  margin-right: 0;
+  margin-left: auto;
+  font-size: smaller;
+  pointer-events: none;
+
+  :invalid ~ & > output {
+    color: my.palette('feedback', 'danger');
+  }
+
+  & > output {
+    color: my.palette('feedback', 'success');
+  }
 }

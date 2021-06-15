@@ -10,5 +10,4 @@ $no-rem: true;
 $no-viewport: true;
 
 // @see https://github.com/sass/sass/issues/408#issuecomment-6086901
-
-@import 'index';
+@use 'index';

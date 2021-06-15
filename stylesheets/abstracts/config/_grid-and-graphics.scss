@@ -1,0 +1,153 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+
+////
+/// Typographic settings
+///
+/// @group config-grid-and-graphics
+/// @access public
+/// @type list
+/// @todo Customize it to match your design needs or combine with the already available font stacks.
+///
+////
+@use './typography' as t;
+
+/// Default border-radius
+/// @todo Customize it to match your design.
+/// @type number
+///
+$rounded-corner: 0 !default;
+
+/// border default width
+/// @todo Customize it to match your design.
+/// @type number
+///
+$stroke: 1px !default;
+
+
+/// gutter default width
+/// @todo Customize it to match your design.
+/// @type number
+///
+$gutter: 1.5rem;
+
+/// column basis width
+/// @todo Customize it to match your design.
+/// @type number
+///
+$column-basis: 17rem;
+
+$mobile-columns: 2;
+$_new-width: 0;
+$_device-width: 20em;
+$_i: $mobile-columns;
+
+@function _im-to-em($breakpoints, $base-value: 16px) {
+  $new-breakpoints: ();
+
+  @each $name, $value in $breakpoints {
+    $em-value: math.div($value, $base-value) * 1em;
+    $new-breakpoints: map.merge(
+      $new-breakpoints,
+      (
+        $name: $em-value,
+      )
+    );
+  }
+
+  @return $new-breakpoints;
+}
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+///
+$breakpoints: _im-to-em(
+  (
+    'phone__portrait': 320px,
+    'phone__landscape': 480px,
+    'tablet__portrait': 768px,
+    'tablet__landscape': 1024px,
+    'desktop': 1280px,
+    'wide': 1600px,
+  )
+) !default;
+
+$toggle-breakpoints: (
+  'toggle-table-layout': 48em,
+  'toggle-menu': 64em,
+);
+
+$breakpoints: map.merge($breakpoints, $toggle-breakpoints);
+
+/// Container's maximum width
+/// @type number
+///
+$max-width: 80em !default; // 1180px
+$max-width--narrow: 40.75em; // 668 px
+
+$breakpoints: map.merge(
+  $breakpoints,
+  (
+    '#{$mobile-columns}col': $_device-width,
+  )
+);
+
+@while $_device-width <= $max-width {
+  $_device-width: math.div($_device-width, $_i) * ($_i + 1);
+  $_i: $_i + 1;
+  $breakpoints: map-merge($breakpoints, ('#{$_i}col': $_device-width));
+}
+
+/// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.
+/// @access public
+/// @type Map
+///
+$layers: (
+  'modal': 5000,
+  'dropdown': 4000,
+  'default': 1,
+  'below': -1,
+);
+
+/// Relative or absolute URL where all assets are served from.
+/// @todo Customize it to match your setup.
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'http://cdn.example.com/assets/';
+///
+$base-url: '/assets/' !default;
+
+@function _im-to-px($breakpoints, $base-value: 16px) {
+  $new-breakpoints: ();
+
+  @each $name, $value in $breakpoints {
+    $px-value: if(math.unit($value) == 'em', math.div($value, 1em) * $base-value, $value);
+    $new-breakpoints: map.merge(
+      $new-breakpoints,
+      (
+        $name: $px-value,
+      )
+    );
+
+    @if (math.unit($value) != 'em' and math.unit($value) != 'px') {
+      @error 'all media queries units should be either `em` or `px`. `#{math.unit($value)}` given.';
+    } @else {
+      $px-value: if(math.unit($value) == 'em', math.div($value, 1em) * $base-value, $value);
+      $new-breakpoints: map.merge(
+        $new-breakpoints,
+        (
+          $name: $px-value,
+        )
+      );
+    }
+  }
+
+  @return $new-breakpoints;
+}
+
+@if meta.global-variable-exists('im-media-support') and $im-media-support == false {
+  $breakpoints: _im-to-px($breakpoints);
+  $max-width: math.div($max-width, 1em) * 16px;
+}

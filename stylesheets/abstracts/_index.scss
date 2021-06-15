@@ -1,0 +1,11 @@
+@use 'config';
+
+@forward 'config';
+@forward 'functions' with (
+  $my-base-url: config.$base-url,
+  $my-breakpoints: config.$breakpoints,
+  $my-font-weights: config.$font-weights,
+  $my-gutter: config.$gutter,
+  $my-palette: config.$palette,
+);
+@forward 'mixins';

@@ -1,5 +1,11 @@
+@use 'sass:color';
+@use 'sass:string';
+
+@use '../stylesheets/abstracts/functions' as f;
+@use './constants' as *;
+
 @mixin text-contrast($b, $f: null) {
-  @if text-contrast($b, $f) == transparent {
+  @if f.text-contrast($b, $f) == transparent {
     &::before {
       content: 'Impossible for ';
 
@@ -8,7 +14,7 @@
   } @else {
     text-align: right;
 
-    color: text-contrast($b, $f);
+    color: f.text-contrast($b, $f);
 
     &::before {
       display: block;
@@ -17,7 +23,7 @@
 
       text-align: left;
 
-      content: '\25a0\a0'+ quote(#{text-contrast($b, $f)});
+      content: '\25a0\a0'+ string.quote(#{f.text-contrast($b, $f)});
     }
   }
 }
@@ -41,7 +47,7 @@
   padding: 0.75rem;
   margin: 0;
 
-  font-weight: font-weight('bold');
+  font-weight: f.font-weight('bold');
   font-size: small;
   line-height: 1;
 
@@ -59,8 +65,8 @@
   }
 }
 
-@each $color in $colors {
-  $selector: to-lower-case(str-slice(#{$color}, 2, 7));
+@each $color in constants.$colors {
+  $selector: string.to-lower-case(string.slice(#{$color}, 2, 7));
 
   .color--blackwhite-#{$selector} {
     @include text-contrast($color);
@@ -81,37 +87,37 @@
   }
 
   .color--complementary-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, 180));
+    @include text-contrast($color, color.adjust($color, $hue: 180));
 
     background-color: $color;
   }
 
   .color--compound-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, 210));
+    @include text-contrast($color, color.adjust($color, $hue: 210));
 
     background-color: $color;
   }
 
   .color--analogous-1-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, 30));
+    @include text-contrast($color, color.adjust($color, $hue: 30));
 
     background-color: $color;
   }
 
   .color--analogous-2-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, -30));
+    @include text-contrast($color, color.adjust($color, $hue: -30));
 
     background-color: $color;
   }
 
   .color--triadic-1-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, 120));
+    @include text-contrast($color, color.adjust($color, $hue: 120));
 
     background-color: $color;
   }
 
   .color--triadic-2-#{$selector} {
-    @include text-contrast($color, adjust-hue($color, 240));
+    @include text-contrast($color, color.adjust($color, $hue: 240));
 
     background-color: $color;
   }

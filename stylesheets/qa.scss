@@ -1,3 +1,2 @@
-@import 'abstracts/constants', 'abstracts/font-stacks', 'abstracts/functions', 'abstracts/config', 'abstracts/mixins';
-
-@import 'themes/qa';
+@use 'abstracts';
+@use 'themes/qa';

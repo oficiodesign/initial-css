@@ -1,0 +1,348 @@
+////
+///
+/// Default font stacks
+///
+/// @group font-stacks
+/// @access private
+/// @type list
+///
+////
+
+// stylelint-disable scss/dollar-variable-pattern
+
+/// Safari for OS X and iOS (San Francisco): -apple-system,
+/// Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android: system-ui,
+/// Chrome < 56 for OS X (San Francisco): BlinkMacSystemFont,
+/// Windows: 'Segoe UI',
+/// Android: 'Roboto',
+/// Basic web fallback: 'Helvetica Neue', Arial, sans-serif !default;
+///
+$NATIVE-FONT-STACK: -apple-system, system-ui, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif !default;
+
+///
+/// Default font stack for code samples, considering the platform.
+///
+/// - **Windows**: Consolas;
+/// - **Linux**: Liberation Mono;
+/// - **OS X**: Menlo;
+/// - **Windows (legacy)**: Courier;
+/// - default platform fallback: `monospace !default`;
+///
+$BASIC-CODE-FONT-STACK: 'Consolas', 'Liberation Mono', 'Menlo', 'Courier', monospace !default;
+
+/// Font stack for conjunctions or prepositions
+///
+/// @example html
+/// The Elements <span class="alt">of</span> Typographic Style
+///
+$ALT-FONT-STACK: 'baskerville italic', 'Warnock Pro', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
+
+/// Font stack for the _&_ used as a conjunction
+///
+/// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
+///
+/// @example html
+/// <h1>This <span class="amp">&amp;</span> that</h1>
+///
+$AMPERSAND-FONT-STACK: 'Cochin', 'Hoefler Titling', 'Requiem', 'Hoefler Text', 'Baskerville', 'Baskerville MT', 'Urw Chancery L', 'Goudy Old Style', 'Palatino', 'Palatino Linotype', 'Urw Palladio L', 'Constantia', 'Book Antiqua', serif;
+
+/// Serif font-stacks
+
+/// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler
+/// Text should be set at minimum of 14 pixels or above.
+///
+/// Be aware that:
+/// - Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They
+///   are faked to bold and italic.
+/// - Some of the fonts, like Garamond, Baskerville and Didot, are not as
+///   readable on screen as Georgia.
+///
+/// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
+/// @link https://www.cssfontstack.com/Baskerville
+///
+$BASKERVILLE-FONT-STACK: 'Baskerville', 'Baskerville Old Face', 'Hoefler Text',
+  'Garamond', 'Times New Roman', serif !default;
+
+/// Be aware that Geneva, Baskerville Old Face and Big Caslon has no bold and
+/// italic. They are faked to bold and italic.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Big-Caslon
+///
+$BIG-CASLON-FONT-STACK: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype',
+  'Georgia', serif !default;
+
+/// @link https://www.cssfontstack.com/Bodoni-MT
+///
+$BODONI-MT-FONT-STACK: 'Bodoni MT', 'Didot', 'Didot LT STD', 'Hoefler Text',
+  'Garamond', 'Times New Roman', serif !default;
+
+/// @link https://www.cssfontstack.com/Book-Antiqua
+///
+$BOOK-ANTIQUA-FONT-STACK: 'Book Antiqua', 'Palatino', 'Palatino Linotype',
+  'Palatino LT STD', 'Georgia', serif !default;
+
+/// @link https://www.cssfontstack.com/Calisto-MT
+///
+$CALISTO-MT-FONT-STACK: 'Calisto MT', 'Bookman Old Style', 'Bookman', 'Goudy Old Style',
+  'Garamond', 'Hoefler Text', 'Bitstream Charter', 'Georgia', serif !default;
+
+/// @link https://www.cssfontstack.com/Cambria
+///
+$CAMBRIA-FONT-STACK: 'Cambria', 'Georgia', serif !default;
+
+/// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler
+/// Text should be set at minimum of 14 pixels or above.
+///
+/// Be aware that some of the fonts, like Garamond, Baskerville and Didot, are
+/// not as readable on screen as Georgia.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Didot
+///
+$DIDOT-FONT-STACK: 'Didot', 'Didot LT STD', 'Hoefler Text', 'Garamond',
+  'Times New Roman', serif !default;
+
+/// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler
+/// Text should be set at minimum of 14 pixels or above. Be aware that some of
+/// the fonts, like Garamond, Baskerville and Didot, are not as readable on
+/// screen as Georgia.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Garamond
+///
+$GARAMOND-FONT-STACK: 'Garamond', 'Baskerville', 'Baskerville Old Face',
+  'Hoefler Text', 'Times New Roman', serif !default;
+
+/// **Do not** mix Georgia and Times. They're too different
+///
+/// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
+/// @link https://www.cssfontstack.com/Georgia
+///
+$GEORGIA-FONT-STACK: 'Georgia', 'Utopia', 'Charter', serif !default;
+
+/// @link https://www.cssfontstack.com/Goudy-Old-Style
+///
+$GOUDY-OLD-STYLE-FONT-STACK: 'Goudy Old Style', 'Garamond', 'Big Caslon',
+  'Times New Roman', serif !default;
+
+/// Due to smaller x-height, Caslon, Didot, Garamond, Baskerville and Hoefler
+/// Text should be set at minimum of 14 pixels or above.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Hoefler-Text
+$HOEFLER-TEXT-FONT-STACK: 'Hoefler Text', 'Baskerville old face', 'Garamond',
+  'Times New Roman', serif !default;
+
+/// @link https://www.cssfontstack.com/Lucida-Bright
+///
+$LUCIDIA-BRIGHT-FONT-STACK: 'Lucida Bright', 'Georgia', serif !default;
+
+/// **Do not** mix Georgia and Times. They're too different
+///
+/// @link http://code.stephenmorley.org/html-and-css/the-myth-of-web-safe-fonts/
+/// @link https://www.cssfontstack.com/Palatino
+///
+$PALATINO-FONT-STACK: 'Palatino', 'Palatino Linotype', 'Palatino LT STD',
+  'Book Antiqua', serif !default;
+
+/// @link https://www.cssfontstack.com/Perpetua
+///
+$PERPETUA-FONT-STACK: 'Perpetua', 'Baskerville', 'Big Caslon', 'Palatino Linotype',
+  'Palatino', 'URW Palladio L', 'Nimbus Roman No9 L', serif !default;
+
+/// @link https://www.cssfontstack.com/Rockwell
+///
+$ROCKWELL-FONT-STACK: 'Rockwell', 'Courier Bold', 'Courier', 'Georgia', 'Times',
+  'Times New Roman', serif !default;
+
+/// @link https://www.cssfontstack.com/Rockwell-Extra-Bold
+///
+$ROCKWELL-BOLD-FONT-STACK: 'Rockwell Extra Bold', 'Rockwell Bold', monospace !default;
+
+/// @link https://www.cssfontstack.com/Times-New-Roman
+///
+$TIMES-NEW-ROMAN-FONT-STACK: 'TimesNewRoman', 'Times New Roman', 'Times',
+  'Baskerville', serif !default;
+
+/// Sans-Serif font-stacks
+
+/// @link https://www.cssfontstack.com/Arial
+///
+$ARIAL-FONT-STACK: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Arial-Black
+///
+$ARIAL-BLACK-FONT-STACK: 'Arial Black', 'Arial Bold', 'Gadget', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Arial-Narrow
+///
+$ARIAL-NARROW-FONT-STACK: 'Arial Narrow', 'Arial', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Arial-Rounded-MT-Bold
+///
+$ARIAL-ROUNDED-FONT-STACK: 'Arial Rounded MT Bold', 'Helvetica Rounded', 'Arial',
+  sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Avant-Garde
+///
+$AVANT-GARDE-FONT-STACK: 'Avant Garde', 'Avantgarde', 'Century Gothic',
+  'CenturyGothic', 'AppleGothic', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Calibri
+///
+$CALIBRI-FONT-STACK: 'Calibri', 'Candara', 'Segoe', 'Segoe UI', 'Optima',
+  'Arial', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Candara
+///
+$CANDARA-FONT-STACK: 'Candara', 'Calibri', 'Segoe', 'Segoe UI', 'Optima',
+  'Arial', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Century-Gothic
+///
+$CENTURY-GOTHIC-FONT-STACK: 'Century Gothic', 'CenturyGothic', 'AppleGothic',
+  sans-serif !default;
+
+/// Futura, Gill Sans and Franklin Gothic Medium should be carefully stacked and
+/// used because of their unusual weight.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Franklin-Gothic-Medium
+///
+$FRANKIN-GOTHIC-FONT-STACK: 'Franklin Gothic Medium', 'Franklin Gothic',
+  'ITC Franklin Gothic', 'Arial', sans-serif !default;
+
+/// Futura, Gill Sans and Franklin Gothic Medium should be carefully stacked and
+/// used because of their unusual weight. Lucida Grande, Futura and Tahoma are
+/// mechanically obliqued to fake an italic.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Futura
+///
+$FUTURA-FONT-STACK: 'Futura', 'Trebuchet MS', 'Arial', sans-serif !default;
+
+/// Geneva, Baskerville Old Face and Big Caslon has no bold and italic. They are
+/// faked to bold and italic.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Geneva
+///
+$GENEVA-FONT-STACK: 'Geneva', 'Tahoma', 'Verdana', sans-serif !default;
+
+/// Futura, Gill Sans and Franklin Gothic Medium should be carefully stacked and
+/// used because of their unusual weight.
+///
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Gill-Sans
+///
+$GILL-SANS-FONT-STACK: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif !default;
+
+/// Avoid using Helvetica or Helvetica Neue for body text, especially below 14px.
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Helvetica
+///
+$HELVETICA-FONT-STACK: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Impact
+///
+$IMPACT-FONT-STACK: 'Impact', 'Haettenschweiler', 'Franklin Gothic Bold',
+  'Charcoal', 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black',
+  sans-serif !default;
+
+/// Lucida Grande, Futura and Tahoma are mechanically obliqued to fake an italic.
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Lucida-Grande
+///
+$LUCIDA-GRANDE-FONT-STACK: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans',
+  'Geneva', 'Verdana', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Optima
+///
+$OPTIMA-FONT-STACK: 'Optima', 'Segoe', 'Segoe UI', 'Candara', 'Calibri', 'Arial',
+  sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Segoe-UI
+///
+$SEGOE-FONT-STACK: 'Segoe UI', 'Frutiger', 'Frutiger Linotype', 'Dejavu Sans',
+  'Helvetica Neue', 'Arial', sans-serif !default;
+
+/// Lucida Grande, Futura and Tahoma are mechanically obliqued to fake an italic.
+/// @link https://www.awayback.com/index.php/2010/02/03/revised-font-stack/
+/// @link https://www.cssfontstack.com/Tahoma
+///
+$TAHOMA-FONT-STACK: 'Tahoma', 'Verdana', 'Segoe', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Trebuchet-MS
+///
+$TREBUCHET-FONT-STACK: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode',
+  'Lucida Sans', 'Tahoma', sans-serif !default;
+
+/// @link https://www.cssfontstack.com/Verdana
+///
+$VERDANA-FONT-STACK: 'Verdana', 'Geneva', sans-serif !default;
+
+/// Monospaced font-stacks
+
+/// @link https://www.cssfontstack.com/Consolas
+///
+$CONSOLAS-FONT-STACK: 'Consolas', 'monaco', monospace !default;
+
+/// @link https://www.cssfontstack.com/Courier-New
+///
+$COURIER-FONT-STACK: 'Courier New', 'Courier', 'Lucida Sans Typewriter',
+  'Lucida Typewriter', monospace !default;
+
+/// @link https://www.cssfontstack.com/Lucida-Console
+///
+$LUCIDA-CONSOLE-FONT-STACK: 'Lucida Console', 'Lucida Sans Typewriter', 'monaco',
+  'Bitstream Vera Sans Mono', monospace !default;
+
+/// @link https://www.cssfontstack.com/Lucida-Sans-Typewriter
+///
+$LUCIDA-SANS-TYPEWRITER-FONT-STACK: 'Lucida Sans Typewriter', 'Lucida Console',
+  'monaco', 'Bitstream Vera Sans Mono', monospace !default;
+
+/// @link https://www.cssfontstack.com/Monaco
+///
+$MONACO-FONT-STACK: 'monaco', 'Consolas', 'Lucida Console', monospace !default;
+
+/// @link https://www.cssfontstack.com/Andale-Mono
+///
+$ANDALE-FONT-STACK: 'Andale Mono', 'AndaleMono', monospace !default;
+
+/// Fantasy font-stacks
+
+/// @link https://www.cssfontstack.com/Copperplate
+///
+$COPPERPLATE-FONT-STACK: 'Copperplate', 'Copperplate Gothic Light',
+  fantasy !default;
+///
+/// @link https://www.cssfontstack.com/Papyrus
+///
+$PAPYRUS-FONT-STACK: 'Papyrus', fantasy !default;
+
+/// Script font-stacks
+
+/// @link https://www.cssfontstack.com/Brush-Script-MT
+///
+$BRUSH-FONT-STACK: 'Brush Script MT', cursive !default;
+
+/// Google font-stacks
+/// @link https://gist.github.com/jacrook/9009655
+
+$LUSTRIA-FONT-STACK: 'Lustria', serif !default;
+$UBUNTU-MONO-FONT-STACK: 'Ubuntu Mono', sans-serif !default;
+$LATO-FONT-STACK: 'Lato', sans-serif !default;
+$LORA-FONT-STACK: 'Lora', serif !default;
+$UBUNTU-FONT-STACK: 'Ubuntu', sans-serif !default;
+$UBUNTU-CONDENSED-FONT-STACK: 'Ubuntu Condensed', sans-serif !default;
+$ROBOTO-FONT-STACK: 'Roboto', sans-serif !default;
+$ROBOTO-CONDENSED-FONT-STACK: 'Roboto Condensed', sans-serif !default;
+$ROBOTO-SLAB-FONT-STACK: 'Roboto Slab', serif !default;
+$RALEWAY-FONT-STACK: 'Raleway', sans-serif !default;
+$RALEWAY-DOTS-FONT-STACK: 'Raleway Dots', cursive;
+$MERRIWEATHER-FONT-STACK: 'Merriweather', serif !default;
+$MERRIWEATHER-SANS-FONT-STACK: 'Merriweather Sans', sans-serif !default;
+$QUATTROCENTO-FONT-STACK: 'Quattrocento', serif !default;
+$QUATTROCENTO-SANS-FONT-STACK: 'Quattrocento Sans', sans-serif !default;

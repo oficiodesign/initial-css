@@ -1,3 +1,5 @@
+@use '../abstracts' as my;
+
 ////
 /// This file contains rules intended to prevent mistakes
 ///
@@ -7,14 +9,14 @@
 /// @link https://github.com/Heydon/REVENGE.CSS
 ////
 
-/* stylelint-disable declaration-no-important */
+// stylelint-disable declaration-no-important
 
 %error {
-  outline: 5px solid palette('debug') !important;
+  outline: 5px solid my.palette('feedback', 'danger') !important;
 }
 
 %warning {
-  outline: 5px solid palette('warning') !important;
+  outline: 5px solid my.palette('feedback', 'warning') !important;
 }
 
 @mixin alert {
@@ -25,17 +27,17 @@
     left: 0;
 
     display: block;
-    z-index: layer('modal');
+    z-index: my.layer('modal');
 
     padding: 1em;
 
-    font-weight: font-weight('heavy');
+    font-weight: my.font-weight('heavy');
 
     text-align: center;
 
-    color: palette('white');
+    color: my.palette('white');
 
-    background-color: palette('debug');
+    background-color: my.palette('feedback', 'danger');
 
     @content;
   }
@@ -348,7 +350,7 @@ link[rel='stylesheet'][type='text/css'] {
   }
 }
 
-/* stylelint-disable selector-type-no-unknown */
+// stylelint-disable selector-type-no-unknown
 /// Empty element not used for scripting
 *:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*='js-']) {
   @extend %error;

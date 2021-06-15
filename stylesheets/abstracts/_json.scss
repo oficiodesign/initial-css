@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+@use '../../node_modules/sassdoc-theme-herman/scss/utilities';
+
+@use '../abstracts' as *;
+
+$_fonts-list: (
+  title-font-stack: $title-font-stack,
+  text-font-stack: $text-font-stack,
+  code-font-stack: $code-font-stack
+);
+
+@each $k, $v in $_fonts-list {
+  $name: null;
+  $stack: ();
+
+  @each $font-name in $v {
+    @if $name == null {
+      $name: $font-name;
+    } @else {
+      $stack: list.append($stack, $font-name, 'comma');
+    }
+  }
+
+  @include utilities.add('fonts', $k, ('name': $name, 'stack': $stack));
+}
+
+@each $k1, $v1 in $palette {
+  @if meta.type-of($v1) == 'map' {
+    @include utilities.add('colors', $k1, $v1);
+  } @else {
+    @include utilities.add('colors', 'palette', (#{$k1}: $v1));
+  }
+}
+
+// Export to JSON
+@include utilities.export(utilities.$herman);

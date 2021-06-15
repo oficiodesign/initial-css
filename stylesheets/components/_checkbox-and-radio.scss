@@ -1,3 +1,5 @@
+@use '../abstracts' as my;
+
 /* checkboxes and radio buttons
 ---------------------------------------------------------------------------- */
 
@@ -61,7 +63,7 @@ li label {
   }
 
   &:focus {
-    @include focused;
+    @include my.focused;
 
     outline-style: auto; /* 4 */
   }
@@ -76,7 +78,7 @@ li label {
 }
 
 [type='checkbox'] {
-  border-radius: $rounded-corner;
+  border-radius: my.$rounded-corner;
 
   &:checked {
   }
@@ -85,7 +87,7 @@ li label {
 li:hover {
   > input,
   > label {
-    color: palette('black');
+    color: my.palette('black');
   }
 }
 
@@ -97,5 +99,5 @@ li :checked + label {
 :disabled + label {
   cursor: default;
 
-  color: palette('disabled', 'foreground');
+  color: my.palette('disabled', 'foreground');
 }

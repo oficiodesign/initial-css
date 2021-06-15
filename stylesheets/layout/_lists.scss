@@ -1,3 +1,5 @@
+@use '../abstracts' as my;
+
 /* LISTS
 ============================================================================ */
 
@@ -31,9 +33,9 @@ article li {
     position: absolute;
     left: -0.5em;
 
-    z-index: layer('default'); // required to prevent Blink clipping issues on columns
+    z-index: my.layer('default'); // required to prevent Blink clipping issues on columns
 
-    font-weight: font-weight('bold');
+    font-weight: my.font-weight('bold');
   }
 
   &:last-child {
@@ -59,7 +61,7 @@ li ul {
 /* definition
 ---------------------------------------------------------------------------- */
 dl {
-  @include fallback('margin', 0 0 1.5rem);
+  @include my.fallback('margin', 0 0 1.5rem);
 
   padding: 0;
 }
@@ -71,11 +73,11 @@ dd {
 }
 
 dt {
-  font-weight: font-weight('bold');
+  font-weight: my.font-weight('bold');
 }
 
 dd {
-  @include fallback('margin', 0 0 1.5rem);
+  @include my.fallback('margin', 0 0 1.5rem);
 
   &:last-child {
     margin-bottom: 0;

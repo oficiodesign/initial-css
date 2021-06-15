@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../abstracts' as my;
+
 /* TABLES
 ============================================================================ */
 table,
@@ -18,7 +22,7 @@ td {
 
   border: 0;
 
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     display: block;
   }
 }
@@ -26,14 +30,14 @@ td {
 table {
   margin-top: 0;
   margin-right: 0;
-  margin-bottom: #{$leading * 1em};
+  margin-bottom: #{my.$leading * 1em};
   margin-left: 0;
 
   font-size: 100%;
   font-family: inherit;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
 
-  border-radius: $rounded-corner;
+  border-radius: my.$rounded-corner;
 
   border-collapse: separate;
   border-spacing: 0;
@@ -42,7 +46,7 @@ table {
 
 thead,
 tfoot {
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     display: none;
   }
 }
@@ -56,8 +60,8 @@ table li {
 // }
 
 tr {
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    @include fallback('margin', 0 0 1.5rem);
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
+    @include my.fallback('margin', 0 0 1.5rem);
 
     &:last-child {
       margin-bottom: 0;
@@ -66,13 +70,13 @@ tr {
 }
 
 th {
-  font-weight: font-weight('bold');
+  font-weight: my.font-weight('bold');
 }
 
 td {
   font-family: inherit;
 
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     &:empty {
       display: none;
     }
@@ -106,7 +110,7 @@ tbody td {
 
   font-variant-numeric: lining-nums oldstyle-nums;
 
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     text-align: left;
 
     &[aria-label] {
@@ -129,7 +133,7 @@ td img {
 
 tbody tr:nth-of-type(odd) > th,
 tbody tr:nth-of-type(odd) > td {
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+  @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     background-color: transparent;
   }
 }

@@ -1,8 +1,8 @@
 // 1. framework itself
-@import '../stylesheets/index';
+@use '../stylesheets';
 
 // 2. tests abstracts
-@import './constants';
+@use './constants';
 
 // 3. Tests
-@import './color-contrast';
+@use './color-contrast';

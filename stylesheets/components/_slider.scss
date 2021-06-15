@@ -1,3 +1,8 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+@use '../abstracts' as my;
+
 @mixin range-track($height, $thumb-height, $bg-fallback: null) {
   &::-webkit-slider-runnable-track {
     width: 100%;
@@ -17,18 +22,19 @@
     background: transparent;
 
     border-color: transparent;
-    @if type-of($height) != 'number' or unitless($height) {
+
+    @if meta.type-of($height) != 'number' or math.is-unitless($height) {
       @error '`$height` argument is required to be a not unitless number due MS Edge and IE necessary hacks.';
     }
 
-    @if type-of($thumb-height) != 'number' or unitless($thumb-height) {
+    @if meta.type-of($thumb-height) != 'number' or math.is-unitless($thumb-height) {
       @error '`$thumb-height` argument is required to be a not unitless number due MS Edge and IE necessary hacks.';
     }
 
-    @if unit($height) != unit($thumb-height) {
+    @if math.unit($height) != math.unit($thumb-height) {
       border-width: calc((#{$thumb-height} - #{$height}) / 2) 0;
     } @else {
-      border-width: (($thumb-height - $height) / 2) 0;
+      border-width: math.div($thumb-height - $height, 2) 0;
     }
   }
 
@@ -50,11 +56,11 @@
 }
 
 @mixin range-thumb($height, $track-height) {
-  @if type-of($height) != 'number' or unitless($height) {
+  @if meta.type-of($height) != 'number' or math.is-unitless($height) {
     @error '`$height` argument is required to be a not unitless number due MS Edge, IE, Blink and Webkit necessary hacks.';
   }
 
-  @if type-of($track-height) != 'number' or unitless($track-height) {
+  @if meta.type-of($track-height) != 'number' or math.is-unitless($track-height) {
     @error '`$track-height` argument is required to be a not unitless number due MS Edge, IE, Blink and Webkit necessary hacks.';
   }
 
@@ -62,10 +68,10 @@
     appearance: none;
     @content;
 
-    @if unit($height) != unit($track-height) {
+    @if math.unit($height) != math.unit($track-height) {
       margin-top: calc((#{$height} - #{$track-height}) / -2);
     } @else {
-      margin-top: ($height - $track-height) / -2;
+      margin-top: math.div($height - $track-height, -2);
     }
   }
 
@@ -86,7 +92,7 @@
 @mixin vertical-input-range {
   writing-mode: bt-lr;
 
-  appearance: slider-vertical; // stylelint-disable-next-line no-vendor-prefixes
+  -webkit-appearance: slider-vertical; // stylelint-disable-line property-no-vendor-prefix
 }
 
 /**
@@ -109,25 +115,23 @@
 
   appearance: none;
 
-  @include range-track($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) {
-    // stylelint-disable-next-line mixins-before-declarations
-    background-color: palette('button');
+  @include range-track($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) { // stylelint-disable-line mixins-before-declarations
+    background-color: my.palette('button');
 
     &:focus {
       outline: none;
     }
   }
 
-  @include range-thumb($height: 1.5rem, $track-height: 0.125rem) {
-    // stylelint-disable-next-line mixins-before-declarations
-    background-color: palette('button', 'slider');
+  @include range-thumb($height: 1.5rem, $track-height: 0.125rem) { // stylelint-disable-line mixins-before-declarations
+    background-color: my.palette('button', 'slider');
 
     border: 0;
   }
 
   /**
-	 * 1. Remove the focus border in Firefox.
-	 */
+   * 1. Remove the focus border in Firefox.
+   */
   &::-moz-focus-outer {
     border: 0; /* 1 */
   }

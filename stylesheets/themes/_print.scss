@@ -1,10 +1,12 @@
+@use '../abstracts' as my;
+
 @media print {
-  /* stylelint-disable disable-block, no-color-literals, declaration-no-important */
+  // stylelint-disable disable-block, no-color-literals, declaration-no-important
 
   /**
-	 * @see http://www.alistapart.com/articles/goingtoprint/
-	 * @see http://www.merttol.com/articles/css/too-light-for-print.html
-	 */
+   * @see http://www.alistapart.com/articles/goingtoprint/
+   * @see http://www.merttol.com/articles/css/too-light-for-print.html
+   */
   * {
     text-shadow: none !important;
 
@@ -33,7 +35,7 @@
   a,
   a:link,
   a:visited {
-    font-weight: font-weight('bold');
+    font-weight: my.font-weight('bold');
 
     text-decoration: underline;
 
@@ -54,8 +56,8 @@
   }
 
   /**
-	* Don't show links for images, or javascript/internal links
-	*/
+  * Don't show links for images, or javascript/internal links
+  */
 
   a[href^='javascript:'],
   a[href^='#'] {
@@ -78,8 +80,8 @@
   }
 
   /**
-	 * @see css-discuss.incutio.com/wiki/Printing_Tables
-	 */
+   * @see css-discuss.incutio.com/wiki/Printing_Tables
+   */
   thead {
     display: table-header-group;
   }
@@ -96,7 +98,7 @@
   }
 
   @page {
-    margin: 0.5cm; // stylelint-disable-next-line property-units
+    margin: 0.5cm; // stylelint-disable-line property-units
   }
 
   p,
@@ -136,4 +138,4 @@
   }
 }
 
-/* stylelint-enable disable-block, no-color-literals, declaration-no-important */
+// stylelint-enable disable-block, no-color-literals, declaration-no-important

@@ -1,0 +1,148 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@use '../../../node_modules/sassdoc-theme-herman/scss/utilities';
+@use '../constants/font-stacks' as fs;
+
+////
+/// Typographic settings
+///
+/// @group config-typography
+/// @access public
+/// @type list
+/// @todo Customize it to match your design needs or combine with the already available font stacks.
+///
+////
+
+/// Title font stack
+///
+/// @font title-font-stack (regular, italic, bold, bold italic)
+///   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+/// @example scss
+/// h1, h2, h3, h4, h5, h6,
+/// legend,
+/// caption,
+/// details > summary {
+///   font-family: $title-font-stack;
+/// }
+///
+$title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
+  'Helvetica', 'Arial', sans-serif !default;
+
+
+/// Text body font stack
+///
+/// @font text-font-stack (normal, bold, italic, bold italic)
+/// @example scss
+/// body {
+///   font-family: $text-font-stack;
+/// }
+///
+$text-font-stack: fs.$NATIVE-FONT-STACK !default;
+
+
+/// Code (monospace) font stack
+///
+/// @font code-font-stack (normal, bold, italic, bold italic)
+/// @example scss
+/// pre > code {
+/// 	font-family: $code-font-stack;
+/// }
+///
+$code-font-stack: fs.$BASIC-CODE-FONT-STACK !default;
+
+
+/// Body text font-size
+///
+/// @group config-typography
+/// @type number
+///
+$body-font-size: 1em !default;
+
+
+/// Typographic modular scale
+///
+/// @access private
+/// @group config-typography
+/// @sizes modular-scale {text}
+/// @type map
+/// @link http://www.modularscale.com/?1&rem&1.25
+///
+$modularscale: (
+  base: 1rem,
+  ratio: 1.25,
+);
+
+$sizes: ();
+
+@for $i from -2 through 7 {
+  $value: math.pow(map.get($modularscale, 'ratio'), $i) * map.get($modularscale, 'base');
+  $name: if($i == 0, #{(math.div($value, 1rem) * 16px)} #{'(base)'}, #{(math.div($value, 1rem) * 16px)} #{'('} $i #{')'});
+
+  $sizes: map.set($sizes, $name, $value);
+}
+@include utilities.add('sizes', 'modular-scale', $sizes);
+
+
+/// Default Leading
+///
+/// @ratios leading
+/// @group config-typography
+/// @type number
+///
+$leading: 1.5 !default;
+@include utilities.add('ratios', 'leading', ('leading': $leading));
+
+
+/// Flexible leadings map
+///
+/// @group config-typography
+/// @ratios flexible-leading
+/// @type Map
+/// @prop {number} min - minimum line height expressed without unit
+/// @prop {number} max - maximum line height expressed without unit
+///
+$leadings: (
+  'min': 1.15,
+  'max': 1.5,
+) !default;
+@include utilities.add('ratios', 'flexible-leading', (
+  'minimum leading': map.get($leadings, 'min'),
+  'maximum leading': map.get($leadings, 'max'),
+));
+
+
+/// Optimum line lengths
+///
+/// @type Map
+/// @group config-typography
+/// @sizes line-lengths {ruler-large}
+/// @prop {number} min - minimum line length expressed in `em`
+/// @prop {number} max - maximum line length expressed in `em`
+/// @prop {number} column - best line length for columns
+///
+$line-lengths: (
+  'min': 21em,
+  'max': 37.5em,
+  'column': 22.5em, // ≅45chars width
+) !default;
+@include utilities.add('sizes', 'line-lengths', (
+  'minimum line width': map.get($line-lengths, 'min'),
+  'maximum line width': map.get($line-lengths, 'max'),
+  'column width': map.get($line-lengths, 'column'),
+));
+
+
+/// Font weights map
+///
+/// @access public
+/// @prop {string} weight - Pure colors or a map of tones
+/// @todo Customize the weights or add new ones to match your design needs.
+/// @type Map
+///
+$font-weights: (
+  'text': 400,
+  'bold': 600,
+  'extrabold': 800,
+  'heading': 600,
+);

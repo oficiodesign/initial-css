@@ -1,3 +1,5 @@
+@use '../abstracts' as my;
+
 /* FORMS
 ============================================================================ */
 
@@ -7,17 +9,43 @@
  */
 
 form {
-  margin: 0;
+  margin: 0 0 my.$gutter 0;
 }
 
+[role='group'],
 fieldset {
+  display: flex;
+
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: stretch;
+
   max-width: none;
   min-width: 0;
 
-  padding: 0;
-  margin: 0;
+  padding: my.$gutter 0;
+  margin-top: 0;
+  margin-right: my.$gutter * -0.5;
+  margin-bottom: 0;
+  margin-left: my.$gutter * -0.5;
 
   border: 0;
+
+  + [role='group'],
+  + fieldset {
+    border-top: my.$stroke solid my.palette('neutral', 'light');
+
+    &:last-child {
+      padding-top: 0;
+
+      border: 0;
+    }
+  }
+
+  > * {
+    margin-right: my.$gutter * 0.5;
+    margin-left: my.$gutter * 0.5;
+  }
 }
 
 fieldset fieldset {
@@ -37,8 +65,11 @@ legend {
   max-width: 100%; /* 1 */
 
   padding: 0; /* 3 */
+  margin-bottom: my.$gutter;
 
-  font-weight: font-weight('extrabold');
+  flex-basis: 100%;
+
+  font-weight: my.font-weight('extrabold');
 
   white-space: normal; /* 1 */
 
@@ -56,8 +87,17 @@ label {
 
   cursor: pointer;
 
-  // &:focus-within {
-  // }
+  color: my.palette('text', 'faded');
+
+  &:focus-within {
+    color: my.palette('text', 'title');
+  }
+}
+
+abbr.field__required {
+  color: my.palette('feedback', 'danger');
+
+  text-decoration: none;
 }
 
 label * {
@@ -142,13 +182,11 @@ form br {
  * 2. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  * 3. Address inconsistent `text-transform` inheritance for `button` and `select`.
  * 4. Allow setting the same size for all form fields.
- * 5. Add a focus outline for some fields only (opinionated).
- * 6. Set the focus outline to be just around the field border.
  */
 %os-element-reset {
   display: inline-block;
 
-  padding: 1px; /* 2 */ // stylelint-disable-next-line property-units
+  padding: 1px; /* 2 */ // stylelint-disable-line property-units
   margin: 0;
 
   overflow: visible;
@@ -156,7 +194,7 @@ form br {
   font-size: inherit; /* 1 */
   line-height: inherit; /* 1 */
   font-family: inherit; /* 1 */
-  -webkit-font-smoothing: inherit; // stylelint-disable-next-line no-vendor-prefixes
+  -webkit-font-smoothing: inherit; // stylelint-disable-line property-no-vendor-prefix
   letter-spacing: inherit;
 
   text-align: inherit;
@@ -166,10 +204,10 @@ form br {
 
   color: inherit;
 
-  border-width: $stroke;
+  border-width: my.$stroke;
   border-style: solid;
-  border-color: palette('border');
-  border-radius: $rounded-corner;
+  border-color: my.palette('border');
+  border-radius: my.$rounded-corner;
 
   outline: 0;
 
@@ -179,28 +217,24 @@ form br {
   }
 
   &:focus {
-    outline: 1px dotted palette('black'); /* 5 */
-    outline-offset: 0; /* 6 */
+    @include my.focused;
   }
 }
 
-/* stylelint-disable selector-pseudo-class-no-unknown */
 :disabled,
-  color: palette('disabled', 'foreground');
 :read-only {
+  color: my.palette('disabled', 'foreground');
 
-  background: palette('disabled', 'background');
+  background: my.palette('disabled', 'background');
 }
 
 :disabled {
   cursor: not-allowed;
 }
 
-  /* stylelint-disable-line */
 :read-only {
   cursor: default;
 }
-/* stylelint-enable selector-pseudo-class-no-unknown */
 
 :enabled {
 }
@@ -211,15 +245,14 @@ form br {
 /**
  * Correct the text style of placeholders
  */
-
 @mixin placeholder {
-  color: palette('placeholder');
+  color: my.palette('placeholder');
 
   opacity: 1;
 }
 
 @mixin placeholder--focus {
-  color: palette('placeholder', 'focus');
+  color: my.palette('placeholder', 'focus');
 }
 
 ::placeholder {
@@ -257,7 +290,7 @@ form br {
  * Consistent background color on Chrome.
  */
 [type='color'] {
-  background-color: palette('white');
+  background-color: my.palette('white');
 }
 
 /**
@@ -296,19 +329,19 @@ form br {
   height: 2em;
   min-width: 250px;
 
-  padding: 0 !important; /* 2 */ /* stylelint-disable-line */
+  padding: 0 !important; /* 2 */ // stylelint-disable-line declaration-no-important
   margin: 0; /* 2 */
 
   font-family: inherit;
 
-  text-align: start !important; /* stylelint-disable-line */
+  text-align: start !important; // stylelint-disable-line declaration-no-important
   white-space: nowrap;
 
   cursor: default;
 
   background-color: transparent; /* 1 */
 
-  border-style: none !important; /* stylelint-disable-line */
+  border-style: none !important; // stylelint-disable-line declaration-no-important
 
   -webkit-box-align: baseline; // stylelint-disable-line property-no-vendor-prefix
 
@@ -316,7 +349,7 @@ form br {
   -moz-appearance: none; // stylelint-disable-line property-no-vendor-prefix
   appearance: normal;
 
-  -moz-binding: none; /* stylelint-disable-line */
+  -moz-binding: none;
 }
 
 // [type='file'][multiple] {
@@ -362,16 +395,16 @@ form br {
 
   cursor: pointer;
 
-  background-color: palette('button'); /* 2 */
+  background-color: my.palette('button'); /* 2 */
 
   border-width: 1px; /* 3 */
   border-style: solid; /* 3 */
-  border-color: palette('border'); /* 3 */
+  border-color: my.palette('border'); /* 3 */
 
   -webkit-appearance: button; /* 1 */ // stylelint-disable-line property-no-vendor-prefix
 
   &:hover {
-    background-color: palette('button', 'focus');
+    background-color: my.palette('button', 'focus');
   }
 }
 
@@ -381,7 +414,7 @@ form br {
 
 :focus::-webkit-color-swatch,
 :focus::-webkit-file-upload-button {
-  outline: 1px dotted palette('black');
+  outline: 1px dotted my.palette('black');
 }
 
 /**
@@ -391,10 +424,10 @@ form br {
 ::-ms-browse {
   border-width: 1px; /* 1 */
   border-style: solid; /* 1 */
-  border-color: palette('border'); /* 1 */
+  border-color: my.palette('border'); /* 1 */
 
   &:hover {
-    background-color: palette('button', 'focus');
+    background-color: my.palette('button', 'focus');
   }
 }
 
@@ -403,7 +436,7 @@ form br {
  */
 
 :focus::-ms-browse {
-  outline: 1px dotted palette('black');
+  outline: 1px dotted my.palette('black');
 }
 
 // /* ALERTS and FORMS */

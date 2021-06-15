@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../abstracts' as my;
+
 // -----------------------------------------------------------------------------
 // This file contains CSS helper classes.
 // -----------------------------------------------------------------------------
@@ -5,10 +9,11 @@
 /* CLASSES
 ============================================================================ */
 %loading-bg {
-  background-image: image('loading.svg');
+  background-image: my.image('loading.svg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-color: palette('loading', 'background');
+  background-color: my.palette('loading', 'background');
+  background-attachment: fixed;
 }
 
 %loading-el {
@@ -23,7 +28,7 @@
     bottom: 0;
     left: 0;
 
-    z-index: layer('modal');
+    z-index: my.layer('modal');
 
     content: '';
   }
@@ -54,17 +59,26 @@
 ///
 [aria-busy='true'] {
   > body,
-  &:not(html) {
-    @extend %loading-bg;
+  &:not(html):not(.skeleton) {
     @extend %loading-el;
+
+    position: relative;
+
+    &::after {
+      @extend %loading-bg;
+    }
   }
 }
 
-img:not([src$='.png']):not([src$='.gif']),
+img,
 embed {
-  @extend %loading-bg;
+  &::before {
+    @extend %loading-bg;
 
-  background-size: auto;
+    display: block;
+    content: '';
+    background-size: auto;
+  }
 
   &::after {
     /*
@@ -98,7 +112,7 @@ textarea {
 /// </html>
 ///
 .grid {
-  $n: $_mobile-columns - 1;
+  $n: my.$mobile-columns - 1;
 
   &::after,
   &:root::before {
@@ -106,7 +120,7 @@ textarea {
     top: 0;
     right: 0;
 
-    z-index: layer('modal');
+    z-index: my.layer('modal');
 
     font-size: 1rem;
 
@@ -116,7 +130,7 @@ textarea {
   }
 
   &::after {
-    @include grid-image($n);
+    @include my.grid-image($n);
 
     background-position: center top;
 
@@ -124,23 +138,23 @@ textarea {
   }
 
   &:root::before {
-    padding: $gutter;
+    padding: my.$gutter;
 
-    background-color: palette('debug');
+    background-color: my.palette('feedback', 'danger');
 
     content: 'breakpoint: #{$n}col';
 
     opacity: 0.75;
   }
 
-  @each $key, $value in $breakpoints {
+  @each $key, $value in my.$breakpoints {
     $n: $n + 1;
 
-    @if map.get($toggle-breakpoints, $key) ==null {
+    @if map.get(my.$toggle-breakpoints, $key) ==null {
 
-      @media screen and (min-width: breakpoint($key)) {
+      @media screen and (min-width: my.breakpoint($key)) {
         &::after {
-          @include grid-image($n);
+          @include my.grid-image($n);
         }
 
         &:root::before {
@@ -150,20 +164,18 @@ textarea {
     }
   }
 
-  @media screen and (min-width: $max-width) {
+  @media screen and (min-width: my.$max-width) {
     &::after {
-      background-size: $max-width 100%;
+      background-size: my.$max-width 100%;
     }
   }
 }
 
 .container {
-  max-width: $max-width;
+  max-width: my.$max-width;
 
-  padding-top: $leading * 4rem;
-  padding-right: $gutter;
-  padding-bottom: $leading * 4rem;
-  padding-left: $gutter;
+  padding-right: my.$gutter;
+  padding-left: my.$gutter;
   margin-right: auto;
   margin-left: auto;
 }

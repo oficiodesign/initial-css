@@ -1,95 +1,105 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass functions.
-// -----------------------------------------------------------------------------
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+
+@use 'constants/mdc-linear-channel-values' as constants;
+
+////
+/// This file contains all application-wide Sass functions.
+/// @group helpers
+////
+
+
+/// path for assets to styles
+///
+/// @type string
+/// @access public
+$my-base-url: '/assets/' !default;
+
+/// break points for the project
+///
+/// @type map
+/// @access public
+$my-breakpoints: null !default;
+
+/// font weights for the project
+///
+/// @type map
+/// @access public
+$my-font-weights: null !default;
+
+/// gutter for the grid of the project
+///
+/// @type number
+/// @access public
+$my-gutter: 1rem !default;
+
+/// palette of colors for te project
+///
+/// @type map
+/// @access public
+$my-palette: () !default;
 
 /// Native `url(..)` function wrapper
-/// @group helpers
+///
 /// @param {String} $base - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
 /// @param {String} $path - asset path
 /// @return {Url}
+///
 @function asset($base, $type, $path) {
   @return url('#{$base}#{$type}#{$path}');
 }
 
 /// Returns URL to an image based on its path
-/// @group helpers
+///
 /// @param {String} $path - image path
-/// @param {String} $base [$base-url] - base URL
+/// @param {String} $base [$my-base-url] - base URL
 /// @return {Url}
-/// @require {variable} $base-url
-@function image($path, $base: $base-url) {
+/// @require {variable} $my-base-url
+///
+@function image($path, $base: $my-base-url) {
   @return asset($base, 'img/', $path);
 }
 
 /// Returns URL to a font based on its path
-/// @group helpers
+///
 /// @param {String} $path - font path
-/// @param {String} $base [$base-url] - base URL
+/// @param {String} $base [$my-base-url] - base URL
 /// @return {Url}
-/// @require {variable} $base-url
-@function font($path, $base: $base-url) {
+/// @require {variable} $my-base-url
+///
+@function font($path, $base: $my-base-url) {
   @return asset($base, 'ff/', $path);
 }
 
 /// Remove the unit of a length
+///
 /// @param {Number} $number - Number to remove unit from
 /// @access public
 /// @return {Number} - Unitless number
 /// @link http://stackoverflow.com/a/12335841
+///
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
+
+    @return math.div($number, $number * 0 + 1);
   }
 
   @return $number;
 }
 
-/// @access private
-/// @author Mihai Vaduva
-/// @param {Number} $float - Number to get the square root
-/// @link http://www.antimath.info/css/sass-sqrt-function/
-@function _sqrt($r) {
-  $x0: 1;
-  $x1: $x0;
-
-  @for $i from 1 through 10 {
-    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
-    $x0: $x1;
-  }
-
-  @return $x1;
-}
-
-/// Exponentiation function
-/// @param {Number} $number
-/// @param {Number} $exponent
-/// @access private
-/// @author Kitty Giraudel
-/// @return {Number}
-/// @link https://css-tricks.com/snippets/sass/power-function/
-@function _pow($number, $exponent) {
-  $value: 1;
-
-  @if round($exponent) != $exponent {
-    @error '`$n` must be an integer. This is a simple Exponentiation function. Exponent floats aren\'t supported. `#{$n}` given.`';
-  }
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
-    }
-  }
-
-  @return $value;
-}
-
 /// toFixed() function in Sass
+///
 /// @author Kitty Giraudel
 /// @param {Number} $float - Number to format
 /// @param {Number} $digits [2] - Number of digits to leave
 /// @access private
 /// @return {Number}
+///
 @function _to-fixed($float, $digits: 2) {
   $sass-precision: 10;
   $pow: 0;
@@ -98,36 +108,17 @@
     @warn 'Sass sets default precision to #{$sass-precision} digits, and there is no way to change that for now. The returned number will have #{$sass-precision} digits, even if you asked for `#{$digits}`.';
   }
 
-  $pow: _pow(10, $digits);
-
-  @return round($float * $pow) / $pow;
-}
-
-/// Slightly lighten a color
-/// @access public
-/// @group helpers
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
-
-/// Slightly darken a color
-/// @access public
-/// @group helpers
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  $pow: math.pow(10, $digits);
+  @return math.div(math.round($float * $pow), $pow);
 }
 
 /// Calculate the Perceived Brightness of a Color
+///
 /// @access private
 /// @param {color} $color
 /// @link http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
 /// @link http://alienryderflex.com/hsp.html
+///
 @function _brightness($color) {
   $red-magic-number: 241;
   $green-magic-number: 691;
@@ -135,76 +126,87 @@
   $brightness-divisor: $red-magic-number + $green-magic-number + $blue-magic-number;
 
   // Extract color components
-  $red-component: red($color);
-  $green-component: green($color);
-  $blue-component: blue($color);
+  $red-component: color.red($color);
+  $green-component: color.green($color);
+  $blue-component: color.blue($color);
 
   // Calculate a brightness value in 3d color space between 0 and 255
-  $number: _sqrt(
-    (
-      ($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) +
-      ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor
+  $number: math.sqrt(
+    math.div(
+      ($red-component * $red-component * $red-magic-number) +
+      ($green-component * $green-component * $green-magic-number) +
+      ($blue-component * $blue-component * $blue-magic-number),
+      $brightness-divisor
+    )
     );
 
   // Convert to percentage and return
-  @return 100% * $number / 255;
+  @return math.div(100% * $number, 255);
 }
 
 /// Calculate the luminance for a color.
+///
 /// @access private
 /// @param {color} $color
 /// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
 /// @link https://www.w3.org/TR/WCAG20/#relativeluminancedef
+///
 @function _luminance($color) {
-  $red: red($color) + 1;
-  $green: green($color) + 1;
-  $blue: blue($color) + 1;
+  $red: color.red($color) + 1;
+  $green: color.green($color) + 1;
+  $blue: color.blue($color) + 1;
 
-  $red: nth($_mdc-linear-channel-values, $red);
-  $green: nth($_mdc-linear-channel-values, $green);
-  $blue: nth($_mdc-linear-channel-values, $blue);
+  $red: list.nth(constants.$MDC-LINEAR-CHANNEL-VALUES, $red);
+  $green: list.nth(constants.$MDC-LINEAR-CHANNEL-VALUES, $green);
+  $blue: list.nth(constants.$MDC-LINEAR-CHANNEL-VALUES, $blue);
 
   @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
 }
 
 /// Calculate the contrast ratio between two colors using their luminance
+///
 /// @access private
 /// @param {color} $color
 /// @link https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
 /// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+///
 @function _contrast($fg-color, $bg-color) {
   $fore-lum: _luminance($fg-color) + 0.05;
   $back-lum: _luminance($bg-color) + 0.05;
 
-  @return max($back-lum, $fore-lum) / min($back-lum, $fore-lum);
+  @return math.div(math.max($back-lum, $fore-lum), math.min($back-lum, $fore-lum));
 }
 
-/// Mix a transparent color with its backgound
+/// Mix a transparent color with its background
+///
 /// @access private
 /// @param {color} $foreground - Foreground transparent color
 /// @param {color} $background - Background opaque color
 /// @link http://thesassway.com/intermediate/mixins-for-semi-transparent-colors
+///
 @function _opacize($foreground, $background) {
-  $percent: alpha($foreground) * 100%;
-  $opaque: opacify($foreground, 1);
+  $percent: color.alpha($foreground) * 100%;
+  $opaque: color.adjust($foreground, $alpha: 1);
 
-  @return mix($opaque, $background, $percent);
+  @return color.mix($opaque, $background, $percent);
 }
 
 /// Automagically computes the best equivalent RGBA color.
+///
 /// @access private
 /// @param {color} $desired-color - Desired color to match against background
 /// @param {color} $background-color - Background opaque color
 /// @author Tobia
 /// @link https://stackoverflow.com/a/38265284
+///
 @function _alphaize($desired-color, $background-color) {
-  $r1: red($background-color);
-  $g1: green($background-color);
-  $b1: blue($background-color);
+  $r1: color.red($background-color);
+  $g1: color.green($background-color);
+  $b1: color.blue($background-color);
 
-  $r2: red($desired-color);
-  $g2: green($desired-color);
-  $b2: blue($desired-color);
+  $r2: color.red($desired-color);
+  $g2: color.green($desired-color);
+  $b2: color.blue($desired-color);
 
   $alpha: 0;
   $r: -1;
@@ -212,8 +214,8 @@
   $b: -1;
 
   @while $alpha < 1 and ($r < 0 or $g < 0 or $b < 0 or $r > 255 or $g > 255 or $b > 255) {
-    $alpha: $alpha + 1/256;
-    $inv: 1 / $alpha;
+    $alpha: $alpha + math.div(1, 256);
+    $inv: math.div(1, $alpha);
     $r: $r2 * $inv + $r1 * (1 - $inv);
     $g: $g2 * $inv + $g1 * (1 - $inv);
     $b: $b2 * $inv + $b1 * (1 - $inv);
@@ -228,15 +230,15 @@ $_default-text-color--light: palette('text', 'light');
 /// Determine whether to use dark or light text on top of given color.
 /// If background preferable color not provide, returns black for dark text and white for light text.
 /// @access public
-/// @group helpers
 /// @param {color} $bg-color - background color
 /// @param {color} $fg-color - foreground color
 /// @param {string} $level - WCAG level, being 'AAA' or 'AA'
 /// @return {Color}
 /// @link https://www.madebymike.com.au/writing/accessible-contrast-with-less-and-sass/
 /// @link https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796
+///
 @function text-contrast($bg-color, $fg-color: null, $level: 'AA') {
-  $level: to-upper-case($level);
+  $level: string.to-upper-case($level);
   $lightest-color: rgb(255, 255, 255);
   $darkest-color: rgb(0, 0, 0);
   $lighter-ratio: 0;
@@ -249,43 +251,43 @@ $_default-text-color--light: palette('text', 'light');
   $lighter-ratio: 0;
   $darker-ratio: 0;
 
-  @if type-of($bg-color) != 'color' {
-    @error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{type-of(bg-color)}`';
+  @if meta.type-of($bg-color) != 'color' {
+    @error 'Background must be a color. Value `#{$bg-color}` provided is of type `#{meta.type-of(bg-color)}`';
   }
 
-  @if type-of($fg-color) != 'color' and $fg-color != null {
-    @error 'Foreground must be a color. Value `#{$fg-color}` provided is of type `#{type-of(fg-color)}`';
+  @if meta.type-of($fg-color) != 'color' and $fg-color != null {
+    @error 'Foreground must be a color. Value `#{$fg-color}` provided is of type `#{meta.type-of(fg-color)}`';
   }
 
   @if $level != 'AA' and $level != 'AAA' {
     @warn 'Unknown `$level` submitted. Allowed: `AA`, `AAA`. Assuming `AAA`';
   }
 
-  @if alpha($bg-color) < 1 {
+  @if color.alpha($bg-color) < 1 {
     @error 'Background color can\'t have alpha channel. `#{$bg-color}` given';
   }
 
-  @if alpha($light-fg) < 1 {
+  @if color.alpha($light-fg) < 1 {
     $light-fg: _opacize($light-fg, $bg-color);
     $light-fg-has-alpha: true;
   }
 
-  @if alpha($dark-fg) < 1 {
+  @if color.alpha($dark-fg) < 1 {
     $dark-fg: _opacize($dark-fg, $bg-color);
     $dark-fg-has-alpha: true;
   }
 
-  @if variable-exists('$_default-text-color--light') {
-    @if type-of($_default-text-color--light) != 'color' {
-      @error '`$_default-text-color--light` must be a color. Value `#{$_default-text-color--light}` provided is of type `#{type-of($_default-text-color--light)}`';
+  @if meta.global-variable-exists('$_default-text-color--light') {
+    @if meta.type-of($_default-text-color--light) != 'color' {
+      @error '`$_default-text-color--light` must be a color. Value `#{$_default-text-color--light}` provided is of type `#{meta.type-of($_default-text-color--light)}`';
     } @else {
       $lightest-color: $_default-text-color--light;
     }
   }
 
-  @if variable-exists('$_default-text-color--dark') {
-    @if type-of($_default-text-color--dark) != 'color' {
-      @error '`$_default-text-color--dark` must be a color. Value `#{$_default-text-color--dark}` provided is of type `#{type-of($_default-text-color--dark)}`';
+  @if meta.global-variable-exists('$_default-text-color--dark') {
+    @if meta.type-of($_default-text-color--dark) != 'color' {
+      @error '`$_default-text-color--dark` must be a color. Value `#{$_default-text-color--dark}` provided is of type `#{meta.type-of($_default-text-color--dark)}`';
     } @else {
       $darkest-color: $_default-text-color--dark;
     }
@@ -301,8 +303,8 @@ $_default-text-color--light: palette('text', 'light');
   }
 
   @for $i from 1 through 10 {
-    $lighter: scale-color($light-fg, $lightness: $i * 10%, $saturation: $i * 10%);
-    $darker: scale-color($dark-fg, $lightness: $i * -10%, $saturation: $i * 10%);
+    $lighter: color.scale($light-fg, $lightness: $i * 10%, $saturation: $i * 10%);
+    $darker: color.scale($dark-fg, $lightness: $i * -10%, $saturation: $i * 10%);
 
     $darker-ratio: _contrast($bg-color, $darker);
     $lighter-ratio: _contrast($bg-color, $lighter);
@@ -326,26 +328,29 @@ $_default-text-color--light: palette('text', 'light');
 }
 
 /// Convert a HSL color to RGB
+///
 /// @access public
 /// @group helpers
 /// @link https://gist.github.com/omgmog/6192734
 /// @param {color} $hsl-color - hsl color
+///
 @function hsl-to-rgb($hsl-color) {
-  @return mix($hsl-color, $hsl-color);
+  @return color.mix($hsl-color, $hsl-color);
 }
 
 /// Replace `$search` with `$replace` in `$string`
+///
 /// @author Kitty Giraudel
-/// @group helpers
 /// @param {String} $string - Initial string
 /// @param {String} $search - Substring to replace
 /// @param {String} $replace ('') - New value
 /// @return {String} - Updated string
+///
 @function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
 
   @return $string;
@@ -356,7 +361,6 @@ $_default-text-color--light: palette('text', 'light');
 ///
 /// @access public
 /// @author Sobral
-/// @group helpers
 /// @param {String} $weight - Weight name
 /// @return {Number}
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight?v=control#Common_weight_name_mapping
@@ -365,6 +369,7 @@ $_default-text-color--light: palette('text', 'light');
 /// h1 {
 /// 	font-weight: font-weight('medium');
 /// }
+///
 @function font-weight($weight: 'normal') {
   $default-weights: (
     'thin': 100,
@@ -395,23 +400,22 @@ $_default-text-color--light: palette('text', 'light');
     'heavy': 900,
   );
 
-  $weight: to-lower-case($weight);
+  $weight: string.to-lower-case($weight);
 
-  @if variable-exists('font-weights') and type-of($font-weights) == 'map' {
-    $default-weights: map-merge($default-weights, $font-weights);
+  @if meta.global-variable-exists('my-font-weights') and meta.type-of($my-font-weights) == 'map' {
+    $default-weights: map.merge($default-weights, $my-font-weights);
   }
 
-  @if not map-has-key($default-weights, $weight) {
+  @if not map.has-key($default-weights, $weight) {
     @error 'unknown value sent to `font-weight` function-> #{$weight}.';
   }
 
-  @return map-get($default-weights, $weight);
+  @return map.get($default-weights, $weight);
 }
 
 /// Get a z-index value from a layer name
 ///
 /// @access public
-/// @group helpers
 /// @param {String} $layer - Name of the layer
 /// @require {variable} $layers
 /// @return {Number}
@@ -420,6 +424,7 @@ $_default-text-color--light: palette('text', 'light');
 /// 	dialog[open] {
 /// 		z-index: layer('modal');
 /// 	}
+///
 @function layer($layer: 'default') {
   // sass-lint:disable-block indentation
   $default-layers: (
@@ -429,24 +434,23 @@ $_default-text-color--light: palette('text', 'light');
     'below': -1,
   );
 
-  @if variable-exists('layers') and type-of($layers) == 'map' {
-    $default-layers: map-merge($default-layers, $layers);
+  @if meta.global-variable-exists('layers') and meta.type-of($layers) == 'map' {
+    $default-layers: map.merge($default-layers, $layers);
   }
 
-  @if not map-has-key($default-layers, $layer) {
-    @error 'unknown value sent to `layer` function-> #{$layer}. Availabe values-> `#{map-keys($default-layers)}`';
+  @if not map.has-key($default-layers, $layer) {
+    @error 'unknown value sent to `layer` function-> #{$layer}. Available values-> `#{map.keys($default-layers)}`';
   }
 
-  @return map-get($default-layers, $layer);
+  @return map.get($default-layers, $layer);
 }
 
 /// Helper function to use organized colors and tones
 ///
 /// @access public
-/// @group helpers
 /// @param {String} $color-name - Color name
 /// @param {String} $tone ['base'] - Tone name
-/// @require {variable} $palette
+/// @require {variable} $my-palette
 /// @return {color}
 /// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
 ///
@@ -458,13 +462,13 @@ $_default-text-color--light: palette('text', 'light');
 /// 			color: palette('anchor', 'hover');
 /// 		}
 /// 	}
+///
 @function palette($color-name, $tone: null) {
   $color: transparent;
 
   $default-palette: (
     'white': rgb(255, 255, 255),
     'black': rgb(0, 0, 0),
-    'debug': rgb(255, 0, 0),
     'anchor': (
       'base': rgb(0, 102, 204),
       'link': rgb(0, 102, 204),
@@ -521,43 +525,45 @@ $_default-text-color--light: palette('text', 'light');
     ),
   );
 
-  @if variable-exists('palette') and type-of($palette) == 'map' {
-    $default-palette: map-merge($default-palette, $palette);
+  $full-palette: ();
+
+  @if meta.variable-exists('my-palette') and meta.type-of($my-palette) == 'map' {
+    $full-palette: map.merge($default-palette, $my-palette);
   }
 
-  @if map-has-key($default-palette, $color-name) {
-    $color: map-get($default-palette, $color-name);
+  @if map.has-key($full-palette, $color-name) {
+    $color: map.get($full-palette, $color-name);
   } @else {
-    @error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map-keys($default-palette)}`';
+    @error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map.keys($full-palette)}`';
   }
 
   @if $tone != null {
-    @if type-of($color) == 'color' or $color == 'transparent' {
+    @if meta.type-of($color) == 'color' or $color == 'transparent' {
       @error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one tone available for color `#{$color-name}`-> `#{$color}`';
-    } @else if not map-has-key($color, $tone) {
-      @error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$color-name}`-> `#{map-keys($color)}`';
+    } @else if not map.has-key($color, $tone) {
+      @error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$color-name}`-> `#{map.keys($color)}`';
     } @else {
-      @return map-get(map-get($default-palette, $color-name), $tone);
+
+      @return map.get(map.get($full-palette, $color-name), $tone);
     }
   } @else {
-    @if type-of($color) == 'color' or $color == 'transparent' {
+    @if meta.type-of($color) == 'color' or $color == 'transparent' {
       @return $color;
-    } @else if type-of($color) == 'map' and not map-has-key($color, 'base') {
+    } @else if meta.type-of($color) == 'map' and not map.has-key($color, 'base') {
       @error 'color `#{$color}` misses `base` tone';
     } @else {
-      @return map-get($color, 'base');
+      @return map.get($color, 'base');
     }
   }
 }
 
 /// Trims a string by removing leading and trailing spaces
 ///
-/// @group helpers
 /// @param {String} $string - String to trim
 /// @return {String} - String without spaces
 ///
 @function trim($string) {
-  @return str-slice(
+  @return string.slice(
     $string,
     _first-index($string, 'left'),
     _first-index($string, 'right')
@@ -572,10 +578,10 @@ $_default-text-color--light: palette('text', 'light');
 /// @return {Number} - Index of first non-space character
 ///
 @function _first-index($string, $direction: 'left') {
-  @for $i from 1 through str-length($string) {
+  @for $i from 1 through string.length($string) {
     $index: if($direction == 'left', $i, -$i);
 
-    @if str-slice($string, $index, $index) != ' ' {
+    @if string.slice($string, $index, $index) != ' ' {
       @return $index;
     }
   }
@@ -586,14 +592,9 @@ $_default-text-color--light: palette('text', 'light');
 /// Get a length value from a breakpoint name
 ///
 /// @access public
-/// @group helpers
 /// @param {String} $breakpoint - name of the break point
 /// @require {variable} $breakpoints
 /// @return {Number}
-///
-/// @example scss
-///
-///
 ///
 @function breakpoint($breakpoint: null) {
   $default-breakpoints: (
@@ -606,16 +607,16 @@ $_default-text-color--light: palette('text', 'light');
   );
 
   @if $breakpoint == null {
-    @error 'A breakpoint name is required. Availabe values-> `#{map-keys($default-breakpoints)}`';
+    @error 'A breakpoint name is required. Available values-> `#{map.keys($default-breakpoints)}`';
   }
 
-  @if variable-exists('breakpoints') and type-of($breakpoints) == 'map' {
-    $default-breakpoints: map-merge($default-breakpoints, $breakpoints);
+  @if meta.global-variable-exists('my-breakpoints') and meta.type-of($my-breakpoints) == 'map' {
+    $default-breakpoints: map.merge($default-breakpoints, $my-breakpoints);
   }
 
-  @if not map-has-key($default-breakpoints, $breakpoint) {
-    @error 'unknown value sent to `breakpoint` function-> #{$breakpoint}. Availabe values-> `#{map-keys($default-breakpoints)}`';
+  @if not map.has-key($default-breakpoints, $breakpoint) {
+    @error 'unknown value sent to `breakpoint` function-> #{$breakpoint}. Available values -> `#{map.keys($default-breakpoints)}`';
   }
 
-  @return map-get($default-breakpoints, $breakpoint);
+  @return map.get($default-breakpoints, $breakpoint);
 }

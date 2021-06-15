@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../abstracts' as my;
+
 /**
  * 1. Add text decoration inheritance in all browsers (opinionated).
  * 2. Add vertical alignment inheritence in all browsers (opinionated).
@@ -15,12 +19,12 @@
  * Basic typography style for copy text
  */
 body {
-  font-weight: font-weight('text');
-  font-size: $body-font-size;
-  line-height: $leading;
-  font-family: $text-font-stack;
+  font-weight: my.font-weight('text');
+  font-size: my.$body-font-size;
+  line-height: my.$leading;
+  font-family: my.$text-font-stack;
 
-  color: palette('text', 'dark');
+  color: my.palette('text', 'dark');
 }
 
 /* HEADINGS AND TITLES */
@@ -39,14 +43,22 @@ h6,
 legend,
 caption,
 details > summary {
-  font-weight: font-weight('heading');
-  font-family: $title-font-stack;
+  font-weight: my.font-weight('heading');
+  font-family: my.$title-font-stack;
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
 
   break-after: avoid;
   page-break-after: avoid;
+
+  margin-top: my.$gutter * 2;
+  margin-bottom: my.$gutter;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
 summary {
-  color: palette('accent');
+  color: my.palette('accent');
 
   text-decoration: none;
 
@@ -99,14 +111,14 @@ p {
     -webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
     font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1; */
   margin-top: 0;
-  margin-bottom: $leading * 1em;
+  margin-bottom: my.$leading * 1em;
 }
 
 /**
  * @see: http://demosthenes.info/blog/946/Controlling-Widows--Orphans
  */
 article p {
-  max-width: map-get($line-lengths, 'max');
+  max-width: map.get(my.$line-lengths, 'max');
 
   orphans: 3;
   widows: 3;
@@ -181,20 +193,20 @@ dfn {
  * @see https://github.com/necolas/normalize.css/pull/342#issuecomment-173801037
  */
 
-/* stylelint-disable no-duplicate-selectors */
+// stylelint-disable no-duplicate-selectors
 
 b,
 strong {
-  // stylelint:disable-block no-duplicate-properties
-  font-weight: font-weight('bold');
+  // stylelint-disable-block no-duplicate-properties
+  font-weight: my.font-weight('bold');
   font-weight: inherit; /* 1 */
 }
 b,
 strong {
-  font-weight: font-weight('bold'); /* 2 */
+  font-weight: my.font-weight('bold'); /* 2 */
 }
 
-/* stylelint-enable no-duplicate-selectors */
+// stylelint-enable no-duplicate-selectors
 
 // em,
 // i {
@@ -207,9 +219,9 @@ strong {
  * Address styling not present in IE 8/9.
  */
 mark {
-  color: palette('mark', 'foreground');
+  color: my.palette('mark', 'foreground');
 
-  background: palette('mark', 'background');
+  background: my.palette('mark', 'background');
 }
 
 // meter {
@@ -269,7 +281,7 @@ pre,
 samp,
 var {
   font-size: 1em; /* 1 */
-  font-family: $code-font-stack, monospace; /* 2 */
+  font-family: my.$code-font-stack, monospace; /* 2 */
 }
 
 // code {
@@ -312,7 +324,7 @@ s {
 
 %updated {
   &::before {
-    font-weight: font-weight('bold');
+    font-weight: my.font-weight('bold');
 
     text-decoration: none;
 
@@ -370,7 +382,6 @@ del {
 /// Blockquote problems and solutions
 ///
 /// @group components
-/// @see palette
 /// @source http://oli.jp/2011/blockquote/
 ///
 /// @example html
@@ -399,7 +410,7 @@ q,
 blockquote {
   font-style: italic;
 
-  color: palette('quotes');
+  color: my.palette('quotes');
 }
 
 cite {
@@ -426,13 +437,11 @@ blockquote li {
   font-size: 1em;
 }
 
-blockquote.verse {
-  // stylelint-disable-next-line no-qualifying-elements
+blockquote.verse { // stylelint-disable-line no-qualifying-elements
   text-align: center;
 }
 
-blockquote.verse p {
-  // stylelint-disable-next-line no-qualifying-elements
+blockquote.verse p { // stylelint-disable-line no-qualifying-elements
   display: inline-block;
 
   width: auto;

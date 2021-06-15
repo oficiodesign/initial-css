@@ -1,3 +1,20 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+
+@use 'config' as c;
+@use 'constants/font-stacks' as fs;
+@use 'functions' as f;
+
+////
+/// This file contains all application-wide Sass mixins.
+/// @group helpers
+////
+
+
 /// Gray placeholder image
 ///
 ///
@@ -94,9 +111,8 @@
 
 /// Special style for the _&_ used as a conjunction.
 ///
-/// @group helpers
 /// @link http://simplebits.com/notebook/2008/08/14/ampersands-2/
-/// @require {variable} $ampersand-font-stack
+/// @require {variable} fs.$AMPERSAND-FONT-STACK
 ///
 /// @example scss
 /// h1 {
@@ -117,13 +133,12 @@
 /// }
 ///
 @mixin alt-ampersand {
-  .amp {
-    // stylelint-disable-next-line no-qualifying-elements
+  .amp { // stylelint-disable-line no-qualifying-elements
     @include _italic-overflow;
 
     font-size: 2em;
     line-height: 0.25;
-    font-family: $ampersand-font-stack;
+    font-family: fs.$AMPERSAND-FONT-STACK;
 
     vertical-align: middle;
 
@@ -133,8 +148,7 @@
 
 /// Special style for conjunctions or prepositions.
 ///
-/// @group helpers
-/// @require {variable} $alt-font-stack
+/// @require {variable} fs.$ALT-FONT-STACK
 ///
 /// @example html
 /// <h1>The Elements <span class="alt">of</span> Typographic Style</h1>
@@ -152,11 +166,10 @@
 /// }
 ///
 @mixin alt-preposition {
-  .alt {
-    // stylelint-disable-next-line no-qualifying-elements
+  .alt { // stylelint-disable-line no-qualifying-elements
     @include _italic-overflow;
 
-    font-family: $alt-font-stack;
+    font-family: fs.$ALT-FONT-STACK;
 
     @content;
   }
@@ -176,7 +189,6 @@
 /// - `Droid Sans`: Ships with all versions of Android;
 /// - `Helvetica, Arial, sans-serif`: Common font stack on OS X and Windows.
 ///
-/// @group helpers
 /// @link http://blog.purecss.io/post/60789414532/how-we-improved-grids-in-pure-030
 /// @parameter {int} $ie [9] - minimum Internet Explorer version
 ///
@@ -220,8 +232,8 @@
 ///
 /// To be used together with [`inline-block-wrapper`](#helpers-mixin-inline-block-wrapper).
 ///
-/// @group helpers
-/// @parameter {string} $align ['top'] - valid keyword `vertical-aligment` for
+/// @require {variable} c.$text-font-stack
+/// @parameter {string} $align ['top'] - valid keyword `vertical-alignment` for
 /// the grid cells: `baseline`, `sub`, `super`, `text-top`, `text-bottom`,
 /// `middle`, `top`, `bottom`.
 ///
@@ -252,12 +264,12 @@
   display: inline-block;
 
   font-size: $font-size;
-  font-family: $text-font-stack;
+  font-family: c.$text-font-stack;
   letter-spacing: normal;
   word-spacing: normal;
 
   text-rendering: auto;
-  vertical-align: unquote($align);
+  vertical-align: string.unquote($align);
 
   zoom: 1;
 }
@@ -266,7 +278,6 @@
 ///
 /// To be used together with [`table-layout-item`](#helpers-mixin-table-layout-item).
 ///
-/// @group helpers
 ///
 /// @example scss
 /// .h-feed {
@@ -295,7 +306,6 @@
 ///
 /// To be used together with [`table-layout-wrapper`](#helpers-mixin-table-layout-wrapper).
 ///
-/// @group helpers
 ///
 /// @example scss
 /// .h-feed {
@@ -325,7 +335,7 @@
 /// @access private
 ///
 @mixin _font-smoothing($value: true) {
-  // sass-lint:disable-block no-vendor-prefixes
+  // sass-lint:disable-block property-no-vendor-prefix
   @if ($value == true) {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -338,8 +348,6 @@
 /// Helper for icon font.
 ///
 /// It can be used with Font Awesome
-///
-/// @group helpers
 ///
 /// @example scss
 /// .icon {
@@ -365,7 +373,7 @@
   font-style: normal;
   font-variant: normal;
   font-weight: font-weight('normal');
-  font-size: 14px; /* font-awesome pixel perfection is at 14px and multiples of 14 */ // stylelint-disable-next-line property-units
+  font-size: 14px; /* font-awesome pixel perfection is at 14px and multiples of 14 */ // stylelint-disable-line property-units
   line-height: 1;
 
   text-transform: none;
@@ -402,7 +410,6 @@
   }
 }
 
-/// @content the rules to be applied
 @mixin link-undercover {
   &,
   &:link,
@@ -445,13 +452,12 @@
   }
 }
 
-/* stylelint-disable declaration-no-important */
+// stylelint-disable declaration-no-important
 
 ///
 /// Hide element while making it readable for screen readers
 /// Shamelessly borrowed from HTML5Boilerplate
 ///
-/// @group helpers
 /// @link https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
 ///
 @mixin visually-hidden {
@@ -493,7 +499,7 @@
   }
 }
 
-/* stylelint-enable declaration-no-important */
+// stylelint-enable declaration-no-important
 
 /// Truncate and add ellipsis to a string too long for it to fit on a single
 /// line.
@@ -621,47 +627,52 @@ $no-viewport: false !default;
   $fallback-units: ();
 
   @each $value in $values {
-    @if type-of($value) == number {
-      @if str-index(unit($value), 'v') != null {
+    @if meta.type-of($value) == number {
+      @if string.index(math.unit($value), 'v') != null {
         @if $fallbacks == null {
           @error 'fallback values, the 3rd parameter, are required for viewport units';
         } @else {
-          $fallback-units: join($fallback-units, 'viewport');
+          $fallback-units: list.join($fallback-units, 'viewport');
         }
       } @else {
-        $fallback-units: join($fallback-units, unit($value));
+        $fallback-units: list.join($fallback-units, math.unit($value));
       }
     } @else if $fallbacks == null {
       @error 'fallback values, the 3rd parameter, are required for everything except `rem` numbers';
-    } @else if str-index($value, 'calc') {
-      $fallback-units: join($fallback-units, 'calc');
-    } @else if str-index($value, 'gradient') {
-      $fallback-units: join($fallback-units, 'gradient');
+    } @else if string.index($value, 'calc') {
+      $fallback-units: list.join($fallback-units, 'calc');
+    } @else if string.index($value, 'gradient') {
+      $fallback-units: list.join($fallback-units, 'gradient');
     }
 
     @if $fallbacks == null {
-      @if type-of($value) == number and unit($value) == 'rem' {
-        $fallback-values: join($fallback-values, $value / 1rem * 16px);
+      @if meta.type-of($value) == number and math.unit($value) == 'rem' {
+        $fallback-values: list.join($fallback-values, math.div($value, 1rem) * 16px);
       } @else {
-        $fallback-values: join($fallback-values, $value);
+        $fallback-values: list.join($fallback-values, $value);
       }
     }
   }
 
   // sass-lint:disable-block indentation brace-style
-  @if (index($fallback-units, 'alpha') != null and $no-alpha != false) or
-    (index($fallback-units, 'calc') != null and $no-calc != false) or
-    (index($fallback-units, 'gradient') != null and $no-gradient != false) or
-    (index($fallback-units, 'rem') != null and $no-rem != false) or
-    (index($fallback-units, 'viewport') != null and $no-viewport != false) {
+  @if (list.index($fallback-units, 'alpha') != null and $no-alpha != false) or
+    (list.index($fallback-units, 'calc') != null and $no-calc != false) or
+    (list.index($fallback-units, 'gradient') != null and $no-gradient != false) or
+    (list.index($fallback-units, 'rem') != null and $no-rem != false) or
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != false) {
     #{$property}: #{$fallback-values};
   }
 
-  @if (index($fallback-units, 'alpha') != null and $no-alpha != true) or
-    (index($fallback-units, 'calc') != null and $no-calc != true) or
-    (index($fallback-units, 'gradient') != null and $no-gradient != true) or
-    (index($fallback-units, 'rem') != null and $no-rem != true) or
-    (index($fallback-units, 'viewport') != null and $no-viewport != true) {
+  @if (list.index($fallback-units, 'alpha') != null and $no-alpha != true) or
+    (list.index($fallback-units, 'calc') != null and $no-calc != true) or
+    (list.index($fallback-units, 'gradient') != null and $no-gradient != true) or
+    (list.index($fallback-units, 'rem') != null and $no-rem != true) or
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != true) {
+    #{$property}: #{$values};
+  }
+
+  @if ($fallback-units == () and $values) {
+    #{$property}: #{$fallback-values};
     #{$property}: #{$values};
   }
 }
@@ -682,23 +693,23 @@ $no-viewport: false !default;
 /// }
 ///
 @mixin viewport-unit($property, $value) {
-  $unit: unit($value);
+  $unit: math.unit($value);
   // sass-lint:disable-block indentation
 
   #{$property}: $value;
 
-  @if (index((vw, vh, vmin, vmax), $unit) != null) {
+  @if (list.index((vw, vh, vmin, vmax), $unit) != null) {
     $devices: ((768px, 1024px), (320px, 480px), (320px, 568px));
 
     @each $device in $devices {
-      $device-width: nth($device, 1);
-      $device-height: nth($device, 2);
+      $device-width: list.nth($device, 1);
+      $device-height: list.nth($device, 2);
       $device-query: 'only screen and (-webkit-min-device-pixel-ratio: 1)';
       $device-query: '#{$device-query} and (device-width: #{$device-width})';
       $device-query: '#{$device-query} and (device-height: #{$device-height})';
-      $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
-      $percent-width: $device-width * $percent / 100;
-      $percent-height: $device-height * $percent / 100;
+      $percent: math.div($value, $value * 0 + 1); // see https://github.com/sass/sass/issues/533
+      $percent-width: math.div($device-width * $percent, 100);
+      $percent-height: math.div($device-height * $percent, 100);
 
       @if ($unit == vmin or $unit == vmax) {
         @media #{$device-query} {
@@ -735,10 +746,14 @@ $no-viewport: false !default;
   );
 
   @each $direction in $directions {
-    $direction: to-lower-case($direction);
+    $direction: string.to-lower-case($direction);
 
-    @if map-has-key($direction-map, $direction) {
-      $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+    @if not index(top right bottom left, $direction) {
+      @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
+    }
+
+    @if map.has-key($direction-map, $direction) {
+      $opposite-directions: list.append($opposite-directions, string.unquote(map.get($direction-map, $direction)));
     } @else {
       @warn 'No opposite direction can be found for `#{$direction}`. Direction omitted.';
     }
@@ -754,13 +769,18 @@ $no-viewport: false !default;
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
   $perpendicular-borders: $size solid transparent;
 
+  @if not index(top right bottom left, $direction) {
+    @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
+  }
+
   z-index: 2;
 
   width: 0;
   height: 0;
 
-  border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // stylelint-disable-next-line property-sort-order
-  @if not index(top right bottom left, $direction) {
+  border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // stylelint-disable-line property-sort-order
+
+  @if not list.index(top right bottom left, $direction) {
     @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
   }
 
@@ -780,34 +800,13 @@ $no-viewport: false !default;
   $level: 1;
 
   @each $key, $value in $map {
-    @if type-of($value) == 'map' {
-      $level: max(depth($value) + 1, $level);
+    @if meta.type-of($value) == 'map' {
+      $level: math.max(depth($value) + 1, $level);
     }
   }
 
   @return $level;
 }
-
-/* stylelint-disable property-no-unknown, scss/at-rule-no-unknown, selector-type-no-unknown */
-
-@mixin debug-map($map) {
-  @at-root {
-    @debug-map {
-      // these properties are for debug only. They do not exist
-      __tostring__: inspect($map);
-      __length__: length($map);
-      __depth__: depth($map);
-      __keys__: map-keys($map);
-
-      __properties__ {
-        @each $key, $value in $map {
-          #{'(' + type-of($value) + ') ' + $key}: inspect($value);
-        }
-      }
-    }
-  }
-}
-/* stylelint-enable property-no-unknown, scss/at-rule-no-unknown, selector-type-no-unknown */
 
 /// Helper to set a two dimensional proportion to an element.
 ///
@@ -840,34 +839,38 @@ $no-viewport: false !default;
 /// }
 ///
 @mixin aspect-ratio($ratio) {
-  $w: nth($ratio, 1);
-  $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
+  $w: null;
+  $h: null;
 
-  position: relative;
-  @if type-of($ratio) != list {
-    @error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
-  } @else if length($ratio) == 3 and nth($ratio, 2) != 'x' {
-    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
-  } @else if length($ratio) < 2 and length($ratio) > 3 {
-    @error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{length($ratio)}` given.';
+  @if meta.type-of($ratio) != list {
+    @error '`aspect-ratio` function expecting a list for `$ratio`; `#{meta.type-of($ratio)}` given.';
+  } @else if list.length($ratio) == 3 and list.nth($ratio, 2) != 'x' {
+    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{list.nth($ratio, 2)} given.';
+  } @else if list.length($ratio) < 2 and list.length($ratio) > 3 {
+    @error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{list.length($ratio)}` given.';
+  } @else {
+    $w: nth($ratio, 1);
+    $h: if(length($ratio) == 3, nth($ratio, 3), nth($ratio, 2));
   }
 
-  @if type-of($w) != 'number' {
+  @if meta.type-of($w) != 'number' {
     @error 'the value sent to `width` isn\'t a `number`.';
-  } @else if not unitless($w) {
+  } @else if not math.is-unitless($w) {
     @error 'the value sent to `width` **must** be unitless.';
   }
 
-  @if type-of($h) != 'number' {
+  @if meta.type-of($h) != 'number' {
     @error 'the value sent to `height` isn\'t a `number`.';
-  } @else if not unitless($h) {
+  } @else if not math.is-unitless($h) {
     @error 'the value sent to `height` **must** be unitless.';
   }
+
+  position: relative;
 
   &::before {
     float: left;
 
-    padding-top: ($h / $w * 100%);
+    padding-top: (math.div($h, $w) * 100%);
 
     content: '';
   }
@@ -886,30 +889,31 @@ $no-viewport: false !default;
 /// @link http://codepen.io/timbrown/full/akXvRw/
 @mixin fluid-line-height(
   $font-size: null,
-  $min-line-height: map-get($leadings, 'min'),
-  $max-line-height: map-get($leadings, 'max'),
-  $line-length-lower-gate: map-get($line-lengths, 'min'),
-  $line-length-upper-gate: map-get($line-lengths, 'max')
+  $min-line-height: map.get($leadings, 'min'),
+  $max-line-height: map.get($leadings, 'max'),
+  $line-length-lower-gate: map.get($line-lengths, 'min'),
+  $line-length-upper-gate: map.get($line-lengths, 'max')
 ) {
   line-height: $min-line-height;
+
   @if $font-size == null {
     @error 'the `font-size` of the element **must** be provided to calculate the media query limits.';
-  } @else if unit($font-size) == '%' {
-    $font-size: $font-size / 100%;
-  } @else if unit($font-size) == 'em' {
-    $font-size: $font-size / 1em;
-  } @else if unit($font-size) == 'rem' {
-    $font-size: $font-size / 1rem;
-  } @else if unitless($font-size) {
+  } @else if math.unit($font-size) == '%' {
+    $font-size: math.div($font-size, 100%);
+  } @else if math.unit($font-size) == 'em' {
+    $font-size: math.div($font-size, 1em);
+  } @else if math.unit($font-size) == 'rem' {
+    $font-size: math.div($font-size, 1rem);
+  } @else if math.is-unitless($font-size) {
     @error 'the unit of the parameter sent should be `%`, `em`, `rem`. Unitless value given.';
   } @else {
-    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{unit($font-size)}` given.';
+    @error 'the unit of the parameter sent should be `%`, `em`, `rem`. `#{math.unit($font-size)}` given.';
   }
 
   @media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
     line-height: calc(
       #{$min-line-height * 1em} + (#{$max-line-height} - #{$min-line-height}) * ((100vw - #{$line-length-lower-gate}) /
-      (#{$line-length-upper-gate / 1em} - #{$line-length-lower-gate / 1em}))
+      (#{math.div($line-length-upper-gate, 1em)} - #{math.div($line-length-lower-gate, 1em)}))
     );
   }
 
@@ -925,7 +929,7 @@ $no-viewport: false !default;
 }
 
 @mixin focused {
-  box-shadow: 0 0 0 0.25rem color.scale(palette('accent'), $alpha: 50%);
+  box-shadow: 0 0 0 0.25rem color.scale(f.palette('accent'), $alpha: 50%);
 
   outline: 0;
 }
