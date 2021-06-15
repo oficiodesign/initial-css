@@ -7,6 +7,9 @@
  *
  * An `article` element can have the `[role='main']`
  */
-// main,
-// [role='main'] {
-// }
+main,
+[role='main'] {
+  flex-grow: 1;
+
+  width: 100%;
+}

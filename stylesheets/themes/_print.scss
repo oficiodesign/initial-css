@@ -13,6 +13,15 @@
     background: transparent !important;
   }
 
+  html,
+  body {
+    display: block;
+
+    height: auto;
+    max-height: none;
+  }
+
+
   body {
     font: 12pt/1.33333 'Palatino Linotype', Palatino, 'Times New Roman', Times, serif;
 
