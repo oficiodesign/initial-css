@@ -845,3 +845,12 @@ $no-viewport: false !default;
 
   outline: 0;
 }
+
+@mixin columns {
+  @include hyphens;
+
+  column-fill: auto;
+  column-gap: $gutter;
+  column-width: map-get($line-lengths, 'column');
+  max-width: 100%;
+}

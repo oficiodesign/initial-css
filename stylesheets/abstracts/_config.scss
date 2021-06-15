@@ -76,7 +76,8 @@ $leadings: (
 /// @prop {number} max - maximum line length expressed in `em`
 $line-lengths: (
   'min': 21em,
-  'max': 35em,
+  'max': 37.5em, // ≅75chars width
+  'column': 22.5em, // ≅45chars width
 ) !default;
 
 ///
