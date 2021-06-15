@@ -51,6 +51,8 @@
 
 [type='number'] {
   @extend %text-field-reset;
+
+  appearance: none;
 }
 
 /**
@@ -61,7 +63,9 @@
 
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
-  height: auto;
+  margin: 0; // Apparently some margin are still there even though it's hidden
+
+  -webkit-appearance: none;
 }
 
 [type='password'] {
