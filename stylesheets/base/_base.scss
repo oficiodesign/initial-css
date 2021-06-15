@@ -14,6 +14,18 @@
   box-sizing: inherit;
 
   tab-size: inherit;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    // stylelint-disable declaration-no-important
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+    // stylelint-enable declaration-no-important
+  }
 }
 
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
@@ -115,7 +127,16 @@ html {
   box-sizing: border-box;
 
   tab-size: 4;
+
+  scroll-padding: calc(3em + 1vh) 0;
+
+  &:focus-within {
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
 }
+
 
 /**
  * 1. Set sticky footer
