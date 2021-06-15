@@ -1,3 +1,57 @@
+/// Gray placeholder image
+///
+///
+/// @example scss
+/// image[src=""] {
+///   @include placeholder-bg;
+/// }
+///
+/// @output css
+/// image[src=""] {
+///   background:
+///     linear-gradient(
+///       to top left,
+///       transparent 0%,
+///       transparent calc(50% - 1px),
+///       black 50%,
+///       transparent calc(50% + 1px),
+///       transparent 100%
+///     ),
+///     linear-gradient(
+///       to top right,
+///       transparent 0%,
+///       transparent calc(50% - 1px),
+///       black 50%,
+///       transparent calc(50% + 1px),
+///       transparent 100%
+///     ),
+///     silver;
+/// }
+///
+@mixin placeholder-bg {
+  $_placeholder-bg__diagonal: rgb(0, 0, 0);
+  $_placeholder-bg__color: rgb(220, 220, 220);
+
+  background: linear-gradient(
+    to top left,
+    transparent 0%,
+    transparent calc(50% - 1px),
+    $_placeholder-bg__diagonal 50%,
+    transparent calc(50% + 1px),
+    transparent 100%
+  ), linear-gradient(
+    to top right,
+    transparent 0%,
+    transparent calc(50% - 1px),
+    $_placeholder-bg__diagonal 50%,
+    transparent calc(50% + 1px),
+    transparent 100%
+  ), linear-gradient(
+    to right,
+    $_placeholder-bg__color,
+    $_placeholder-bg__color
+  );
+}
 /// Special style for the _&_ used as a conjunction.
 ///
 /// @access private
