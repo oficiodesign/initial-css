@@ -258,3 +258,7 @@ textarea {
   margin-right: auto;
   margin-left: auto;
 }
+
+.full-width {
+  @include my.full-width;
+}

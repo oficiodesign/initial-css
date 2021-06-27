@@ -942,3 +942,13 @@ $no-viewport: false !default;
   column-width: map-get($line-lengths, 'column');
   max-width: 100%;
 }
+
+@mixin full-width {
+  position: relative;
+  right: 50%;
+  left: 50%;
+
+  width: 100vw;
+  margin-right: -50vw;
+  margin-left: -50vw;
+}
