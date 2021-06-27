@@ -3,6 +3,7 @@
 
 ////
 /// This file contains all application-wide Sass color palettes
+///
 /// @group config-palettes
 /// @prop {map} color - Map of colors
 /// @todo Customize to match the needs of your design.
@@ -28,10 +29,6 @@ $palette: (
   'disabled': (
     'foreground': hsl(0, 0%, 42%),
     'background': hsl(0, 0%, 94%),
-  ),
-  'loading': (
-    'foreground': hsl(0, 0%, 94%),
-    'background': hsla(0, 0%, 7%, 0.8),
   ),
   'mark': (
     'foreground': rgb(51, 51, 51),
@@ -61,6 +58,16 @@ $neutral: (
   'black': rgb(0, 0, 0),
 );
 $palette: map.set($palette, 'neutral', $neutral);
+
+
+///
+/// @colors loading
+///
+$loading: (
+  'foreground': map.get($neutral, 'x-dark'),
+  'background': map.get($neutral, 'base'),
+);
+$palette: map.set($palette, 'loading', $loading);
 
 
 ///
