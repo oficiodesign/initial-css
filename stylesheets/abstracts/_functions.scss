@@ -45,35 +45,35 @@ $my-palette: () !default;
 
 /// Native `url(..)` function wrapper
 ///
-/// @param {String} $base - base URL for the asset
+/// @param {String} $base-url - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
 /// @param {String} $path - asset path
 /// @return {Url}
 ///
-@function asset($base, $type, $path) {
-  @return url('#{$base}#{$type}#{$path}');
+@function asset($path, $base-url: $my-base-url, $type) {
+  @return url('#{$base-url}#{$type}/#{$path}?v=#{unique_id()}');
 }
 
 /// Returns URL to an image based on its path
 ///
 /// @param {String} $path - image path
-/// @param {String} $base [$my-base-url] - base URL
+/// @param {String} $base-url [$my-base-url] - base URL
 /// @return {Url}
 /// @require {variable} $my-base-url
 ///
-@function image($path, $base: $my-base-url) {
-  @return asset($base, 'img/', $path);
+@function image($path, $base-url: $my-base-url) {
+  @return asset($path, $base-url, 'images');
 }
 
 /// Returns URL to a font based on its path
 ///
 /// @param {String} $path - font path
-/// @param {String} $base [$my-base-url] - base URL
+/// @param {String} $base-url [$my-base-url] - base URL
 /// @return {Url}
 /// @require {variable} $my-base-url
 ///
-@function font($path, $base: $my-base-url) {
-  @return asset($base, 'ff/', $path);
+@function font($path, $base-url: $my-base-url) {
+  @return asset($path, $base-url, 'font-faces');
 }
 
 /// Remove the unit of a length

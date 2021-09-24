@@ -59,9 +59,9 @@ $_i: $mobile-columns;
   @return $new-breakpoints;
 }
 
-/// Breakpoints map
+/// my.breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+/// @prop {Map} values - Values are actual my.breakpoints expressed in pixels
 ///
 $breakpoints: _im-to-em(
   (
