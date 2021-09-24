@@ -934,12 +934,15 @@ $no-viewport: false !default;
   outline: 0;
 }
 
-@mixin columns {
+
+@mixin columns($width: map-get(c.$line-lengths, 'column'), $gap: c.$gutter) {
   @include hyphens;
 
-  column-fill: auto;
-  column-gap: $gutter;
-  column-width: map-get($line-lengths, 'column');
+  column-fill: balance;
+
+  column-gap: $gap;
+  column-width: $width;
+
   max-width: 100%;
 }
 
