@@ -463,8 +463,8 @@ $_default-text-color--light: palette('text', 'light');
 /// 		}
 /// 	}
 ///
-@function palette($color-name, $tone: null) {
-  $color: transparent;
+@function palette($color-name, $tones...) {
+  $color: null;
 
   $default-palette: (
     'white': rgb(255, 255, 255),
@@ -528,32 +528,31 @@ $_default-text-color--light: palette('text', 'light');
   $full-palette: ();
 
   @if meta.variable-exists('my-palette') and meta.type-of($my-palette) == 'map' {
-    $full-palette: map.merge($default-palette, $my-palette);
+    $full-palette: map.deep-merge($default-palette, $my-palette);
   }
 
-  @if map.has-key($full-palette, $color-name) {
-    $color: map.get($full-palette, $color-name);
-  } @else {
+  @if not map.has-key($full-palette, $color-name) {
     @error 'unknown color sent to `palette` function-> `#{$color-name}`. Available colors-> `#{map.keys($full-palette)}`';
   }
 
-  @if $tone != null {
-    @if meta.type-of($color) == 'color' or $color == 'transparent' {
-      @error 'unknown tone sent to `palette` function-> `#{$tone}`. There is only one tone available for color `#{$color-name}`-> `#{$color}`';
-    } @else if not map.has-key($color, $tone) {
-      @error 'unknown tone sent to `palette` function-> `#{$tone}`. Available tones for `#{$color-name}`-> `#{map.keys($color)}`';
-    } @else {
+  $color: map.get($full-palette, $color-name, $tones...);
 
-      @return map.get(map.get($full-palette, $color-name), $tone);
+  @if $color == null and list.nth($tones, 1) == 'gray' {
+    @if map.has-key($full-palette, $color-name, 'medium') {
+      $color: map.get($full-palette, $color-name, 'medium');
+    } @else if map.has-key($full-palette, $color-name, 'base') {
+      $color: map.get($full-palette, $color-name, 'base');
     }
+  }
+
+  @if meta.type-of($color) == 'color' or $color == 'transparent' {
+    @return $color;
+  } @else if meta.type-of($color) == 'map' and map.has-key($color, 'base') {
+    @return map.get($color, 'base');
+  } @else if meta.type-of($color) == 'map' and map.has-key($color, 'medium') {
+    @return map.get($color, 'medium');
   } @else {
-    @if meta.type-of($color) == 'color' or $color == 'transparent' {
-      @return $color;
-    } @else if meta.type-of($color) == 'map' and not map.has-key($color, 'base') {
-      @error 'color `#{$color}` misses `base` tone';
-    } @else {
-      @return map.get($color, 'base');
-    }
+    @error '`#{$color}` is not a real color';
   }
 }
 
