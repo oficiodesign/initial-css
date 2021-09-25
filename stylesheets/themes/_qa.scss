@@ -25,17 +25,17 @@
     top: 0;
     right: 0;
     left: 0;
+    z-index: my.layer('modal');
 
     display: block;
-    z-index: my.layer('modal');
 
     padding: 1em;
 
     font-weight: my.font-weight('heavy');
 
-    text-align: center;
-
     color: my.palette('white');
+
+    text-align: center;
 
     background-color: my.palette('feedback', 'danger');
 

@@ -26,12 +26,12 @@ option {
 select {
   @extend %text-field-reset;
 
+  box-sizing: border-box;
+
   width: 100%;
 
   text-indent: 0.01px; // stylelint-disable-line property-units
   text-overflow: '';
-
-  box-sizing: border-box;
 
   -moz-appearance: none; // stylelint-disable-line property-no-vendor-prefix
   -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix

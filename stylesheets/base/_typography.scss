@@ -19,10 +19,10 @@
  * Basic typography style for copy text
  */
 body {
-  font-weight: my.font-weight('text');
-  font-size: my.$body-font-size;
-  line-height: my.$leading;
   font-family: my.$text-font-stack;
+  font-size: my.$body-font-size;
+  font-weight: my.font-weight('text');
+  line-height: my.$leading;
 
   color: my.palette('text', 'dark');
 }
@@ -43,20 +43,21 @@ h6,
 legend,
 caption,
 details > summary {
-  font-weight: my.font-weight('heading');
+
+  margin-top: my.$gutter * 2;
+  margin-bottom: my.$gutter;
   font-family: my.$title-font-stack;
+  font-weight: my.font-weight('heading');
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
 
   break-after: avoid;
   page-break-after: avoid;
 
-  margin-top: my.$gutter * 2;
-  margin-bottom: my.$gutter;
-
   &:first-child {
     margin-top: 0;
   }
 }
+
 summary {
   color: my.palette('accent');
 
@@ -64,10 +65,10 @@ summary {
 
   details > & {
     margin-bottom: 0;
+    transition-timing-function: ease-out;
 
     transition-duration: 300ms;
     transition-property: margin-bottom;
-    transition-timing-function: ease-out;
   }
 
   [open] > & {
@@ -84,14 +85,14 @@ h6 a,
 legend a,
 caption a,
 dt a {
-  text-decoration: inherit;
 
   color: inherit;
+  text-decoration: inherit;
 
   &:link {
-    text-decoration: inherit;
 
     color: inherit;
+    text-decoration: inherit;
   }
 }
 
@@ -179,9 +180,9 @@ abbr {
  */
 dfn {
   @extend %abbr-title;
+  font-size: 1em;
 
   font-style: italic; /* 1 */
-  font-size: 1em;
 }
 
 /**
@@ -201,6 +202,7 @@ strong {
   font-weight: my.font-weight('bold');
   font-weight: inherit; /* 1 */
 }
+
 b,
 strong {
   font-weight: my.font-weight('bold'); /* 2 */
@@ -280,8 +282,8 @@ kbd,
 pre,
 samp,
 var {
-  font-size: 1em; /* 1 */
   font-family: my.$code-font-stack, monospace; /* 2 */
+  font-size: 1em; /* 1 */
 }
 
 // code {
@@ -414,8 +416,8 @@ blockquote {
 }
 
 cite {
-  font-style: italic;
   font-size: 1em;
+  font-style: italic;
 }
 
 blockquote footer {

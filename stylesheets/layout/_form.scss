@@ -17,11 +17,13 @@ fieldset {
   display: flex;
 
   flex-wrap: wrap;
+
   align-content: flex-start;
   align-items: stretch;
 
-  max-width: none;
   min-width: 0;
+
+  max-width: none;
 
   padding: my.$gutter 0;
   margin-top: 0;
@@ -60,22 +62,21 @@ fieldset fieldset {
  */
 fieldset > legend, /* 4 */
 legend {
+  box-sizing: border-box; /* 1 */
   display: table; /* 1 */
+
+  flex-basis: 100%;
 
   max-width: 100%; /* 1 */
 
   padding: 0; /* 3 */
   margin-bottom: my.$gutter;
 
-  flex-basis: 100%;
-
   font-weight: my.font-weight('extrabold');
-
-  white-space: normal; /* 1 */
 
   color: inherit; /* 2 */
 
-  box-sizing: border-box; /* 1 */
+  white-space: normal; /* 1 */
 }
 
 label {
@@ -85,9 +86,9 @@ label {
   font-size: small;
   line-height: inherit;
 
-  cursor: pointer;
-
   color: my.palette('text', 'faded');
+
+  cursor: pointer;
 
   &:focus-within {
     color: my.palette('text', 'title');
@@ -125,6 +126,7 @@ form p {
     display: flex;
 
     flex-wrap: wrap;
+
     align-content: flex-start;
 
     min-width: my.$max-width * 0.2; /* 256px */
@@ -184,6 +186,7 @@ form br {
  * 4. Allow setting the same size for all form fields.
  */
 %os-element-reset {
+  box-sizing: border-box; /* 4 */
   display: inline-block;
 
   padding: 1px; /* 2 */ // stylelint-disable-line property-units
@@ -191,27 +194,27 @@ form br {
 
   overflow: visible;
 
+  font-family: inherit; /* 1 */
+
   font-size: inherit; /* 1 */
   line-height: inherit; /* 1 */
-  font-family: inherit; /* 1 */
-  -webkit-font-smoothing: inherit; // stylelint-disable-line property-no-vendor-prefix
-  letter-spacing: inherit;
-
-  text-align: inherit;
-  text-transform: inherit; /* 3 */
-  white-space: normal;
-  vertical-align: top;
 
   color: inherit;
 
-  border-width: my.$stroke;
-  border-style: solid;
+  text-align: inherit;
+  text-transform: inherit; /* 3 */
+  letter-spacing: inherit;
+  white-space: normal;
+  vertical-align: top;
+
   border-color: my.palette('border');
+  border-style: solid;
+
+  border-width: my.$stroke;
   border-radius: my.$rounded-corner;
 
   outline: 0;
-
-  box-sizing: border-box; /* 4 */
+  -webkit-font-smoothing: inherit; // stylelint-disable-line property-no-vendor-prefix
 
   &:hover {
   }
@@ -250,7 +253,6 @@ form br {
 
   opacity: 1;
 }
-
 @mixin placeholder--focus {
   color: my.palette('placeholder', 'focus');
 }
@@ -326,8 +328,8 @@ form br {
  * 2. override Opera margin and padding
  */
 [type='file'] {
-  height: 2em;
   min-width: 250px;
+  height: 2em;
 
   padding: 0 !important; /* 2 */ // stylelint-disable-line declaration-no-important
   margin: 0; /* 2 */
@@ -359,9 +361,9 @@ form br {
   height: inherit;
 
   font-size: inherit;
-  letter-spacing: inherit;
 
   color: inherit;
+  letter-spacing: inherit;
 
   background-color: inherit;
 
@@ -369,6 +371,8 @@ form br {
 }
 
 [type='file'] > [type='button'] {
+  box-sizing: content-box;
+
   height: inherit;
 
   padding: 0;
@@ -378,7 +382,6 @@ form br {
   white-space: normal;
 
   -webkit-box-align: center; // stylelint-disable-line property-no-vendor-prefix
-  box-sizing: content-box;
 
   appearance: button;
 }
@@ -396,10 +399,10 @@ form br {
   cursor: pointer;
 
   background-color: my.palette('button'); /* 2 */
+  border-color: my.palette('border'); /* 3 */
+  border-style: solid; /* 3 */
 
   border-width: 1px; /* 3 */
-  border-style: solid; /* 3 */
-  border-color: my.palette('border'); /* 3 */
 
   -webkit-appearance: button; /* 1 */ // stylelint-disable-line property-no-vendor-prefix
 
@@ -422,9 +425,9 @@ form br {
  */
 
 ::-ms-browse {
-  border-width: 1px; /* 1 */
-  border-style: solid; /* 1 */
   border-color: my.palette('border'); /* 1 */
+  border-style: solid; /* 1 */
+  border-width: 1px; /* 1 */
 
   &:hover {
     background-color: my.palette('button', 'focus');

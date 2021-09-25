@@ -33,15 +33,17 @@ table {
   margin-bottom: #{my.$leading * 1em};
   margin-left: 0;
 
-  font-size: 100%;
   font-family: inherit;
+
+  font-size: 100%;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
 
-  border-radius: my.$rounded-corner;
+  empty-cells: show;
+  border-spacing: 0;
 
   border-collapse: separate;
-  border-spacing: 0;
-  empty-cells: show;
+
+  border-radius: my.$rounded-corner;
 }
 
 thead,
@@ -106,9 +108,8 @@ tbody th {
 }
 
 tbody td {
-  text-align: right;
-
   font-variant-numeric: lining-nums oldstyle-nums;
+  text-align: right;
 
   @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     text-align: left;

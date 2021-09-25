@@ -81,6 +81,7 @@ $sizes: ();
 
   $sizes: map.set($sizes, $name, $value);
 }
+
 @include utilities.add('sizes', 'modular-scale', $sizes);
 
 
@@ -91,6 +92,7 @@ $sizes: ();
 /// @type number
 ///
 $leading: 1.5 !default;
+
 @include utilities.add('ratios', 'leading', ('leading': $leading));
 
 
@@ -106,6 +108,7 @@ $leadings: (
   'min': 1.15,
   'max': 1.5,
 ) !default;
+
 @include utilities.add('ratios', 'flexible-leading', (
   'minimum leading': map.get($leadings, 'min'),
   'maximum leading': map.get($leadings, 'max'),
@@ -126,6 +129,7 @@ $line-lengths: (
   'max': 37.5em,
   'column': 22.5em, // ≅45chars width
 ) !default;
+
 @include utilities.add('sizes', 'line-lengths', (
   'minimum line width': map.get($line-lengths, 'min'),
   'maximum line width': map.get($line-lengths, 'max'),

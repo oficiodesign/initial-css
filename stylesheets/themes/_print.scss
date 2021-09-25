@@ -8,9 +8,9 @@
    * @see http://www.merttol.com/articles/css/too-light-for-print.html
    */
   * {
-    text-shadow: none !important;
 
     color: rgb(0, 0, 0) !important; /* Black prints faster: h5bp.com/s */
+    text-shadow: none !important;
 
     background: transparent !important;
   }
@@ -37,9 +37,9 @@
   a:visited {
     font-weight: my.font-weight('bold');
 
-    text-decoration: underline;
-
     color: rgb(68, 68, 68) !important;
+
+    text-decoration: underline;
 
     background: transparent;
   }
@@ -47,10 +47,10 @@
   a[href]::after {
     font-style: italic;
 
+    color: rgb(51, 51, 51);
+
     word-wrap: break-word;
     white-space: pre-wrap;
-
-    color: rgb(51, 51, 51);
 
     content: ' (' attr(href) ') ';
   }

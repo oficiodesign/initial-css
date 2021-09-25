@@ -9,11 +9,11 @@
 /* CLASSES
 ============================================================================ */
 %loading-bg {
-  background-image: my.image('loading.svg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
   background-color: my.palette('loading', 'background');
+  background-image: my.image('loading.svg');
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: 50% 50%;
 }
 
 %loading-el {
@@ -76,7 +76,9 @@ embed {
     @extend %loading-bg;
 
     display: block;
+
     content: '';
+
     background-size: auto;
   }
 
@@ -101,6 +103,7 @@ textarea {
 
 .skeleton {
   pointer-events: none;
+
   background-color: transparent;
 
   &.skeleton__bone--vertebra,
@@ -109,16 +112,22 @@ textarea {
   .skeleton__bone {
     @include my.on-event(true) {
       text-decoration: none;
+
       border: 0;
       border-radius: my.$rounded-corner;
 
       &::before,
       &::after {
         all: unset;
+
         position: static;
+
         display: block;
+
         height: 0;
+
         content: '';
+
         border: 0;
       }
 
@@ -131,10 +140,12 @@ textarea {
   .skeleton__bone {
     @include my.on-event(true) {
       display: block;
+
       background-color: #d9d9d9;
       background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
       background-repeat: no-repeat;
       background-size: 450px 400px;
+
       animation: shimmer 1s linear infinite;
     }
   }
@@ -144,11 +155,14 @@ textarea {
       &::before,
       &::after {
         display: inline-block;
+
         height: 1em;
+
         background-color: #d9d9d9;
         background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
         background-repeat: no-repeat;
         background-size: 450px 400px;
+
         animation: shimmer 1s linear infinite;
         box-decoration-break: clone;
       }
@@ -156,12 +170,14 @@ textarea {
       &::before {
         width: 100%;
         max-width: 37.5em;
+
         content: '\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0';
       }
 
       &::after {
         width: 66%;
         max-width: 22.5em;
+
         content: '\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0 \0000a0\0000a0\0000a0\0000a0\0000a0';
       }
     }
@@ -211,17 +227,17 @@ textarea {
   &::after {
     @include my.grid-image($n);
 
-    background-position: center top;
-
     content: '';
+
+    background-position: center top;
   }
 
   &:root::before {
     padding: my.$gutter;
 
-    background-color: my.palette('feedback', 'danger');
-
     content: 'breakpoint: #{$n}col';
+
+    background-color: my.palette('feedback', 'danger');
 
     opacity: 0.75;
   }
@@ -230,7 +246,6 @@ textarea {
     $n: $n + 1;
 
     @if map.get(my.$toggle-breakpoints, $key) ==null {
-
       @media screen and (min-width: my.breakpoint($key)) {
         &::after {
           @include my.grid-image($n);

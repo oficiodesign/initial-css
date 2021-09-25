@@ -11,11 +11,11 @@
 *,
 ::before,
 ::after {
-  background-repeat: no-repeat;
-
   box-sizing: inherit;
 
   tab-size: inherit;
+
+  background-repeat: no-repeat;
 
   &:focus:not(:focus-visible) {
     outline: none;
@@ -34,9 +34,8 @@
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
-  text-shadow: none;
-
   color: my.palette('selection', 'foreground');
+  text-shadow: none;
 
   background-color: my.palette('selection', 'background');
 }
@@ -109,23 +108,22 @@ textarea,
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
 html {
+  box-sizing: border-box;
+
   height: 100%; /* 2 */
 
   padding: 0;
   margin: 0;
-
   overflow-x: hidden;
   overflow-y: scroll; /* 3 */
 
   font-size: 100.01%; /* 1 */
 
-  text-size-adjust: 100%; /* 4 */
+  tab-size: 4;
 
   background: my.palette('white');
 
-  box-sizing: border-box;
-
-  tab-size: 4;
+  text-size-adjust: 100%; /* 4 */
 
   scroll-padding: calc(3em + 1vh) 0;
 
@@ -149,7 +147,6 @@ body {
 
   height: 100vh; /* 2 */
   min-height: 100%;
-
   margin: 0;
 
   color: my.palette('black');
@@ -325,7 +322,7 @@ hr {
   /* line-height */
   @include my.fallback('margin', calc(#{my.$leading * 1em} - 1px) 0 #{my.$leading * 1em}, #{my.$leading * 1em} 0);
 
-  clear: both;
+  box-sizing: content-box; /* 1 */
 
   display: block;
 
@@ -335,12 +332,12 @@ hr {
 
   overflow: visible; /* 2 */
 
+  clear: both;
+
   color: my.palette('neutral');
 
   border: 0;
   border-top: 1px solid my.palette('neutral');
-
-  box-sizing: content-box; /* 1 */
 }
 
 /* MEDIA ELEMENTS
@@ -405,7 +402,6 @@ iframe,
 img,
 object {
   font-size: 83.3333%;
-
   color: currentColor;
 
   border-style: none;
@@ -476,8 +472,8 @@ object > img {
 img {
   @extend %broken-image;
 
-  height: auto;
   max-width: 100%;
+  height: auto;
 
   image-rendering: auto; /* 1 */
 }
@@ -512,23 +508,22 @@ a {
   margin: 0;
 
   font-size: 100%;
-
-  vertical-align: baseline;
   // sass-lint:disable-block property-sort-order
 
   color: my.palette('anchor', 'base');
+
+  vertical-align: baseline;
 
   @include my.on-event {
     text-decoration: underline;
   }
 
   &:link {
+    color: my.palette('anchor', 'link');
     text-decoration: underline;
 
     cursor: pointer;
     -webkit-tap-highlight-color: my.palette('tap-highlight'); // stylelint-disable-line property-no-vendor-prefix
-
-    color: my.palette('anchor', 'link');
   }
 
   &:visited {
@@ -588,7 +583,7 @@ address {
   font-style: italic;
 }
 
-/* Coode blocks
+/* Code blocks
 ---------------------------------------------------------------------------- */
 pre {
   padding: my.$leading * 0.5rem my.$gutter * 0.5;

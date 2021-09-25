@@ -19,6 +19,8 @@
 %button-reset {
   @extend %os-element-reset;
 
+  box-sizing: inherit;
+
   display: inline-flex;
 
   align-items: center;
@@ -37,8 +39,6 @@
   cursor: pointer; /* 2 */
 
   background-color: my.palette('button'); /* 5 */
-
-  box-sizing: inherit;
 
   border: my.$stroke;
 
@@ -98,12 +98,12 @@ button,
 .like-a__button--submit,
 [type='submit'] {
   @extend %button-reset;
-
-  background-color: my.palette('button', 'submit');
   justify-content: center;
   width: my.$gutter * 12;
 
   text-align: center;
+
+  background-color: my.palette('button', 'submit');
 
   &:disabled {
     color: my.palette('disabled', 'background');

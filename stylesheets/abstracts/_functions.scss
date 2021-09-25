@@ -85,7 +85,6 @@ $my-palette: () !default;
 ///
 @function strip-unit($number) {
   @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
-
     @return math.div($number, $number * 0 + 1);
   }
 
@@ -109,6 +108,7 @@ $my-palette: () !default;
   }
 
   $pow: math.pow(10, $digits);
+
   @return math.div(math.round($float * $pow), $pow);
 }
 
@@ -138,7 +138,7 @@ $my-palette: () !default;
       ($blue-component * $blue-component * $blue-magic-number),
       $brightness-divisor
     )
-    );
+  );
 
   // Convert to percentage and return
   @return math.div(100% * $number, 255);
@@ -555,6 +555,7 @@ $_default-text-color--light: palette('text', 'light');
     @error '`#{$color}` is not a real color';
   }
 }
+
 
 /// Trims a string by removing leading and trailing spaces
 ///
