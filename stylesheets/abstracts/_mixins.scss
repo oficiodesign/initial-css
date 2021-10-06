@@ -958,3 +958,22 @@ $no-viewport: false !default;
     @content;
   }
 }
+
+@mixin inner-border ($width: c.$stroke__thin, $style: solid, $color: currentColor) {
+  @at-root {
+    th,
+    td {
+      th,
+      td {
+        border-left: $width $style $color;
+      }
+    }
+
+    tr + tr {
+      th,
+      td {
+        border-top: $width $style $color;
+      }
+    }
+  }
+}
