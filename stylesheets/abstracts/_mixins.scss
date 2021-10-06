@@ -944,3 +944,17 @@ $no-viewport: false !default;
   margin-right: -50vw;
   margin-left: -50vw;
 }
+
+@mixin headings {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  legend,
+  caption,
+  summary {
+    @content;
+  }
+}
