@@ -497,6 +497,7 @@
 /// Truncate and add ellipsis to a string too long for it to fit on a single
 /// line.
 ///
+/// @link https://dev.to/coderchamp/truncate-text-with-css-the-possible-ways-1p4o
 /// @group helpers
 ///
 /// @example scss
@@ -511,11 +512,52 @@
 /// 	white-space: nowrap;
 /// }
 ///
-@mixin truncate {
+/// @example scss
+/// .excerpt {
+/// 	@include truncate(5);
+/// }
+///
+/// @output css
+/// .excerpt {
+///   display: block;
+///   overflow: hidden;
+///   display: -webkit-box;
+///   -webkit-box-orient: vertical;
+///   max-height: 7.5rem;
+///   overflow:hidden;
+///   overflow: hidden !important;
+///   line-height: 1.5;
+///   text-overflow: ellipsis;
+///   -webkit-line-clamp: 5;
+/// }
+///
+@mixin truncate ($lines: 1, $leading: c.$leading) {
+  display: block;
+
   overflow: hidden;
 
+  @if $lines > 1 {
+    @if math.is-unitless($leading) {
+      $leading: $leading * 1em;
+    }
+
+    // stylelint-disable-next-line value-no-vendor-prefix
+    display: -webkit-box;
+    // stylelint-disable-next-line property-no-vendor-prefix
+    -webkit-box-orient: vertical;
+
+    max-height: $leading * $lines;
+    // stylelint-disable-next-line declaration-colon-space-after
+    overflow:hidden;
+    // stylelint-disable-next-line declaration-no-important
+    overflow: hidden !important;
+
+    line-height: $leading;
   text-overflow: ellipsis;
+    -webkit-line-clamp: $lines;
+  } @else {
   white-space: nowrap;
+  }
 }
 
 ///
