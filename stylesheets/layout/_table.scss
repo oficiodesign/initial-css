@@ -15,11 +15,9 @@ td {
   height: auto;
 
   font-size: 1em;
-
-  vertical-align: top;
+  vertical-align: inherit;
 
   background-color: transparent;
-
   border: 0;
 
   @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
@@ -34,13 +32,12 @@ table {
   margin-left: 0;
 
   font-family: inherit;
-
   font-size: 100%;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
+  vertical-align: top;
 
   empty-cells: show;
   border-spacing: 0;
-
   border-collapse: separate;
 
   border-radius: my.$rounded-corner;
@@ -53,13 +50,25 @@ tfoot {
   }
 }
 
+thead {
+  vertical-align: bottom;
+}
+
+tfoot {
+  vertical-align: top;
+}
+
 table p,
 table li {
   font-size: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-// caption {
-// }
+caption {
+}
 
 tr {
   @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
@@ -70,6 +79,9 @@ tr {
     }
   }
 }
+
+th,
+td {}
 
 th {
   font-weight: my.font-weight('bold');
@@ -95,9 +107,9 @@ tfoot th:first-child {
   text-align: left;
 }
 
-// thead > tr:nth-last-of-type(odd) > th,
-// thead > tr:nth-last-of-type(odd) > td {
-// }
+thead > tr:nth-last-of-type(odd) > th,
+thead > tr:nth-last-of-type(odd) > td {
+}
 
 tbody {
   font-family: mono-space, monospace;
