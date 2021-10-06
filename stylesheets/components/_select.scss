@@ -84,6 +84,7 @@ option {
 }
 
 select[multiple] { // stylelint-disable-line no-qualifying-elements
+  resize: vertical;
 }
 
 select[multiple] option { // stylelint-disable-line no-qualifying-elements
