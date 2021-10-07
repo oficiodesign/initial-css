@@ -1017,6 +1017,91 @@ $no-viewport: false !default;
     }
   }
 }
+
+
+/// @link https://alistapart.com/article/quantity-queries-for-css/
+@mixin at-least($n) {
+  @if $n == 2 {
+    &:not(:only-of-type) {
+      @content;
+    }
+  } @else {
+    $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+    &:nth-last-child(n + #{$n}),
+    &:nth-last-child(n + #{$n}) ~ #{$last-item} {
+      @content;
+    }
+  }
+}
+
+@mixin at-most($n) {
+  $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+  &:nth-last-child(-n + #{$n}):first-child,
+  &:nth-last-child(-n + #{$n}):first-child ~ #{$last-item} {
+    @content;
+  }
+}
+
+@mixin between($n1, $n2) {
+  $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+  &:nth-last-child(n + #{$n1}):nth-last-child(-n + #{$n2}):first-child,
+  &:nth-last-child(n + #{$n1}):nth-last-child(-n + #{$n2}):first-child ~ #{$last-item} {
+    @content;
+  }
+}
+
+@mixin exactly($n) {
+  @if $n == 1 {
+    &:only-of-type {
+      @content;
+    }
+  } @else {
+    $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+    &:nth-last-child(#{$n}):first-child,
+    &:nth-last-child(#{$n}):first-child ~ #{$last-item} {
+      @content;
+    }
+  }
+}
+
+@mixin odd {
+  $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+  &:nth-last-child(2n+1):first-child,
+  &:nth-last-child(2n+1):first-child ~ #{$last-item} {
+    @content;
+  }
+}
+
+@mixin even {
+  $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+  &:nth-last-child(2n):first-child,
+  &:nth-last-child(2n):first-child ~ #{$last-item} {
+    @content;
+  }
+}
+
+/// Targets the last row in a grid of constant column count
+/// @link https://keithclark.co.uk/articles/targeting-first-and-last-rows-in-css-grid-layouts/
+/// @link https://github.com/danielguillan/quantity-queries/issues/9#issue-177355092
+/// @param {number} $n - The number of columns within the context
+///
+@mixin last-row($n, $balanced-grid: false) {
+  $last-item: nth(nth(&, 1), length(nth(&, 1)));
+
+  @if $balanced-grid {
+    &:nth-last-child(-n + #{$n}) {
+      @content;
+    }
+  } @else {
+    &:nth-child(#{$n}n + 1):nth-last-child(-n + #{$n}),
+    &:nth-child(#{$n}n + 1):nth-last-child(-n + #{$n}) ~ #{$last-item} {
+      @content;
     }
   }
 }
