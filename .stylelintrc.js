@@ -53,6 +53,7 @@ module.exports = {
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "declaration-block-semicolon-newline-before": "never-multi-line",
     "declaration-block-semicolon-space-after": "always-single-line",
+    "declaration-block-no-duplicate-properties": true,
     // "declaration-empty-line-before": [
     //   "always", {
     //     "except": [
