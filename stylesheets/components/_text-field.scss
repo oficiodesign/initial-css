@@ -112,16 +112,12 @@
   ~ small {
   }
 
-  &:disabled {
-    cursor: not-allowed;
-
+  &:read-only {
     color: my.palette('disabled', 'foreground');
 
-    background: my.palette('disabled', 'background');
-  }
-
-  &:read-only {
     cursor: default;
+
+    background-color: my.palette('disabled', 'background');
   }
 }
 

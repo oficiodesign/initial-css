@@ -222,21 +222,14 @@ form br {
   &:focus {
     @include my.focused;
   }
-}
 
-:disabled,
-:read-only {
-  color: my.palette('disabled', 'foreground');
+  &:disabled {
+    color: my.palette('disabled', 'foreground');
 
-  background: my.palette('disabled', 'background');
-}
+    cursor: not-allowed;
 
-:disabled {
-  cursor: not-allowed;
-}
-
-:read-only {
-  cursor: default;
+    background-color: my.palette('disabled', 'background');
+  }
 }
 
 :enabled {
@@ -338,8 +331,6 @@ form br {
 
   text-align: start !important; // stylelint-disable-line declaration-no-important
   white-space: nowrap;
-
-  cursor: default;
 
   background-color: transparent; /* 1 */
 
