@@ -1004,8 +1004,8 @@ $no-viewport: false !default;
 @mixin inner-border ($width: c.$stroke__thin, $style: solid, $color: currentColor) {
   th,
   td {
-    th,
-    td {
+    + th,
+    + td {
       border-left: $width $style $color;
     }
   }
