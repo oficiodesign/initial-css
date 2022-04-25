@@ -10,7 +10,6 @@
 ::before,
 ::after {
   line-height: inherit;
-
   text-decoration: inherit; /* 1 */
   vertical-align: inherit; /* 2 */
 }
@@ -23,7 +22,6 @@ body {
   font-size: my.$body-font-size;
   font-weight: my.font-weight('text');
   line-height: my.$leading;
-
   color: my.palette('text', 'dark');
 }
 
@@ -43,9 +41,9 @@ h6,
 legend,
 caption,
 details > summary {
-
   margin-top: my.$gutter * 2;
   margin-bottom: my.$gutter;
+
   font-family: my.$title-font-stack;
   font-weight: my.font-weight('heading');
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
@@ -60,13 +58,12 @@ details > summary {
 
 summary {
   color: my.palette('accent');
-
   text-decoration: none;
 
   details > & {
     margin-bottom: 0;
-    transition-timing-function: ease-out;
 
+    transition-timing-function: ease-out;
     transition-duration: 300ms;
     transition-property: margin-bottom;
   }
@@ -85,12 +82,10 @@ h6 a,
 legend a,
 caption a,
 dt a {
-
   color: inherit;
   text-decoration: inherit;
 
   &:link {
-
     color: inherit;
     text-decoration: inherit;
   }
@@ -181,7 +176,6 @@ abbr {
 dfn {
   @extend %abbr-title;
   font-size: 1em;
-
   font-style: italic; /* 1 */
 }
 
@@ -198,8 +192,8 @@ dfn {
 
 b,
 strong {
-  // stylelint-disable-block no-duplicate-properties
   font-weight: my.font-weight('bold');
+  // stylelint-disable-next-line declaration-block-no-duplicate-properties
   font-weight: inherit; /* 1 */
 }
 
@@ -248,7 +242,6 @@ sup {
 
   font-size: 83.3333%; /* 1 */
   line-height: 0;
-
   vertical-align: baseline;
 }
 
@@ -299,9 +292,10 @@ var {
  */
 pre {
   word-wrap: break-word; /* IE */
-  // sass-lint:disable-block no-duplicate-properties
   white-space: pre; /* CSS2 */
+  // stylelint-disable-next-line declaration-block-no-duplicate-properties
   white-space: pre-wrap; /* CSS 2.1 */
+  // stylelint-disable-next-line declaration-block-no-duplicate-properties
   white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 }
 
@@ -327,7 +321,6 @@ s {
 %updated {
   &::before {
     font-weight: my.font-weight('bold');
-
     text-decoration: none;
 
     content: '[update] ';
@@ -411,7 +404,6 @@ blockquote > p {
 q,
 blockquote {
   font-style: italic;
-
   color: my.palette('quotes');
 }
 
@@ -439,15 +431,16 @@ blockquote li {
   font-size: 1em;
 }
 
-blockquote.verse { // stylelint-disable-line no-qualifying-elements
+// stylelint-disable-next-line selector-no-qualifying-type
+blockquote.verse {
   text-align: center;
 }
 
-blockquote.verse p { // stylelint-disable-line no-qualifying-elements
+// stylelint-disable-next-line selector-no-qualifying-type
+blockquote.verse p {
   display: inline-block;
 
   width: auto;
-
   margin-right: auto;
   margin-left: auto;
 

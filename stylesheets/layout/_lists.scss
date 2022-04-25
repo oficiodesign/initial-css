@@ -32,7 +32,6 @@ article li {
   &::before {
     position: absolute;
     left: -0.5em;
-
     z-index: my.layer('default'); // required to prevent Blink clipping issues on columns
 
     font-weight: my.font-weight('bold');

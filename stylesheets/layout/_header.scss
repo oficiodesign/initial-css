@@ -25,10 +25,12 @@
   top: my.$gutter * 0.25;
   left: my.$gutter * 0.25;
   z-index: my.layer('default');
+
   background-color: my.palette('white');
 
   > svg {
     display: block;
+
     width: my.$gutter * 1.5;
     height: my.$gutter * 1.5;
   }
@@ -39,7 +41,9 @@
     right: 0;
     bottom: 0;
     left: 0;
+
     content: '';
+
     background-color: my.palette('white');
     opacity: 0.75;
   }

@@ -1,3 +1,4 @@
+// stylelint-disable declaration-no-important
 @use '../abstracts' as my;
 
 ////
@@ -8,8 +9,6 @@
 /// @link https://github.com/j9t/qa-style-sheet
 /// @link https://github.com/Heydon/REVENGE.CSS
 ////
-
-// stylelint-disable declaration-no-important
 
 %error {
   outline: 5px solid my.palette('feedback', 'danger') !important;
@@ -32,9 +31,7 @@
     padding: 1em;
 
     font-weight: my.font-weight('heavy');
-
     color: my.palette('white');
-
     text-align: center;
 
     background-color: my.palette('feedback', 'danger');
@@ -171,7 +168,7 @@ html[lang=''] {
 
 // Incorrect Character Set
 meta[charset='UTF-8']:not(:first-child) {
-  & + body {
+  + body {
     @extend %error;
 
     @include alert {
@@ -184,7 +181,7 @@ meta[charset='UTF-8']:not(:first-child) {
 meta[name='viewport'][content*='user-scalable=no'],
 meta[name='viewport'][content*='maximum-scale'],
 meta[name='viewport'][content*='minimum-scale'] {
-  & + body {
+  + body {
     @extend %error;
 
     @include alert {
@@ -359,7 +356,7 @@ link[rel='stylesheet'][type='text/css'] {
     content: 'Empty element should only be used for scripting.' !important;
   }
 }
-/* stylelint-enable selector-type-no-unknown */
+// stylelint-enable selector-type-no-unknown
 
 /// Misuse of sectioning elements
 article > article,
@@ -477,6 +474,7 @@ button,
 input,
 select,
 textarea {
+  // stylelint-disable-next-line selector-no-qualifying-type
   &.disabled:not([disabled]):not([read-only]) {
     @extend %error;
 
@@ -531,6 +529,7 @@ dl > *:not(dt):not(dd):not(div):not(script):not(template) {
 /// @link http://fontawesome.io/accessibility/
 i,
 span {
+  // stylelint-disable-next-line selector-no-qualifying-type
   &.fa:not([aria-hidden='true']) {
     @include alert {
       content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important;
@@ -539,6 +538,7 @@ span {
 }
 
 li {
+  // stylelint-disable-next-line selector-no-qualifying-type
   &.divider:not([role='separator']),
   &:empty:not([role='separator']) {
     @include alert {
@@ -546,6 +546,7 @@ li {
     }
   }
 
+  // stylelint-disable-next-line selector-no-qualifying-type
   &.dropdown-header {
     @include alert {
       content: 'Do not use list items as headers for lists, obvs.' !important;
@@ -580,5 +581,3 @@ li {
     content: 'Element impossibly focusable used for as "button".' !important;
   }
 }
-
-/* stylelint-enable declaration-no-important */

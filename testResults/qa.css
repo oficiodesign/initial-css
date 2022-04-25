@@ -1,36 +1,26 @@
-acronym,
-applet,
-basefont,
-bgsound,
-big,
-blink,
-center,
-comment,
-dir,
-embed,
-font,
-frame,
-frameset,
-isindex,
-listing,
-marquee,
-multicol,
-nobr,
-noembed,
-plaintext,
-spacer,
-strike,
-wbr,
-xmp, a:not([href]), a[href$='#'], a[href=''], a[href^='javascript'], a img[usemap],
-button img[usemap], table table, img:not([alt]), img[sizes]:not([srcset]),
-img[srcset]:not([sizes]), html:not([lang]) body,
-html[lang=''] body, meta[charset='UTF-8']:not(:first-child) + body, meta[name='viewport'][content*='user-scalable=no'] + body,
-meta[name='viewport'][content*='maximum-scale'] + body,
-meta[name='viewport'][content*='minimum-scale'] + body, form[action=''], label:not([for]), input:not([id]),
-select:not([id]),
-textarea:not([id]), form li:nth-child(6),
-form li:nth-child(6) ~ li, input[type='image']:not([alt]), input[type='image'][alt=''], input[type='number']:not([lang]),
-input[type='number'][lang=''], [tabindex]:not([tabindex='-1']):not([tabindex='0']), *:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*='js-']), article > article,
+:not(dt):not(dd) + dd, dl > *:not(dt):not(dd):not(div):not(script):not(template), ol > *:not(li):not(script):not(template),
+ul > *:not(li):not(script):not(template), button.disabled:not([disabled]):not([read-only]),
+input.disabled:not([disabled]):not([read-only]),
+select.disabled:not([disabled]):not([read-only]),
+textarea.disabled:not([disabled]):not([read-only]), [class*=toggle]:not([aria-pressed]), * + .menu-controller,
+body * .menu-controller, a :not([role=text]) > b:not([role=text]),
+a :not([role=text]) > bdo:not([role=text]),
+a :not([role=text]) > br:not([role=text]),
+a :not([role=text]) > cite:not([role=text]),
+a :not([role=text]) > code:not([role=text]),
+a :not([role=text]) > dfn:not([role=text]),
+a :not([role=text]) > em:not([role=text]),
+a :not([role=text]) > i:not([role=text]),
+a :not([role=text]) > samp:not([role=text]),
+a :not([role=text]) > small:not([role=text]),
+a :not([role=text]) > span:not([role=text]),
+a :not([role=text]) > strong:not([role=text]), article[role=contentinfo],
+header[role=contentinfo],
+section[role=contentinfo],
+aside[role=contentinfo], article[role=banner],
+section[role=banner],
+aside[role=banner],
+footer[role=banner], article > article,
 address > article,
 section > section,
 address > section,
@@ -41,46 +31,51 @@ address > header,
 footer > header,
 footer > footer,
 address > footer,
-header > footer, article[role='banner'],
-section[role='banner'],
-aside[role='banner'],
-footer[role='banner'], article[role='contentinfo'],
-header[role='contentinfo'],
-section[role='contentinfo'],
-aside[role='contentinfo'], a :not([role='text']) > b:not([role='text']),
-a :not([role='text']) > bdo:not([role='text']),
-a :not([role='text']) > br:not([role='text']),
-a :not([role='text']) > cite:not([role='text']),
-a :not([role='text']) > code:not([role='text']),
-a :not([role='text']) > dfn:not([role='text']),
-a :not([role='text']) > em:not([role='text']),
-a :not([role='text']) > i:not([role='text']),
-a :not([role='text']) > samp:not([role='text']),
-a :not([role='text']) > small:not([role='text']),
-a :not([role='text']) > span:not([role='text']),
-a :not([role='text']) > strong:not([role='text']), * + .menu-controller,
-body * .menu-controller, [class*='toggle']:not([aria-pressed]), button.disabled:not([disabled]):not([readonly]),
-input.disabled:not([disabled]):not([readonly]),
-select.disabled:not([disabled]):not([readonly]),
-textarea.disabled:not([disabled]):not([readonly]), ol > *:not(li):not(script):not(template),
-ul > *:not(li):not(script):not(template), dl > *:not(dt):not(dd):not(div):not(script):not(template), :not(dt):not(dd) + dd {
-  outline: 5px solid red !important; }
+header > footer, *:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*=js-]), [tabindex]:not([tabindex="-1"]):not([tabindex="0"]), input[type=number]:not([lang]),
+input[type=number][lang=""], input[type=image]:not([alt]), input[type=image][alt=""], form li:nth-child(6), form li:nth-child(6) ~ li, input:not([id]),
+select:not([id]),
+textarea:not([id]), label:not([for]), form[action=""], meta[name=viewport][content*="user-scalable=no"] + body,
+meta[name=viewport][content*=maximum-scale] + body,
+meta[name=viewport][content*=minimum-scale] + body, meta[charset=UTF-8]:not(:first-child) + body, html:not([lang]) body,
+html[lang=""] body, img[sizes]:not([srcset]),
+img[srcset]:not([sizes]), img:not([alt]), table table, a img[usemap], button img[usemap], a:not([href]), a[href$="#"], a[href=""], a[href^=javascript], acronym,
+applet,
+basefont,
+big,
+blink,
+center,
+dir,
+embed,
+font,
+frame,
+frameset,
+isindex,
+listing,
+marquee,
+nobr,
+noembed,
+plaintext,
+spacer,
+strike,
+wbr,
+xmp {
+  outline: 5px solid #d9534f !important;
+}
 
-[style]:not([class*='js-']), [aria-busy]:not([aria-hidden]),
-[aria-hidden]:not([aria-busy]), input:not([name]),
+[role=text]:not(span), button:not([type]), form:not([name]):not([id]), input:not([name]),
 select:not([name]),
-textarea:not([name]), form:not([name]):not([id]), button:not([type]), [role='text']:not(span) {
-  outline: 5px solid #ffbe00 !important; }
+textarea:not([name]), [aria-busy]:not([aria-hidden]),
+[aria-hidden]:not([aria-busy]), [style]:not([class*=js-]) {
+  outline: 5px solid #f0ad4e !important;
+}
 
 /* Deprecated elements */
 acronym::before,
 applet::before,
 basefont::before,
-bgsound::before,
 big::before,
 blink::before,
 center::before,
-comment::before,
 dir::before,
 embed::before,
 font::before,
@@ -89,7 +84,6 @@ frameset::before,
 isindex::before,
 listing::before,
 marquee::before,
-multicol::before,
 nobr::before,
 noembed::before,
 plaintext::before,
@@ -101,76 +95,81 @@ xmp::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Deprecated element.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Deprecated element." !important;
+}
 
 /* Inline Styles */
-[style]:not([class*='js-'])::before {
+[style]:not([class*=js-])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: '`style` attribute shouldn\'t be used, despite being added by some scripts.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "`style` attribute shouldn't be used, despite being added by some scripts." !important;
+}
 
 /* Faulty or Missing Link Targets */
-a:not([href])::before, a[href$='#']::before, a[href='']::before, a[href^='javascript']::before {
+a:not([href])::before, a[href$="#"]::before, a[href=""]::before, a[href^=javascript]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Links should only be used to navigation. Use a `<button>` instead.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Links should only be used to navigation. Use a `<button>` instead." !important;
+}
 
-a img[usemap]::before,
-button img[usemap]::before {
+a img[usemap]::before, button img[usemap]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'You cannot use this attribute if the <img> element is a descendant of an <a> or <button> element.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "You cannot use this attribute if the <img> element is a descendant of an <a> or <button> element." !important;
+}
 
 /* Layout tables */
 table table {
-  display: block !important; }
-  table table::before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: block;
-    z-index: 5000;
-    padding: 1em;
-    font-weight: 900;
-    text-align: center;
-    color: white;
-    background-color: red;
-    content: 'Tables shouldn\'t be nested.' !important; }
+  display: block !important;
+}
+table table::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5000;
+  display: block;
+  padding: 1em;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  background-color: #d9534f;
+  content: "Tables shouldn't be nested." !important;
+}
 
 /* Unaccessible Images */
 /*
@@ -181,14 +180,15 @@ img:not([alt]) + *::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: '`alt` attribute missing.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "`alt` attribute missing." !important;
+}
 
 img[sizes]:not([srcset]) + *::before,
 img[srcset]:not([sizes]) + *::before {
@@ -196,14 +196,15 @@ img[srcset]:not([sizes]) + *::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Incomplete responsive image.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Incomplete responsive image." !important;
+}
 
 /**
  * @see https://developer.paciellogroup.com/blog/2018/05/short-note-on-being-busy/
@@ -214,144 +215,154 @@ img[srcset]:not([sizes]) + *::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Elements with `aria-busy` should have `aria-hidden`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Elements with `aria-busy` should have `aria-hidden`." !important;
+}
 
 html:not([lang]) body::before,
-html[lang=''] body::before {
+html[lang=""] body::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Missing Document Language.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Missing Document Language." !important;
+}
 
-meta[charset='UTF-8']:not(:first-child) + body::before {
+meta[charset=UTF-8]:not(:first-child) + body::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Incorrect Character Set.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Incorrect Character Set." !important;
+}
 
-meta[name='viewport'][content*='user-scalable=no'] + body::before,
-meta[name='viewport'][content*='maximum-scale'] + body::before,
-meta[name='viewport'][content*='minimum-scale'] + body::before {
+meta[name=viewport][content*="user-scalable=no"] + body::before,
+meta[name=viewport][content*=maximum-scale] + body::before,
+meta[name=viewport][content*=minimum-scale] + body::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Unaccessible Viewport Attributes.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Unaccessible Viewport Attributes." !important;
+}
 
-form[action='']::before {
+form[action=""]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: '`action` attribute isn\'t required on `form`, but it shouldn\'t be empty.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "`action` attribute isn't required on `form`, but it shouldn't be empty." !important;
+}
 
 label:not([for])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Isn\'t the `for` attribute missing?' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Isn't the `for` attribute missing?" !important;
+}
 
 form li:nth-child(6)::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Too many options. Use a `select`, instead.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Too many options. Use a `select`, instead." !important;
+}
 
-input[type='image'] + *::before {
+input[type=image] + *::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: '`input[type=image]` requires `alt` attribute.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "`input[type=image]` requires `alt` attribute." !important;
+}
 
-input[type='number']:not([lang]) + *::before,
-input[type='number'][lang=''] + *::before {
+input[type=number]:not([lang]) + *::before,
+input[type=number][lang=""] + *::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'To prevent decimal separator issues, declared [lang].' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "To prevent decimal separator issues, declared [lang]." !important;
+}
 
 button:not([type])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'The default `type` of a button is `submit`, but this isn\'t clear to all developers. To avoid confusion, declare it.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "The default `type` of a button is `submit`, but this isn't clear to all developers. To avoid confusion, declare it." !important;
+}
 
 [align]::before,
 [alink]::before,
@@ -374,92 +385,99 @@ button:not([type])::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Deprecated Attribute. Use CSS instead.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Deprecated Attribute. Use CSS instead." !important;
+}
 
 script[language]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Instead of the `language` attribute, use `type`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Instead of the `language` attribute, use `type`." !important;
+}
 
 table[summary]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: '`summary` attribute is deprecated. Use the <caption> element.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "`summary` attribute is deprecated. Use the <caption> element." !important;
+}
 
-script[type='text/javascript']::before,
-link[rel='stylesheet'][type='text/css']::before {
+script[type="text/javascript"]::before,
+link[rel=stylesheet][type="text/css"]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Unnecessary Attributes'; }
-
+  text-align: center;
+  background-color: #d9534f;
+  content: "Unnecessary Attributes";
+}
 head {
   display: block !important;
-  overflow: visible !important; }
+  overflow: visible !important;
+}
 
 head * {
-  display: none; }
+  display: none;
+}
 
-[tabindex]:not([tabindex='-1']):not([tabindex='0'])::before {
+[tabindex]:not([tabindex="-1"]):not([tabindex="0"])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Tab order altered.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Tab order altered." !important;
+}
 
-*:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*='js-'])::before {
+*:empty:not(area):not(base):not(br):not(col):not(command):not(embed):not(hr):not(img):not(input):not(keygen):not(link):not(param):not(script):not(source):not(th):not(td):not(track):not(wbr):not([id]):not([class*=js-])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Empty element should only be used for scripting.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Empty element should only be used for scripting." !important;
+}
 
 article > article::before,
 address > article::before,
@@ -477,87 +495,92 @@ header > footer::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Misused section element.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Misused section element." !important;
+}
 
-article[role='banner']::before,
-section[role='banner']::before,
-aside[role='banner']::before,
-footer[role='banner']::before {
+article[role=banner]::before,
+section[role=banner]::before,
+aside[role=banner]::before,
+footer[role=banner]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Only `<header>` or `<div>` can have `[role=banner]`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Only `<header>` or `<div>` can have `[role=banner]`." !important;
+}
 
-article[role='contentinfo']::before,
-header[role='contentinfo']::before,
-section[role='contentinfo']::before,
-aside[role='contentinfo']::before {
+article[role=contentinfo]::before,
+header[role=contentinfo]::before,
+section[role=contentinfo]::before,
+aside[role=contentinfo]::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Only `<footer>` or `<div>` can have `[role=contentinfo]`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Only `<footer>` or `<div>` can have `[role=contentinfo]`." !important;
+}
 
-a :not([role='text']) > b:not([role='text'])::before,
-a :not([role='text']) > bdo:not([role='text'])::before,
-a :not([role='text']) > br:not([role='text'])::before,
-a :not([role='text']) > cite:not([role='text'])::before,
-a :not([role='text']) > code:not([role='text'])::before,
-a :not([role='text']) > dfn:not([role='text'])::before,
-a :not([role='text']) > em:not([role='text'])::before,
-a :not([role='text']) > i:not([role='text'])::before,
-a :not([role='text']) > samp:not([role='text'])::before,
-a :not([role='text']) > small:not([role='text'])::before,
-a :not([role='text']) > span:not([role='text'])::before,
-a :not([role='text']) > strong:not([role='text'])::before {
+a :not([role=text]) > b:not([role=text])::before,
+a :not([role=text]) > bdo:not([role=text])::before,
+a :not([role=text]) > br:not([role=text])::before,
+a :not([role=text]) > cite:not([role=text])::before,
+a :not([role=text]) > code:not([role=text])::before,
+a :not([role=text]) > dfn:not([role=text])::before,
+a :not([role=text]) > em:not([role=text])::before,
+a :not([role=text]) > i:not([role=text])::before,
+a :not([role=text]) > samp:not([role=text])::before,
+a :not([role=text]) > small:not([role=text])::before,
+a :not([role=text]) > span:not([role=text])::before,
+a :not([role=text]) > strong:not([role=text])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Elements inside `a` make VoiceOver announce them as separate links, except if sinalized otherwise being inside a `span[role="text"]`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: 'Elements inside `a` make VoiceOver announce them as separate links, except if sinalized otherwise being inside a `span[role="text"]`.' !important;
+}
 
-[role='text']:not(span)::before {
+[role=text]:not(span)::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'A element with `[role="text"]` loses it\'s semantics. Are you sure you are using it right?' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "A element with `[role=\"text\"]` loses it's semantics. Are you sure you are using it right?" !important;
+}
 
 /**
 * Helpers
@@ -566,44 +589,48 @@ a :not([role='text']) > strong:not([role='text'])::before {
 .menu-controller:not([hidden]) {
   position: fixed;
   display: block;
-  content: '`.menu-controller` should be hidden by default, not using CSS.'; }
+  content: "`.menu-controller` should be hidden by default, not using CSS.";
+}
 
 * + .menu-controller,
 body * .menu-controller {
   position: fixed;
   display: block;
-  content: '`.menu-controller`, if present, should the first child of `<body>`.'; }
+  content: "`.menu-controller`, if present, should the first child of `<body>`.";
+}
 
-[class*='toggle']:not([aria-pressed])::before {
+[class*=toggle]:not([aria-pressed])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Toggleable elements should have an `aria-pressed` attribute.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Toggleable elements should have an `aria-pressed` attribute." !important;
+}
 
-button.disabled:not([disabled]):not([readonly])::before,
-input.disabled:not([disabled]):not([readonly])::before,
-select.disabled:not([disabled]):not([readonly])::before,
-textarea.disabled:not([disabled]):not([readonly])::before {
+button.disabled:not([disabled]):not([read-only])::before,
+input.disabled:not([disabled]):not([read-only])::before,
+select.disabled:not([disabled]):not([read-only])::before,
+textarea.disabled:not([disabled]):not([read-only])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'A field shouldn\'t be disabled in appearance only.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "A field shouldn't be disabled in appearance only." !important;
+}
 
 /**
 * List errors
@@ -615,103 +642,109 @@ ul > *:not(li):not(script):not(template)::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Unallowed element used as direct child of `<ul>` or `<ol>`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Unallowed element used as direct child of `<ul>` or `<ol>`." !important;
+}
 
 dl > *:not(dt):not(dd):not(div):not(script):not(template)::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Unallowed element used as direct child of `<dl>`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Unallowed element used as direct child of `<dl>`." !important;
+}
 
 :not(dt):not(dd) + dd::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Definitions must follow definition terms.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Definitions must follow definition terms." !important;
+}
 
 /* Boot Crap (specific to Twitter BootStrap class misuse)
------------------------------------------------------------------------------*/
-i.fa:not([aria-hidden='true'])::before,
-span.fa:not([aria-hidden='true'])::before {
+----------------------------------------------------------------------------- */
+i.fa:not([aria-hidden=true])::before,
+span.fa:not([aria-hidden=true])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: 'Use `aria-hidden="true"` on empty elements used as icons wrappers.' !important;
+}
 
-li.divider:not([role='separator'])::before, li:empty:not([role='separator'])::before {
+li.divider:not([role=separator])::before, li:empty:not([role=separator])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Declare list items used as separator using `[role=separator]`. Or, even better, don\t use them at all.' !important; }
-
+  text-align: center;
+  background-color: #d9534f;
+  content: "Declare list items used as separator using `[role=separator]`. Or, even better, dont use them at all." !important;
+}
 li.dropdown-header::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Do not use list items as headers for lists, obvs.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Do not use list items as headers for lists, obvs." !important;
+}
 
 .btn:not(button):not([href])::after::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Inaccessible control. Use a `button[type]` or a `a[href]`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Inaccessible control. Use a `button[type]` or a `a[href]`." !important;
+}
 
-.disabled > a[href]:not([tabindex='-1'])::before,
+.disabled > a[href]:not([tabindex="-1"])::before,
 .disabled > button:not([disabled])::before,
 .disabled[href]::before,
 .disabled:not([disabled])::before {
@@ -719,28 +752,30 @@ li.dropdown-header::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Elements improperly disabled.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Elements improperly disabled." !important;
+}
 
-[data-toggle='dropdown']:not([aria-haspopup])::before {
+[data-toggle=dropdown]:not([aria-haspopup])::before {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Hidden menus should be signalized with `[aria-haspopup]`.' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: "Hidden menus should be signalized with `[aria-haspopup]`." !important;
+}
 
 .button:not(a):not(button):not(input):not([tabindex])::before,
 .btn:not(a):not(button):not(input):not([tabindex])::before {
@@ -748,11 +783,14 @@ li.dropdown-header::before {
   top: 0;
   right: 0;
   left: 0;
-  display: block;
   z-index: 5000;
+  display: block;
   padding: 1em;
   font-weight: 900;
-  text-align: center;
   color: white;
-  background-color: red;
-  content: 'Element impossibly focusable used for as "button".' !important; }
+  text-align: center;
+  background-color: #d9534f;
+  content: 'Element impossibly focusable used for as "button".' !important;
+}
+
+/*# sourceMappingURL=qa.css.map */

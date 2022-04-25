@@ -426,7 +426,6 @@ $_default-text-color--light: palette('text', 'light');
 /// 	}
 ///
 @function layer($layer: 'default') {
-  // sass-lint:disable-block indentation
   $default-layers: (
     'modal': 5000,
     'dropdown': 4000,

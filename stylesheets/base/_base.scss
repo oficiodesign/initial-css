@@ -111,14 +111,12 @@ html {
   box-sizing: border-box;
 
   height: 100%; /* 2 */
-
   padding: 0;
   margin: 0;
+  overflow: auto;
   overflow-x: hidden;
-  overflow-y: scroll; /* 3 */
 
   font-size: 100.01%; /* 1 */
-
   tab-size: 4;
 
   background: my.palette('white');
@@ -221,7 +219,6 @@ summary {
       height: auto;
 
       pointer-events: none;
-
       content: '';
     }
   }
@@ -288,7 +285,8 @@ summary {
  */
 [hidden],
 template {
-  display: none !important; // stylelint-disable-line declaration-no-important
+  // stylelint-disable-next-line declaration-no-important
+  display: none !important;
 }
 
 /**
@@ -323,15 +321,11 @@ hr {
   @include my.fallback('margin', calc(#{my.$leading * 1em} - 1px) 0 #{my.$leading * 1em}, #{my.$leading * 1em} 0);
 
   box-sizing: content-box; /* 1 */
-
   display: block;
 
   height: 0; /* 1 */
-
   padding: 0;
-
   overflow: visible; /* 2 */
-
   clear: both;
 
   color: my.palette('neutral');
@@ -425,7 +419,6 @@ video > source {
 .ie:not(.ie6-8),
 object > img {
   position: relative;
-
   z-index: my.layer('below');
 
   font-size: 1em;
@@ -508,10 +501,7 @@ a {
   margin: 0;
 
   font-size: 100%;
-  // sass-lint:disable-block property-sort-order
-
   color: my.palette('anchor', 'base');
-
   vertical-align: baseline;
 
   @include my.on-event {
@@ -523,7 +513,8 @@ a {
     text-decoration: underline;
 
     cursor: pointer;
-    -webkit-tap-highlight-color: my.palette('tap-highlight'); // stylelint-disable-line property-no-vendor-prefix
+    // stylelint-disable-next-line property-no-vendor-prefix
+    -webkit-tap-highlight-color: my.palette('tap-highlight');
   }
 
   &:visited {
@@ -588,11 +579,9 @@ address {
 pre {
   padding: my.$leading * 0.5rem my.$gutter * 0.5;
   margin: 0 0 my.$leading * 1rem;
-
   overflow: auto;
 
   font-size: smaller;
-
   color: my.palette('text', 'light');
 
   background-color: my.palette('text', 'dark');

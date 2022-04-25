@@ -27,7 +27,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-
     z-index: my.layer('modal');
 
     content: '';
@@ -214,13 +213,11 @@ textarea {
     position: fixed;
     top: 0;
     right: 0;
-
     z-index: my.layer('modal');
 
     font-size: 1rem;
 
     pointer-events: none;
-
     content: 'breakpoint: phone';
   }
 
@@ -238,19 +235,20 @@ textarea {
     content: 'breakpoint: #{$n}col';
 
     background-color: my.palette('feedback', 'danger');
-
     opacity: 0.75;
   }
 
   @each $key, $value in my.$breakpoints {
     $n: $n + 1;
 
-    @if map.get(my.$toggle-breakpoints, $key) ==null {
+    @if map.get(my.$toggle-breakpoints, $key) == null {
       @media screen and (min-width: my.breakpoint($key)) {
+        // stylelint-disable-next-line max-nesting-depth
         &::after {
           @include my.grid-image($n);
         }
 
+        // stylelint-disable-next-line max-nesting-depth
         &:root::before {
           content: 'breakpoint: #{$key}';
         }

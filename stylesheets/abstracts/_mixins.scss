@@ -133,7 +133,7 @@
 /// }
 ///
 @mixin alt-ampersand {
-  .amp { // stylelint-disable-line no-qualifying-elements
+  .amp {
     @include _italic-overflow;
     font-family: fs.$AMPERSAND-FONT-STACK;
     font-size: 2em;
@@ -164,7 +164,7 @@
 /// }
 ///
 @mixin alt-preposition {
-  .alt { // stylelint-disable-line no-qualifying-elements
+  .alt {
     @include _italic-overflow;
 
     font-family: fs.$ALT-FONT-STACK;
@@ -214,11 +214,11 @@
 /// }
 ///
 @mixin inline-block-wrapper {
-  // sass-lint:disable-block no-duplicate-properties
   $_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
   font-family: $_inline-block-font-stack;
   font-size: 0;
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+  // stylelint-disable-next-line declaration-block-no-duplicate-properties
   letter-spacing: normal\9; /* reset IE < 8 */
 
   word-spacing: -0.43em\9; /* IE < 8: collapse white-space between units */
@@ -334,7 +334,6 @@
 /// @access private
 ///
 @mixin _font-smoothing($value: true) {
-  // sass-lint:disable-block property-no-vendor-prefix
   @if ($value == true) {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -368,8 +367,9 @@
 ///
 @mixin icon-font {
   @include _font-smoothing(true);
-  font-size: 14px; /* font-awesome pixel perfection is at 14px and multiples of 14 */ // stylelint-disable-line property-units
 
+  // stylelint-disable-next-line property-units
+  font-size: 14px; /* font-awesome pixel perfection is at 14px and multiples of 14 */
   font-style: normal;
   font-weight: font-weight('normal');
   font-variant: normal;
@@ -466,6 +466,7 @@
   margin: -1px;
   overflow: hidden !important;
   clip: rect(1px 1px 1px 1px) !important;
+  // stylelint-disable-next-line declaration-block-no-duplicate-properties
   clip: rect(1px, 1px, 1px, 1px) !important;
   clip-path: inset(50%) !important;
 
@@ -549,14 +550,14 @@
     max-height: $leading * $lines;
     // stylelint-disable-next-line declaration-colon-space-after
     overflow:hidden;
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line declaration-no-important, declaration-block-no-duplicate-properties
     overflow: hidden !important;
 
     line-height: $leading;
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
     -webkit-line-clamp: $lines;
   } @else {
-  white-space: nowrap;
+    white-space: nowrap;
   }
 }
 
@@ -635,8 +636,8 @@
     direction: ltr;
   } @else {
     font: 0/0;
-    text-shadow: none;
     color: transparent;
+    text-shadow: none;
 
     border: 0;
   }
@@ -686,7 +687,6 @@ $no-viewport: false !default;
     }
   }
 
-  // sass-lint:disable-block indentation brace-style
   @if (list.index($fallback-units, 'alpha') != null and $no-alpha != false) or
     (list.index($fallback-units, 'calc') != null and $no-calc != false) or
     (list.index($fallback-units, 'gradient') != null and $no-gradient != false) or
@@ -726,7 +726,6 @@ $no-viewport: false !default;
 ///
 @mixin viewport-unit($property, $value) {
   $unit: math.unit($value);
-  // sass-lint:disable-block indentation
 
   #{$property}: $value;
 
@@ -810,7 +809,8 @@ $no-viewport: false !default;
   width: 0;
   height: 0;
 
-  border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // stylelint-disable-line property-sort-order
+  // stylelint-disable-nex-line property-sort-order
+  border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color;
 
   @if not list.index(top right bottom left, $direction) {
     @error 'Direction must be either `top`, `right`, `bottom` or `left`.';

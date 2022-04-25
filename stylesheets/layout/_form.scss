@@ -22,9 +22,7 @@ fieldset {
   align-items: stretch;
 
   min-width: 0;
-
   max-width: none;
-
   padding: my.$gutter 0;
   margin-top: 0;
   margin-right: my.$gutter * -0.5;
@@ -68,14 +66,11 @@ legend {
   flex-basis: 100%;
 
   max-width: 100%; /* 1 */
-
   padding: 0; /* 3 */
   margin-bottom: my.$gutter;
 
   font-weight: my.font-weight('extrabold');
-
   color: inherit; /* 2 */
-
   white-space: normal; /* 1 */
 }
 
@@ -85,7 +80,6 @@ label {
 
   font-size: small;
   line-height: inherit;
-
   color: my.palette('text', 'faded');
 
   cursor: pointer;
@@ -95,9 +89,9 @@ label {
   }
 }
 
+// stylelint-disable-next-line selector-no-qualifying-type
 abbr.field__required {
   color: my.palette('feedback', 'danger');
-
   text-decoration: none;
 }
 
@@ -115,7 +109,6 @@ form p {
   flex-grow: 1;
 
   max-width: none;
-
   margin-bottom: my.$gutter;
 
   &:last-child {
@@ -189,18 +182,15 @@ form br {
   box-sizing: border-box; /* 4 */
   display: inline-block;
 
-  padding: 1px; /* 2 */ // stylelint-disable-line property-units
+  // stylelint-disable-next-line property-units
+  padding: 1px; /* 2 */
   margin: 0;
-
   overflow: visible;
 
   font-family: inherit; /* 1 */
-
   font-size: inherit; /* 1 */
   line-height: inherit; /* 1 */
-
   color: inherit;
-
   text-align: inherit;
   text-transform: inherit; /* 3 */
   letter-spacing: inherit;
@@ -209,12 +199,11 @@ form br {
 
   border-color: my.palette('border');
   border-style: solid;
-
   border-width: my.$stroke;
   border-radius: my.$rounded-corner;
-
   outline: 0;
-  -webkit-font-smoothing: inherit; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-font-smoothing: inherit;
 
   &:hover {
   }
@@ -246,6 +235,7 @@ form br {
 
   opacity: 1;
 }
+
 @mixin placeholder--focus {
   color: my.palette('placeholder', 'focus');
 }
@@ -323,23 +313,26 @@ form br {
 [type='file'] {
   min-width: 250px;
   height: 2em;
-
-  padding: 0 !important; /* 2 */ // stylelint-disable-line declaration-no-important
+  // stylelint-disable-next-line declaration-no-important
+  padding: 0 !important; /* 2 */
   margin: 0; /* 2 */
 
   font-family: inherit;
-
-  text-align: start !important; // stylelint-disable-line declaration-no-important
+  // stylelint-disable-next-line declaration-no-important
+  text-align: start !important;
   white-space: nowrap;
 
   background-color: transparent; /* 1 */
+  // stylelint-disable-next-line declaration-no-important
+  border-style: none !important;
 
-  border-style: none !important; // stylelint-disable-line declaration-no-important
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-box-align: baseline;
 
-  -webkit-box-align: baseline; // stylelint-disable-line property-no-vendor-prefix
-
-  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
-  -moz-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -moz-appearance: none;
   appearance: normal;
 
   -moz-binding: none;
@@ -352,12 +345,10 @@ form br {
   height: inherit;
 
   font-size: inherit;
-
   color: inherit;
   letter-spacing: inherit;
 
   background-color: inherit;
-
   border-color: inherit;
 }
 
@@ -365,14 +356,13 @@ form br {
   box-sizing: content-box;
 
   height: inherit;
-
   padding: 0;
 
   font-size: inherit;
-
   white-space: normal;
 
-  -webkit-box-align: center; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-box-align: center;
 
   appearance: button;
 }
@@ -392,10 +382,10 @@ form br {
   background-color: my.palette('button'); /* 2 */
   border-color: my.palette('border'); /* 3 */
   border-style: solid; /* 3 */
-
   border-width: 1px; /* 3 */
 
-  -webkit-appearance: button; /* 1 */ // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: button; /* 1 */
 
   &:hover {
     background-color: my.palette('button', 'focus');

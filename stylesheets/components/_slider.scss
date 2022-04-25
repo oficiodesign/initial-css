@@ -20,7 +20,6 @@
     color: transparent;
 
     background: transparent;
-
     border-color: transparent;
 
     @if meta.type-of($height) != 'number' or math.is-unitless($height) {
@@ -92,7 +91,8 @@
 @mixin vertical-input-range {
   writing-mode: bt-lr;
 
-  -webkit-appearance: slider-vertical; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: slider-vertical;
 }
 
 /**
@@ -102,7 +102,6 @@
   display: block;
 
   width: 100%; /* 1 */
-
   padding: 0;
 
   vertical-align: middle;
@@ -110,12 +109,12 @@
   cursor: pointer;
 
   background: transparent;
-
   border: 0; /* 1 */
 
   appearance: none;
 
-  @include range-track($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) { // stylelint-disable-line mixins-before-declarations
+  // stylelint-disable-next-line mixins-before-declarations
+  @include range-track($height: 0.125rem, $thumb-height: 1.5rem, $bg-fallback: null) {
     background-color: my.palette('button');
 
     &:focus {
@@ -123,9 +122,9 @@
     }
   }
 
-  @include range-thumb($height: 1.5rem, $track-height: 0.125rem) { // stylelint-disable-line mixins-before-declarations
+  // stylelint-disable-next-line mixins-before-declarations
+  @include range-thumb($height: 1.5rem, $track-height: 0.125rem) {
     background-color: my.palette('button', 'slider');
-
     border: 0;
   }
 

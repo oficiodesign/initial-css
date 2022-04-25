@@ -14,14 +14,12 @@
   @extend %os-element-reset;
 
   box-sizing: inherit;
-
   display: flex;
 
   align-items: center;
 
   width: 100%;
   height: my.$gutter * 2;
-
   padding: my.$gutter * 0.5 0;
   margin: 0; // vertical margins break floating labels
 
@@ -30,7 +28,6 @@
   cursor: text;
 
   background-color: my.palette('text', 'light');
-
   border: solid my.$stroke my.palette('border');
 
   appearance: none; /* 1 */
@@ -53,26 +50,20 @@
 
     max-width: 100%;
     min-height: my.$gutter; // field height - padding
-
     margin-right: my.$gutter * 0.5;
     margin-left: my.$gutter * 0.5;
-
     overflow: hidden;
 
     font-size: smaller;
-
     color: my.palette('text', 'faded');
-
     text-overflow: ellipsis;
     white-space: nowrap;
 
     pointer-events: auto;
 
     transition-timing-function: ease-out;
-
     transition-duration: 0.25s;
     transition-property: color, transform, opacity;
-
     transform: translate(0, 0);
   }
 
@@ -86,19 +77,16 @@
 
   &:-moz-ui-invalid {
     border-radius: my.$rounded-corner;
-
     box-shadow: none;
   }
 
   &:invalid {
     border-radius: my.$rounded-corner;
-
     box-shadow: 0 0 5px my.palette('feedback', 'danger');
   }
 
   &.error:invalid {
     border-color: my.palette('feedback', 'danger');
-
     box-shadow: 0 0 0 4px color.scale(my.palette('feedback', 'danger'), $alpha: 50%);
   }
 
@@ -144,7 +132,8 @@
 [type='number']::-webkit-outer-spin-button {
   margin: 0; // Apparently some margin are still there even though it's hidden
 
-  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
 }
 
 [type='password'] {
@@ -162,7 +151,8 @@
 
   outline-offset: -2px; /* 1 */
 
-  -webkit-appearance: none; /* 2 */ // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none; /* 2 */
 }
 
 /**
@@ -172,7 +162,8 @@
  */
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {
-  -webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
 }
 
 [type='tel'] {
@@ -207,15 +198,12 @@ textarea {
   align-items: flex-start;
 
   height: my.$gutter * 8;
-
   overflow: auto; /* 1 */
 
   line-height: inherit;
-
   vertical-align: top;
 
   cursor: text;
-
   resize: vertical;
 }
 
@@ -234,7 +222,7 @@ textarea {
     color: my.palette('feedback', 'danger');
   }
 
-  & > output {
+  > output {
     color: my.palette('feedback', 'success');
   }
 }

@@ -20,26 +20,22 @@
   @extend %os-element-reset;
 
   box-sizing: inherit;
-
   display: inline-flex;
 
   align-items: center;
 
   width: auto; /* 3 */
   min-height: my.$gutter * 2;
-
-  padding: 1px 6px; /* 6 */ // stylelint-disable-line property-units
-
+  // stylelint-disable-next-line property-units
+  padding: 1px 6px; /* 6 */
   overflow: visible; /* 3 */
 
   text-indent: 0;
-
   white-space: inherit;
 
   cursor: pointer; /* 2 */
 
   background-color: my.palette('button'); /* 5 */
-
   border: my.$stroke;
 
   appearance: button; /* 1 */
@@ -99,6 +95,7 @@ button,
 [type='submit'] {
   @extend %button-reset;
   justify-content: center;
+
   width: my.$gutter * 12;
 
   text-align: center;
