@@ -31,13 +31,13 @@ $base: (
 /// @colors neutral
 ///
 $neutral: (
-  'white': rgb(255, 255, 255),
-  'x-light': color.scale(rgb(229, 231, 234), $whiteness: 10%),
-  'light': rgb(229, 231, 234),
-  'base': rgb(151, 153, 156),
-  'dark': rgb(64, 68, 71),
-  'x-dark': color.scale(rgb(64, 68, 71), $blackness: 10%),
-  'black': rgb(0, 0, 0),
+  'white': hsl(240, 2%, 91%),
+  'x-light': color.scale(hsl(216, 11%, 91%), $whiteness: 10%),
+  'light': hsl(216, 11%, 91%),
+  'base': hsl(216, 2%, 60%),
+  'dark': hsl(206, 5%, 26%),
+  'x-dark': color.scale(hsl(206, 5%, 26%), $blackness: 10%),
+  'black': hsl(200, 20%, 9%)
 );
 $palette: map.set($palette, 'neutral', $neutral);
 
