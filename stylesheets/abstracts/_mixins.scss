@@ -874,15 +874,19 @@ $no-viewport: false !default;
   $w: null;
   $h: null;
 
+  @if meta.type-of($ratio) == string {
+    $ratio: f.aspect-ratio($ratio);
+  }
+
   @if meta.type-of($ratio) != list {
     @error '`aspect-ratio` function expecting a list for `$ratio`; `#{meta.type-of($ratio)}` given.';
-  } @else if list.length($ratio) == 3 and list.nth($ratio, 2) != 'x' {
-    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{list.nth($ratio, 2)} given.';
+  } @else if list.length($ratio) == 3 and list.nth($ratio, 2) != 'x' and list.nth($ratio, 2) != '/' {
+    @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x` or `/`; #{list.nth($ratio, 2)} given.';
   } @else if list.length($ratio) < 2 and list.length($ratio) > 3 {
     @error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{list.length($ratio)}` given.';
   } @else {
     $w: list.nth($ratio, 1);
-    $h: if(length($ratio)==3, list.nth($ratio, 3), list.nth($ratio, 2));
+    $h: if(length($ratio) == 3, list.nth($ratio, 3), list.nth($ratio, 2));
   }
 
   @if meta.type-of($w) != 'number' {

@@ -620,3 +620,43 @@ $_default-text-color--light: palette('text', 'light');
 
   @return map.get($default-breakpoints, $breakpoint);
 }
+
+/// Get an aspect-ratio from a name
+///
+/// @access public
+/// @param {String} $name - name of the break point
+/// @return {String}
+///
+@function aspect-ratio($name: null) {
+  $default: (
+    'cinemascope': 21 / 9,
+    'widescreen': 37 / 20,
+    'sixteen-nine': 16 / 9,
+    'hdtv': 16 / 9,
+    'hd-video': 16 / 9,
+    'classic-film': 3 / 2,
+    'tv': 4 / 3,
+    'standard-monitor': 4 / 3,
+    'four-three': 4 / 3,
+    'square': 1 / 1,
+  );
+
+  @if $name == null {
+    @error 'An aspect-ratio name is required. Available values-> `#{map.keys($default)}`';
+  } @else {
+    $name: string.to-lower-case($name);
+    $name: str-replace($name, ' ', '-');
+    $name: str-replace($name, '-by-', '-');
+    $name: str-replace($name, '-to-', '-');
+  }
+
+  @if meta.global-variable-exists('my-aspect-ratios') and meta.type-of($my-aspect-ratios) == 'map' {
+    $default: map.merge($default, $my-aspect-ratios);
+  }
+
+  @if not map.has-key($default, $name) {
+    @error 'unknown value sent to `aspect-ratio` function-> #{$name}. Available values -> `#{map.keys($default)}`';
+  }
+
+  @return map.get($default, $name);
+}
