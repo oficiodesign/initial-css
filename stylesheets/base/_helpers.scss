@@ -266,12 +266,7 @@ textarea {
 }
 
 .container {
-  max-width: my.$max-width;
-
-  padding-right: my.$gutter;
-  padding-left: my.$gutter;
-  margin-right: auto;
-  margin-left: auto;
+  @include my.container;
 }
 
 .full-width {

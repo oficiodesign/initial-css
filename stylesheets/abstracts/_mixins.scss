@@ -981,6 +981,15 @@ $no-viewport: false !default;
   max-width: 100%;
 }
 
+@mixin container {
+  width: 100%;
+  max-width: c.$max-width;
+  padding-right: c.$gutter;
+  padding-left: c.$gutter;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @mixin full-width {
   position: relative;
   right: 50%;
