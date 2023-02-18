@@ -676,7 +676,7 @@ $no-viewport: false !default;
       }
     } @else if $fallbacks == null {
       @error 'fallback values, the 3rd parameter, are required for everything except `rem` numbers';
-    } @else if string.index($value, 'calc') {
+    } @else if meta.type-of($value) == calculation {
       $fallback-units: list.join($fallback-units, 'calc');
     } @else if string.index($value, 'gradient') {
       $fallback-units: list.join($fallback-units, 'gradient');
