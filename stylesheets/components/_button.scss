@@ -58,15 +58,6 @@
     border: 0;
   }
 
-  &:hover,
-  &:focus {
-    &:not([type='reset']) {
-      @include my.focused;
-
-      background-color: my.palette('button', 'focus');
-    }
-  }
-
   &:active {
   }
 
@@ -80,6 +71,13 @@ button,
 [role='button'],
 [type='button'] {
   @extend %button-reset;
+
+  &:hover,
+  &:focus {
+    @include my.focused;
+
+    background-color: my.palette('button', 'focus');
+  }
 }
 
 .like-a__button--reset,
@@ -101,6 +99,13 @@ button,
   text-align: center;
 
   background-color: my.palette('button', 'submit');
+
+  &:hover,
+  &:focus {
+    @include my.focused;
+
+    background-color: my.palette('button', 'focus');
+  }
 
   &:disabled {
     color: my.palette('disabled', 'background');
