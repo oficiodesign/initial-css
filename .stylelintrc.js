@@ -121,7 +121,12 @@ module.exports = {
     ],
     "selector-no-vendor-prefix": true,
     "string-quotes": "single",
-    "value-keyword-case": "lower",
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
     "value-list-comma-newline-after": "never-multi-line",
     "value-list-comma-newline-before": "never-multi-line",
     "value-list-comma-space-after": "always",
