@@ -103,7 +103,8 @@ textarea,
  * http://clagnut.com/blog/348/#c790
  * 2. Scaling HTML element to window height
  * https://github.com/necolas/normalize.css/pull/422#issuecomment-78379521
- * 3. Keeps page centred in all browsers regardless of content height
+ * 3. prevents iOS issue
+ * https://piccalil.li/quick-tip/safe-viewport-height/
  * 4. Prevents iOS text size adjust after orientation change, without disabling user zoom
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
@@ -111,6 +112,8 @@ html {
   box-sizing: border-box;
 
   height: 100%; /* 2 */
+  /* stylelint-disable-next-line value-no-vendor-prefix, declaration-block-no-duplicate-properties */
+  height: -webkit-fill-available; /* 3 */
   padding: 0;
   margin: 0;
   overflow: auto;
@@ -137,6 +140,8 @@ html {
  * 1. Set sticky footer
  * 2. Prevents IE10-11 flex container bug
  * https: //github.com/philipwalton/flexbugs#flexbug-3
+ * 3. prevents iOS issue
+ * https://piccalil.li/quick-tip/safe-viewport-height/
  */
 body {
   display: flex; /* 1 */
@@ -145,6 +150,8 @@ body {
 
   height: 100vh; /* 2 */
   min-height: 100%;
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties, value-no-vendor-prefix */
+  min-height: -webkit-fill-available; /* 3 */
   margin: 0;
 
   color: my.palette('black');
