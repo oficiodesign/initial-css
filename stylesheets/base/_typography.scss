@@ -21,6 +21,7 @@ body {
   font-family: my.$text-font-stack;
   font-size: my.$body-font-size;
   font-weight: my.font-weight('text');
+  font-variant-numeric: oldstyle-nums proportional-nums slashed-zero;
   line-height: my.$leading;
   color: my.palette('text', 'dark');
 }
@@ -29,6 +30,15 @@ body {
 
 /**
  * @see https://developer.mozilla.org/en/CSS/-moz-font-feature-settings
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
+ * @see
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/OpenType_fonts_guide
+ * @see https://learn.microsoft.com/en-us/typography/opentype/spec/features_ae#tag-case
+ * @see
+ * https://learn.microsoft.com/en-us/typography/opentype/spec/features_ae#tag-cpsp
+ * @see
+ * https://learn.microsoft.com/en-us/typography/opentype/spec/features_ae#tag-cswh
+ * @see https://learn.microsoft.com/en-us/typography/opentype/spec/features_ko#tag-locl
  * @see https://bugzilla.mozilla.org/show_bug.cgi?id=458634
  * @see https://bugzilla.mozilla.org/show_bug.cgi?id=611780
  */
@@ -46,8 +56,10 @@ details > summary {
 
   font-family: my.$title-font-stack;
   font-weight: my.font-weight('heading');
-  font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
-
+  font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'locl' 1;
+  font-variant-ligatures: common-ligatures;
+  font-variant-caps: titling-caps;
+  font-variant-numeric: lining-nums proportional-nums slashed-zero;
   break-after: avoid;
   page-break-after: avoid;
 
@@ -101,11 +113,6 @@ details {
 
 p {
   padding: 0;
-
-  /*  -moz-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-    -ms-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-    -webkit-font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1;
-    font-feature-settings: 'onum' 1, 'pnum' 1, 'zero' 1; */
   margin-top: 0;
   margin-bottom: my.$leading * 1em;
 }
