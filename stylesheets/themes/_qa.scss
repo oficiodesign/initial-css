@@ -232,6 +232,10 @@ textarea {
 
 form:not([name]):not([id]) {
   @extend %warning;
+
+  @include alert {
+    content: 'Form without name or id. Forms with name attributes can be accessed using `document.forms['name-of-the-form']`' !important;
+  }
 }
 
 /// Too many options
