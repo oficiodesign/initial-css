@@ -26,6 +26,9 @@
   left: my.$gutter * 0.25;
   z-index: my.layer('default');
 
+  font-weight: font-weight('normal');
+  text-indent: 0;
+
   background-color: my.palette('white');
 
   > svg {
