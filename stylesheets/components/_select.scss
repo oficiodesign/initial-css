@@ -73,7 +73,9 @@ option {
 
   &:hover,
   &:focus {
-    color: my.palette('black');
+    color: my.palette('text', 'dark');
+
+    background-color: my.palette('text', 'light');
   }
 
   &[disabled] {
