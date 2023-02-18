@@ -12,6 +12,7 @@
     text-shadow: none !important;
 
     background: transparent !important;
+    box-shadow: none !important;
   }
 
   html,
@@ -127,6 +128,15 @@
   nav,
   .access,
   .secondary {
+    display: none;
+  }
+
+  article p {
+    max-width: none;
+  }
+
+  .site-footer,
+  .no-print {
     display: none;
   }
 }
