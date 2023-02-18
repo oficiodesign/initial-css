@@ -1003,16 +1003,18 @@ $no-viewport: false !default;
   margin-left: -50vw;
 }
 
-@mixin headings {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  legend,
-  caption,
-  summary {
+@mixin headings ($which-ones: 'all') {
+  $selector: null;
+
+  @if $which-ones == 'odd' {
+    $selector: 'h1, h3, h5, legend, caption, details > summary';
+  } @else if $which-ones == 'even' {
+    $selector: 'h2, h4, h6, fieldset fieldset legend';
+  } @else {
+    $selector: 'h1, h2, h3, h4, h5, h6, legend, caption, details > summary';
+  }
+
+  #{$selector} {
     @content;
   }
 }
