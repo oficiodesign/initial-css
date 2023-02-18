@@ -536,12 +536,27 @@ textarea {
 ----------------------------------------------------------------------
 */
 
-ol > *:not(li):not(script):not(template),
+ol > *:not(li):not(script):not(template) {
+  @extend %error;
+
+  @include alert {
+    content: 'Unallowed element used as direct child of `<ol>`.' !important;
+  }
+}
+
 ul > *:not(li):not(script):not(template) {
   @extend %error;
 
   @include alert {
-    content: 'Unallowed element used as direct child of `<ul>` or `<ol>`.' !important;
+    content: 'Unallowed element used as direct child of `<ul>`.' !important;
+  }
+}
+
+menu > *:not(li):not(script):not(template) {
+  @extend %error;
+
+  @include alert {
+    content: 'Unallowed element used as direct child of `<menu>`.' !important;
   }
 }
 
