@@ -80,6 +80,8 @@ xmp {
 
 /* Faulty or Missing Link Targets */
 a {
+  &:-moz-only-whitespace,
+  &:empty,
   &:not([href]),
   &[href$='#'],
   &[href=''],
