@@ -208,6 +208,15 @@ label:not([for]) {
   }
 }
 
+label a,
+label button {
+  @extend %warning;
+
+  @include alert {
+    content: 'do not place interactive elements such as `<a>` or `<buttons>` inside a label' !important;
+  }
+}
+
 // Unlabelled Form Elements
 input,
 select,
