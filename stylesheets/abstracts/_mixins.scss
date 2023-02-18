@@ -472,11 +472,15 @@
 
   white-space: nowrap !important;
 
+  visibility: hidden;
+
   border: 0 !important;
 }
 
 @mixin visually-hidden--focusable {
   @include visually-hidden;
+
+  visibility: visible;
 
   &:active,
   &:focus {
