@@ -173,6 +173,33 @@
   }
 }
 
+/// Helper to break a line within a inline element
+///
+/// @parameter {after | before} $position [before] - where to break the line
+///
+/// @example scss
+/// span {
+///   @include inline-break('after');
+/// }
+///
+/// @output css
+/// span::after {
+///   white-space: pre;
+///   content: "\a";
+/// }
+///
+@mixin inline-break($position: 'before') {
+  @if $position != 'before' and $position != 'after' {
+    @error 'invalid position submitted: #{$position}';
+  }
+
+  &::#{$position} {
+    white-space: pre;
+
+    content: '\A';
+  }
+}
+
 /// Helper for an inline-block grid.
 ///
 /// To be used together with [`inline-block-item`](#helpers-mixin-inline-block-item).
