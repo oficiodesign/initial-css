@@ -105,6 +105,14 @@ img[usemap] {
   }
 }
 
+iframe:not([title]) {
+  @extend %warning;
+
+  @include alert {
+    content: '`<iframe>` without `title`. People navigating with assistive technology such as a screen reader can use the `title` attribute on an `<iframe>` to label its content.' !important;
+  }
+}
+
 /* Layout tables */
 table table {
   @extend %error;
