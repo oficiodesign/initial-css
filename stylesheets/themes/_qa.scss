@@ -113,6 +113,30 @@ iframe:not([title]) {
   }
 }
 
+dialog[tabindex] {
+  @extend %error;
+
+  @include alert {
+    content: 'The tabindex attribute must not be used on the `<dialog>` element.' !important;
+  }
+}
+
+dialog[role='dialog'] {
+  @extend %error;
+
+  @include alert {
+    content: 'The `<dialog>` element does not need `[role="dialog"]`. It is redundant and conflicts with the next rule.' !important;
+  }
+}
+
+[role='dialog']:not([tabindex='-1']) {
+  @extend %error;
+
+  @include alert {
+    content: 'Custom dialogs element should have [tabindex="-1"].' !important;
+  }
+}
+
 /* Layout tables */
 table table {
   @extend %error;
