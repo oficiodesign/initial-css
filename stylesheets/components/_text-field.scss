@@ -9,6 +9,7 @@
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. add some space before text
+ * 3. Hide drop arrow on input[list] in Chrome
  */
 %text-field-reset {
   @extend %os-element-reset;
@@ -106,6 +107,10 @@
     cursor: default;
 
     background-color: my.palette('disabled', 'background');
+  }
+
+  &[list]::-webkit-calendar-picker-indicator {
+    opacity: 0; /* 3 */
   }
 }
 
