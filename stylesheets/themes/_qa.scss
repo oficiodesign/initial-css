@@ -241,7 +241,7 @@ form:not([name]):not([id]) {
 form li {
   &:nth-child(6),
   &:nth-child(6) ~ li {
-    @extend %error;
+    @extend %warning;
   }
 
   &:nth-child(6) {
