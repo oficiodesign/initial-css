@@ -27,11 +27,35 @@ $_fonts-list: (
   @include utilities.add('fonts', $k, ('name': $name, 'stack': $stack));
 }
 
-@each $k1, $v1 in $palette {
-  @if meta.type-of($v1) == 'map' {
-    @include utilities.add('colors', $k1, $v1);
+@each $group, $values in $palette {
+  @if meta.type-of($values) == 'map' {
+    $flatten-colors: ();
+
+    @each $color-name, $color-value in $values {
+      @if meta.type-of($color-value) == 'color' {
+        $flatten-colors: map.set($flatten-colors, "palette('#{$group}', '#{$color-name}')", $color-value);
+      } @else if meta.type-of($color-value) == 'map' {
+        @each $tone-name, $tone-value in $color-value {
+          // stylelint-disable-next-line max-nesting-depth
+          @if meta.type-of($tone-value) == 'color' {
+            $flatten-colors: map.set($flatten-colors, "palette('#{$group}', '#{$color-name}', '#{$tone-name}')", $tone-value);
+            // stylelint-disable-next-line max-nesting-depth
+          } @else {
+            @error 'Invalid value submitted. `#{$tone-value}` isn\'t a color.';
+          }
+        }
+      } @else {
+        @error 'Invalid value submitted. `#{$color-value}` isn\'t a color neither a map.';
+      }
+    }
+
+    @include utilities.add('colors', $group, $flatten-colors);
+  } @else if meta.type-of($values) == 'color' {
+    // in case there's a color not being part of a group, let's set the preview
+    // under the `base` group, as Hermann requires all colors to be part of one.
+    @include utilities.add('colors', 'base', ("palette('#{$group}')": $values));
   } @else {
-    @include utilities.add('colors', 'palette', (#{$k1}: $v1));
+    @error 'Invalid value submitted. `#{$values}` isn\'t a color neither a map.';
   }
 }
 
