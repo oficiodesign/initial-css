@@ -283,7 +283,14 @@ summary {
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-[hidden],
+[hidden][hidden] {
+  display: none;
+}
+
+/**
+* Address `[hidden]` styling not present in IE 8/9.
+* Hide the `template` element in IE, Safari, and Firefox < 22.
+*/
 template {
   // stylelint-disable-next-line declaration-no-important
   display: none !important;
