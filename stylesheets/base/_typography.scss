@@ -69,7 +69,7 @@ details > summary {
 }
 
 summary {
-  color: my.palette('accent');
+  color: my.palette('text', 'title');
   text-decoration: none;
 
   details > & {
