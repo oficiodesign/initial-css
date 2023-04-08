@@ -541,8 +541,8 @@ a {
 
   &:hover,
   &:focus {
-    @supports (text-decoration-color: my.palette('accent')) {
-      text-decoration-color: my.palette('accent');
+    @supports (text-decoration-color: my.palette('anchor', 'hover')) {
+      text-decoration-color: my.palette('anchor', 'hover');
     }
   }
 
