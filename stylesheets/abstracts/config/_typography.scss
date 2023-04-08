@@ -14,6 +14,17 @@
 ///
 ////
 
+/// Text body font stack
+///
+/// @font text-font-stack (normal, bold, italic, bold italic)
+/// @example scss
+/// body {
+///   font-family: $text-font-stack;
+/// }
+///
+$text-font-stack: fs.$NATIVE-FONT-STACK !default;
+
+
 /// Title font stack
 ///
 /// @font title-font-stack (regular, italic, bold, bold italic)
@@ -28,17 +39,6 @@
 ///
 $title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
   'Helvetica', 'Arial', sans-serif !default;
-
-
-/// Text body font stack
-///
-/// @font text-font-stack (normal, bold, italic, bold italic)
-/// @example scss
-/// body {
-///   font-family: $text-font-stack;
-/// }
-///
-$text-font-stack: fs.$NATIVE-FONT-STACK !default;
 
 
 /// Code (monospace) font stack
