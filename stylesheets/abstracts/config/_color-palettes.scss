@@ -25,6 +25,7 @@ $accent-color: hsl(330, 72%, 42%) !default;
 $base: (
   'accent': $accent-color,
 );
+$palette: map.set($palette, 'base', $base);
 
 
 ///
