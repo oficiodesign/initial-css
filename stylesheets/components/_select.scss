@@ -60,7 +60,14 @@ select,
 optgroup {
   @extend %os-element-reset;
 
+  padding-inline-start: 0;
+  margin-inline-start: 0;
+
   font-weight: my.font-weight('bold');
+}
+
+optgroup + optgroup {
+  border-block-start: 1px solid currentColor;
 }
 
 option {
