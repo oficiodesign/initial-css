@@ -758,7 +758,9 @@ $no-viewport: false !default;
 @mixin viewport-unit($property, $value) {
   $unit: math.unit($value);
 
-  #{$property}: $value;
+  & {
+    #{$property}: $value;
+  }
 
   @if (list.index((vw, vh, vmin, vmax), $unit) != null) {
     $devices: ((768px, 1024px), (320px, 480px), (320px, 568px));
@@ -810,7 +812,7 @@ $no-viewport: false !default;
   @each $direction in $directions {
     $direction: string.to-lower-case($direction);
 
-    @if not index(top right bottom left, $direction) {
+    @if not list.index(top right bottom left, $direction) {
       @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
     }
 
@@ -831,7 +833,7 @@ $no-viewport: false !default;
 @mixin triangle($direction, $color: currentcolor, $size: 1em) {
   $perpendicular-borders: $size solid transparent;
 
-  @if not index(top right bottom left, $direction) {
+  @if not list.index(top right bottom left, $direction) {
     @error 'Direction must be either `top`, `right`, `bottom` or `left`.';
   }
 
@@ -917,7 +919,7 @@ $no-viewport: false !default;
     @error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{list.length($ratio)}` given.';
   } @else {
     $w: list.nth($ratio, 1);
-    $h: if(length($ratio) == 3, list.nth($ratio, 3), list.nth($ratio, 2));
+    $h: if(list.length($ratio) == 3, list.nth($ratio, 3), list.nth($ratio, 2));
   }
 
   @if meta.type-of($w) != 'number' {
@@ -1000,7 +1002,7 @@ $no-viewport: false !default;
   box-shadow: 0 0 0 0.25rem color.scale(f.palette('accent'), $alpha: 50%);
 }
 
-@mixin columns($width: map-get(c.$line-lengths, 'column'), $gap: c.$gutter) {
+@mixin columns($width: map.get(c.$line-lengths, 'column'), $gap: c.$gutter) {
   @include hyphens;
 
   column-fill: balance;

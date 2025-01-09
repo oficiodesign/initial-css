@@ -97,7 +97,7 @@ $breakpoints: map.merge(
 @while $_device-width <= $max-width {
   $_device-width: math.div($_device-width, $_i) * ($_i + 1);
   $_i: $_i + 1;
-  $breakpoints: map-merge($breakpoints, ('#{$_i}col': $_device-width));
+  $breakpoints: map.merge($breakpoints, ('#{$_i}col': $_device-width));
 }
 
 /// Z-indexes map, gathering all Z layers of the application. Avoid to edit it.

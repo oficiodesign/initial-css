@@ -28,10 +28,12 @@ menu a,
 nav a {
   @include my.link-undercover;
 
-  display: block;
+  & {
+    display: block;
 
-  overflow: hidden;
+    overflow: hidden;
 
+  }
   &:link {
     text-decoration: none;
   }
