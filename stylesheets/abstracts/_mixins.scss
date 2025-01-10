@@ -536,6 +536,9 @@
 /// .username {
 /// 	@include truncate;
 /// }
+/// .excerpt {
+/// 	@include truncate(5);
+/// }
 ///
 /// @output css
 /// .username {
@@ -543,13 +546,6 @@
 /// 	text-overflow: ellipsis;
 /// 	white-space: nowrap;
 /// }
-///
-/// @example scss
-/// .excerpt {
-/// 	@include truncate(5);
-/// }
-///
-/// @output css
 /// .excerpt {
 ///   display: block;
 ///   overflow: hidden;
